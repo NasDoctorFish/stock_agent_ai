@@ -1,0 +1,281 @@
+[2025-11-08 16:31:21] INFO | System: 🦆 Connected to DuckDB at /Users/jju/Documents/Stock ML/src/db/stockml.duckdb
+[2025-11-08 16:31:22] INFO | System: 🔄 Updating data...
+[2025-11-08 16:31:22] INFO | System: ===== Update process started =====
+[2025-11-08 16:31:22] INFO | System: ✅ Loaded existing file: data/raw/price_daily.csv (14000 rows)
+[2025-11-08 16:31:22] INFO | System: ✅ Loaded existing file: data/raw/fundamentals_quarterly.csv (661 rows)
+[2025-11-08 16:31:22] INFO | System: ✅ Loaded existing file: data/raw/news_sentiment.csv (6721 rows)
+[2025-11-08 16:31:22] INFO | System: ✅ Loaded existing file: data/raw/macro_index.csv (52635 rows)
+[2025-11-08 16:31:22] INFO | System: Loaded 60 tickers
+[2025-11-08 16:31:22] INFO | System: Merging new data with old datasets...
+[2025-11-08 16:31:22] INFO | System: Saving merged data to CSV files...
+[2025-11-08 16:31:22] INFO | System: ✅ All datasets updated successfully for 2025-11-08
+[2025-11-08 16:31:22] INFO | System: ===== Update process finished =====
+
+[2025-11-08 16:31:22] INFO | System: 🔄 Saving to duckdb...
+[2025-11-08 16:31:22] INFO | System: ✅ /Users/jju/Documents/Stock ML/data/raw/fundamentals_quarterly.csv → fundamentals_q_full 저장 완료
+[2025-11-08 16:31:22] INFO | System: LOADING COMPLETED: fundamentals_q_full in /Users/jju/Documents/Stock ML/data/raw/fundamentals_quarterly.csv
+[2025-11-08 16:31:22] INFO | System: ✅ /Users/jju/Documents/Stock ML/data/raw/macro_index.csv → macro_index_full 저장 완료
+[2025-11-08 16:31:22] INFO | System: LOADING COMPLETED: macro_index_full in /Users/jju/Documents/Stock ML/data/raw/macro_index.csv
+[2025-11-08 16:31:22] INFO | System: ✅ /Users/jju/Documents/Stock ML/data/raw/news_sentiment.csv → news_sentiment 저장 완료
+[2025-11-08 16:31:22] INFO | System: LOADING COMPLETED: news_sentiment in /Users/jju/Documents/Stock ML/data/raw/news_sentiment.csv
+[2025-11-08 16:31:22] INFO | System: ✅ /Users/jju/Documents/Stock ML/data/raw/price_daily.csv → price_daily_full 저장 완료
+[2025-11-08 16:31:22] INFO | System: LOADING COMPLETED: price_daily_full in /Users/jju/Documents/Stock ML/data/raw/price_daily.csv
+[2025-11-08 16:31:22] INFO | System: Done!
+[2025-11-08 16:32:09] INFO | System: 🦆 Connected to DuckDB at /Users/jju/Documents/Stock ML/src/db/stockml.duckdb
+[2025-11-08 16:32:09] INFO | System: 🔄 Updating data...
+[2025-11-08 16:32:09] INFO | System: ===== Update process started =====
+[2025-11-08 16:32:09] INFO | System: ✅ Loaded existing file: data/raw/price_daily.csv (14000 rows)
+[2025-11-08 16:32:09] INFO | System: ✅ Loaded existing file: data/raw/fundamentals_quarterly.csv (661 rows)
+[2025-11-08 16:32:09] INFO | System: ✅ Loaded existing file: data/raw/news_sentiment.csv (6721 rows)
+[2025-11-08 16:32:09] INFO | System: ✅ Loaded existing file: data/raw/macro_index.csv (52635 rows)
+[2025-11-08 16:32:09] INFO | System: Loaded 60 tickers
+[2025-11-08 16:32:09] INFO | System: Merging new data with old datasets...
+[2025-11-08 16:32:09] INFO | System: Saving merged data to CSV files...
+[2025-11-08 16:32:10] INFO | System: ✅ All datasets updated successfully for 2025-11-08
+[2025-11-08 16:32:10] INFO | System: ===== Update process finished =====
+
+[2025-11-08 16:32:10] INFO | System: 🔄 Saving to duckdb...
+[2025-11-08 16:32:10] INFO | System: ✅ /Users/jju/Documents/Stock ML/data/raw/fundamentals_quarterly.csv → fundamentals_q_full 저장 완료
+[2025-11-08 16:32:10] INFO | System: LOADING COMPLETED: fundamentals_q_full in /Users/jju/Documents/Stock ML/data/raw/fundamentals_quarterly.csv
+[2025-11-08 16:32:10] INFO | System: ✅ /Users/jju/Documents/Stock ML/data/raw/macro_index.csv → macro_index_full 저장 완료
+[2025-11-08 16:32:10] INFO | System: LOADING COMPLETED: macro_index_full in /Users/jju/Documents/Stock ML/data/raw/macro_index.csv
+[2025-11-08 16:32:10] INFO | System: ✅ /Users/jju/Documents/Stock ML/data/raw/news_sentiment.csv → news_sentiment 저장 완료
+[2025-11-08 16:32:10] INFO | System: LOADING COMPLETED: news_sentiment in /Users/jju/Documents/Stock ML/data/raw/news_sentiment.csv
+[2025-11-08 16:32:10] INFO | System: ✅ /Users/jju/Documents/Stock ML/data/raw/price_daily.csv → price_daily_full 저장 완료
+[2025-11-08 16:32:10] INFO | System: LOADING COMPLETED: price_daily_full in /Users/jju/Documents/Stock ML/data/raw/price_daily.csv
+[2025-11-08 16:32:10] INFO | System: Done!
+[2025-11-08 16:32:10] INFO | System: 🧠 MacroAnalyst initialized on mps
+[2025-11-08 16:32:10] INFO | System: ✅ Feature columns set: ['BRENT', 'CHINA_GDP', 'CONSUMER_CONFIDENCE', 'COPPER', 'COREPCE', 'CORN', 'CPIAUCSL', 'CPIFABSL', 'CPILFESL', 'DGS10', 'DGS2', 'DGS30', 'FEDFUNDS', 'GDP', 'GDPC1', 'GDPDEF', 'INDPRO', 'IR_JP_10Y', 'IR_KR_3Y', 'JP_GDP', 'LEI', 'M1SL', 'M2SL', 'NATGAS', 'PAYEMS', 'PPIACO', 'RETAILSA', 'RRPONTSYD', 'UNRATE', 'WHEAT', 'WTI']
+[2025-11-08 16:32:10] INFO | System: Columns in MACRO DATA: ['BRENT', 'CHINA_GDP', 'CONSUMER_CONFIDENCE', 'COPPER', 'COREPCE', 'CORN', 'CPIAUCSL', 'CPIFABSL', 'CPILFESL', 'DGS10', 'DGS2', 'DGS30', 'FEDFUNDS', 'GDP', 'GDPC1', 'GDPDEF', 'INDPRO', 'IR_JP_10Y', 'IR_KR_3Y', 'JP_GDP', 'LEI', 'M1SL', 'M2SL', 'NATGAS', 'PAYEMS', 'PPIACO', 'RETAILSA', 'RRPONTSYD', 'UNRATE', 'WHEAT', 'WTI']
+[2025-11-08 16:32:12] INFO | System: ✅ LSTM trained (Final Loss: 0.2845)
+[2025-11-08 16:32:13] INFO | System: Macro Analyst: LSTM model train completed, features: Index(['BRENT', 'CHINA_GDP', 'CONSUMER_CONFIDENCE', 'COPPER', 'COREPCE',
+       'CORN', 'CPIAUCSL', 'CPIFABSL', 'CPILFESL', 'DGS10', 'DGS2', 'DGS30',
+       'FEDFUNDS', 'GDP', 'GDPC1', 'GDPDEF', 'INDPRO', 'IR_JP_10Y', 'IR_KR_3Y',
+       'JP_GDP', 'LEI', 'M1SL', 'M2SL', 'NATGAS', 'PAYEMS', 'PPIACO',
+       'RETAILSA', 'RRPONTSYD', 'UNRATE', 'WHEAT', 'WTI'],
+      dtype='object', name='index_name')
+[2025-11-08 16:32:13] INFO | System: 📊 Macro trend result: {'macro_trend': 'bearish', 'prob_bullish': 0.254, 'latest_date': '2025-11-06'}
+[2025-11-08 17:16:27] INFO | System: 🦆 Connected to DuckDB at /Users/jju/Documents/Stock ML/src/db/stockml.duckdb
+[2025-11-08 17:16:27] INFO | System: 🔄 Updating data...
+[2025-11-08 17:16:27] INFO | System: ===== Update process started =====
+[2025-11-08 17:16:27] INFO | System: ✅ Loaded existing file: data/raw/price_daily.csv (14000 rows)
+[2025-11-08 17:16:27] INFO | System: ✅ Loaded existing file: data/raw/fundamentals_quarterly.csv (661 rows)
+[2025-11-08 17:16:27] INFO | System: ✅ Loaded existing file: data/raw/news_sentiment.csv (6721 rows)
+[2025-11-08 17:16:27] INFO | System: ✅ Loaded existing file: data/raw/macro_index.csv (52635 rows)
+[2025-11-08 17:16:27] INFO | System: Loaded 60 tickers
+[2025-11-08 17:16:27] INFO | System: Merging new data with old datasets...
+[2025-11-08 17:16:27] INFO | System: Saving merged data to CSV files...
+[2025-11-08 17:16:27] INFO | System: ✅ All datasets updated successfully for 2025-11-08
+[2025-11-08 17:16:27] INFO | System: ===== Update process finished =====
+
+[2025-11-08 17:16:27] INFO | System: 🔄 Saving to duckdb...
+[2025-11-08 17:16:28] INFO | System: ✅ /Users/jju/Documents/Stock ML/data/raw/fundamentals_quarterly.csv → fundamentals_q_full 저장 완료
+[2025-11-08 17:16:28] INFO | System: LOADING COMPLETED: fundamentals_q_full in /Users/jju/Documents/Stock ML/data/raw/fundamentals_quarterly.csv
+[2025-11-08 17:16:28] INFO | System: ✅ /Users/jju/Documents/Stock ML/data/raw/macro_index.csv → macro_index_full 저장 완료
+[2025-11-08 17:16:28] INFO | System: LOADING COMPLETED: macro_index_full in /Users/jju/Documents/Stock ML/data/raw/macro_index.csv
+[2025-11-08 17:16:28] INFO | System: ✅ /Users/jju/Documents/Stock ML/data/raw/news_sentiment.csv → news_sentiment 저장 완료
+[2025-11-08 17:16:28] INFO | System: LOADING COMPLETED: news_sentiment in /Users/jju/Documents/Stock ML/data/raw/news_sentiment.csv
+[2025-11-08 17:16:28] INFO | System: ✅ /Users/jju/Documents/Stock ML/data/raw/price_daily.csv → price_daily_full 저장 완료
+[2025-11-08 17:16:28] INFO | System: LOADING COMPLETED: price_daily_full in /Users/jju/Documents/Stock ML/data/raw/price_daily.csv
+[2025-11-08 17:16:28] INFO | System: Done!
+[2025-11-08 17:16:28] INFO | System: 🧠 MacroAnalyst initialized on mps
+[2025-11-08 17:16:28] INFO | System: ✅ Feature columns set: ['BRENT', 'CHINA_GDP', 'CONSUMER_CONFIDENCE', 'COPPER', 'COREPCE', 'CORN', 'CPIAUCSL', 'CPIFABSL', 'CPILFESL', 'DGS10', 'DGS2', 'DGS30', 'FEDFUNDS', 'GDP', 'GDPC1', 'GDPDEF', 'INDPRO', 'IR_JP_10Y', 'IR_KR_3Y', 'JP_GDP', 'LEI', 'M1SL', 'M2SL', 'NATGAS', 'PAYEMS', 'PPIACO', 'RETAILSA', 'RRPONTSYD', 'UNRATE', 'WHEAT', 'WTI']
+[2025-11-08 17:16:28] INFO | System: Columns in MACRO DATA: ['BRENT', 'CHINA_GDP', 'CONSUMER_CONFIDENCE', 'COPPER', 'COREPCE', 'CORN', 'CPIAUCSL', 'CPIFABSL', 'CPILFESL', 'DGS10', 'DGS2', 'DGS30', 'FEDFUNDS', 'GDP', 'GDPC1', 'GDPDEF', 'INDPRO', 'IR_JP_10Y', 'IR_KR_3Y', 'JP_GDP', 'LEI', 'M1SL', 'M2SL', 'NATGAS', 'PAYEMS', 'PPIACO', 'RETAILSA', 'RRPONTSYD', 'UNRATE', 'WHEAT', 'WTI']
+[2025-11-08 17:16:30] INFO | System: ✅ LSTM trained (Final Loss: 0.2909)
+[2025-11-08 17:16:30] INFO | System: Macro Analyst: LSTM model train completed, features: Index(['BRENT', 'CHINA_GDP', 'CONSUMER_CONFIDENCE', 'COPPER', 'COREPCE',
+       'CORN', 'CPIAUCSL', 'CPIFABSL', 'CPILFESL', 'DGS10', 'DGS2', 'DGS30',
+       'FEDFUNDS', 'GDP', 'GDPC1', 'GDPDEF', 'INDPRO', 'IR_JP_10Y', 'IR_KR_3Y',
+       'JP_GDP', 'LEI', 'M1SL', 'M2SL', 'NATGAS', 'PAYEMS', 'PPIACO',
+       'RETAILSA', 'RRPONTSYD', 'UNRATE', 'WHEAT', 'WTI'],
+      dtype='object', name='index_name')
+[2025-11-08 17:16:30] INFO | System: 📊 Macro trend result: {'macro_trend': 'bearish', 'prob_bullish': 0.247, 'latest_date': '2025-11-06'}
+[2025-11-08 18:20:22] INFO | System: 🦆 Connected to DuckDB at /Users/jju/Documents/Stock ML/src/db/stockml.duckdb
+[2025-11-08 18:20:22] INFO | System: 🔄 Updating data...
+[2025-11-08 18:20:22] INFO | System: ===== Update process started =====
+[2025-11-08 18:20:22] INFO | System: ✅ Loaded existing file: data/raw/price_daily.csv (14000 rows)
+[2025-11-08 18:20:22] INFO | System: ✅ Loaded existing file: data/raw/fundamentals_quarterly.csv (661 rows)
+[2025-11-08 18:20:22] INFO | System: ✅ Loaded existing file: data/raw/news_sentiment.csv (6721 rows)
+[2025-11-08 18:20:22] INFO | System: ✅ Loaded existing file: data/raw/macro_index.csv (52635 rows)
+[2025-11-08 18:20:22] INFO | System: Loaded 60 tickers
+[2025-11-08 18:20:22] INFO | System: Merging new data with old datasets...
+[2025-11-08 18:20:22] INFO | System: Saving merged data to CSV files...
+[2025-11-08 18:20:22] INFO | System: ✅ All datasets updated successfully for 2025-11-08
+[2025-11-08 18:20:22] INFO | System: ===== Update process finished =====
+
+[2025-11-08 18:20:22] INFO | System: 🔄 Saving to duckdb...
+[2025-11-08 18:20:22] INFO | System: ✅ /Users/jju/Documents/Stock ML/data/raw/fundamentals_quarterly.csv → fundamentals_q_full 저장 완료
+[2025-11-08 18:20:22] INFO | System: LOADING COMPLETED: fundamentals_q_full in /Users/jju/Documents/Stock ML/data/raw/fundamentals_quarterly.csv
+[2025-11-08 18:20:22] INFO | System: ✅ /Users/jju/Documents/Stock ML/data/raw/macro_index.csv → macro_index_full 저장 완료
+[2025-11-08 18:20:22] INFO | System: LOADING COMPLETED: macro_index_full in /Users/jju/Documents/Stock ML/data/raw/macro_index.csv
+[2025-11-08 18:20:22] INFO | System: ✅ /Users/jju/Documents/Stock ML/data/raw/news_sentiment.csv → news_sentiment 저장 완료
+[2025-11-08 18:20:22] INFO | System: LOADING COMPLETED: news_sentiment in /Users/jju/Documents/Stock ML/data/raw/news_sentiment.csv
+[2025-11-08 18:20:22] INFO | System: ✅ /Users/jju/Documents/Stock ML/data/raw/price_daily.csv → price_daily_full 저장 완료
+[2025-11-08 18:20:22] INFO | System: LOADING COMPLETED: price_daily_full in /Users/jju/Documents/Stock ML/data/raw/price_daily.csv
+[2025-11-08 18:20:22] INFO | System: Done!
+[2025-11-08 18:20:22] INFO | System: 🧠 MacroAnalyst initialized on mps
+[2025-11-08 18:20:22] INFO | System: ✅ Feature columns set: ['BRENT', 'CHINA_GDP', 'CONSUMER_CONFIDENCE', 'COPPER', 'COREPCE', 'CORN', 'CPIAUCSL', 'CPIFABSL', 'CPILFESL', 'DGS10', 'DGS2', 'DGS30', 'FEDFUNDS', 'GDP', 'GDPC1', 'GDPDEF', 'INDPRO', 'IR_JP_10Y', 'IR_KR_3Y', 'JP_GDP', 'LEI', 'M1SL', 'M2SL', 'NATGAS', 'PAYEMS', 'PPIACO', 'RETAILSA', 'RRPONTSYD', 'UNRATE', 'WHEAT', 'WTI']
+[2025-11-08 18:20:22] INFO | System: Columns in MACRO DATA: ['BRENT', 'CHINA_GDP', 'CONSUMER_CONFIDENCE', 'COPPER', 'COREPCE', 'CORN', 'CPIAUCSL', 'CPIFABSL', 'CPILFESL', 'DGS10', 'DGS2', 'DGS30', 'FEDFUNDS', 'GDP', 'GDPC1', 'GDPDEF', 'INDPRO', 'IR_JP_10Y', 'IR_KR_3Y', 'JP_GDP', 'LEI', 'M1SL', 'M2SL', 'NATGAS', 'PAYEMS', 'PPIACO', 'RETAILSA', 'RRPONTSYD', 'UNRATE', 'WHEAT', 'WTI']
+[2025-11-08 18:20:24] INFO | System: ✅ LSTM trained (Final Loss: 0.3001)
+[2025-11-08 18:20:24] INFO | System: Macro Analyst: LSTM model train completed, features: Index(['BRENT', 'CHINA_GDP', 'CONSUMER_CONFIDENCE', 'COPPER', 'COREPCE',
+       'CORN', 'CPIAUCSL', 'CPIFABSL', 'CPILFESL', 'DGS10', 'DGS2', 'DGS30',
+       'FEDFUNDS', 'GDP', 'GDPC1', 'GDPDEF', 'INDPRO', 'IR_JP_10Y', 'IR_KR_3Y',
+       'JP_GDP', 'LEI', 'M1SL', 'M2SL', 'NATGAS', 'PAYEMS', 'PPIACO',
+       'RETAILSA', 'RRPONTSYD', 'UNRATE', 'WHEAT', 'WTI'],
+      dtype='object', name='index_name')
+[2025-11-08 18:20:24] INFO | System: 📊 Macro trend result: {'macro_trend': 'bearish', 'prob_bullish': 0.162, 'latest_date': '2025-11-06'}
+[2025-11-08 18:20:40] INFO | System: 🦆 Connected to DuckDB at /Users/jju/Documents/Stock ML/src/db/stockml.duckdb
+[2025-11-08 18:20:40] INFO | System: 🔄 Updating data...
+[2025-11-08 18:20:40] INFO | System: ===== Update process started =====
+[2025-11-08 18:20:40] INFO | System: ✅ Loaded existing file: data/raw/price_daily.csv (14000 rows)
+[2025-11-08 18:20:40] INFO | System: ✅ Loaded existing file: data/raw/fundamentals_quarterly.csv (661 rows)
+[2025-11-08 18:20:41] INFO | System: ✅ Loaded existing file: data/raw/news_sentiment.csv (6721 rows)
+[2025-11-08 18:20:41] INFO | System: ✅ Loaded existing file: data/raw/macro_index.csv (52635 rows)
+[2025-11-08 18:20:41] INFO | System: Loaded 60 tickers
+[2025-11-08 18:20:41] INFO | System: Merging new data with old datasets...
+[2025-11-08 18:20:41] INFO | System: Saving merged data to CSV files...
+[2025-11-08 18:20:41] INFO | System: ✅ All datasets updated successfully for 2025-11-08
+[2025-11-08 18:20:41] INFO | System: ===== Update process finished =====
+
+[2025-11-08 18:20:41] INFO | System: 🔄 Saving to duckdb...
+[2025-11-08 18:20:41] INFO | System: ✅ /Users/jju/Documents/Stock ML/data/raw/fundamentals_quarterly.csv → fundamentals_q_full 저장 완료
+[2025-11-08 18:20:41] INFO | System: LOADING COMPLETED: fundamentals_q_full in /Users/jju/Documents/Stock ML/data/raw/fundamentals_quarterly.csv
+[2025-11-08 18:20:41] INFO | System: ✅ /Users/jju/Documents/Stock ML/data/raw/macro_index.csv → macro_index_full 저장 완료
+[2025-11-08 18:20:41] INFO | System: LOADING COMPLETED: macro_index_full in /Users/jju/Documents/Stock ML/data/raw/macro_index.csv
+[2025-11-08 18:20:41] INFO | System: ✅ /Users/jju/Documents/Stock ML/data/raw/news_sentiment.csv → news_sentiment 저장 완료
+[2025-11-08 18:20:41] INFO | System: LOADING COMPLETED: news_sentiment in /Users/jju/Documents/Stock ML/data/raw/news_sentiment.csv
+[2025-11-08 18:20:41] INFO | System: ✅ /Users/jju/Documents/Stock ML/data/raw/price_daily.csv → price_daily_full 저장 완료
+[2025-11-08 18:20:41] INFO | System: LOADING COMPLETED: price_daily_full in /Users/jju/Documents/Stock ML/data/raw/price_daily.csv
+[2025-11-08 18:20:41] INFO | System: Done!
+[2025-11-08 18:20:41] INFO | System: 🧠 MacroAnalyst initialized on mps
+[2025-11-08 18:20:41] INFO | System: ✅ Feature columns set: ['BRENT', 'CHINA_GDP', 'CONSUMER_CONFIDENCE', 'COPPER', 'COREPCE', 'CORN', 'CPIAUCSL', 'CPIFABSL', 'CPILFESL', 'DGS10', 'DGS2', 'DGS30', 'FEDFUNDS', 'GDP', 'GDPC1', 'GDPDEF', 'INDPRO', 'IR_JP_10Y', 'IR_KR_3Y', 'JP_GDP', 'LEI', 'M1SL', 'M2SL', 'NATGAS', 'PAYEMS', 'PPIACO', 'RETAILSA', 'RRPONTSYD', 'UNRATE', 'WHEAT', 'WTI']
+[2025-11-08 18:20:41] INFO | System: Columns in MACRO DATA: ['BRENT', 'CHINA_GDP', 'CONSUMER_CONFIDENCE', 'COPPER', 'COREPCE', 'CORN', 'CPIAUCSL', 'CPIFABSL', 'CPILFESL', 'DGS10', 'DGS2', 'DGS30', 'FEDFUNDS', 'GDP', 'GDPC1', 'GDPDEF', 'INDPRO', 'IR_JP_10Y', 'IR_KR_3Y', 'JP_GDP', 'LEI', 'M1SL', 'M2SL', 'NATGAS', 'PAYEMS', 'PPIACO', 'RETAILSA', 'RRPONTSYD', 'UNRATE', 'WHEAT', 'WTI']
+[2025-11-08 18:20:42] INFO | System: ✅ LSTM trained (Final Loss: 0.2870)
+[2025-11-08 18:20:42] INFO | System: Macro Analyst: LSTM model train completed, features: Index(['BRENT', 'CHINA_GDP', 'CONSUMER_CONFIDENCE', 'COPPER', 'COREPCE',
+       'CORN', 'CPIAUCSL', 'CPIFABSL', 'CPILFESL', 'DGS10', 'DGS2', 'DGS30',
+       'FEDFUNDS', 'GDP', 'GDPC1', 'GDPDEF', 'INDPRO', 'IR_JP_10Y', 'IR_KR_3Y',
+       'JP_GDP', 'LEI', 'M1SL', 'M2SL', 'NATGAS', 'PAYEMS', 'PPIACO',
+       'RETAILSA', 'RRPONTSYD', 'UNRATE', 'WHEAT', 'WTI'],
+      dtype='object', name='index_name')
+[2025-11-08 18:20:42] INFO | System: 📊 Macro trend result: {'macro_trend': 'bearish', 'prob_bullish': 0.251, 'latest_date': '2025-11-06'}
+[2025-11-08 18:22:06] INFO | System: 🦆 Connected to DuckDB at /Users/jju/Documents/Stock ML/src/db/stockml.duckdb
+[2025-11-08 18:22:06] INFO | System: 🔄 Updating data...
+[2025-11-08 18:22:06] INFO | System: ===== Update process started =====
+[2025-11-08 18:22:06] INFO | System: ✅ Loaded existing file: data/raw/price_daily.csv (14000 rows)
+[2025-11-08 18:22:06] INFO | System: ✅ Loaded existing file: data/raw/fundamentals_quarterly.csv (661 rows)
+[2025-11-08 18:22:06] INFO | System: ✅ Loaded existing file: data/raw/news_sentiment.csv (6721 rows)
+[2025-11-08 18:22:06] INFO | System: ✅ Loaded existing file: data/raw/macro_index.csv (52635 rows)
+[2025-11-08 18:22:06] INFO | System: Loaded 60 tickers
+[2025-11-08 18:22:06] INFO | System: Merging new data with old datasets...
+[2025-11-08 18:22:06] INFO | System: Saving merged data to CSV files...
+[2025-11-08 18:22:07] INFO | System: ✅ All datasets updated successfully for 2025-11-08
+[2025-11-08 18:22:07] INFO | System: ===== Update process finished =====
+
+[2025-11-08 18:22:07] INFO | System: 🔄 Saving to duckdb...
+[2025-11-08 18:22:07] INFO | System: ✅ /Users/jju/Documents/Stock ML/data/raw/fundamentals_quarterly.csv → fundamentals_q_full 저장 완료
+[2025-11-08 18:22:07] INFO | System: LOADING COMPLETED: fundamentals_q_full in /Users/jju/Documents/Stock ML/data/raw/fundamentals_quarterly.csv
+[2025-11-08 18:22:07] INFO | System: ✅ /Users/jju/Documents/Stock ML/data/raw/macro_index.csv → macro_index_full 저장 완료
+[2025-11-08 18:22:07] INFO | System: LOADING COMPLETED: macro_index_full in /Users/jju/Documents/Stock ML/data/raw/macro_index.csv
+[2025-11-08 18:22:07] INFO | System: ✅ /Users/jju/Documents/Stock ML/data/raw/news_sentiment.csv → news_sentiment 저장 완료
+[2025-11-08 18:22:07] INFO | System: LOADING COMPLETED: news_sentiment in /Users/jju/Documents/Stock ML/data/raw/news_sentiment.csv
+[2025-11-08 18:22:07] INFO | System: ✅ /Users/jju/Documents/Stock ML/data/raw/price_daily.csv → price_daily_full 저장 완료
+[2025-11-08 18:22:07] INFO | System: LOADING COMPLETED: price_daily_full in /Users/jju/Documents/Stock ML/data/raw/price_daily.csv
+[2025-11-08 18:22:07] INFO | System: Done!
+[2025-11-08 18:22:07] INFO | System: 🧠 MacroAnalyst initialized on mps
+[2025-11-08 18:22:07] INFO | System: ✅ Feature columns set: ['BRENT', 'CHINA_GDP', 'CONSUMER_CONFIDENCE', 'COPPER', 'COREPCE', 'CORN', 'CPIAUCSL', 'CPIFABSL', 'CPILFESL', 'DGS10', 'DGS2', 'DGS30', 'FEDFUNDS', 'GDP', 'GDPC1', 'GDPDEF', 'INDPRO', 'IR_JP_10Y', 'IR_KR_3Y', 'JP_GDP', 'LEI', 'M1SL', 'M2SL', 'NATGAS', 'PAYEMS', 'PPIACO', 'RETAILSA', 'RRPONTSYD', 'UNRATE', 'WHEAT', 'WTI']
+[2025-11-08 18:22:07] INFO | System: Columns in MACRO DATA: ['BRENT', 'CHINA_GDP', 'CONSUMER_CONFIDENCE', 'COPPER', 'COREPCE', 'CORN', 'CPIAUCSL', 'CPIFABSL', 'CPILFESL', 'DGS10', 'DGS2', 'DGS30', 'FEDFUNDS', 'GDP', 'GDPC1', 'GDPDEF', 'INDPRO', 'IR_JP_10Y', 'IR_KR_3Y', 'JP_GDP', 'LEI', 'M1SL', 'M2SL', 'NATGAS', 'PAYEMS', 'PPIACO', 'RETAILSA', 'RRPONTSYD', 'UNRATE', 'WHEAT', 'WTI']
+[2025-11-08 18:22:08] INFO | System: ✅ LSTM trained (Final Loss: 0.2882)
+[2025-11-08 18:22:08] INFO | System: Macro Analyst: LSTM model train completed, features: Index(['BRENT', 'CHINA_GDP', 'CONSUMER_CONFIDENCE', 'COPPER', 'COREPCE',
+       'CORN', 'CPIAUCSL', 'CPIFABSL', 'CPILFESL', 'DGS10', 'DGS2', 'DGS30',
+       'FEDFUNDS', 'GDP', 'GDPC1', 'GDPDEF', 'INDPRO', 'IR_JP_10Y', 'IR_KR_3Y',
+       'JP_GDP', 'LEI', 'M1SL', 'M2SL', 'NATGAS', 'PAYEMS', 'PPIACO',
+       'RETAILSA', 'RRPONTSYD', 'UNRATE', 'WHEAT', 'WTI'],
+      dtype='object', name='index_name')
+[2025-11-08 18:22:08] INFO | System: 📊 Macro trend result: {'macro_trend': 'bearish', 'prob_bullish': 0.231, 'latest_date': '2025-11-06'}
+[2025-11-08 18:30:50] INFO | System: 🦆 Connected to DuckDB at /Users/jju/Documents/Stock ML/src/db/stockml.duckdb
+[2025-11-08 18:30:50] INFO | System: 🔄 Updating data...
+[2025-11-08 18:30:50] INFO | System: ===== Update process started =====
+[2025-11-08 18:30:50] INFO | System: ✅ Loaded existing file: data/raw/price_daily.csv (14000 rows)
+[2025-11-08 18:30:50] INFO | System: ✅ Loaded existing file: data/raw/fundamentals_quarterly.csv (661 rows)
+[2025-11-08 18:30:50] INFO | System: ✅ Loaded existing file: data/raw/news_sentiment.csv (6721 rows)
+[2025-11-08 18:30:50] INFO | System: ✅ Loaded existing file: data/raw/macro_index.csv (52635 rows)
+[2025-11-08 18:30:50] INFO | System: Loaded 60 tickers
+[2025-11-08 18:30:50] INFO | System: Merging new data with old datasets...
+[2025-11-08 18:30:50] INFO | System: Saving merged data to CSV files...
+[2025-11-08 18:30:50] INFO | System: ✅ All datasets updated successfully for 2025-11-08
+[2025-11-08 18:30:50] INFO | System: ===== Update process finished =====
+
+[2025-11-08 18:30:50] INFO | System: 🔄 Saving to duckdb...
+[2025-11-08 18:30:51] INFO | System: ✅ /Users/jju/Documents/Stock ML/data/raw/fundamentals_quarterly.csv → fundamentals_q_full 저장 완료
+[2025-11-08 18:30:51] INFO | System: LOADING COMPLETED: fundamentals_q_full in /Users/jju/Documents/Stock ML/data/raw/fundamentals_quarterly.csv
+[2025-11-08 18:30:51] INFO | System: ✅ /Users/jju/Documents/Stock ML/data/raw/macro_index.csv → macro_index_full 저장 완료
+[2025-11-08 18:30:51] INFO | System: LOADING COMPLETED: macro_index_full in /Users/jju/Documents/Stock ML/data/raw/macro_index.csv
+[2025-11-08 18:30:51] INFO | System: ✅ /Users/jju/Documents/Stock ML/data/raw/news_sentiment.csv → news_sentiment 저장 완료
+[2025-11-08 18:30:51] INFO | System: LOADING COMPLETED: news_sentiment in /Users/jju/Documents/Stock ML/data/raw/news_sentiment.csv
+[2025-11-08 18:30:51] INFO | System: ✅ /Users/jju/Documents/Stock ML/data/raw/price_daily.csv → price_daily_full 저장 완료
+[2025-11-08 18:30:51] INFO | System: LOADING COMPLETED: price_daily_full in /Users/jju/Documents/Stock ML/data/raw/price_daily.csv
+[2025-11-08 18:30:51] INFO | System: Done!
+[2025-11-08 18:30:51] INFO | System: 🧠 MacroAnalyst initialized on mps
+[2025-11-08 18:30:51] INFO | System: ✅ Feature columns set: ['BRENT', 'CHINA_GDP', 'CONSUMER_CONFIDENCE', 'COPPER', 'COREPCE', 'CORN', 'CPIAUCSL', 'CPIFABSL', 'CPILFESL', 'DGS10', 'DGS2', 'DGS30', 'FEDFUNDS', 'GDP', 'GDPC1', 'GDPDEF', 'INDPRO', 'IR_JP_10Y', 'IR_KR_3Y', 'JP_GDP', 'LEI', 'M1SL', 'M2SL', 'NATGAS', 'PAYEMS', 'PPIACO', 'RETAILSA', 'RRPONTSYD', 'UNRATE', 'WHEAT', 'WTI']
+[2025-11-08 18:30:51] INFO | System: Columns in MACRO DATA: ['BRENT', 'CHINA_GDP', 'CONSUMER_CONFIDENCE', 'COPPER', 'COREPCE', 'CORN', 'CPIAUCSL', 'CPIFABSL', 'CPILFESL', 'DGS10', 'DGS2', 'DGS30', 'FEDFUNDS', 'GDP', 'GDPC1', 'GDPDEF', 'INDPRO', 'IR_JP_10Y', 'IR_KR_3Y', 'JP_GDP', 'LEI', 'M1SL', 'M2SL', 'NATGAS', 'PAYEMS', 'PPIACO', 'RETAILSA', 'RRPONTSYD', 'UNRATE', 'WHEAT', 'WTI']
+[2025-11-08 18:30:52] INFO | System: ✅ LSTM trained (Final Loss: 0.2926)
+[2025-11-08 18:30:52] INFO | System: Macro Analyst: LSTM model train completed, features: Index(['BRENT', 'CHINA_GDP', 'CONSUMER_CONFIDENCE', 'COPPER', 'COREPCE',
+       'CORN', 'CPIAUCSL', 'CPIFABSL', 'CPILFESL', 'DGS10', 'DGS2', 'DGS30',
+       'FEDFUNDS', 'GDP', 'GDPC1', 'GDPDEF', 'INDPRO', 'IR_JP_10Y', 'IR_KR_3Y',
+       'JP_GDP', 'LEI', 'M1SL', 'M2SL', 'NATGAS', 'PAYEMS', 'PPIACO',
+       'RETAILSA', 'RRPONTSYD', 'UNRATE', 'WHEAT', 'WTI'],
+      dtype='object', name='index_name')
+[2025-11-08 18:30:52] INFO | System: 📊 Macro trend result: {'macro_trend': 'bearish', 'prob_bullish': 0.246, 'latest_date': '2025-11-06'}
+[2025-11-08 18:35:46] INFO | System: 🦆 Connected to DuckDB at /Users/jju/Documents/Stock ML/src/db/stockml.duckdb
+[2025-11-08 18:35:46] INFO | System: 🔄 Updating data...
+[2025-11-08 18:35:46] INFO | System: ===== Update process started =====
+[2025-11-08 18:35:46] INFO | System: ✅ Loaded existing file: data/raw/price_daily.csv (14000 rows)
+[2025-11-08 18:35:46] INFO | System: ✅ Loaded existing file: data/raw/fundamentals_quarterly.csv (661 rows)
+[2025-11-08 18:35:46] INFO | System: ✅ Loaded existing file: data/raw/news_sentiment.csv (6721 rows)
+[2025-11-08 18:35:46] INFO | System: ✅ Loaded existing file: data/raw/macro_index.csv (52635 rows)
+[2025-11-08 18:35:46] INFO | System: Loaded 60 tickers
+[2025-11-08 18:35:46] INFO | System: Merging new data with old datasets...
+[2025-11-08 18:35:46] INFO | System: Saving merged data to CSV files...
+[2025-11-08 18:35:46] INFO | System: ✅ All datasets updated successfully for 2025-11-08
+[2025-11-08 18:35:46] INFO | System: ===== Update process finished =====
+
+[2025-11-08 18:35:46] INFO | System: 🔄 Saving to duckdb...
+[2025-11-08 18:35:46] INFO | System: ✅ /Users/jju/Documents/Stock ML/data/raw/fundamentals_quarterly.csv → fundamentals_q_full 저장 완료
+[2025-11-08 18:35:46] INFO | System: LOADING COMPLETED: fundamentals_q_full in /Users/jju/Documents/Stock ML/data/raw/fundamentals_quarterly.csv
+[2025-11-08 18:35:46] INFO | System: ✅ /Users/jju/Documents/Stock ML/data/raw/macro_index.csv → macro_index_full 저장 완료
+[2025-11-08 18:35:46] INFO | System: LOADING COMPLETED: macro_index_full in /Users/jju/Documents/Stock ML/data/raw/macro_index.csv
+[2025-11-08 18:35:46] INFO | System: ✅ /Users/jju/Documents/Stock ML/data/raw/news_sentiment.csv → news_sentiment 저장 완료
+[2025-11-08 18:35:46] INFO | System: LOADING COMPLETED: news_sentiment in /Users/jju/Documents/Stock ML/data/raw/news_sentiment.csv
+[2025-11-08 18:35:46] INFO | System: ✅ /Users/jju/Documents/Stock ML/data/raw/price_daily.csv → price_daily_full 저장 완료
+[2025-11-08 18:35:46] INFO | System: LOADING COMPLETED: price_daily_full in /Users/jju/Documents/Stock ML/data/raw/price_daily.csv
+[2025-11-08 18:35:46] INFO | System: Done!
+[2025-11-08 18:35:46] INFO | System: 🧠 MacroAnalyst initialized on mps
+[2025-11-08 18:35:46] INFO | System: ✅ Feature columns set: ['BRENT', 'CHINA_GDP', 'CONSUMER_CONFIDENCE', 'COPPER', 'COREPCE', 'CORN', 'CPIAUCSL', 'CPIFABSL', 'CPILFESL', 'DGS10', 'DGS2', 'DGS30', 'FEDFUNDS', 'GDP', 'GDPC1', 'GDPDEF', 'INDPRO', 'IR_JP_10Y', 'IR_KR_3Y', 'JP_GDP', 'LEI', 'M1SL', 'M2SL', 'NATGAS', 'PAYEMS', 'PPIACO', 'RETAILSA', 'RRPONTSYD', 'UNRATE', 'WHEAT', 'WTI']
+[2025-11-08 18:35:46] INFO | System: Columns in MACRO DATA: ['BRENT', 'CHINA_GDP', 'CONSUMER_CONFIDENCE', 'COPPER', 'COREPCE', 'CORN', 'CPIAUCSL', 'CPIFABSL', 'CPILFESL', 'DGS10', 'DGS2', 'DGS30', 'FEDFUNDS', 'GDP', 'GDPC1', 'GDPDEF', 'INDPRO', 'IR_JP_10Y', 'IR_KR_3Y', 'JP_GDP', 'LEI', 'M1SL', 'M2SL', 'NATGAS', 'PAYEMS', 'PPIACO', 'RETAILSA', 'RRPONTSYD', 'UNRATE', 'WHEAT', 'WTI']
+[2025-11-08 18:35:48] INFO | System: ✅ LSTM trained (Final Loss: 0.2882)
+[2025-11-08 18:35:48] INFO | System: Macro Analyst: LSTM model train completed, features: Index(['BRENT', 'CHINA_GDP', 'CONSUMER_CONFIDENCE', 'COPPER', 'COREPCE',
+       'CORN', 'CPIAUCSL', 'CPIFABSL', 'CPILFESL', 'DGS10', 'DGS2', 'DGS30',
+       'FEDFUNDS', 'GDP', 'GDPC1', 'GDPDEF', 'INDPRO', 'IR_JP_10Y', 'IR_KR_3Y',
+       'JP_GDP', 'LEI', 'M1SL', 'M2SL', 'NATGAS', 'PAYEMS', 'PPIACO',
+       'RETAILSA', 'RRPONTSYD', 'UNRATE', 'WHEAT', 'WTI'],
+      dtype='object', name='index_name')
+[2025-11-08 18:35:48] INFO | System: 📊 Macro trend result: {'macro_trend': 'bearish', 'prob_bullish': 0.291, 'latest_date': '2025-11-06'}
+[2025-11-08 21:36:32] INFO | System: 🦆 Connected to DuckDB at /Users/jju/Documents/Stock ML/src/db/stockml.duckdb
+[2025-11-08 21:36:32] INFO | System: 🔄 Updating data...
+[2025-11-08 21:36:32] INFO | System: ===== Update process started =====
+[2025-11-08 21:36:32] INFO | System: ✅ Loaded existing file: data/raw/price_daily.csv (14000 rows)
+[2025-11-08 21:36:32] INFO | System: ✅ Loaded existing file: data/raw/fundamentals_quarterly.csv (661 rows)
+[2025-11-08 21:36:32] INFO | System: ✅ Loaded existing file: data/raw/news_sentiment.csv (6721 rows)
+[2025-11-08 21:36:32] INFO | System: ✅ Loaded existing file: data/raw/macro_index.csv (52635 rows)
+[2025-11-08 21:36:32] INFO | System: Loaded 60 tickers
+[2025-11-08 21:36:32] INFO | System: Fetching latest prices & fundamentals...
+[2025-11-08 21:38:16] INFO | System: Fetching news sentiment data...
+[2025-11-08 21:41:17] INFO | System: 🦆 Connected to DuckDB at /Users/jju/Documents/Stock ML/src/db/stockml.duckdb
+[2025-11-08 21:41:17] INFO | System: 🔄 Updating data...
+[2025-11-08 21:41:17] INFO | System: ===== Update process started =====
+[2025-11-08 21:41:17] INFO | System: ✅ Loaded existing file: data/raw/price_daily.csv (14000 rows)
+[2025-11-08 21:41:17] INFO | System: ✅ Loaded existing file: data/raw/fundamentals_quarterly.csv (661 rows)
+[2025-11-08 21:41:17] INFO | System: ✅ Loaded existing file: data/raw/news_sentiment.csv (6721 rows)
+[2025-11-08 21:41:17] INFO | System: ✅ Loaded existing file: data/raw/macro_index.csv (52635 rows)
+[2025-11-08 21:41:17] INFO | System: Loaded 60 tickers
+[2025-11-08 21:41:17] INFO | System: Fetching latest prices & fundamentals...
+[2025-11-08 21:43:04] INFO | System: Fetching news sentiment data...

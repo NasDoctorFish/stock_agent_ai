@@ -1,0 +1,142 @@
+2025-11-01 21:53:03,337 - INFO - ===== Update process started =====
+2025-11-01 21:53:03,348 - INFO - ✅ Loaded existing file: data/raw/price_daily.csv (88 rows)
+2025-11-01 21:53:03,353 - INFO - ✅ Loaded existing file: data/raw/fundamentals_quarterly.csv (25 rows)
+2025-11-01 21:53:03,356 - INFO - ✅ Loaded existing file: data/raw/news_sentiment.csv (792 rows)
+2025-11-01 21:53:03,359 - INFO - ✅ Loaded existing file: data/raw/macro_index.csv (67 rows)
+2025-11-01 21:53:03,359 - INFO - Fetching latest prices & fundamentals...
+2025-11-01 21:53:04,608 - INFO - Fetching news sentiment data...
+2025-11-01 21:53:17,784 - ERROR - ❌ Unexpected error during update process
+Traceback (most recent call last):
+  File "/Users/jju/Documents/Stock ML/src/update_data.py", line 122, in __main__
+    news_new = fetch_news_sentiment(tickers, START_DATE, TODAY, NEWS_API_KEY)
+  File "/Users/jju/Documents/Stock ML/src/utils/fetch_newsapi.py", line 24, in fetch_news_sentiment
+    "sentiment_label": sent[0]['label'],
+TypeError: 'TextClassificationPipeline' object is not subscriptable
+2025-11-01 21:56:11,484 - INFO - ===== Update process started =====
+2025-11-01 21:56:11,495 - INFO - ✅ Loaded existing file: data/raw/price_daily.csv (88 rows)
+2025-11-01 21:56:11,501 - INFO - ✅ Loaded existing file: data/raw/fundamentals_quarterly.csv (25 rows)
+2025-11-01 21:56:11,505 - INFO - ✅ Loaded existing file: data/raw/news_sentiment.csv (792 rows)
+2025-11-01 21:56:11,507 - INFO - ✅ Loaded existing file: data/raw/macro_index.csv (67 rows)
+2025-11-01 21:56:11,507 - INFO - Fetching latest prices & fundamentals...
+2025-11-01 21:56:12,693 - INFO - Fetching news sentiment data...
+2025-11-01 21:56:42,063 - INFO - Fetching macro indices data...
+2025-11-01 21:56:42,287 - INFO - ✅ Merged data — now 88 rows after deduplication.
+2025-11-01 21:56:42,290 - INFO - ✅ Merged data — now 46 rows after deduplication.
+2025-11-01 21:56:42,292 - INFO - ✅ Merged data — now 795 rows after deduplication.
+2025-11-01 21:56:42,294 - INFO - ✅ Merged data — now 67 rows after deduplication.
+2025-11-01 21:56:42,295 - INFO - Saving merged data to CSV files...
+2025-11-01 21:56:42,305 - INFO - ✅ All datasets updated successfully for 2025-11-01
+2025-11-01 21:56:42,306 - INFO - ===== Update process finished =====
+
+2025-11-01 22:32:51,656 - INFO - ===== Update process started =====
+2025-11-01 22:32:51,667 - INFO - ✅ Loaded existing file: data/raw/price_daily.csv (88 rows)
+2025-11-01 22:32:51,673 - INFO - ✅ Loaded existing file: data/raw/fundamentals_quarterly.csv (46 rows)
+2025-11-01 22:32:51,677 - INFO - ✅ Loaded existing file: data/raw/news_sentiment.csv (795 rows)
+2025-11-01 22:32:51,680 - INFO - ✅ Loaded existing file: data/raw/macro_index.csv (67 rows)
+2025-11-01 22:32:51,680 - INFO - Fetching latest prices & fundamentals...
+2025-11-01 22:32:53,192 - INFO - Fetching news sentiment data...
+2025-11-01 22:33:13,659 - INFO - Fetching macro indices data...
+2025-11-01 22:33:13,659 - ERROR - ❌ Unexpected error during update process
+Traceback (most recent call last):
+  File "/Users/jju/Documents/Stock ML/src/update_data.py", line 125, in __main__
+    macro_new = fetch_macro_indices(["S&P500", "NASDAQ", "USD/KRW"], START_DATE, TODAY)
+  File "/Users/jju/Documents/Stock ML/src/utils/fetch_macro.py", line 19, in fetch_macro_indices
+    for name, code in indices.items():
+AttributeError: 'list' object has no attribute 'items'
+2025-11-01 22:34:42,890 - INFO - ===== Update process started =====
+2025-11-01 22:34:42,896 - INFO - ✅ Loaded existing file: data/raw/price_daily.csv (88 rows)
+2025-11-01 22:34:42,901 - INFO - ✅ Loaded existing file: data/raw/fundamentals_quarterly.csv (46 rows)
+2025-11-01 22:34:42,906 - INFO - ✅ Loaded existing file: data/raw/news_sentiment.csv (795 rows)
+2025-11-01 22:34:42,908 - INFO - ✅ Loaded existing file: data/raw/macro_index.csv (67 rows)
+2025-11-01 22:34:42,909 - INFO - Fetching latest prices & fundamentals...
+2025-11-01 22:34:44,507 - INFO - Fetching news sentiment data...
+2025-11-01 22:35:02,076 - INFO - Fetching macro indices data...
+2025-11-01 22:35:02,302 - INFO - ✅ Merged data — now 88 rows after deduplication.
+2025-11-01 22:35:02,305 - INFO - ✅ Merged data — now 67 rows after deduplication.
+2025-11-01 22:35:02,307 - INFO - ✅ Merged data — now 796 rows after deduplication.
+2025-11-01 22:35:02,309 - INFO - ✅ Merged data — now 89 rows after deduplication.
+2025-11-01 22:35:02,309 - INFO - Saving merged data to CSV files...
+2025-11-01 22:35:02,319 - INFO - ✅ All datasets updated successfully for 2025-11-01
+2025-11-01 22:35:02,320 - INFO - ===== Update process finished =====
+
+2025-11-01 22:37:44,073 - INFO - ===== Update process started =====
+2025-11-01 22:37:44,088 - INFO - ✅ Loaded existing file: data/raw/price_daily.csv (88 rows)
+2025-11-01 22:37:44,094 - INFO - ✅ Loaded existing file: data/raw/fundamentals_quarterly.csv (67 rows)
+2025-11-01 22:37:44,098 - INFO - ✅ Loaded existing file: data/raw/news_sentiment.csv (796 rows)
+2025-11-01 22:37:44,101 - INFO - ✅ Loaded existing file: data/raw/macro_index.csv (89 rows)
+2025-11-01 22:37:44,101 - INFO - Fetching latest prices & fundamentals...
+2025-11-01 22:37:45,098 - INFO - Fetching news sentiment data...
+2025-11-01 22:38:37,072 - INFO - Fetching macro indices data...
+2025-11-01 22:38:37,267 - ERROR - ❌ Unexpected error during update process
+Traceback (most recent call last):
+  File "/Users/jju/Documents/Stock ML/src/update_data.py", line 129, in __main__
+    print('macro_new cols: ', macro_new.columns())
+TypeError: 'Index' object is not callable
+2025-11-01 22:50:19,461 - INFO - ===== Update process started =====
+2025-11-01 22:50:19,472 - INFO - ✅ Loaded existing file: data/raw/price_daily.csv (88 rows)
+2025-11-01 22:50:19,478 - INFO - ✅ Loaded existing file: data/raw/fundamentals_quarterly.csv (67 rows)
+2025-11-01 22:50:19,483 - INFO - ✅ Loaded existing file: data/raw/news_sentiment.csv (796 rows)
+2025-11-01 22:50:19,485 - INFO - ✅ Loaded existing file: data/raw/macro_index.csv (89 rows)
+2025-11-01 22:50:19,485 - INFO - Fetching latest prices & fundamentals...
+2025-11-01 22:50:21,005 - INFO - Fetching news sentiment data...
+2025-11-01 22:50:59,539 - INFO - Fetching macro indices data...
+2025-11-01 22:50:59,976 - INFO - Merging new data with old datasets...
+2025-11-01 22:50:59,981 - INFO - ✅ Merged data — now 88 rows after deduplication.
+2025-11-01 22:50:59,986 - INFO - ✅ Merged data — now 67 rows after deduplication.
+2025-11-01 22:50:59,988 - INFO - ✅ Merged data — now 796 rows after deduplication.
+2025-11-01 22:50:59,990 - INFO - ✅ Merged data — now 89 rows after deduplication.
+2025-11-01 22:50:59,990 - INFO - Saving merged data to CSV files...
+2025-11-01 22:51:00,001 - INFO - ✅ All datasets updated successfully for 2025-11-01
+2025-11-01 22:51:00,001 - INFO - ===== Update process finished =====
+
+2025-11-01 22:52:07,669 - INFO - ===== Update process started =====
+2025-11-01 22:52:07,675 - INFO - ✅ Loaded existing file: data/raw/price_daily.csv (88 rows)
+2025-11-01 22:52:07,680 - INFO - ✅ Loaded existing file: data/raw/fundamentals_quarterly.csv (67 rows)
+2025-11-01 22:52:07,685 - INFO - ✅ Loaded existing file: data/raw/news_sentiment.csv (796 rows)
+2025-11-01 22:52:07,687 - INFO - ✅ Loaded existing file: data/raw/macro_index.csv (89 rows)
+2025-11-01 22:52:07,687 - INFO - Fetching macro indices data...
+2025-11-01 22:52:08,251 - INFO - Merging new data with old datasets...
+2025-11-01 22:52:08,253 - INFO - ✅ Merged data — now 89 rows after deduplication.
+2025-11-01 22:52:08,253 - INFO - Saving merged data to CSV files...
+2025-11-01 22:52:08,260 - INFO - ✅ All datasets updated successfully for 2025-11-01
+2025-11-01 22:52:08,260 - INFO - ===== Update process finished =====
+
+2025-11-01 22:52:46,065 - INFO - ===== Update process started =====
+2025-11-01 22:52:46,071 - INFO - ✅ Loaded existing file: data/raw/price_daily.csv (88 rows)
+2025-11-01 22:52:46,076 - INFO - ✅ Loaded existing file: data/raw/fundamentals_quarterly.csv (67 rows)
+2025-11-01 22:52:46,079 - INFO - ✅ Loaded existing file: data/raw/news_sentiment.csv (796 rows)
+2025-11-01 22:52:46,079 - ERROR - ❌ Error loading file: data/raw/macro_index.csv
+Traceback (most recent call last):
+  File "/Users/jju/Documents/Stock ML/src/update_data.py", line 68, in load_existing
+    cols = pd.read_csv(path, nrows=0).columns
+  File "/Users/jju/Library/Caches/pypoetry/virtualenvs/stock-ml-CDODyAIP-py3.10/lib/python3.10/site-packages/pandas/io/parsers/readers.py", line 1026, in read_csv
+    return _read(filepath_or_buffer, kwds)
+  File "/Users/jju/Library/Caches/pypoetry/virtualenvs/stock-ml-CDODyAIP-py3.10/lib/python3.10/site-packages/pandas/io/parsers/readers.py", line 620, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+  File "/Users/jju/Library/Caches/pypoetry/virtualenvs/stock-ml-CDODyAIP-py3.10/lib/python3.10/site-packages/pandas/io/parsers/readers.py", line 1620, in __init__
+    self._engine = self._make_engine(f, self.engine)
+  File "/Users/jju/Library/Caches/pypoetry/virtualenvs/stock-ml-CDODyAIP-py3.10/lib/python3.10/site-packages/pandas/io/parsers/readers.py", line 1898, in _make_engine
+    return mapping[engine](f, **self.options)
+  File "/Users/jju/Library/Caches/pypoetry/virtualenvs/stock-ml-CDODyAIP-py3.10/lib/python3.10/site-packages/pandas/io/parsers/c_parser_wrapper.py", line 93, in __init__
+    self._reader = parsers.TextReader(src, **kwds)
+  File "pandas/_libs/parsers.pyx", line 581, in pandas._libs.parsers.TextReader.__cinit__
+pandas.errors.EmptyDataError: No columns to parse from file
+2025-11-01 22:52:46,081 - INFO - Fetching macro indices data...
+2025-11-01 22:52:46,543 - INFO - Merging new data with old datasets...
+2025-11-01 22:52:46,543 - INFO - ⚠️ Old dataset empty, returning new data only.
+2025-11-01 22:52:46,543 - INFO - Saving merged data to CSV files...
+2025-11-01 22:52:46,550 - INFO - ✅ All datasets updated successfully for 2025-11-01
+2025-11-01 22:52:46,550 - INFO - ===== Update process finished =====
+
+2025-11-01 22:59:44,506 - INFO - ===== Update process started =====
+2025-11-01 22:59:44,517 - INFO - ✅ Loaded existing file: data/raw/price_daily.csv (88 rows)
+2025-11-01 22:59:44,524 - INFO - ✅ Loaded existing file: data/raw/fundamentals_quarterly.csv (67 rows)
+2025-11-01 22:59:44,528 - INFO - ✅ Loaded existing file: data/raw/news_sentiment.csv (796 rows)
+2025-11-01 22:59:44,530 - INFO - ✅ Loaded existing file: data/raw/macro_index.csv (66 rows)
+2025-11-01 22:59:44,530 - INFO - Fetching macro indices data...
+2025-11-01 22:59:45,023 - INFO - Merging new data with old datasets...
+2025-11-01 22:59:45,026 - INFO - ✅ Merged data — now 66 rows after deduplication.
+2025-11-01 22:59:45,026 - INFO - Saving merged data to CSV files...
+2025-11-01 22:59:45,034 - INFO - ✅ All datasets updated successfully for 2025-11-01
+2025-11-01 22:59:45,034 - INFO - ===== Update process finished =====
+

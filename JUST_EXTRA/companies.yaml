@@ -1,0 +1,85 @@
+companies:
+  - name: 삼성증권
+    ticker: 016360.KS
+
+  - name: 현대홈쇼핑
+    ticker: 057050.KS
+
+  - name: 한국금융지주
+    ticker: 071050.KS
+
+  - name: SNT홀딩스
+    ticker: 036530.KS
+
+  - name: 다우기술
+    ticker: 023590.KS
+
+  - name: 키움증권
+    ticker: 039490.KS
+
+  - name: 우리금융지주
+    ticker: 316140.KS
+
+  - name: 한국타이어앤테크놀로지
+    ticker: 161390.KS
+
+  - name: BNK금융지주
+    ticker: 138930.KS
+
+  - name: 기아
+    ticker: 000270.KS
+
+
+  # ---------------------------
+  # 메이저 기업 우선주
+  # ---------------------------
+
+  - name: 삼성전자우
+    ticker: 005935.KS
+
+  - name: 현대차우
+    ticker: 005385.KS
+
+  - name: 기아우
+    ticker: 000275.KS
+
+  - name: 삼성전기우
+    ticker: 009155.KS
+
+  - name: LG화학우
+    ticker: 051915.KS
+
+  - name: SK케미칼우
+    ticker: 28513K.KS
+
+  - name: 두산우
+    ticker: 000155.KS
+
+
+  # ---------------------------
+  # 메이저 증권주
+  # ---------------------------
+
+  - name: 미래에셋증권
+    ticker: 006800.KS
+
+  - name: 미래에셋증권우
+    ticker: 006805.KS
+
+  - name: 신한지주
+    ticker: 055550.KS
+
+  - name: KB금융
+    ticker: 105560.KS
+
+  - name: NH투자증권
+    ticker: 005940.KS
+
+  - name: 한화투자증권
+    ticker: 003530.KS
+
+  - name: 유안타증권
+    ticker: 003470.KS
+
+  - name: 메리츠금융지주
+    ticker: 138040.KS

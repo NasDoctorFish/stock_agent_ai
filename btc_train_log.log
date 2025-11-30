@@ -1,0 +1,87 @@
+2025-11-01 18:45:33,709 - INFO - ✅ Data downloaded successfully for BTC-USD
+2025-11-01 18:45:33,714 - INFO - 📁 Saved raw data to BTC-USD_price.csv
+2025-11-01 18:45:33,716 - INFO - 🧩 Detected multi-level header → fixing it...
+2025-11-01 18:45:33,721 - INFO - ✅ Cleaned CSV and saved to BTC-USD_price.csv
+2025-11-01 18:46:51,622 - INFO - ✅ Data downloaded successfully for BTC-USD
+2025-11-01 18:46:51,627 - INFO - 📁 Saved raw data to BTC-USD_price.csv
+2025-11-01 18:46:51,629 - INFO - 🧩 Detected multi-level header → fixing it...
+2025-11-01 18:46:51,635 - INFO - ✅ Cleaned CSV and saved to BTC-USD_price.csv
+2025-11-01 18:49:16,090 - ERROR - ❌ Error downloading data for '': No objects to concatenate
+Traceback (most recent call last):
+  File "/Users/jju/Library/Caches/pypoetry/virtualenvs/stock-ml-CDODyAIP-py3.10/lib/python3.10/site-packages/yfinance/multi.py", line 218, in download
+    data = _pd.concat(shared._DFS.values(), axis=1, sort=True,
+  File "/Users/jju/Library/Caches/pypoetry/virtualenvs/stock-ml-CDODyAIP-py3.10/lib/python3.10/site-packages/pandas/core/reshape/concat.py", line 382, in concat
+    op = _Concatenator(
+  File "/Users/jju/Library/Caches/pypoetry/virtualenvs/stock-ml-CDODyAIP-py3.10/lib/python3.10/site-packages/pandas/core/reshape/concat.py", line 445, in __init__
+    objs, keys = self._clean_keys_and_objs(objs, keys)
+  File "/Users/jju/Library/Caches/pypoetry/virtualenvs/stock-ml-CDODyAIP-py3.10/lib/python3.10/site-packages/pandas/core/reshape/concat.py", line 507, in _clean_keys_and_objs
+    raise ValueError("No objects to concatenate")
+ValueError: No objects to concatenate
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/jju/Documents/Stock ML/BTC_TEST/test.py", line 42, in <module>
+    data = yf.download(ticker, start=start_date, end=end_date)
+  File "/Users/jju/Library/Caches/pypoetry/virtualenvs/stock-ml-CDODyAIP-py3.10/lib/python3.10/site-packages/yfinance/utils.py", line 92, in wrapper
+    result = func(*args, **kwargs)
+  File "/Users/jju/Library/Caches/pypoetry/virtualenvs/stock-ml-CDODyAIP-py3.10/lib/python3.10/site-packages/yfinance/multi.py", line 222, in download
+    data = _pd.concat(shared._DFS.values(), axis=1, sort=True,
+  File "/Users/jju/Library/Caches/pypoetry/virtualenvs/stock-ml-CDODyAIP-py3.10/lib/python3.10/site-packages/pandas/core/reshape/concat.py", line 382, in concat
+    op = _Concatenator(
+  File "/Users/jju/Library/Caches/pypoetry/virtualenvs/stock-ml-CDODyAIP-py3.10/lib/python3.10/site-packages/pandas/core/reshape/concat.py", line 445, in __init__
+    objs, keys = self._clean_keys_and_objs(objs, keys)
+  File "/Users/jju/Library/Caches/pypoetry/virtualenvs/stock-ml-CDODyAIP-py3.10/lib/python3.10/site-packages/pandas/core/reshape/concat.py", line 507, in _clean_keys_and_objs
+    raise ValueError("No objects to concatenate")
+ValueError: No objects to concatenate
+2025-11-01 18:49:26,689 - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: BTC_USD"}}}
+2025-11-01 18:49:26,796 - ERROR - 
+1 Failed download:
+2025-11-01 18:49:26,796 - ERROR - ['BTC_USD']: YFTzMissingError('possibly delisted; no timezone found')
+2025-11-01 18:49:26,809 - ERROR - ❌ Error downloading data for 'BTC_USD': No data found for ticker 'BTC_USD'
+Traceback (most recent call last):
+  File "/Users/jju/Documents/Stock ML/BTC_TEST/test.py", line 44, in <module>
+    raise ValueError(f"No data found for ticker '{ticker}'")
+ValueError: No data found for ticker 'BTC_USD'
+2025-11-01 18:50:11,693 - ERROR - HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: BTC_USD"}}}
+2025-11-01 18:50:11,792 - ERROR - 
+1 Failed download:
+2025-11-01 18:50:11,792 - ERROR - ['BTC_USD']: YFTzMissingError('possibly delisted; no timezone found')
+2025-11-01 18:50:11,802 - ERROR - ❌ Error downloading data for 'BTC_USD': No data found for ticker 'BTC_USD'
+Traceback (most recent call last):
+  File "/Users/jju/Documents/Stock ML/BTC_TEST/test.py", line 44, in <module>
+    raise ValueError(f"No data found for ticker '{ticker}'")
+ValueError: No data found for ticker 'BTC_USD'
+2025-11-01 18:51:01,750 - INFO - ✅ Data downloaded successfully for BTC-USD
+2025-11-01 18:51:01,838 - INFO - 📁 Saved raw data to BTC-USD_price.csv
+2025-11-01 18:51:01,840 - INFO - 🧩 Detected multi-level header → fixing it...
+2025-11-01 18:51:01,845 - INFO - ✅ Cleaned CSV and saved to BTC-USD_price.csv
+2025-11-01 18:52:14,264 - INFO - ✅ Data downloaded successfully for BTC-USD
+2025-11-01 18:52:14,269 - INFO - 📁 Saved raw data to BTC-USD_price.csv
+2025-11-01 18:52:14,272 - INFO - 🧩 Detected multi-level header → fixing it...
+2025-11-01 18:52:14,278 - INFO - ✅ Cleaned CSV and saved to BTC-USD_price.csv
+2025-11-01 18:52:14,278 - INFO - Columns after cleaning: ['Open', 'High', 'Low', 'Close', 'Adj Close']
+2025-11-01 18:52:14,280 - INFO - ✅ Data ready: X_train=(244, 60, 1), X_test=(61, 60, 1)
+2025-11-01 18:52:14,280 - INFO - ❌ No model found — training new model...
+2025-11-01 18:52:14,428 - INFO - 🚀 Training started...
+2025-11-01 18:52:26,948 - INFO - ✅ Training complete.
+2025-11-01 18:52:26,975 - INFO - 💾 Model saved as /Users/jju/Documents/Stock ML/BTC-USD_lstm_model.keras
+2025-11-01 18:58:37,524 - INFO - ✅ Data downloaded successfully for BTC-USD
+2025-11-01 18:58:37,605 - INFO - 📁 Saved raw data to BTC-USD_price.csv
+2025-11-01 18:58:37,606 - INFO - 🧩 Detected multi-level header → fixing it...
+2025-11-01 18:58:37,610 - INFO - ✅ Cleaned CSV and saved to BTC-USD_price.csv
+2025-11-01 18:58:37,610 - INFO - Columns after cleaning: ['Open', 'High', 'Low', 'Close', 'Adj Close']
+2025-11-01 18:58:37,612 - INFO - ✅ Data ready: X_train=(244, 60, 1), X_test=(61, 60, 1)
+2025-11-01 18:58:37,612 - INFO - ✅ Found existing model: /Users/jju/Documents/Stock ML/BTC-USD_lstm_model.keras
+2025-11-01 18:58:39,611 - INFO - 📦 Loaded existing model.
+2025-11-01 19:03:26,948 - INFO - ✅ Data downloaded successfully for BTC-USD
+2025-11-01 19:03:26,956 - INFO - 📁 Saved raw data to BTC-USD_price.csv
+2025-11-01 19:03:26,959 - INFO - 🧩 Detected multi-level header → fixing it...
+2025-11-01 19:03:26,969 - INFO - ✅ Cleaned CSV and saved to BTC-USD_price.csv
+2025-11-01 19:03:26,969 - INFO - Columns after cleaning: ['Open', 'High', 'Low', 'Close', 'Adj Close']
+2025-11-01 19:03:26,971 - INFO - ✅ Data ready: X_train=(1072, 60, 1), X_test=(268, 60, 1)
+2025-11-01 19:03:26,971 - INFO - ✅ Found existing model: /Users/jju/Documents/Stock ML/BTC-USD_lstm_model.keras
+2025-11-01 19:03:28,073 - INFO - 📦 Loaded existing model.
+2025-11-01 20:04:26,086 - INFO - MSE: 11273749.52
+2025-11-01 20:04:26,087 - INFO - MAE: 2558.22
+2025-11-01 20:04:26,087 - INFO - 🏁 Script finished successfully.

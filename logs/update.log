@@ -1,0 +1,13 @@
+===== Update process started =====
+✅ Loaded existing file: data/raw/price_daily.csv (88 rows)
+✅ Loaded existing file: data/raw/fundamentals_quarterly.csv (21 rows)
+✅ Loaded existing file: data/raw/news_sentiment.csv (796 rows)
+✅ Loaded existing file: data/raw/macro_index.csv (66 rows)
+Fetching latest prices & fundamentals...
+Merging new data with old datasets...
+✅ Merged data — now 88 rows after deduplication.
+✅ Merged data — now 25 rows after deduplication.
+Saving merged data to CSV files...
+✅ All datasets updated successfully for 2025-11-02
+===== Update process finished =====
+

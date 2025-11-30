@@ -1,0 +1,68 @@
+macro_indices_dict:
+  # --- Equities ---
+  "S&P500": "^GSPC"                  # S&P 500 Index
+  "NASDAQ": "^IXIC"                  # NASDAQ Composite Index
+  "DOWJONES": "^DJI"                 # Dow Jones Industrial Average
+  "KOSPI": "^KS11"                   # KOSPI Index (Korea)
+  "NIKKEI225": "^N225"               # Nikkei 225 Index (Japan)
+  "STOXX50E": "^STOXX50E"            # Euro Stoxx 50 Index
+  "SHANGHAI": "000001.SS"            # Shanghai Composite Index
+  "HSI": "^HSI"                      # Hang Seng Index
+
+  # --- FX (Exchange Rates) ---
+  "KRW/USD": "KRW=X"                 # South Korean Won / USD
+  "JPY/USD": "JPY=X"                 # Japanese Yen / USD
+  "EUR/USD": "EURUSD=X"              # Euro / USD
+  "CNY/USD": "CNY=X"                 # Chinese Yuan / USD
+  "GBP/USD": "GBPUSD=X"              # British Pound / USD
+  "USD/CHF": "CHF=X"                 # USD / Swiss Franc
+  "USD/SGD": "SGD=X"                 # USD / Singapore Dollar
+
+  # --- Interest Rates (FRED) ---
+  "FEDFUNDS": "FEDFUNDS"             # Federal Funds Rate
+  "DGS2": "DGS2"                     # 2-Year Treasury Yield
+  "DGS10": "DGS10"                   # 10-Year Treasury Yield
+  "DGS30": "DGS30"                   # 30-Year Treasury Yield
+  "IR_KR_3Y": "IR3TIB01KRQ156N"      # Korea 3-Year Government Bond Yield
+  "IR_JP_10Y": "IRLTLT01JPM156N"     # Japan 10-Year Government Bond Yield
+
+  # --- Money Supply / Liquidity ---
+  "M1SL": "M1SL"                     # M1 Money Stock
+  "M2SL": "M2SL"                     # M2 Money Stock
+  "BOGNONBR": "BOGNONBR"             # Nonborrowed Reserves of Depository Institutions
+  "RRPONTSYD": "RRPONTSYD"           # Overnight Reverse Repurchase Agreements
+
+  # --- Inflation / Prices ---
+  "CPIAUCSL": "CPIAUCSL"             # Consumer Price Index (All Urban Consumers)
+  "CPIFABSL": "CPIFABSL"             # CPI: Food and Beverages
+  "CPILFESL": "CPILFESL"             # Core CPI (less food & energy)
+  "PPIACO": "PPIACO"                 # Producer Price Index
+  "COREPCE": "PCEPILFE"              # Core PCE Price Index (Fed preferred measure)
+  "GDPDEF": "GDPDEF"                 # GDP Deflator
+
+  # --- Commodities ---
+  "WTI": "DCOILWTICO"                # Crude Oil (WTI)
+  "BRENT": "DCOILBRENTEU"            # Crude Oil (Brent)
+  "NATGAS": "DHHNGSP"                # Henry Hub Natural Gas Spot Price
+  "GOLD": "GOLDAMGBD228NLBM"         # Gold (London Bullion)
+  "SILVER": "SLVPRUSD"               # Silver Price (USD)
+  "COPPER": "PCOPPUSDM"              # Copper Price (USD/MT)
+  "CORN": "PMAIZMTUSDM"              # Corn Price (USD/MT)
+  "WHEAT": "PWHEAMTUSDM"             # Wheat Price (USD/MT)
+
+  # --- Economic Activity / Growth ---
+  "GDP": "GDP"                       # Gross Domestic Product (US)
+  "GDPC1": "GDPC1"                   # Real GDP (Chained 2012 Dollars)
+  "INDPRO": "INDPRO"                 # Industrial Production Index
+  "UNRATE": "UNRATE"                 # Unemployment Rate
+  "PAYEMS": "PAYEMS"                 # Nonfarm Payroll Employment
+  "RETAILSA": "RSAFS"                # Retail and Food Services Sales
+  "CONSUMER_CONFIDENCE": "UMCSENT"   # University of Michigan Consumer Sentiment Index
+  "PMI": "NAPM"                      # ISM Manufacturing PMI
+  "LEI": "USSLIND"                   # Leading Economic Index (Conference Board)
+
+  # --- Global / Emerging ---
+  "CHINA_GDP": "CHNGDPNQDSMEI"       # China GDP (Quarterly)
+  "KOREA_GDP": "KORNGDP"             # Korea GDP
+  "EURO_GDP": "NAEXKP01EZQ189S"      # Euro Area GDP
+  "JP_GDP": "JPNNGDP"                # Japan GDP

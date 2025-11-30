@@ -1,0 +1,20 @@
+[2025-11-30 18:09:19] INFO | System: 🦆 Connected to DuckDB at /Users/jju/Documents/Stock ML/src/db/stockml.duckdb
+[2025-11-30 18:09:19] INFO | System: 🔄 Updating data...
+[2025-11-30 18:09:19] INFO | System: ===== Update process started =====
+[2025-11-30 18:09:19] INFO | System: ✅ Loaded existing file: data/raw/price_daily.csv (14000 rows)
+[2025-11-30 18:09:19] INFO | System: ✅ Loaded existing file: data/raw/fundamentals_quarterly.csv (661 rows)
+[2025-11-30 18:09:19] INFO | System: ✅ Loaded existing file: data/raw/news_sentiment.csv (6721 rows)
+[2025-11-30 18:09:19] INFO | System: ✅ Loaded existing file: data/raw/macro_index.csv (52635 rows)
+[2025-11-30 18:09:19] INFO | System: Loaded 60 tickers
+[2025-11-30 18:09:19] INFO | System: Fetching latest prices & fundamentals...
+[2025-11-30 18:10:46] INFO | System: Fetching news sentiment data...
+[2025-11-30 18:42:33] INFO | System: 🦆 Connected to DuckDB at /Users/jju/Documents/Stock ML/src/db/stockml.duckdb
+[2025-11-30 18:42:33] INFO | System: 🔄 Updating data...
+[2025-11-30 18:42:33] INFO | System: ===== Update process started =====
+[2025-11-30 18:42:33] INFO | System: ✅ Loaded existing file: data/raw/price_daily.csv (14000 rows)
+[2025-11-30 18:42:33] INFO | System: ✅ Loaded existing file: data/raw/fundamentals_quarterly.csv (661 rows)
+[2025-11-30 18:42:33] INFO | System: ✅ Loaded existing file: data/raw/news_sentiment.csv (6721 rows)
+[2025-11-30 18:42:33] INFO | System: ✅ Loaded existing file: data/raw/macro_index.csv (52635 rows)
+[2025-11-30 18:42:33] INFO | System: Loaded 60 tickers
+[2025-11-30 18:42:33] INFO | System: Fetching latest prices & fundamentals...
+[2025-11-30 18:45:18] INFO | System: Fetching news sentiment data...
