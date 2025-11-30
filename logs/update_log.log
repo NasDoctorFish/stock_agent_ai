@@ -1,0 +1,95 @@
+2025-11-02 00:28:47,825 - INFO - ===== Update process started =====
+2025-11-02 00:28:47,833 - INFO - ✅ Loaded existing file: data/raw/price_daily.csv (88 rows)
+2025-11-02 00:28:47,838 - INFO - ✅ Loaded existing file: data/raw/fundamentals_quarterly.csv (67 rows)
+2025-11-02 00:28:47,841 - INFO - ✅ Loaded existing file: data/raw/news_sentiment.csv (796 rows)
+2025-11-02 00:28:47,843 - INFO - ✅ Loaded existing file: data/raw/macro_index.csv (66 rows)
+2025-11-02 00:28:47,843 - INFO - Fetching latest prices & fundamentals...
+2025-11-02 00:28:49,251 - INFO - Merging new data with old datasets...
+2025-11-02 00:28:49,253 - INFO - ✅ Merged data — now 88 rows after deduplication.
+2025-11-02 00:28:49,256 - INFO - ✅ Merged data — now 67 rows after deduplication.
+2025-11-02 00:28:49,256 - INFO - Saving merged data to CSV files...
+2025-11-02 00:28:49,262 - INFO - ✅ All datasets updated successfully for 2025-11-02
+2025-11-02 00:28:49,262 - INFO - ===== Update process finished =====
+
+2025-11-02 00:31:29,587 - INFO - ===== Update process started =====
+2025-11-02 00:31:29,598 - INFO - ✅ Loaded existing file: data/raw/price_daily.csv (88 rows)
+2025-11-02 00:31:29,602 - INFO - ✅ Loaded existing file: data/raw/fundamentals_quarterly.csv (67 rows)
+2025-11-02 00:31:29,606 - INFO - ✅ Loaded existing file: data/raw/news_sentiment.csv (796 rows)
+2025-11-02 00:31:29,607 - INFO - ✅ Loaded existing file: data/raw/macro_index.csv (66 rows)
+2025-11-02 00:31:29,607 - INFO - Fetching latest prices & fundamentals...
+2025-11-02 00:31:30,759 - INFO - Merging new data with old datasets...
+2025-11-02 00:31:30,761 - INFO - ✅ Merged data — now 88 rows after deduplication.
+2025-11-02 00:31:30,765 - INFO - ✅ Merged data — now 67 rows after deduplication.
+2025-11-02 00:31:30,765 - INFO - Saving merged data to CSV files...
+2025-11-02 00:31:30,771 - INFO - ✅ All datasets updated successfully for 2025-11-02
+2025-11-02 00:31:30,772 - INFO - ===== Update process finished =====
+
+2025-11-02 00:33:36,157 - INFO - ===== Update process started =====
+2025-11-02 00:33:36,166 - INFO - ✅ Loaded existing file: data/raw/price_daily.csv (88 rows)
+2025-11-02 00:33:36,166 - ERROR - ❌ Error loading file: data/raw/fundamentals_quarterly.csv
+Traceback (most recent call last):
+  File "/Users/jju/Documents/Stock ML/src/update_data.py", line 68, in load_existing
+    cols = pd.read_csv(path, nrows=0).columns
+  File "/Users/jju/Library/Caches/pypoetry/virtualenvs/stock-ml-CDODyAIP-py3.10/lib/python3.10/site-packages/pandas/io/parsers/readers.py", line 1026, in read_csv
+    return _read(filepath_or_buffer, kwds)
+  File "/Users/jju/Library/Caches/pypoetry/virtualenvs/stock-ml-CDODyAIP-py3.10/lib/python3.10/site-packages/pandas/io/parsers/readers.py", line 620, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+  File "/Users/jju/Library/Caches/pypoetry/virtualenvs/stock-ml-CDODyAIP-py3.10/lib/python3.10/site-packages/pandas/io/parsers/readers.py", line 1620, in __init__
+    self._engine = self._make_engine(f, self.engine)
+  File "/Users/jju/Library/Caches/pypoetry/virtualenvs/stock-ml-CDODyAIP-py3.10/lib/python3.10/site-packages/pandas/io/parsers/readers.py", line 1898, in _make_engine
+    return mapping[engine](f, **self.options)
+  File "/Users/jju/Library/Caches/pypoetry/virtualenvs/stock-ml-CDODyAIP-py3.10/lib/python3.10/site-packages/pandas/io/parsers/c_parser_wrapper.py", line 93, in __init__
+    self._reader = parsers.TextReader(src, **kwds)
+  File "pandas/_libs/parsers.pyx", line 581, in pandas._libs.parsers.TextReader.__cinit__
+pandas.errors.EmptyDataError: No columns to parse from file
+2025-11-02 00:33:36,171 - INFO - ✅ Loaded existing file: data/raw/news_sentiment.csv (796 rows)
+2025-11-02 00:33:36,173 - INFO - ✅ Loaded existing file: data/raw/macro_index.csv (66 rows)
+2025-11-02 00:33:36,173 - INFO - Fetching latest prices & fundamentals...
+2025-11-02 00:33:37,475 - INFO - Merging new data with old datasets...
+2025-11-02 00:33:37,477 - INFO - ✅ Merged data — now 88 rows after deduplication.
+2025-11-02 00:33:37,477 - INFO - ⚠️ Old dataset empty, returning new data only.
+2025-11-02 00:33:37,478 - INFO - Saving merged data to CSV files...
+2025-11-02 00:33:37,484 - INFO - ✅ All datasets updated successfully for 2025-11-02
+2025-11-02 00:33:37,484 - INFO - ===== Update process finished =====
+
+2025-11-02 00:37:40,673 - INFO - ===== Update process started =====
+2025-11-02 00:37:40,682 - INFO - ✅ Loaded existing file: data/raw/price_daily.csv (88 rows)
+2025-11-02 00:37:40,685 - INFO - ✅ Loaded existing file: data/raw/fundamentals_quarterly.csv (21 rows)
+2025-11-02 00:37:40,688 - INFO - ✅ Loaded existing file: data/raw/news_sentiment.csv (796 rows)
+2025-11-02 00:37:40,690 - INFO - ✅ Loaded existing file: data/raw/macro_index.csv (66 rows)
+2025-11-02 00:37:40,690 - INFO - Fetching latest prices & fundamentals...
+2025-11-02 00:37:41,969 - INFO - Merging new data with old datasets...
+2025-11-02 00:37:41,972 - INFO - ✅ Merged data — now 88 rows after deduplication.
+2025-11-02 00:37:41,975 - INFO - ✅ Merged data — now 25 rows after deduplication.
+2025-11-02 00:37:41,975 - INFO - Saving merged data to CSV files...
+2025-11-02 00:37:41,981 - INFO - ✅ All datasets updated successfully for 2025-11-02
+2025-11-02 00:37:41,981 - INFO - ===== Update process finished =====
+
+2025-11-02 00:37:58,137 - INFO - ===== Update process started =====
+2025-11-02 00:37:58,146 - INFO - ✅ Loaded existing file: data/raw/price_daily.csv (88 rows)
+2025-11-02 00:37:58,146 - ERROR - ❌ Error loading file: data/raw/fundamentals_quarterly.csv
+Traceback (most recent call last):
+  File "/Users/jju/Documents/Stock ML/src/update_data.py", line 68, in load_existing
+    cols = pd.read_csv(path, nrows=0).columns
+  File "/Users/jju/Library/Caches/pypoetry/virtualenvs/stock-ml-CDODyAIP-py3.10/lib/python3.10/site-packages/pandas/io/parsers/readers.py", line 1026, in read_csv
+    return _read(filepath_or_buffer, kwds)
+  File "/Users/jju/Library/Caches/pypoetry/virtualenvs/stock-ml-CDODyAIP-py3.10/lib/python3.10/site-packages/pandas/io/parsers/readers.py", line 620, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+  File "/Users/jju/Library/Caches/pypoetry/virtualenvs/stock-ml-CDODyAIP-py3.10/lib/python3.10/site-packages/pandas/io/parsers/readers.py", line 1620, in __init__
+    self._engine = self._make_engine(f, self.engine)
+  File "/Users/jju/Library/Caches/pypoetry/virtualenvs/stock-ml-CDODyAIP-py3.10/lib/python3.10/site-packages/pandas/io/parsers/readers.py", line 1898, in _make_engine
+    return mapping[engine](f, **self.options)
+  File "/Users/jju/Library/Caches/pypoetry/virtualenvs/stock-ml-CDODyAIP-py3.10/lib/python3.10/site-packages/pandas/io/parsers/c_parser_wrapper.py", line 93, in __init__
+    self._reader = parsers.TextReader(src, **kwds)
+  File "pandas/_libs/parsers.pyx", line 581, in pandas._libs.parsers.TextReader.__cinit__
+pandas.errors.EmptyDataError: No columns to parse from file
+2025-11-02 00:37:58,151 - INFO - ✅ Loaded existing file: data/raw/news_sentiment.csv (796 rows)
+2025-11-02 00:37:58,153 - INFO - ✅ Loaded existing file: data/raw/macro_index.csv (66 rows)
+2025-11-02 00:37:58,153 - INFO - Fetching latest prices & fundamentals...
+2025-11-02 00:37:59,788 - INFO - Merging new data with old datasets...
+2025-11-02 00:37:59,791 - INFO - ✅ Merged data — now 88 rows after deduplication.
+2025-11-02 00:37:59,791 - INFO - ⚠️ Old dataset empty, returning new data only.
+2025-11-02 00:37:59,792 - INFO - Saving merged data to CSV files...
+2025-11-02 00:37:59,797 - INFO - ✅ All datasets updated successfully for 2025-11-02
+2025-11-02 00:37:59,798 - INFO - ===== Update process finished =====
+

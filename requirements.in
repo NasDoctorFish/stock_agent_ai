@@ -1,0 +1,9 @@
+tensorflow
+numpy
+pandas
+matplotlib
+scikit-learn
+yfinance
+
+# pip-compile requirements.in
+
