@@ -8,15 +8,15 @@ import warnings
 from transformers import AutoTokenizer, AutoModelForCausalLM
 
 class DecisionMaker:
-    def __init__(self):
-        self.local_dir = "models/qwen2.5-1.5b-instruct"
+    def __init__(self, local_dir):
+        self.local_dir = local_dir
 
         warnings.filterwarnings(
             "ignore",
             message="To copy construct from a tensor.*",
             category=UserWarning,
         )
-
+        
         print("Loading tokenizer...")
         self.tokenizer = AutoTokenizer.from_pretrained(
             self.local_dir,
@@ -37,10 +37,18 @@ class DecisionMaker:
     {
         "role": "system",
         "content": (
-            "You are an AI that helps with reasonable investment decisions.\n"
-            "Follow these rules strictly:\n"
-            "- Insider selling notices (e.g. Form 144) are NOT positive.\n"
-            "- Only classify POSITIVE_CONTRACT if revenue-increasing contracts are explicitly stated."
+            "You are a financial disclosure classifier.\n"
+            "Rules (MANDATORY):\n"
+            "- Form 144 and insider selling disclosures MUST be classified as NEUTRAL_OR_UNCLEAR.\n"
+            "- Employee compensation (RSU, stock grants) is NOT a business contract.\n"
+            "- Do NOT infer revenue impact unless explicitly stated.\n\n"
+            "Output format:\n"
+            "Label: <POSITIVE_CONTRACT | PROFIT_INCREASE | NEUTRAL_OR_UNCLEAR>\n"
+            "Reason: <brief factual explanation>\n\n"
+            "Important:\n"
+            "- Decide the Label first.\n"
+            "- The Reason must justify the Label, not reinterpret the disclosure.\n"
+            "- If unsure, choose NEUTRAL_OR_UNCLEAR."
         )
     },
     {
@@ -55,13 +63,8 @@ class DecisionMaker:
     {
         "role": "user",
         "content": (
-            "Task:\n"
-            "Classify the following disclosure as one of:\n"
-            "- POSITIVE_CONTRACT\n"
-            "- PROFIT_INCREASE\n"
-            "- NEUTRAL_OR_UNCLEAR\n\n"
             "Disclosure:\n"
-            "Form 144 Filer Information ... (text)"
+            f"{disclosure}"
         )
     }
 ]
@@ -79,7 +82,8 @@ class DecisionMaker:
             output = self.model.generate(
                 **inputs,
                 max_new_tokens=80,
-                temperature=0.2,
+                do_sample=False,
+                temperature=None,
                 top_p=0.85,
                 repetition_penalty=1.1,
                 eos_token_id=self.tokenizer.eos_token_id
@@ -101,8 +105,7 @@ class DecisionMaker:
         - Only classify POSITIVE_CONTRACT if the disclosure explicitly states
         a new business contract that increases revenue.
         - Insider selling notices must be classified as NEUTRAL_OR_UNCLEAR.
-        
-        Answer with only one label and a short reason."""}
+        - Answer with only one label and a short reason."""}
         ]
 
 
@@ -111,7 +114,9 @@ class DecisionMaker:
 # poetry run python3 src/core/decision_maker.py
 
 if __name__ == "__main__":
-    dm = DecisionMaker()
+    dm = DecisionMaker("models/qwen2.5-1.5b-instruct")
+    # dm2 = DecisionMaker("models/phi-3-medium.Q4_K_M.gguf") -> phi-3 llama based, no AutoTokenizer
+    
     # dm.download_model_in_cache()
     result = dm.classify("""Form 144 Filer Information
         UNITED STATES
@@ -212,4 +217,5 @@ if __name__ == "__main__":
         or the instruction given, that person makes such representation as of the plan adoption or instruction date.
         Signature /s/ Kevan Parekh
         ATTENTION: Intentional misstatements or omission of facts constitute Federal Criminal Violations (See 18 U.S.C. 1001)""")
+    print("Decision Maker ", dm.local_dir)
     print(result)
