@@ -73,7 +73,10 @@ def fetch_macro_indices(indices_dict, start_date, end_date, fred_api_key=None, l
     Returns: long-form DataFrame [date, index_name, value_norm, ...]
     """
 
-    fred = Fred(api_key=fred_api_key) if fred_api_key else None
+    # NOTE: The FRED client is not thread-safe. Each worker will lazily
+    # create its own client instead of sharing a single instance across
+    # threads to avoid mutex contention or deadlocks during concurrent
+    # fetches.
     indices = indices_dict.get("macro_indices_dict", indices_dict)
 
     success, failed = [], []
@@ -82,6 +85,7 @@ def fetch_macro_indices(indices_dict, start_date, end_date, fred_api_key=None, l
     # 내부 fetch 함수 (각 인덱스 개별 처리)
     # -------------------------------
     def fetch_one(name, code):
+        fred = Fred(api_key=fred_api_key) if fred_api_key else None
         df = None
         try:
             # 1️⃣ FRED 시도

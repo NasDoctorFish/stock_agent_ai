@@ -1,0 +1,68 @@
+bash: ./run.sh: cannot execute: required file not found
+jwon@jwlserver:~/Stock_ML$ ./run.sh
+The currently activated Python version 3.13.5 is not supported by the project (>=3.10,<3.12).
+Trying to find and use a compatible version. 
+
+Poetry was unable to find a compatible version. If you have one, you can explicitly use it via the "env use" command.
+jwon@jwlserver:~/Stock_ML$ python3 --version
+Python 3.13.5
+jwon@jwlserver:~/Stock_ML$ poetry env use python3.10
+
+Could not find the python executable python3.10
+jwon@jwlserver:~/Stock_ML$ pyenv --version
+pyenv 2.6.16
+jwon@jwlserver:~/Stock_ML$ pyenv local 3.10.13
+pyenv: version `3.10.13' not installed
+jwon@jwlserver:~/Stock_ML$ pyenv install 3.10.13
+Downloading Python-3.10.13.tar.xz...
+-> https://www.python.org/ftp/python/3.10.13/Python-3.10.13.tar.xz
+Installing Python-3.10.13...
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/home/jwon/.pyenv/versions/3.10.13/lib/python3.10/bz2.py", line 17, in <module>
+    from _bz2 import BZ2Compressor, BZ2Decompressor
+ModuleNotFoundError: No module named '_bz2'
+WARNING: The Python bz2 extension was not compiled. Missing the bzip2 lib?
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/home/jwon/.pyenv/versions/3.10.13/lib/python3.10/curses/__init__.py", line 13, in <module>
+    from _curses import *
+ModuleNotFoundError: No module named '_curses'
+WARNING: The Python curses extension was not compiled. Missing the ncurses lib?
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/home/jwon/.pyenv/versions/3.10.13/lib/python3.10/ctypes/__init__.py", line 8, in <module>
+    from _ctypes import Union, Structure, Array
+ModuleNotFoundError: No module named '_ctypes'
+WARNING: The Python ctypes extension was not compiled. Missing the libffi lib?
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+ModuleNotFoundError: No module named 'readline'
+WARNING: The Python readline extension was not compiled. Missing the GNU readline lib?
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/home/jwon/.pyenv/versions/3.10.13/lib/python3.10/ssl.py", line 99, in <module>
+    import _ssl             # if we can't import it, let the error propagate
+ModuleNotFoundError: No module named '_ssl'
+ERROR: The Python ssl extension was not compiled. Missing the OpenSSL lib?
+
+Please consult to the Wiki page to fix the problem.
+https://github.com/pyenv/pyenv/wiki/Common-build-problems
+
+
+BUILD FAILED (Debian 13 using python-build 2.6.16)
+
+Inspect or clean up the working tree at /tmp/python-build.20251216160744.2877
+Results logged to /tmp/python-build.20251216160744.2877.log
+
+Last 10 log lines:
+	LD_LIBRARY_PATH=/tmp/python-build.20251216160744.2877/Python-3.10.13 ./python -E -m ensurepip \
+		$ensurepip --root=/ ; \
+fi
+Looking in links: /tmp/tmpkhmpjonz
+Processing /tmp/tmpkhmpjonz/setuptools-65.5.0-py3-none-any.whl
+Processing /tmp/tmpkhmpjonz/pip-23.0.1-py3-none-any.whl
+Installing collected packages: setuptools, pip
+  WARNING: The scripts pip3 and pip3.10 are installed in '/home/jwon/.pyenv/versions/3.10.13/bin' which is not on PATH.
+  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+Successfully installed pip-23.0.1 setuptools-65.5.0

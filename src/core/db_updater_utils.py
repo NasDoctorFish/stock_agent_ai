@@ -2,7 +2,7 @@
 import pandas as pd
 from datetime import datetime, timedelta
 from utils.fetch_yfinance import fetch_prices
-from utils.fetch_newsapi import fetch_news_sentiment
+from utils.fetch_newsapi import fetch_news_sentiment, fetch_news_text_only, fetch_news_final
 from utils.fetch_macro import fetch_macro_indices
 from dotenv import load_dotenv
 from pathlib import Path
@@ -103,7 +103,7 @@ def update_csv_files(self):
         self.logger.info("===== Update process started =====")
 
         # ---- 단계별 실행 스위치 ----
-        RUN_FETCH = True          # 가격/재무 데이터
+        RUN_FETCH = False          # 가격/재무 데이터
         RUN_SENTIMENT = True      # 뉴스 감정 분석
         RUN_MACRO = True          # 거시지표
         RUN_ANALYSIS = True       # 분석/머징/저장
@@ -134,7 +134,7 @@ def update_csv_files(self):
 
         if RUN_SENTIMENT:
             self.logger.info("Fetching news sentiment data...")
-            news_new = fetch_news_sentiment(tickers, self.START_DATE, self.TODAY, self.NEWS_API_KEY)
+            news_new = fetch_news_final(tickers, self.START_DATE, self.TODAY, self.NEWS_API_KEY)
         else:
             news_new = None
 

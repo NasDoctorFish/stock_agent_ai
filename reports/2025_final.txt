@@ -1,0 +1,137 @@
+2025-11-30
+- fix mutex.cc error, multi-thread problem. should not be crashed with pytorch, or numpy operation(multi)
+with other mutlithread custom one.
+
+poetry run python3 sql/test.py
+
+
+2025-12-2
+- fixed pyarrow version conflict fixed
+좋아. **이 메시지로 문제를 정확하게 pinpoint**할 수 있다.
+
+---
+
+# 🚨 **핵심 문제: `tf-keras` 라는 패키지는 존재하지 않음**
+
+Poetry가 말하는 에러:
+
+```
+tf-keras (2.14.0) which doesn't match any versions, version solving failed.
+```
+
+이 말은:
+
+✔ **PyPI에 tf-keras==2.14.0 버전이 없다**
+✔ 사실 거의 모든 버전이 없다
+✔ “tf-keras”라는 패키지는 TensorFlow 공식 패키지가 아님
+✔ TensorFlow와 함께 설치되는 내부 모듈일 뿐, pip 패키지로 존재하지 않는다
+
+즉,
+
+# ❌ **`tf-keras`는 pip 설치가 필요 없다 → 아예 제거해야 한다**
+
+TensorFlow 설치하면 자동으로 포함됨.
+
+---
+
+# 🧠 왜 처음에 tf-keras를 요구하게 됐나?
+
+TensorFlow 2.20부터 내부 구조가 변해서, 일부 문서나 유튜브에서 “tf-keras” 별도 패키지처럼 언급했지만:
+
+* 이것은 PyPI의 실제 배포 패키지가 아님
+* pip로 설치할 수 없음
+* Poetry의 version solver가 이 패키지를 찾지 못해 실패함
+
+결과 = **한 개의 잘못된 패키지가 전체 종속성 해결을 망침**
+
+---
+
+# ⭐ 해결방법 (아주 간단함)
+
+그냥 pyproject.toml에서 **tf-keras 줄을 완전히 삭제**하면 됨.
+
+TensorFlow만 남겨두면 TensorFlow 내부에서 자동으로 Keras가 로딩됨:
+
+### TensorFlow 2.14
+
+* keras 포함
+* tf.keras 사용 가능
+
+---
+
+# ✔ 수정된 pyproject.toml (핵심 문제 제거 버전)
+
+```toml
+tensorflow = "2.14.0"
+# tf-keras 제거함
+protobuf = "4.25.3"
+pyarrow = "14.0.2"
+```
+
+이제 다른 패키지는 문제 없음.
+
+---
+
+# ⚙️ 이후 해야 할 것
+
+```
+rm poetry.lock
+poetry lock
+poetry install
+```
+
+---
+
+# 🔥 요약
+
+* **tf-keras는 pip 패키지가 아니라 제거해야 함**
+* TensorFlow 설치 시 자동 포함됨
+* 이거 한 줄 때문에 dependency solver 전체가 실패했음
+* 삭제하면 pyarrow/protobuf 충돌 fix 작업을 다시 진행할 수 있음
+
+---
+
+원하면:
+
+📌 **TensorFlow + PyTorch + DuckDB + Streamlit + Transformers + yfinance + Arrow 충돌 없는 완전체 pyproject.toml**
+바로 맞춰서 만들어줄 수 있다.
+
+해줄까?
+
+
+
+2025-12-06
+- ssh server 맥 측 locale 문제 해결
+- home아래 서버용 config 폴더 .ssh 생성
+jwon@jwlserver:~$ locale
+LANG=en_US.UTF-8
+LANGUAGE=en_US:en
+LC_CTYPE="en_US.UTF-8"
+LC_NUMERIC="en_US.UTF-8"
+LC_TIME="en_US.UTF-8"
+LC_COLLATE="en_US.UTF-8"
+LC_MONETARY="en_US.UTF-8"
+LC_MESSAGES="en_US.UTF-8"
+LC_PAPER="en_US.UTF-8"
+LC_NAME="en_US.UTF-8"
+LC_ADDRESS="en_US.UTF-8"
+LC_TELEPHONE="en_US.UTF-8"
+LC_MEASUREMENT="en_US.UTF-8"
+LC_IDENTIFICATION="en_US.UTF-8"
+LC_ALL=en_US.UTF-8
+
+jju@ijuwon-ui-MacBookPro Stock_ML % scp -r /Users/jju/Documents/Stock_ML jwon@192.168.0.016:/home/jwon 
+jwon@192.168.0.16's password: 
+[v] move to server
+[v] ssh pub key 등록 (MAC) => .ssh
+jwon@192.168.0.16's password: 
+
+Number of key(s) added:        1
+
+[v] poetry, pyenv 설치
+
+
+2025-12-16
+[v] post_office 폴더 서버 내 생성
+[v] ssh 자동화 파일 sh_files_server 아래 생성
+    현재 폴더들 일단 서버내에 있고, 아직 실행하지는 못한 상태

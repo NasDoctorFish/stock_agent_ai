@@ -1,0 +1,9 @@
+~/.cache/huggingface/hub/
+└── models--Qwen--Qwen2.5-1.5B-Instruct/
+    ├── snapshots/
+    │   └── <hash>/
+    │       ├── model-00001-of-00002.safetensors
+    │       ├── model-00002-of-00002.safetensors
+    │       ├── model.safetensors.index.json
+
+huggingface basic model can be donloaded through HTTP request, and it is saved in .cache folder in project location.

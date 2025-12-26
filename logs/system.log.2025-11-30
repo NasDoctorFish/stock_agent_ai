@@ -1,0 +1,142 @@
+[2025-11-30 18:09:19] INFO | System: 🦆 Connected to DuckDB at /Users/jju/Documents/Stock ML/src/db/stockml.duckdb
+[2025-11-30 18:09:19] INFO | System: 🔄 Updating data...
+[2025-11-30 18:09:19] INFO | System: ===== Update process started =====
+[2025-11-30 18:09:19] INFO | System: ✅ Loaded existing file: data/raw/price_daily.csv (14000 rows)
+[2025-11-30 18:09:19] INFO | System: ✅ Loaded existing file: data/raw/fundamentals_quarterly.csv (661 rows)
+[2025-11-30 18:09:19] INFO | System: ✅ Loaded existing file: data/raw/news_sentiment.csv (6721 rows)
+[2025-11-30 18:09:19] INFO | System: ✅ Loaded existing file: data/raw/macro_index.csv (52635 rows)
+[2025-11-30 18:09:19] INFO | System: Loaded 60 tickers
+[2025-11-30 18:09:19] INFO | System: Fetching latest prices & fundamentals...
+[2025-11-30 18:10:46] INFO | System: Fetching news sentiment data...
+[2025-11-30 18:42:33] INFO | System: 🦆 Connected to DuckDB at /Users/jju/Documents/Stock ML/src/db/stockml.duckdb
+[2025-11-30 18:42:33] INFO | System: 🔄 Updating data...
+[2025-11-30 18:42:33] INFO | System: ===== Update process started =====
+[2025-11-30 18:42:33] INFO | System: ✅ Loaded existing file: data/raw/price_daily.csv (14000 rows)
+[2025-11-30 18:42:33] INFO | System: ✅ Loaded existing file: data/raw/fundamentals_quarterly.csv (661 rows)
+[2025-11-30 18:42:33] INFO | System: ✅ Loaded existing file: data/raw/news_sentiment.csv (6721 rows)
+[2025-11-30 18:42:33] INFO | System: ✅ Loaded existing file: data/raw/macro_index.csv (52635 rows)
+[2025-11-30 18:42:33] INFO | System: Loaded 60 tickers
+[2025-11-30 18:42:33] INFO | System: Fetching latest prices & fundamentals...
+[2025-11-30 18:45:18] INFO | System: Fetching news sentiment data...
+[2025-11-30 21:02:03] INFO | System: 🦆 Connected to DuckDB at /Users/jju/Documents/Stock ML/src/db/stockml.duckdb
+[2025-11-30 21:02:03] INFO | System: 🔄 Updating data...
+[2025-11-30 21:02:03] INFO | System: ===== Update process started =====
+[2025-11-30 21:02:03] INFO | System: ✅ Loaded existing file: data/raw/price_daily.csv (14000 rows)
+[2025-11-30 21:02:03] INFO | System: ✅ Loaded existing file: data/raw/fundamentals_quarterly.csv (661 rows)
+[2025-11-30 21:02:03] INFO | System: ✅ Loaded existing file: data/raw/news_sentiment.csv (6721 rows)
+[2025-11-30 21:02:03] INFO | System: ✅ Loaded existing file: data/raw/macro_index.csv (52635 rows)
+[2025-11-30 21:02:03] INFO | System: Loaded 60 tickers
+[2025-11-30 21:02:03] INFO | System: Fetching latest prices & fundamentals...
+[2025-11-30 21:03:28] INFO | System: Fetching news sentiment data...
+[2025-11-30 21:17:09] INFO | System: 🦆 Connected to DuckDB at /Users/jju/Documents/Stock ML/src/db/stockml.duckdb
+[2025-11-30 21:17:09] INFO | System: 🔄 Updating data...
+[2025-11-30 21:17:09] INFO | System: ===== Update process started =====
+[2025-11-30 21:17:09] INFO | System: ✅ Loaded existing file: data/raw/price_daily.csv (14000 rows)
+[2025-11-30 21:17:09] INFO | System: ✅ Loaded existing file: data/raw/fundamentals_quarterly.csv (661 rows)
+[2025-11-30 21:17:09] INFO | System: ✅ Loaded existing file: data/raw/news_sentiment.csv (6721 rows)
+[2025-11-30 21:17:09] INFO | System: ✅ Loaded existing file: data/raw/macro_index.csv (52635 rows)
+[2025-11-30 21:17:09] INFO | System: Loaded 60 tickers
+[2025-11-30 21:17:09] INFO | System: Fetching latest prices & fundamentals...
+[2025-11-30 21:18:35] INFO | System: Fetching news sentiment data...
+[2025-11-30 21:27:24] INFO | System: 🦆 Connected to DuckDB at /Users/jju/Documents/Stock ML/src/db/stockml.duckdb
+[2025-11-30 21:27:24] INFO | System: 🔄 Updating data...
+[2025-11-30 21:27:24] INFO | System: ===== Update process started =====
+[2025-11-30 21:27:24] INFO | System: ✅ Loaded existing file: data/raw/price_daily.csv (14000 rows)
+[2025-11-30 21:27:24] INFO | System: ✅ Loaded existing file: data/raw/fundamentals_quarterly.csv (661 rows)
+[2025-11-30 21:27:24] INFO | System: ✅ Loaded existing file: data/raw/news_sentiment.csv (6721 rows)
+[2025-11-30 21:27:24] INFO | System: ✅ Loaded existing file: data/raw/macro_index.csv (52635 rows)
+[2025-11-30 21:27:24] INFO | System: Loaded 60 tickers
+[2025-11-30 21:27:24] INFO | System: Fetching latest prices & fundamentals...
+[2025-11-30 21:28:50] INFO | System: Fetching news sentiment data...
+[2025-11-30 21:35:10] INFO | System: 🦆 Connected to DuckDB at /Users/jju/Documents/Stock ML/src/db/stockml.duckdb
+[2025-11-30 21:35:10] INFO | System: 🔄 Updating data...
+[2025-11-30 21:35:10] INFO | System: ===== Update process started =====
+[2025-11-30 21:35:10] INFO | System: ✅ Loaded existing file: data/raw/price_daily.csv (14000 rows)
+[2025-11-30 21:35:10] INFO | System: ✅ Loaded existing file: data/raw/fundamentals_quarterly.csv (661 rows)
+[2025-11-30 21:35:10] INFO | System: ✅ Loaded existing file: data/raw/news_sentiment.csv (6721 rows)
+[2025-11-30 21:35:10] INFO | System: ✅ Loaded existing file: data/raw/macro_index.csv (52635 rows)
+[2025-11-30 21:35:10] INFO | System: Loaded 60 tickers
+[2025-11-30 21:35:10] INFO | System: Fetching news sentiment data...
+[2025-11-30 21:35:30] INFO | System: Fetching macro indices data...
+[2025-11-30 21:35:31] ERROR | System: ❌ Failed to fetch DOWJONES (^DJI): Bad Request.  Invalid value for variable series_id.  Series IDs should be 25 or less alphanumeric characters.
+[2025-11-30 21:35:31] ERROR | System: ❌ Failed to fetch NIKKEI225 (^N225): Bad Request.  Invalid value for variable series_id.  Series IDs should be 25 or less alphanumeric characters.
+[2025-11-30 21:35:31] ERROR | System: ❌ Failed to fetch STOXX50E (^STOXX50E): Bad Request.  Invalid value for variable series_id.  Series IDs should be 25 or less alphanumeric characters.
+[2025-11-30 21:35:31] ERROR | System: ❌ Failed to fetch NASDAQ (^IXIC): Bad Request.  Invalid value for variable series_id.  Series IDs should be 25 or less alphanumeric characters.
+[2025-11-30 21:35:31] ERROR | System: ❌ Failed to fetch KOSPI (^KS11): Bad Request.  Invalid value for variable series_id.  Series IDs should be 25 or less alphanumeric characters.
+[2025-11-30 21:35:31] ERROR | System: ❌ Failed to fetch SHANGHAI (000001.SS): Bad Request.  Invalid value for variable series_id.  Series IDs should be 25 or less alphanumeric characters.
+[2025-11-30 21:35:31] ERROR | System: ❌ Failed to fetch S&P500 (^GSPC): Bad Request.  Invalid value for variable series_id.  Series IDs should be 25 or less alphanumeric characters.
+[2025-11-30 21:35:31] ERROR | System: ❌ Failed to fetch HSI (^HSI): Bad Request.  Invalid value for variable series_id.  Series IDs should be 25 or less alphanumeric characters.
+[2025-11-30 21:35:31] ERROR | System: ❌ Failed to fetch EUR/USD (EURUSD=X): Bad Request.  Invalid value for variable series_id.  Series IDs should be 25 or less alphanumeric characters.
+[2025-11-30 21:35:31] ERROR | System: ❌ Failed to fetch CNY/USD (CNY=X): Bad Request.  Invalid value for variable series_id.  Series IDs should be 25 or less alphanumeric characters.
+[2025-11-30 21:35:31] ERROR | System: ❌ Failed to fetch USD/CHF (CHF=X): Bad Request.  Invalid value for variable series_id.  Series IDs should be 25 or less alphanumeric characters.
+[2025-11-30 21:35:31] ERROR | System: ❌ Failed to fetch JPY/USD (JPY=X): Bad Request.  Invalid value for variable series_id.  Series IDs should be 25 or less alphanumeric characters.
+[2025-11-30 21:35:31] ERROR | System: ❌ Failed to fetch KRW/USD (KRW=X): Bad Request.  Invalid value for variable series_id.  Series IDs should be 25 or less alphanumeric characters.
+[2025-11-30 21:35:31] ERROR | System: ❌ Failed to fetch GBP/USD (GBPUSD=X): Bad Request.  Invalid value for variable series_id.  Series IDs should be 25 or less alphanumeric characters.
+[2025-11-30 21:35:31] ERROR | System: ❌ Failed to fetch USD/SGD (SGD=X): Bad Request.  Invalid value for variable series_id.  Series IDs should be 25 or less alphanumeric characters.
+[2025-11-30 21:35:31] INFO | System: 📈 FRED: FEDFUNDS (FEDFUNDS) — 310 points
+[2025-11-30 21:35:31] INFO | System: 📈 FRED: IR_KR_3Y (IR3TIB01KRQ156N) — 103 points
+[2025-11-30 21:35:32] INFO | System: 📈 FRED: IR_JP_10Y (IRLTLT01JPM156N) — 310 points
+[2025-11-30 21:35:32] INFO | System: 📈 FRED: M1SL (M1SL) — 310 points
+[2025-11-30 21:35:32] INFO | System: 📈 FRED: DGS2 (DGS2) — 6758 points
+[2025-11-30 21:35:32] INFO | System: 📈 FRED: M2SL (M2SL) — 310 points
+[2025-11-30 21:35:32] INFO | System: 📈 FRED: BOGNONBR (BOGNONBR) — 161 points
+[2025-11-30 21:35:32] INFO | System: 📈 FRED: CPIFABSL (CPIFABSL) — 309 points
+[2025-11-30 21:35:32] INFO | System: 📈 FRED: CPIAUCSL (CPIAUCSL) — 309 points
+[2025-11-30 21:35:32] INFO | System: 📈 FRED: DGS10 (DGS10) — 6758 points
+[2025-11-30 21:35:32] INFO | System: 📈 FRED: GDPDEF (GDPDEF) — 102 points
+[2025-11-30 21:35:32] INFO | System: 📈 FRED: COREPCE (PCEPILFE) — 308 points
+[2025-11-30 21:35:32] INFO | System: 📈 FRED: CPILFESL (CPILFESL) — 309 points
+[2025-11-30 21:35:32] INFO | System: 📈 FRED: PPIACO (PPIACO) — 309 points
+[2025-11-30 21:35:33] ERROR | System: ❌ Failed to fetch GOLD (GOLDAMGBD228NLBM): Bad Request.  The series does not exist.
+[2025-11-30 21:35:33] ERROR | System: ❌ Failed to fetch SILVER (SLVPRUSD): Bad Request.  The series does not exist.
+[2025-11-30 21:35:33] INFO | System: 📈 FRED: COPPER (PCOPPUSDM) — 306 points
+[2025-11-30 21:35:33] INFO | System: 📈 FRED: DGS30 (DGS30) — 6758 points
+[2025-11-30 21:35:33] INFO | System: 📈 FRED: RRPONTSYD (RRPONTSYD) — 5951 points
+[2025-11-30 21:35:33] INFO | System: 📈 FRED: CORN (PMAIZMTUSDM) — 306 points
+[2025-11-30 21:35:33] INFO | System: 📈 FRED: WHEAT (PWHEAMTUSDM) — 306 points
+[2025-11-30 21:35:33] INFO | System: 📈 FRED: GDP (GDP) — 102 points
+[2025-11-30 21:35:33] INFO | System: 📈 FRED: GDPC1 (GDPC1) — 102 points
+[2025-11-30 21:35:33] INFO | System: 📈 FRED: INDPRO (INDPRO) — 308 points
+[2025-11-30 21:35:33] INFO | System: 📈 FRED: UNRATE (UNRATE) — 309 points
+[2025-11-30 21:35:33] INFO | System: 📈 FRED: PAYEMS (PAYEMS) — 309 points
+[2025-11-30 21:35:33] INFO | System: 📈 FRED: RETAILSA (RSAFS) — 309 points
+[2025-11-30 21:35:33] INFO | System: 📈 FRED: CONSUMER_CONFIDENCE (UMCSENT) — 310 points
+[2025-11-30 21:35:34] INFO | System: 📈 FRED: WTI (DCOILWTICO) — 6756 points
+[2025-11-30 21:35:34] ERROR | System: ❌ Failed to fetch PMI (NAPM): Bad Request.  The series does not exist.
+[2025-11-30 21:35:34] INFO | System: 📈 FRED: CHINA_GDP (CHNGDPNQDSMEI) — 95 points
+[2025-11-30 21:35:34] INFO | System: 📈 FRED: BRENT (DCOILBRENTEU) — 6756 points
+[2025-11-30 21:35:34] INFO | System: 📈 FRED: NATGAS (DHHNGSP) — 6756 points
+[2025-11-30 21:35:34] ERROR | System: ❌ Failed to fetch KOREA_GDP (KORNGDP): Bad Request.  The series does not exist.
+[2025-11-30 21:35:34] INFO | System: 📈 FRED: LEI (USSLIND) — 242 points
+[2025-11-30 21:35:34] ERROR | System: ❌ Failed to fetch EURO_GDP (NAEXKP01EZQ189S): Bad Request.  The series does not exist.
+[2025-11-30 21:35:34] INFO | System: 📈 FRED: JP_GDP (JPNNGDP) — 103 points
+[2025-11-30 21:35:34] INFO | System: 📊 Macro indices fetched: 32 succeeded, 20 failed.
+[2025-11-30 21:35:34] WARNING | System: ⚠️ Failed indices: ['DOWJONES', 'NIKKEI225', 'STOXX50E', 'NASDAQ', 'KOSPI', 'SHANGHAI', 'S&P500', 'HSI', 'EUR/USD', 'CNY/USD', 'USD/CHF', 'JPY/USD', 'KRW/USD', 'GBP/USD', 'USD/SGD', 'GOLD', 'SILVER', 'PMI', 'KOREA_GDP', 'EURO_GDP']
+[2025-11-30 21:35:34] INFO | System: ✅ Final long_df shape: (52750, 11)
+[2025-11-30 21:35:34] INFO | System: Merging new data with old datasets...
+[2025-11-30 21:35:34] INFO | System: ✅ Merged data — now 52750 rows after deduplication.
+[2025-11-30 21:35:34] INFO | System: Saving merged data to CSV files...
+[2025-11-30 21:35:34] INFO | System: ✅ All datasets updated successfully for 2025-11-30
+[2025-11-30 21:35:34] INFO | System: ===== Update process finished =====
+
+[2025-11-30 21:35:34] INFO | System: 🔄 Saving to duckdb...
+[2025-11-30 21:35:34] INFO | System: ✅ /Users/jju/Documents/Stock ML/data/raw/fundamentals_quarterly.csv → fundamentals_q_full 저장 완료
+[2025-11-30 21:35:34] INFO | System: LOADING COMPLETED: fundamentals_q_full in /Users/jju/Documents/Stock ML/data/raw/fundamentals_quarterly.csv
+[2025-11-30 21:35:34] INFO | System: ✅ /Users/jju/Documents/Stock ML/data/raw/macro_index.csv → macro_index_full 저장 완료
+[2025-11-30 21:35:34] INFO | System: LOADING COMPLETED: macro_index_full in /Users/jju/Documents/Stock ML/data/raw/macro_index.csv
+[2025-11-30 21:35:34] INFO | System: ✅ /Users/jju/Documents/Stock ML/data/raw/news_sentiment.csv → news_sentiment 저장 완료
+[2025-11-30 21:35:34] INFO | System: LOADING COMPLETED: news_sentiment in /Users/jju/Documents/Stock ML/data/raw/news_sentiment.csv
+[2025-11-30 21:35:34] INFO | System: ✅ /Users/jju/Documents/Stock ML/data/raw/price_daily.csv → price_daily_full 저장 완료
+[2025-11-30 21:35:34] INFO | System: LOADING COMPLETED: price_daily_full in /Users/jju/Documents/Stock ML/data/raw/price_daily.csv
+[2025-11-30 21:35:34] INFO | System: Done!
+[2025-11-30 21:35:35] INFO | System: 🧠 MacroAnalyst initialized on mps
+[2025-11-30 21:35:35] INFO | System: ✅ Feature columns set: ['BRENT', 'CHINA_GDP', 'CONSUMER_CONFIDENCE', 'COPPER', 'COREPCE', 'CORN', 'CPIAUCSL', 'CPIFABSL', 'CPILFESL', 'DGS10', 'DGS2', 'DGS30', 'FEDFUNDS', 'GDP', 'GDPC1', 'GDPDEF', 'INDPRO', 'IR_JP_10Y', 'IR_KR_3Y', 'JP_GDP', 'LEI', 'M1SL', 'M2SL', 'NATGAS', 'PAYEMS', 'PPIACO', 'RETAILSA', 'RRPONTSYD', 'UNRATE', 'WHEAT', 'WTI']
+[2025-11-30 21:35:35] INFO | System: Columns in MACRO DATA: ['BRENT', 'CHINA_GDP', 'CONSUMER_CONFIDENCE', 'COPPER', 'COREPCE', 'CORN', 'CPIAUCSL', 'CPIFABSL', 'CPILFESL', 'DGS10', 'DGS2', 'DGS30', 'FEDFUNDS', 'GDP', 'GDPC1', 'GDPDEF', 'INDPRO', 'IR_JP_10Y', 'IR_KR_3Y', 'JP_GDP', 'LEI', 'M1SL', 'M2SL', 'NATGAS', 'PAYEMS', 'PPIACO', 'RETAILSA', 'RRPONTSYD', 'UNRATE', 'WHEAT', 'WTI']
+[2025-11-30 21:35:38] INFO | System: ✅ LSTM trained (Final Loss: 0.2978)
+[2025-11-30 21:35:38] INFO | System: Macro Analyst: LSTM model train completed, features: Index(['BRENT', 'CHINA_GDP', 'CONSUMER_CONFIDENCE', 'COPPER', 'COREPCE',
+       'CORN', 'CPIAUCSL', 'CPIFABSL', 'CPILFESL', 'DGS10', 'DGS2', 'DGS30',
+       'FEDFUNDS', 'GDP', 'GDPC1', 'GDPDEF', 'INDPRO', 'IR_JP_10Y', 'IR_KR_3Y',
+       'JP_GDP', 'LEI', 'M1SL', 'M2SL', 'NATGAS', 'PAYEMS', 'PPIACO',
+       'RETAILSA', 'RRPONTSYD', 'UNRATE', 'WHEAT', 'WTI'],
+      dtype='object', name='index_name')
+[2025-11-30 21:35:39] INFO | System: 📊 Macro trend result: {'macro_trend': 'bearish', 'prob_bullish': 0.22, 'latest_date': '2025-11-28'}
