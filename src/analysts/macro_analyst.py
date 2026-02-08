@@ -5,7 +5,7 @@ import torch
 import torch.nn as nn
 import numpy as np
 import matplotlib.pyplot as plt
-import streamlit as st
+# import streamlit as st
 
 # --- LSTM 기반 매크로 트렌드 분석기 ---
 class MacroTrendLSTM(nn.Module):
@@ -81,7 +81,7 @@ class MacroAnalyst(BaseAnalyst):
         y = (combined_signal > 0).astype(float).values  # bullish=1, bearish=0
 
         seq_len = 6  # 6개월 시퀀스
-        self.feat_cols = [c for c in df.columns if c not in ["M2SL", "FEDFUNDS"]]  # 예측용 feature 목록
+        self.model_features = [c for c in df.columns if c not in ["M2SL", "FEDFUNDS"]]  # 예측용 feature 목록
         features = df[self.feat_cols].values
         input_dim = features.shape[1]
         self.model = MacroTrendLSTM(input_dim=input_dim).to(self.device)
@@ -121,15 +121,19 @@ class MacroAnalyst(BaseAnalyst):
 
 
     # ===================== 트렌드 분석 =====================
+    
+    """
+    returns df_feat(for visualize) and result
+    """
     def analyze(self):
             
         df_raw = self.load_macro_data()
         if df_raw.empty:
-            return {"macro_trend": "unknown"}
+            return None, {"macro_trend": "unknown"}
 
         try:
             df_feat = self.preprocess(df_raw)
-            self.feat_cols = df_feat.columns.tolist()
+            self.all_features = df_feat.columns.tolist()
             self.logger.info(f"✅ Feature columns set: {self.feat_cols}")
             print("df_feat.columns", df_feat.columns)
 
@@ -153,7 +157,7 @@ class MacroAnalyst(BaseAnalyst):
         # ✅ 여기! feat_cols 체크 추가
         if not self.feat_cols or len(self.feat_cols) == 0:
             self.logger.warn("⚠️ feat_cols is empty or None, skipping analysis.")
-            return {"macro_trend": "unknown"}
+            return df_feat, {"macro_trend": "unknown"}
         
         # 최근 데이터로 예측
         latest_seq = torch.tensor(
@@ -178,15 +182,18 @@ class MacroAnalyst(BaseAnalyst):
         }
 
         self.logger.info(f"📊 Macro trend result: {result}")
-        return result
+        return df_feat, result
     
     
     # 모든 데이터 float32로 강제 변환
-    def _clean_numeric_df(df: pd.DataFrame, feature_list: list):
-        """모든 feature를 float32로 강제 변환"""
+    def _clean_numeric_df(self, df: pd.DataFrame, feature_list: list):
         df = df.copy()
+
         for col in feature_list:
-            # 문자열 섞인 숫자 처리 (%, 콤마, $, 공백)
+            if col not in df.columns:
+                self.logger.warn(f"⚠️ Column {col} not in df, skipping.")
+                continue
+
             df[col] = (
                 df[col]
                 .astype(str)
@@ -195,19 +202,18 @@ class MacroAnalyst(BaseAnalyst):
                 .str.replace('$', '', regex=False)
                 .str.strip()
             )
-            # 숫자 변환 (실패 시 NaN)
             df[col] = pd.to_numeric(df[col], errors="coerce")
 
-        # 무한대 → NaN, NaN 보간
         df[feature_list] = df[feature_list].replace([np.inf, -np.inf], np.nan)
         df[feature_list] = df[feature_list].interpolate(limit_direction="both").ffill().bfill()
         return df
+
 
     
     
     # Streamlit + PyTorch 그래프 시각화
     # --- 메인 함수: 시각화 및 선택 기능 ---
-    def visualize_macro_trend(self, df: pd.DataFrame):
+    def visualize_macro_trend(self, df: pd.DataFrame, selected_feature="BRENT", returnfig: bool = False):
         """
         LSTM 매크로 트렌드 예측 확률과 선택한 매크로 지표를 시각화합니다.
         
@@ -219,37 +225,72 @@ class MacroAnalyst(BaseAnalyst):
             사전 학습된 LSTM 모델의 경로 (.pth)
         """
 
-        # UI 제목
-        st.title("📊 MacroTrend LSTM 시각화 도구")
+        # 제목
+        print("📊 MacroTrend LSTM 시각화 도구")
+        
+        # feat_cols가 None인지 체크
+        if self.feat_cols is None:
+            self.logger.warn("⚠️ feat_cols is None. Did you run analyze() first?")
+            return None
+        
+        # if selected_feaure is not in df.columns
+        if selected_feature not in df.columns:
+            self.logger.warn(f"⚠️ Selected feature '{selected_feature}' not in df.")
+            return None
+        
+        # feat_cols가 없을 경우 대비해 fallback 두기
+        feature_list = self.feat_cols or []
+        feature_list = [c for c in feature_list if c in df.columns]
 
-        # 피처 선택
-        feature_list = [c for c in df.columns if c != "date"]
+        if not feature_list:
+            self.logger.warn("⚠️ No valid features available for visualization.")
+            return
+        
+        df = df.copy() # create a deep copy of DataFrame so that original cannot be modified
+
+        # date index 보존
+        df = df.reset_index()
+        
         df = self._clean_numeric_df(df, feature_list)
-        selected_feature = st.selectbox("비교할 매크로 지표를 선택하세요:", feature_list)
 
         # 모델 로드
         model = self.model
         model.eval()
 
         # 데이터 변환 및 예측
-        X = torch.tensor(df[feature_list].values, dtype=torch.float32).unsqueeze(0)
-        with torch.no_grad():
-            prob = model(X).squeeze().numpy()
-
-        df["prob_bullish"] = prob
+        is_data_converted = False
+        try:
+            # 기본값이 CPU인데 to(self.device) 안 붙이면 mps로 안됨
+            X = torch.tensor(df[feature_list].values, dtype=torch.float32).unsqueeze(0).to(self.device)
+            with torch.no_grad():
+                prob = model(X).squeeze().cpu().numpy() #GPU(mps) 사용중이기 때문에 .cpu()로 바꾸고, numpy 변환해야함.
+            is_data_converted = True
+            df["prob_bullish"] = prob
+        except Exception as e:
+            self.logger.info(f"Error Occurred at visualize_macro_trend when data converting{e}")
+            print(f"Error Occurred at visualize_macro_trend when data converting{e}")
+        
 
         # 그래프 출력
-        fig, ax1 = plt.subplots(figsize=(10, 5))
-        ax1.plot(df["date"], df[selected_feature], color='tab:blue', label=selected_feature)
-        ax1.set_ylabel(selected_feature, color='tab:blue')
-        ax1.tick_params(axis='y', labelcolor='tab:blue')
+        if is_data_converted:
+            fig, ax1 = plt.subplots(figsize=(10, 5))
+            ax1.plot(df["date"], df[selected_feature], color='tab:blue', label=selected_feature)
+            ax1.set_ylabel(selected_feature, color='tab:blue')
+            ax1.tick_params(axis='y', labelcolor='tab:blue')
 
-        ax2 = ax1.twinx()
-        ax2.plot(df["date"], df["prob_bullish"], color='tab:red', label="Prob. Bullish (Model)")
-        ax2.set_ylabel("Prob. Bullish", color='tab:red')
-        ax2.tick_params(axis='y', labelcolor='tab:red')
+            ax2 = ax1.twinx()
+            ax2.plot(df["date"], df["prob_bullish"], color='tab:red', label="Prob. Bullish (Model)")
+            ax2.set_ylabel("Prob. Bullish", color='tab:red')
+            ax2.tick_params(axis='y', labelcolor='tab:red')
 
-        plt.title(f"{selected_feature} vs LSTM 상승확률")
-        plt.tight_layout()
-        st.pyplot(fig)
-
+            plt.title(f"{selected_feature} vs LSTM Bullish Probability")
+            plt.tight_layout()
+            
+            if returnfig:
+                return fig
+            else:
+                plt.show()
+        else:
+            self.logger.info("Data not converted in visualize_macro_trend, cannot visualize!!")
+            print("Data not converted in visualize_macro_trend, cannot visualize!!")
+            

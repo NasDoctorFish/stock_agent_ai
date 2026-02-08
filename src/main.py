@@ -4,6 +4,8 @@ from core.status_logger import StatusLogger
 from core.decision_maker import DecisionMaker
 from core.investor import Investor
 
+from colorama import Fore, Style, init
+
 from analysts.macro_analyst import MacroAnalyst
 from analysts.fundamental_analyst import FundamentalAnalyst
 from analysts.stock_data_analyst import StockDataAnalyst
@@ -26,16 +28,18 @@ def main():
 
     # # 애널리스트 객체 생성
     macro = MacroAnalyst(db, logger)
-    signal = macro.analyze()
-    print(signal)
-    # 애널리스트 데이터 시각화
-    
     # ✅ base_dir은 항상 절대경로 기준으로
     BASE_DIR = Path(__file__).resolve().parents[1]   # "Stock ML" 폴더
     # logger = BASE_DIR)
     # MACRO_MODEL_PATH = BASE_DIR / "src" / "db" / "stockml.duckdb" #저장안됨
-    df = macro.load_macro_data()
-    macro.visualize_macro_trend(df)
+    # Analyze
+    df_feat, result = macro.analyze() # 여기서 df_raw, preprocess()까지 알아서 가져옴
+    print(result)
+    # print(Fore.BLUE + "df_feat")
+    # print(df_feat.head())
+    
+    # 애널리스트 데이터 시각화
+    macro.visualize_macro_trend(df_feat, "BRENT")
     
     # fund = FundamentalAnalyst(db, logger)
     # stock = StockDataAnalyst(db, logger)
