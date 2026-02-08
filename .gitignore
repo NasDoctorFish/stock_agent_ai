@@ -2,3 +2,32 @@
 config.yaml
 src/config.yaml
 poetry.lock
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual env
+.venv/
+venv/
+env/
+
+# Data / secrets
+.env
+*.csv
+*.parquet
+*.db
+*.sqlite
+
+# Model files
+*.pt
+*.pth
+*.h5
+
+# Logs
+logs/
+*.log
+
+# OS
+.DS_Store
