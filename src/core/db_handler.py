@@ -44,8 +44,8 @@ print(Path(__file__))
 
 class DBHandler:
     def __init__(self, logger):
-        BASE_DIR = Path(__file__).resolve().parents[1]
-        self.db_path = BASE_DIR / "db" / "stockml.duckdb"
+        self.base_dir = Path(__file__).resolve().parents[2]
+        self.db_path = self.base_dir / "src" / "db" / "stockml.duckdb"
         self.conn = duckdb.connect(str(self.db_path))
         self.logger = logger
         self.logger.info(f"🦆 Connected to DuckDB at {self.db_path}")
@@ -89,7 +89,7 @@ class DBHandler:
         }
 
         for filename, table_name in csv_to_table.items():
-            path = Path(f"/Users/jju/Documents/Stock ML/data/raw/{filename}")
+            path = self.base_dir / "data" / "raw" / filename
             if not path.exists():
                 print(f"⚠️ File not found: {path}")
                 continue

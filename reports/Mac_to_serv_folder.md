@@ -59,7 +59,7 @@ poetry --version
 → 서버에서 clone만 하면 끝.
 
 ```bash
-git clone https://github.com/you/stock-ml.git
+git clone https://github.com/NasDoctorFish/stock_agent_ai.git
 cd stock-ml
 ```
 

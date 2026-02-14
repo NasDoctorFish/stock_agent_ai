@@ -33,16 +33,15 @@ def main():
     macro = MacroAnalyst(db, logger)
 
     if "df_feat" not in st.session_state:
-        df_raw = macro.load_macro_data()
-        df_feat, result = macro.analyze()
+        macro_result = macro.run()
+        st.session_state.df_feat = macro_result.artifacts.get("df_feat")
+        st.session_state.result = macro_result.data
 
-        st.session_state.df_raw = df_raw
-        st.session_state.df_feat = df_feat
-        st.session_state.result = result
-
-    feature = st.selectbox("Feature", macro.feat_cols)
-    fig = macro.visualize_macro_trend(st.session_state.df_feat, feature, True)
-    st.pyplot(fig)
+    if st.session_state.df_feat is not None and macro.feat_cols:
+        feature = st.selectbox("Feature", macro.feat_cols)
+        fig = macro.visualize_macro_trend(st.session_state.df_feat, feature, True)
+        if fig is not None:
+            st.pyplot(fig)
 
 if __name__ == "__main__":
     main()

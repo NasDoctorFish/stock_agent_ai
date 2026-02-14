@@ -33,25 +33,27 @@ def main():
     # logger = BASE_DIR)
     # MACRO_MODEL_PATH = BASE_DIR / "src" / "db" / "stockml.duckdb" #저장안됨
     # Analyze
-    df_feat, result = macro.analyze() # 여기서 df_raw, preprocess()까지 알아서 가져옴
-    print(result)
+    macro_result = macro.run()  # 여기서 df_raw, preprocess()까지 알아서 가져옴
+    print(macro_result.data)
     # print(Fore.BLUE + "df_feat")
     # print(df_feat.head())
     
     # 애널리스트 데이터 시각화
-    macro.visualize_macro_trend(df_feat, "BRENT")
+    df_feat = macro_result.artifacts.get("df_feat")
+    if df_feat is not None:
+        macro.visualize_macro_trend(df_feat, "BRENT")
     
-    # fund = FundamentalAnalyst(db, logger)
-    # stock = StockDataAnalyst(db, logger)
-    # news = NewsMediaAnalyst(db, logger)
-    # biz = BusinessAnalyst(db, logger)
+    fund = FundamentalAnalyst(db, logger)
+    stock = StockDataAnalyst(db, logger)
+    news = NewsMediaAnalyst(db, logger)
+    biz = BusinessAnalyst(db, logger)
 
-    # # 투자자 객체 (모든 분석 종합)
-    # investor = Investor([macro, fund, stock, news, biz], logger)
+    # 투자자 객체 (모든 분석 종합)
+    investor = Investor([macro, fund, stock, news, biz], logger)
 
-    # # 최종 의사결정
-    # decision_maker = DecisionMaker(investor, logger)
-    # decision_maker.run()
+    # 최종 의사결정
+    decision_maker = DecisionMaker(investor, logger)
+    decision_maker.run()
 
 if __name__ == "__main__":
     main()
