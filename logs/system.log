@@ -1,241 +1,106 @@
-[2026-02-14 20:34:01] INFO | System: 🦆 Connected to DuckDB at /Users/jju/Documents/Stock_ML/src/db/stockml.duckdb
-[2026-02-14 20:34:01] INFO | System: 🔄 Updating data...
-[2026-02-14 20:34:01] INFO | System: ===== Update process started =====
-[2026-02-14 20:34:01] INFO | System: ✅ Loaded existing file: data/raw/price_daily.csv (14000 rows)
-[2026-02-14 20:34:01] INFO | System: ✅ Loaded existing file: data/raw/fundamentals_quarterly.csv (661 rows)
-[2026-02-14 20:34:01] INFO | System: ✅ Loaded existing file: data/raw/news_sentiment.csv (6721 rows)
-[2026-02-14 20:34:01] INFO | System: ✅ Loaded existing file: data/raw/macro_index.csv (53163 rows)
-[2026-02-14 20:34:01] INFO | System: Loaded 60 tickers
-[2026-02-14 20:34:01] INFO | System: Fetching news sentiment data...
-[2026-02-14 20:34:21] INFO | System: Fetching macro indices data...
-[2026-02-14 20:34:22] ERROR | System: ❌ Failed to fetch SHANGHAI (000001.SS): Bad Request.  Invalid value for variable series_id.  Series IDs should be 25 or less alphanumeric characters.
-[2026-02-14 20:34:22] ERROR | System: ❌ Failed to fetch DOWJONES (^DJI): Bad Request.  Invalid value for variable series_id.  Series IDs should be 25 or less alphanumeric characters.
-[2026-02-14 20:34:22] ERROR | System: ❌ Failed to fetch NASDAQ (^IXIC): Bad Request.  Invalid value for variable series_id.  Series IDs should be 25 or less alphanumeric characters.
-[2026-02-14 20:34:22] ERROR | System: ❌ Failed to fetch KOSPI (^KS11): Bad Request.  Invalid value for variable series_id.  Series IDs should be 25 or less alphanumeric characters.
-[2026-02-14 20:34:22] ERROR | System: ❌ Failed to fetch S&P500 (^GSPC): Bad Request.  Invalid value for variable series_id.  Series IDs should be 25 or less alphanumeric characters.
-[2026-02-14 20:34:22] ERROR | System: ❌ Failed to fetch STOXX50E (^STOXX50E): Bad Request.  Invalid value for variable series_id.  Series IDs should be 25 or less alphanumeric characters.
-[2026-02-14 20:34:22] ERROR | System: ❌ Failed to fetch HSI (^HSI): Bad Request.  Invalid value for variable series_id.  Series IDs should be 25 or less alphanumeric characters.
-[2026-02-14 20:34:22] ERROR | System: ❌ Failed to fetch NIKKEI225 (^N225): Bad Request.  Invalid value for variable series_id.  Series IDs should be 25 or less alphanumeric characters.
-[2026-02-14 20:34:22] ERROR | System: ❌ Failed to fetch EUR/USD (EURUSD=X): Bad Request.  Invalid value for variable series_id.  Series IDs should be 25 or less alphanumeric characters.
-[2026-02-14 20:34:22] ERROR | System: ❌ Failed to fetch USD/SGD (SGD=X): Bad Request.  Invalid value for variable series_id.  Series IDs should be 25 or less alphanumeric characters.
-[2026-02-14 20:34:22] ERROR | System: ❌ Failed to fetch USD/CHF (CHF=X): Bad Request.  Invalid value for variable series_id.  Series IDs should be 25 or less alphanumeric characters.
-[2026-02-14 20:34:22] ERROR | System: ❌ Failed to fetch JPY/USD (JPY=X): Bad Request.  Invalid value for variable series_id.  Series IDs should be 25 or less alphanumeric characters.
-[2026-02-14 20:34:22] ERROR | System: ❌ Failed to fetch GBP/USD (GBPUSD=X): Bad Request.  Invalid value for variable series_id.  Series IDs should be 25 or less alphanumeric characters.
-[2026-02-14 20:34:22] ERROR | System: ❌ Failed to fetch CNY/USD (CNY=X): Bad Request.  Invalid value for variable series_id.  Series IDs should be 25 or less alphanumeric characters.
-[2026-02-14 20:34:22] ERROR | System: ❌ Failed to fetch KRW/USD (KRW=X): Bad Request.  Invalid value for variable series_id.  Series IDs should be 25 or less alphanumeric characters.
-[2026-02-14 20:34:22] INFO | System: 📈 FRED: IR_KR_3Y (IR3TIB01KRQ156N) — 104 points
-[2026-02-14 20:34:22] INFO | System: 📈 FRED: FEDFUNDS (FEDFUNDS) — 313 points
-[2026-02-14 20:34:23] INFO | System: 📈 FRED: IR_JP_10Y (IRLTLT01JPM156N) — 312 points
-[2026-02-14 20:34:23] INFO | System: 📈 FRED: M2SL (M2SL) — 312 points
-[2026-02-14 20:34:23] INFO | System: 📈 FRED: BOGNONBR (BOGNONBR) — 161 points
-[2026-02-14 20:34:23] INFO | System: 📈 FRED: CPIAUCSL (CPIAUCSL) — 313 points
-[2026-02-14 20:34:23] INFO | System: 📈 FRED: CPIFABSL (CPIFABSL) — 313 points
-[2026-02-14 20:34:23] INFO | System: 📈 FRED: CPILFESL (CPILFESL) — 313 points
-[2026-02-14 20:34:24] INFO | System: 📈 FRED: DGS30 (DGS30) — 6814 points
-[2026-02-14 20:34:24] INFO | System: 📈 FRED: M1SL (M1SL) — 312 points
-[2026-02-14 20:34:24] INFO | System: 📈 FRED: PPIACO (PPIACO) — 312 points
-[2026-02-14 20:34:24] INFO | System: 📈 FRED: DGS2 (DGS2) — 6814 points
-[2026-02-14 20:34:24] INFO | System: 📈 FRED: GDPDEF (GDPDEF) — 103 points
-[2026-02-14 20:34:24] INFO | System: 📈 FRED: COREPCE (PCEPILFE) — 311 points
-[2026-02-14 20:34:24] INFO | System: 📈 FRED: DGS10 (DGS10) — 6814 points
-[2026-02-14 20:34:24] INFO | System: 📈 FRED: RRPONTSYD (RRPONTSYD) — 6006 points
-[2026-02-14 20:34:24] ERROR | System: ❌ Failed to fetch GOLD (GOLDAMGBD228NLBM): Bad Request.  The series does not exist.
-[2026-02-14 20:34:24] INFO | System: 📈 FRED: WTI (DCOILWTICO) — 6811 points
-[2026-02-14 20:34:24] ERROR | System: ❌ Failed to fetch SILVER (SLVPRUSD): Bad Request.  The series does not exist.
-[2026-02-14 20:34:24] INFO | System: 📈 FRED: CORN (PMAIZMTUSDM) — 313 points
-[2026-02-14 20:34:24] INFO | System: 📈 FRED: COPPER (PCOPPUSDM) — 313 points
-[2026-02-14 20:34:25] INFO | System: 📈 FRED: WHEAT (PWHEAMTUSDM) — 313 points
-[2026-02-14 20:34:25] INFO | System: 📈 FRED: GDPC1 (GDPC1) — 103 points
-[2026-02-14 20:34:25] INFO | System: 📈 FRED: GDP (GDP) — 103 points
-[2026-02-14 20:34:25] INFO | System: 📈 FRED: INDPRO (INDPRO) — 312 points
-[2026-02-14 20:34:25] INFO | System: 📈 FRED: UNRATE (UNRATE) — 313 points
-[2026-02-14 20:34:25] INFO | System: 📈 FRED: BRENT (DCOILBRENTEU) — 6811 points
-[2026-02-14 20:34:25] INFO | System: 📈 FRED: PAYEMS (PAYEMS) — 313 points
-[2026-02-14 20:34:25] INFO | System: 📈 FRED: RETAILSA (RSAFS) — 312 points
-[2026-02-14 20:34:25] INFO | System: 📈 FRED: NATGAS (DHHNGSP) — 6811 points
-[2026-02-14 20:34:25] ERROR | System: ❌ Failed to fetch PMI (NAPM): Bad Request.  The series does not exist.
-[2026-02-14 20:34:25] INFO | System: 📈 FRED: CONSUMER_CONFIDENCE (UMCSENT) — 312 points
-[2026-02-14 20:34:25] INFO | System: 📈 FRED: LEI (USSLIND) — 242 points
-[2026-02-14 20:34:25] INFO | System: 📈 FRED: CHINA_GDP (CHNGDPNQDSMEI) — 95 points
-[2026-02-14 20:34:25] ERROR | System: ❌ Failed to fetch KOREA_GDP (KORNGDP): Bad Request.  The series does not exist.
-[2026-02-14 20:34:25] ERROR | System: ❌ Failed to fetch EURO_GDP (NAEXKP01EZQ189S): Bad Request.  The series does not exist.
-[2026-02-14 20:34:25] INFO | System: 📈 FRED: JP_GDP (JPNNGDP) — 103 points
-[2026-02-14 20:34:25] INFO | System: 📊 Macro indices fetched: 32 succeeded, 20 failed.
-[2026-02-14 20:34:25] WARNING | System: ⚠️ Failed indices: ['SHANGHAI', 'DOWJONES', 'NASDAQ', 'KOSPI', 'S&P500', 'STOXX50E', 'HSI', 'NIKKEI225', 'EUR/USD', 'USD/SGD', 'USD/CHF', 'JPY/USD', 'GBP/USD', 'CNY/USD', 'KRW/USD', 'GOLD', 'SILVER', 'PMI', 'KOREA_GDP', 'EURO_GDP']
-[2026-02-14 20:34:25] INFO | System: ✅ Final long_df shape: (53207, 11)
-[2026-02-14 20:34:25] INFO | System: Merging new data with old datasets...
-[2026-02-14 20:34:25] INFO | System: ✅ Merged data — now 53207 rows after deduplication.
-[2026-02-14 20:34:25] INFO | System: Saving merged data to CSV files...
-[2026-02-14 20:34:26] INFO | System: ✅ All datasets updated successfully for 2026-02-14
-[2026-02-14 20:34:26] INFO | System: ===== Update process finished =====
+[2026-04-06 16:24:14] INFO | System: 🦆 Connected to DuckDB at /Users/jju/Documents/Stock_ML/src/db/stockml.duckdb
+[2026-04-06 16:24:14] INFO | System: Updating data...
+[2026-04-06 16:24:14] INFO | System: ===== Update process started =====
+[2026-04-06 16:24:14] INFO | System: ✅ Loaded existing file: data/raw/price_daily.csv (14000 rows)
+[2026-04-06 16:24:14] INFO | System: ✅ Loaded existing file: data/raw/fundamentals_quarterly.csv (661 rows)
+[2026-04-06 16:24:14] INFO | System: ✅ Loaded existing file: data/raw/news_sentiment.csv (6721 rows)
+[2026-04-06 16:24:14] INFO | System: ✅ Loaded existing file: data/raw/macro_index.csv (53483 rows)
+[2026-04-06 16:24:14] INFO | System: Loaded 60 tickers
+[2026-04-06 16:24:14] INFO | System: Fetching news sentiment data...
+[2026-04-06 16:24:41] INFO | System: Fetching macro indices data...
+[2026-04-06 16:24:41] ERROR | System: ❌ Failed to fetch STOXX50E (^STOXX50E): Bad Request.  Invalid value for variable series_id.  Series IDs should be 25 or less alphanumeric characters.
+[2026-04-06 16:24:41] ERROR | System: ❌ Failed to fetch S&P500 (^GSPC): Bad Request.  Invalid value for variable series_id.  Series IDs should be 25 or less alphanumeric characters.
+[2026-04-06 16:24:41] ERROR | System: ❌ Failed to fetch NASDAQ (^IXIC): Bad Request.  Invalid value for variable series_id.  Series IDs should be 25 or less alphanumeric characters.
+[2026-04-06 16:24:41] ERROR | System: ❌ Failed to fetch KOSPI (^KS11): Bad Request.  Invalid value for variable series_id.  Series IDs should be 25 or less alphanumeric characters.
+[2026-04-06 16:24:41] ERROR | System: ❌ Failed to fetch DOWJONES (^DJI): Bad Request.  Invalid value for variable series_id.  Series IDs should be 25 or less alphanumeric characters.
+[2026-04-06 16:24:41] ERROR | System: ❌ Failed to fetch SHANGHAI (000001.SS): Bad Request.  Invalid value for variable series_id.  Series IDs should be 25 or less alphanumeric characters.
+[2026-04-06 16:24:42] ERROR | System: ❌ Failed to fetch HSI (^HSI): Bad Request.  Invalid value for variable series_id.  Series IDs should be 25 or less alphanumeric characters.
+[2026-04-06 16:24:42] ERROR | System: ❌ Failed to fetch NIKKEI225 (^N225): Bad Request.  Invalid value for variable series_id.  Series IDs should be 25 or less alphanumeric characters.
+[2026-04-06 16:24:42] ERROR | System: ❌ Failed to fetch CNY/USD (CNY=X): Bad Request.  Invalid value for variable series_id.  Series IDs should be 25 or less alphanumeric characters.
+[2026-04-06 16:24:42] ERROR | System: ❌ Failed to fetch JPY/USD (JPY=X): Bad Request.  Invalid value for variable series_id.  Series IDs should be 25 or less alphanumeric characters.
+[2026-04-06 16:24:42] ERROR | System: ❌ Failed to fetch EUR/USD (EURUSD=X): Bad Request.  Invalid value for variable series_id.  Series IDs should be 25 or less alphanumeric characters.
+[2026-04-06 16:24:42] ERROR | System: ❌ Failed to fetch KRW/USD (KRW=X): Bad Request.  Invalid value for variable series_id.  Series IDs should be 25 or less alphanumeric characters.
+[2026-04-06 16:24:42] ERROR | System: ❌ Failed to fetch USD/CHF (CHF=X): Bad Request.  Invalid value for variable series_id.  Series IDs should be 25 or less alphanumeric characters.
+[2026-04-06 16:24:42] ERROR | System: ❌ Failed to fetch GBP/USD (GBPUSD=X): Bad Request.  Invalid value for variable series_id.  Series IDs should be 25 or less alphanumeric characters.
+[2026-04-06 16:24:42] ERROR | System: ❌ Failed to fetch USD/SGD (SGD=X): Bad Request.  Invalid value for variable series_id.  Series IDs should be 25 or less alphanumeric characters.
+[2026-04-06 16:24:42] INFO | System: 📈 FRED: FEDFUNDS (FEDFUNDS) — 315 points
+[2026-04-06 16:24:42] INFO | System: 📈 FRED: IR_KR_3Y (IR3TIB01KRQ156N) — 104 points
+[2026-04-06 16:24:43] INFO | System: 📈 FRED: M2SL (M2SL) — 314 points
+[2026-04-06 16:24:43] INFO | System: 📈 FRED: M1SL (M1SL) — 314 points
+[2026-04-06 16:24:43] INFO | System: 📈 FRED: IR_JP_10Y (IRLTLT01JPM156N) — 314 points
+[2026-04-06 16:24:43] INFO | System: 📈 FRED: BOGNONBR (BOGNONBR) — 161 points
+[2026-04-06 16:24:43] INFO | System: 📈 FRED: CPIAUCSL (CPIAUCSL) — 314 points
+[2026-04-06 16:24:43] INFO | System: 📈 FRED: DGS30 (DGS30) — 6849 points
+[2026-04-06 16:24:43] INFO | System: 📈 FRED: CPIFABSL (CPIFABSL) — 314 points
+[2026-04-06 16:24:44] INFO | System: 📈 FRED: DGS10 (DGS10) — 6849 points
+[2026-04-06 16:24:44] INFO | System: 📈 FRED: PPIACO (PPIACO) — 314 points
+[2026-04-06 16:24:44] INFO | System: 📈 FRED: COREPCE (PCEPILFE) — 313 points
+[2026-04-06 16:24:44] INFO | System: 📈 FRED: CPILFESL (CPILFESL) — 314 points
+[2026-04-06 16:24:44] INFO | System: 📈 FRED: RRPONTSYD (RRPONTSYD) — 6040 points
+[2026-04-06 16:24:44] INFO | System: 📈 FRED: DGS2 (DGS2) — 6849 points
+[2026-04-06 16:24:44] ERROR | System: ❌ Failed to fetch GOLD (GOLDAMGBD228NLBM): Bad Request.  The series does not exist.
+[2026-04-06 16:24:44] ERROR | System: ❌ Failed to fetch SILVER (SLVPRUSD): Bad Request.  The series does not exist.
+[2026-04-06 16:24:44] INFO | System: 📈 FRED: CORN (PMAIZMTUSDM) — 314 points
+[2026-04-06 16:24:45] INFO | System: 📈 FRED: GDP (GDP) — 104 points
+[2026-04-06 16:24:45] INFO | System: 📈 FRED: BRENT (DCOILBRENTEU) — 6846 points
+[2026-04-06 16:24:45] INFO | System: 📈 FRED: NATGAS (DHHNGSP) — 6846 points
+[2026-04-06 16:24:45] INFO | System: 📈 FRED: GDPDEF (GDPDEF) — 104 points
+[2026-04-06 16:24:45] INFO | System: 📈 FRED: PAYEMS (PAYEMS) — 315 points
+[2026-04-06 16:24:46] INFO | System: 📈 FRED: INDPRO (INDPRO) — 314 points
+[2026-04-06 16:24:46] INFO | System: 📈 FRED: UNRATE (UNRATE) — 315 points
+[2026-04-06 16:24:46] INFO | System: 📈 FRED: RETAILSA (RSAFS) — 314 points
+[2026-04-06 16:24:46] INFO | System: 📈 FRED: WTI (DCOILWTICO) — 6846 points
+[2026-04-06 16:24:46] ERROR | System: ❌ Failed to fetch PMI (NAPM): Bad Request.  The series does not exist.
+[2026-04-06 16:24:46] ERROR | System: ❌ Failed to fetch EURO_GDP (NAEXKP01EZQ189S): Bad Request.  The series does not exist.
+[2026-04-06 16:24:47] INFO | System: 📈 FRED: JP_GDP (JPNNGDP) — 104 points
+[2026-04-06 16:24:47] INFO | System: 📈 FRED: COPPER (PCOPPUSDM) — 314 points
+[2026-04-06 16:24:47] INFO | System: 📈 FRED: GDPC1 (GDPC1) — 104 points
+[2026-04-06 16:24:47] ERROR | System: ❌ Failed to fetch KOREA_GDP (KORNGDP): Bad Request.  The series does not exist.
+[2026-04-06 16:24:47] INFO | System: 📈 FRED: LEI (USSLIND) — 242 points
+[2026-04-06 16:24:47] INFO | System: 📈 FRED: CONSUMER_CONFIDENCE (UMCSENT) — 314 points
+[2026-04-06 16:24:47] INFO | System: 📈 FRED: CHINA_GDP (CHNGDPNQDSMEI) — 95 points
+[2026-04-06 16:24:47] INFO | System: 📈 FRED: WHEAT (PWHEAMTUSDM) — 314 points
+[2026-04-06 16:24:48] INFO | System: 📊 Macro indices fetched: 32 succeeded, 20 failed.
+[2026-04-06 16:24:48] WARNING | System: ⚠️ Failed indices: ['STOXX50E', 'S&P500', 'NASDAQ', 'KOSPI', 'DOWJONES', 'SHANGHAI', 'HSI', 'NIKKEI225', 'CNY/USD', 'JPY/USD', 'EUR/USD', 'KRW/USD', 'USD/CHF', 'GBP/USD', 'USD/SGD', 'GOLD', 'SILVER', 'PMI', 'EURO_GDP', 'KOREA_GDP']
+[2026-04-06 16:24:48] INFO | System: ✅ Final long_df shape: (53483, 11)
+[2026-04-06 16:24:48] INFO | System: Merging new data with old datasets...
+[2026-04-06 16:24:48] INFO | System: ✅ Merged data — now 53483 rows after deduplication.
+[2026-04-06 16:24:48] INFO | System: Saving merged data to CSV files...
+[2026-04-06 16:24:48] INFO | System: ✅ All datasets updated successfully for 2026-04-06
+[2026-04-06 16:24:48] INFO | System: ===== Update process finished =====
 
-[2026-02-14 20:34:26] INFO | System: 🔄 Saving to duckdb...
-[2026-02-14 20:34:26] INFO | System: Done!
-[2026-02-14 20:34:26] INFO | System: 🧠 MacroAnalyst initialized on mps
-[2026-02-14 20:34:26] INFO | System: ✅ Feature columns set: None
-[2026-02-14 20:34:26] ERROR | System: Macro Analyze Failed (Non-ValueError): 'NoneType' object is not iterable
-[2026-02-14 20:34:26] WARNING | System: ⚠️ feat_cols is empty or None, skipping analysis.
-[2026-02-14 20:34:26] WARNING | System: ⚠️ feat_cols is None. Did you run analyze() first?
-[2026-02-14 20:37:20] INFO | System: 🦆 Connected to DuckDB at /Users/jju/Documents/Stock_ML/src/db/stockml.duckdb
-[2026-02-14 20:37:20] INFO | System: 🔄 Updating data...
-[2026-02-14 20:37:20] INFO | System: ===== Update process started =====
-[2026-02-14 20:37:21] INFO | System: ✅ Loaded existing file: data/raw/price_daily.csv (14000 rows)
-[2026-02-14 20:37:21] INFO | System: ✅ Loaded existing file: data/raw/fundamentals_quarterly.csv (661 rows)
-[2026-02-14 20:37:21] INFO | System: ✅ Loaded existing file: data/raw/news_sentiment.csv (6721 rows)
-[2026-02-14 20:37:21] INFO | System: ✅ Loaded existing file: data/raw/macro_index.csv (53207 rows)
-[2026-02-14 20:37:21] INFO | System: Loaded 60 tickers
-[2026-02-14 20:37:21] INFO | System: Fetching news sentiment data...
-[2026-02-14 20:37:42] INFO | System: Fetching macro indices data...
-[2026-02-14 20:37:42] ERROR | System: ❌ Failed to fetch KOSPI (^KS11): Bad Request.  Invalid value for variable series_id.  Series IDs should be 25 or less alphanumeric characters.
-[2026-02-14 20:37:42] ERROR | System: ❌ Failed to fetch S&P500 (^GSPC): Bad Request.  Invalid value for variable series_id.  Series IDs should be 25 or less alphanumeric characters.
-[2026-02-14 20:37:42] ERROR | System: ❌ Failed to fetch NIKKEI225 (^N225): Bad Request.  Invalid value for variable series_id.  Series IDs should be 25 or less alphanumeric characters.
-[2026-02-14 20:37:42] ERROR | System: ❌ Failed to fetch STOXX50E (^STOXX50E): Bad Request.  Invalid value for variable series_id.  Series IDs should be 25 or less alphanumeric characters.
-[2026-02-14 20:37:42] ERROR | System: ❌ Failed to fetch HSI (^HSI): Bad Request.  Invalid value for variable series_id.  Series IDs should be 25 or less alphanumeric characters.
-[2026-02-14 20:37:42] ERROR | System: ❌ Failed to fetch NASDAQ (^IXIC): Bad Request.  Invalid value for variable series_id.  Series IDs should be 25 or less alphanumeric characters.
-[2026-02-14 20:37:42] ERROR | System: ❌ Failed to fetch DOWJONES (^DJI): Bad Request.  Invalid value for variable series_id.  Series IDs should be 25 or less alphanumeric characters.
-[2026-02-14 20:37:42] ERROR | System: ❌ Failed to fetch SHANGHAI (000001.SS): Bad Request.  Invalid value for variable series_id.  Series IDs should be 25 or less alphanumeric characters.
-[2026-02-14 20:37:42] ERROR | System: ❌ Failed to fetch KRW/USD (KRW=X): Bad Request.  Invalid value for variable series_id.  Series IDs should be 25 or less alphanumeric characters.
-[2026-02-14 20:37:42] ERROR | System: ❌ Failed to fetch JPY/USD (JPY=X): Bad Request.  Invalid value for variable series_id.  Series IDs should be 25 or less alphanumeric characters.
-[2026-02-14 20:37:42] ERROR | System: ❌ Failed to fetch GBP/USD (GBPUSD=X): Bad Request.  Invalid value for variable series_id.  Series IDs should be 25 or less alphanumeric characters.
-[2026-02-14 20:37:42] ERROR | System: ❌ Failed to fetch EUR/USD (EURUSD=X): Bad Request.  Invalid value for variable series_id.  Series IDs should be 25 or less alphanumeric characters.
-[2026-02-14 20:37:42] ERROR | System: ❌ Failed to fetch USD/SGD (SGD=X): Bad Request.  Invalid value for variable series_id.  Series IDs should be 25 or less alphanumeric characters.
-[2026-02-14 20:37:42] ERROR | System: ❌ Failed to fetch USD/CHF (CHF=X): Bad Request.  Invalid value for variable series_id.  Series IDs should be 25 or less alphanumeric characters.
-[2026-02-14 20:37:42] ERROR | System: ❌ Failed to fetch CNY/USD (CNY=X): Bad Request.  Invalid value for variable series_id.  Series IDs should be 25 or less alphanumeric characters.
-[2026-02-14 20:37:42] INFO | System: 📈 FRED: FEDFUNDS (FEDFUNDS) — 313 points
-[2026-02-14 20:37:43] INFO | System: 📈 FRED: IR_KR_3Y (IR3TIB01KRQ156N) — 104 points
-[2026-02-14 20:37:43] INFO | System: 📈 FRED: BOGNONBR (BOGNONBR) — 161 points
-[2026-02-14 20:37:43] INFO | System: 📈 FRED: M2SL (M2SL) — 312 points
-[2026-02-14 20:37:43] INFO | System: 📈 FRED: M1SL (M1SL) — 312 points
-[2026-02-14 20:37:43] INFO | System: 📈 FRED: IR_JP_10Y (IRLTLT01JPM156N) — 312 points
-[2026-02-14 20:37:43] INFO | System: 📈 FRED: CPIAUCSL (CPIAUCSL) — 313 points
-[2026-02-14 20:37:43] INFO | System: 📈 FRED: CPIFABSL (CPIFABSL) — 313 points
-[2026-02-14 20:37:43] INFO | System: 📈 FRED: CPILFESL (CPILFESL) — 313 points
-[2026-02-14 20:37:43] INFO | System: 📈 FRED: PPIACO (PPIACO) — 312 points
-[2026-02-14 20:37:44] INFO | System: 📈 FRED: COREPCE (PCEPILFE) — 311 points
-[2026-02-14 20:37:44] INFO | System: 📈 FRED: DGS30 (DGS30) — 6814 points
-[2026-02-14 20:37:44] INFO | System: 📈 FRED: DGS10 (DGS10) — 6814 points
-[2026-02-14 20:37:44] INFO | System: 📈 FRED: GDPDEF (GDPDEF) — 103 points
-[2026-02-14 20:37:44] INFO | System: 📈 FRED: DGS2 (DGS2) — 6814 points
-[2026-02-14 20:37:44] INFO | System: 📈 FRED: RRPONTSYD (RRPONTSYD) — 6006 points
-[2026-02-14 20:37:44] ERROR | System: ❌ Failed to fetch SILVER (SLVPRUSD): Bad Request.  The series does not exist.
-[2026-02-14 20:37:44] INFO | System: 📈 FRED: COPPER (PCOPPUSDM) — 313 points
-[2026-02-14 20:37:44] INFO | System: 📈 FRED: CORN (PMAIZMTUSDM) — 313 points
-[2026-02-14 20:37:45] INFO | System: 📈 FRED: INDPRO (INDPRO) — 312 points
-[2026-02-14 20:37:45] INFO | System: 📈 FRED: WTI (DCOILWTICO) — 6811 points
-[2026-02-14 20:37:45] INFO | System: 📈 FRED: BRENT (DCOILBRENTEU) — 6811 points
-[2026-02-14 20:37:46] ERROR | System: ❌ Failed to fetch GOLD (GOLDAMGBD228NLBM): Bad Request.  The series does not exist.
-[2026-02-14 20:37:46] INFO | System: 📈 FRED: PAYEMS (PAYEMS) — 313 points
-[2026-02-14 20:37:46] INFO | System: 📈 FRED: GDP (GDP) — 103 points
-[2026-02-14 20:37:46] INFO | System: 📈 FRED: RETAILSA (RSAFS) — 312 points
-[2026-02-14 20:37:46] INFO | System: 📈 FRED: NATGAS (DHHNGSP) — 6811 points
-[2026-02-14 20:37:46] INFO | System: 📈 FRED: WHEAT (PWHEAMTUSDM) — 313 points
-[2026-02-14 20:37:46] INFO | System: 📈 FRED: CONSUMER_CONFIDENCE (UMCSENT) — 312 points
-[2026-02-14 20:37:46] INFO | System: 📈 FRED: GDPC1 (GDPC1) — 103 points
-[2026-02-14 20:37:46] ERROR | System: ❌ Failed to fetch KOREA_GDP (KORNGDP): Bad Request.  The series does not exist.
-[2026-02-14 20:37:46] INFO | System: 📈 FRED: JP_GDP (JPNNGDP) — 103 points
-[2026-02-14 20:37:47] ERROR | System: ❌ Failed to fetch PMI (NAPM): Bad Request.  The series does not exist.
-[2026-02-14 20:37:47] INFO | System: 📈 FRED: CHINA_GDP (CHNGDPNQDSMEI) — 95 points
-[2026-02-14 20:37:47] INFO | System: 📈 FRED: UNRATE (UNRATE) — 313 points
-[2026-02-14 20:37:47] INFO | System: 📈 FRED: LEI (USSLIND) — 242 points
-[2026-02-14 20:37:47] ERROR | System: ❌ Failed to fetch EURO_GDP (NAEXKP01EZQ189S): Bad Request.  The series does not exist.
-[2026-02-14 20:37:47] INFO | System: 📊 Macro indices fetched: 32 succeeded, 20 failed.
-[2026-02-14 20:37:47] WARNING | System: ⚠️ Failed indices: ['KOSPI', 'S&P500', 'NIKKEI225', 'STOXX50E', 'HSI', 'NASDAQ', 'DOWJONES', 'SHANGHAI', 'KRW/USD', 'JPY/USD', 'GBP/USD', 'EUR/USD', 'USD/SGD', 'USD/CHF', 'CNY/USD', 'SILVER', 'GOLD', 'KOREA_GDP', 'PMI', 'EURO_GDP']
-[2026-02-14 20:37:47] INFO | System: ✅ Final long_df shape: (53207, 11)
-[2026-02-14 20:37:47] INFO | System: Merging new data with old datasets...
-[2026-02-14 20:37:47] INFO | System: ✅ Merged data — now 53207 rows after deduplication.
-[2026-02-14 20:37:47] INFO | System: Saving merged data to CSV files...
-[2026-02-14 20:37:48] INFO | System: ✅ All datasets updated successfully for 2026-02-14
-[2026-02-14 20:37:48] INFO | System: ===== Update process finished =====
-
-[2026-02-14 20:37:48] INFO | System: 🔄 Saving to duckdb...
-[2026-02-14 20:37:48] INFO | System: Done!
-[2026-02-14 20:37:48] INFO | System: 🧠 MacroAnalyst initialized on mps
-[2026-02-14 20:37:48] INFO | System: ✅ Feature columns set: None
-[2026-02-14 20:37:48] ERROR | System: Macro Analyze Failed (Non-ValueError): 'NoneType' object is not iterable
-[2026-02-14 20:37:48] WARNING | System: ⚠️ feat_cols is empty or None, skipping analysis.
-[2026-02-14 20:37:48] WARNING | System: ⚠️ feat_cols is None. Did you run analyze() first?
-[2026-02-14 20:49:27] INFO | System: 🦆 Connected to DuckDB at /Users/jju/Documents/Stock_ML/src/db/stockml.duckdb
-[2026-02-14 20:49:27] INFO | System: 🔄 Updating data...
-[2026-02-14 20:49:27] INFO | System: ===== Update process started =====
-[2026-02-14 20:49:27] INFO | System: ✅ Loaded existing file: data/raw/price_daily.csv (14000 rows)
-[2026-02-14 20:49:27] INFO | System: ✅ Loaded existing file: data/raw/fundamentals_quarterly.csv (661 rows)
-[2026-02-14 20:49:27] INFO | System: ✅ Loaded existing file: data/raw/news_sentiment.csv (6721 rows)
-[2026-02-14 20:49:27] INFO | System: ✅ Loaded existing file: data/raw/macro_index.csv (53207 rows)
-[2026-02-14 20:49:27] INFO | System: Loaded 60 tickers
-[2026-02-14 20:49:27] INFO | System: Fetching news sentiment data...
-[2026-02-14 20:49:49] INFO | System: Fetching macro indices data...
-[2026-02-14 20:49:49] ERROR | System: ❌ Failed to fetch S&P500 (^GSPC): Bad Request.  Invalid value for variable series_id.  Series IDs should be 25 or less alphanumeric characters.
-[2026-02-14 20:49:49] ERROR | System: ❌ Failed to fetch SHANGHAI (000001.SS): Bad Request.  Invalid value for variable series_id.  Series IDs should be 25 or less alphanumeric characters.
-[2026-02-14 20:49:49] ERROR | System: ❌ Failed to fetch NASDAQ (^IXIC): Bad Request.  Invalid value for variable series_id.  Series IDs should be 25 or less alphanumeric characters.
-[2026-02-14 20:49:49] ERROR | System: ❌ Failed to fetch NIKKEI225 (^N225): Bad Request.  Invalid value for variable series_id.  Series IDs should be 25 or less alphanumeric characters.
-[2026-02-14 20:49:49] ERROR | System: ❌ Failed to fetch KOSPI (^KS11): Bad Request.  Invalid value for variable series_id.  Series IDs should be 25 or less alphanumeric characters.
-[2026-02-14 20:49:49] ERROR | System: ❌ Failed to fetch STOXX50E (^STOXX50E): Bad Request.  Invalid value for variable series_id.  Series IDs should be 25 or less alphanumeric characters.
-[2026-02-14 20:49:49] ERROR | System: ❌ Failed to fetch DOWJONES (^DJI): Bad Request.  Invalid value for variable series_id.  Series IDs should be 25 or less alphanumeric characters.
-[2026-02-14 20:49:49] ERROR | System: ❌ Failed to fetch HSI (^HSI): Bad Request.  Invalid value for variable series_id.  Series IDs should be 25 or less alphanumeric characters.
-[2026-02-14 20:49:49] ERROR | System: ❌ Failed to fetch GBP/USD (GBPUSD=X): Bad Request.  Invalid value for variable series_id.  Series IDs should be 25 or less alphanumeric characters.
-[2026-02-14 20:49:49] ERROR | System: ❌ Failed to fetch KRW/USD (KRW=X): Bad Request.  Invalid value for variable series_id.  Series IDs should be 25 or less alphanumeric characters.
-[2026-02-14 20:49:49] ERROR | System: ❌ Failed to fetch JPY/USD (JPY=X): Bad Request.  Invalid value for variable series_id.  Series IDs should be 25 or less alphanumeric characters.
-[2026-02-14 20:49:49] ERROR | System: ❌ Failed to fetch EUR/USD (EURUSD=X): Bad Request.  Invalid value for variable series_id.  Series IDs should be 25 or less alphanumeric characters.
-[2026-02-14 20:49:49] ERROR | System: ❌ Failed to fetch USD/SGD (SGD=X): Bad Request.  Invalid value for variable series_id.  Series IDs should be 25 or less alphanumeric characters.
-[2026-02-14 20:49:49] ERROR | System: ❌ Failed to fetch USD/CHF (CHF=X): Bad Request.  Invalid value for variable series_id.  Series IDs should be 25 or less alphanumeric characters.
-[2026-02-14 20:49:49] ERROR | System: ❌ Failed to fetch CNY/USD (CNY=X): Bad Request.  Invalid value for variable series_id.  Series IDs should be 25 or less alphanumeric characters.
-[2026-02-14 20:49:49] INFO | System: 📈 FRED: FEDFUNDS (FEDFUNDS) — 313 points
-[2026-02-14 20:49:50] INFO | System: 📈 FRED: IR_KR_3Y (IR3TIB01KRQ156N) — 104 points
-[2026-02-14 20:49:50] INFO | System: 📈 FRED: M1SL (M1SL) — 312 points
-[2026-02-14 20:49:50] INFO | System: 📈 FRED: BOGNONBR (BOGNONBR) — 161 points
-[2026-02-14 20:49:50] INFO | System: 📈 FRED: IR_JP_10Y (IRLTLT01JPM156N) — 312 points
-[2026-02-14 20:49:50] INFO | System: 📈 FRED: DGS2 (DGS2) — 6814 points
-[2026-02-14 20:49:50] INFO | System: 📈 FRED: CPIAUCSL (CPIAUCSL) — 313 points
-[2026-02-14 20:49:50] INFO | System: 📈 FRED: CPIFABSL (CPIFABSL) — 313 points
-[2026-02-14 20:49:50] INFO | System: 📈 FRED: CPILFESL (CPILFESL) — 313 points
-[2026-02-14 20:49:50] INFO | System: 📈 FRED: DGS10 (DGS10) — 6814 points
-[2026-02-14 20:49:50] INFO | System: 📈 FRED: DGS30 (DGS30) — 6814 points
-[2026-02-14 20:49:51] INFO | System: 📈 FRED: M2SL (M2SL) — 312 points
-[2026-02-14 20:49:51] INFO | System: 📈 FRED: PPIACO (PPIACO) — 312 points
-[2026-02-14 20:49:51] ERROR | System: ❌ Failed to fetch GOLD (GOLDAMGBD228NLBM): Bad Request.  The series does not exist.
-[2026-02-14 20:49:51] INFO | System: 📈 FRED: GDPDEF (GDPDEF) — 103 points
-[2026-02-14 20:49:51] INFO | System: 📈 FRED: COREPCE (PCEPILFE) — 311 points
-[2026-02-14 20:49:51] INFO | System: 📈 FRED: RRPONTSYD (RRPONTSYD) — 6006 points
-[2026-02-14 20:49:51] INFO | System: 📈 FRED: WTI (DCOILWTICO) — 6811 points
-[2026-02-14 20:49:51] INFO | System: 📈 FRED: COPPER (PCOPPUSDM) — 313 points
-[2026-02-14 20:49:51] INFO | System: 📈 FRED: NATGAS (DHHNGSP) — 6811 points
-[2026-02-14 20:49:52] INFO | System: 📈 FRED: GDP (GDP) — 103 points
-[2026-02-14 20:49:52] INFO | System: 📈 FRED: CORN (PMAIZMTUSDM) — 313 points
-[2026-02-14 20:49:52] INFO | System: 📈 FRED: WHEAT (PWHEAMTUSDM) — 313 points
-[2026-02-14 20:49:52] INFO | System: 📈 FRED: BRENT (DCOILBRENTEU) — 6811 points
-[2026-02-14 20:49:52] INFO | System: 📈 FRED: INDPRO (INDPRO) — 312 points
-[2026-02-14 20:49:52] INFO | System: 📈 FRED: UNRATE (UNRATE) — 313 points
-[2026-02-14 20:49:52] INFO | System: 📈 FRED: PAYEMS (PAYEMS) — 313 points
-[2026-02-14 20:49:52] INFO | System: 📈 FRED: RETAILSA (RSAFS) — 312 points
-[2026-02-14 20:49:52] ERROR | System: ❌ Failed to fetch PMI (NAPM): Bad Request.  The series does not exist.
-[2026-02-14 20:49:52] ERROR | System: ❌ Failed to fetch KOREA_GDP (KORNGDP): Bad Request.  The series does not exist.
-[2026-02-14 20:49:52] INFO | System: 📈 FRED: LEI (USSLIND) — 242 points
-[2026-02-14 20:49:52] INFO | System: 📈 FRED: GDPC1 (GDPC1) — 103 points
-[2026-02-14 20:49:52] ERROR | System: ❌ Failed to fetch EURO_GDP (NAEXKP01EZQ189S): Bad Request.  The series does not exist.
-[2026-02-14 20:49:52] INFO | System: 📈 FRED: JP_GDP (JPNNGDP) — 103 points
-[2026-02-14 20:49:52] INFO | System: 📈 FRED: CONSUMER_CONFIDENCE (UMCSENT) — 312 points
-[2026-02-14 20:49:53] INFO | System: 📈 FRED: CHINA_GDP (CHNGDPNQDSMEI) — 95 points
-[2026-02-14 20:49:53] ERROR | System: ❌ Failed to fetch SILVER (SLVPRUSD): Bad Request.  The series does not exist.
-[2026-02-14 20:49:53] INFO | System: 📊 Macro indices fetched: 32 succeeded, 20 failed.
-[2026-02-14 20:49:53] WARNING | System: ⚠️ Failed indices: ['S&P500', 'SHANGHAI', 'NASDAQ', 'NIKKEI225', 'KOSPI', 'STOXX50E', 'DOWJONES', 'HSI', 'GBP/USD', 'KRW/USD', 'JPY/USD', 'EUR/USD', 'USD/SGD', 'USD/CHF', 'CNY/USD', 'GOLD', 'PMI', 'KOREA_GDP', 'EURO_GDP', 'SILVER']
-[2026-02-14 20:49:53] INFO | System: ✅ Final long_df shape: (53207, 11)
-[2026-02-14 20:49:53] INFO | System: Merging new data with old datasets...
-[2026-02-14 20:49:53] INFO | System: ✅ Merged data — now 53207 rows after deduplication.
-[2026-02-14 20:49:53] INFO | System: Saving merged data to CSV files...
-[2026-02-14 20:49:53] INFO | System: ✅ All datasets updated successfully for 2026-02-14
-[2026-02-14 20:49:53] INFO | System: ===== Update process finished =====
-
-[2026-02-14 20:49:53] INFO | System: 🔄 Saving to duckdb...
-[2026-02-14 20:49:53] INFO | System: ✅ /Users/jju/Documents/Stock_ML/data/raw/fundamentals_quarterly.csv → fundamentals_q_full 저장 완료
-[2026-02-14 20:49:53] INFO | System: LOADING COMPLETED: fundamentals_q_full in /Users/jju/Documents/Stock_ML/data/raw/fundamentals_quarterly.csv
-[2026-02-14 20:49:54] INFO | System: ✅ /Users/jju/Documents/Stock_ML/data/raw/macro_index.csv → macro_index_full 저장 완료
-[2026-02-14 20:49:54] INFO | System: LOADING COMPLETED: macro_index_full in /Users/jju/Documents/Stock_ML/data/raw/macro_index.csv
-[2026-02-14 20:49:54] INFO | System: ✅ /Users/jju/Documents/Stock_ML/data/raw/news_sentiment.csv → news_sentiment 저장 완료
-[2026-02-14 20:49:54] INFO | System: LOADING COMPLETED: news_sentiment in /Users/jju/Documents/Stock_ML/data/raw/news_sentiment.csv
-[2026-02-14 20:49:54] INFO | System: ✅ /Users/jju/Documents/Stock_ML/data/raw/price_daily.csv → price_daily_full 저장 완료
-[2026-02-14 20:49:54] INFO | System: LOADING COMPLETED: price_daily_full in /Users/jju/Documents/Stock_ML/data/raw/price_daily.csv
-[2026-02-14 20:49:54] INFO | System: Done!
-[2026-02-14 20:49:54] INFO | System: 🧠 MacroAnalyst initialized on mps
-[2026-02-14 20:49:59] INFO | System: ✅ LSTM trained (Final Loss: 0.3316)
-[2026-02-14 20:50:00] INFO | System: 📊 Macro trend result: {'macro_trend': 'bearish', 'prob_bullish': 0.092, 'latest_date': '2026-02-13', 'model_used': 'lstm'}
-[2026-02-14 20:50:32] INFO | System: Final Decision: {'timestamp': '2026-02-14 12:50:32 UTC', 'economic_regime': 'growth', 'regime_metrics': {'mean_log_return': 0.0015265924464830684, 'volatility': 0.009511936194250448, 'long_run_volatility': 0.014398299613872807, 'vol_cluster': 0.2569260925663544}, 'equities_favorable': True, 'top_stocks': [{'stock_id': 'DNN', 'score': 5.4822043001398795, 'reasons': ['positive momentum', 'healthy margin', 'positive sentiment'], 'metrics': {'momentum': 0.23611109731374036, 'volatility': 0.03684133442027003, 'drawdown': -0.18730286745481217, 'obs': 60, 'latest_fiscal_date': '2025-06-30', 'revenue': 1276000.0, 'net_income': 12498000.0, 'revenue_growth': 0.0, 'net_margin': 9.794670846394984, 'sentiment': 0.9993254542350769, 'operating_margin': -14.725705329153605, 'outlook': 'negative'}}, {'stock_id': 'INTC', 'score': 1.5128259675450038, 'reasons': ['positive momentum', 'positive sentiment'], 'metrics': {'momentum': 0.7597433291113966, 'volatility': 0.04185612086024059, 'drawdown': -0.11468766628910343, 'obs': 60, 'latest_fiscal_date': '2025-06-30', 'revenue': 12859000000.0, 'net_income': -2918000000.0, 'revenue_growth': 0.0, 'net_margin': -0.22692277782098141, 'sentiment': 0.9639917509724395, 'operating_margin': -0.10000777665448324, 'outlook': 'negative'}}, {'stock_id': 'LEU', 'score': 1.168322457287502, 'reasons': ['positive momentum', 'healthy margin', 'positive sentiment', 'solid operating margin'], 'metrics': {'momentum': 0.49850493767882686, 'volatility': 0.06410922148525189, 'drawdown': -0.3256094753948693, 'obs': 60, 'latest_fiscal_date': '2025-06-30', 'revenue': 154500000.0, 'net_income': 28900000.0, 'revenue_growth': 0.0, 'net_margin': 0.18705501618122977, 'sentiment': 0.9746687737378207, 'operating_margin': 0.2168284789644013, 'outlook': 'positive'}}, {'stock_id': 'AMD', 'score': 1.0801113544662326, 'reasons': ['positive momentum', 'healthy margin', 'positive sentiment'], 'metrics': {'momentum': 0.46516142351290934, 'volatility': 0.04199518828695025, 'drawdown': -0.1990091996280201, 'obs': 60, 'latest_fiscal_date': '2025-06-30', 'revenue': 7685000000.0, 'net_income': 872000000.0, 'revenue_growth': 0.0, 'net_margin': 0.11346779440468445, 'sentiment': 0.946510414481163, 'operating_margin': -0.017436564736499675, 'outlook': 'negative'}}, {'stock_id': 'GOOGL', 'score': 1.060553024173901, 'reasons': ['positive momentum', 'healthy margin', 'positive sentiment', 'solid operating margin'], 'metrics': {'momentum': 0.39945060087056006, 'volatility': 0.018202805093375345, 'drawdown': -0.0739207292639863, 'obs': 60, 'latest_fiscal_date': '2025-06-30', 'revenue': 96428000000.0, 'net_income': 28196000000.0, 'revenue_growth': 0.0, 'net_margin': 0.2924046957315303, 'sentiment': 0.9398098334670066, 'operating_margin': 0.3242937735927324, 'outlook': 'positive'}}, {'stock_id': 'CAT', 'score': 0.9508805796102898, 'reasons': ['positive momentum', 'healthy margin', 'positive sentiment', 'solid operating margin'], 'metrics': {'momentum': 0.3830177046420231, 'volatility': 0.021984504997401257, 'drawdown': -0.06694048584563017, 'obs': 60, 'latest_fiscal_date': '2025-06-30', 'revenue': 16569000000.0, 'net_income': 2179000000.0, 'revenue_growth': 0.0, 'net_margin': 0.13151065242319995, 'sentiment': 0.9559204839930242, 'operating_margin': 0.1726115034099825, 'outlook': 'positive'}}, {'stock_id': 'UROY', 'score': 0.9013470100938465, 'reasons': ['positive momentum', 'healthy margin'], 'metrics': {'momentum': 0.46564888622118894, 'volatility': 0.05706608701449374, 'drawdown': -0.24376288033142868, 'obs': 60, 'latest_fiscal_date': '2025-07-31', 'revenue': 33212000.0, 'net_income': 1525000.0, 'revenue_growth': 0.0, 'net_margin': 0.04591713838371673, 'sentiment': None, 'operating_margin': 0.09234613994941587, 'outlook': 'neutral'}}, {'stock_id': 'TSLA', 'score': 0.8462601430583261, 'reasons': ['positive momentum', 'healthy margin', 'positive sentiment'], 'metrics': {'momentum': 0.3556801205517768, 'volatility': 0.030120242349139265, 'drawdown': -0.10541856150937878, 'obs': 60, 'latest_fiscal_date': '2025-06-30', 'revenue': 22496000000.0, 'net_income': 1172000000.0, 'revenue_growth': 0.0, 'net_margin': 0.05209815078236131, 'sentiment': 0.9481760129636648, 'operating_margin': 0.041029516358463726, 'outlook': 'negative'}}, {'stock_id': 'IBM', 'score': 0.7971109296426263, 'reasons': ['positive momentum', 'healthy margin', 'positive sentiment', 'solid operating margin'], 'metrics': {'momentum': 0.30668306611117035, 'volatility': 0.017030539748160513, 'drawdown': -0.0628453074828661, 'obs': 60, 'latest_fiscal_date': '2025-06-30', 'revenue': 16977000000.0, 'net_income': 2194000000.0, 'revenue_growth': 0.0, 'net_margin': 0.12923366908169878, 'sentiment': 0.9464258783393436, 'operating_margin': 0.1817753431112682, 'outlook': 'positive'}}, {'stock_id': 'CCJ', 'score': 0.7168285309922844, 'reasons': ['positive momentum', 'healthy margin', 'positive sentiment', 'solid operating margin'], 'metrics': {'momentum': 0.21433121883443795, 'volatility': 0.03948621878963607, 'drawdown': -0.12146789113642065, 'obs': 60, 'latest_fiscal_date': '2025-06-30', 'revenue': 877016000.0, 'net_income': 320888000.0, 'revenue_growth': 0.0, 'net_margin': 0.36588614118784607, 'sentiment': 0.9570430707931519, 'operating_margin': 0.18923714048546433, 'outlook': 'positive'}}], 'alternatives': [], 'recommendation': 'Equities appear favorable based on the detected regime.', 'context_summary': {'macro': {'macro_trend': 'bearish', 'prob_bullish': 0.092, 'latest_date': '2026-02-13', 'model_used': 'lstm'}, 'fundamental': 'Fundamental analysis completed', 'stock_data': 'Stock data analysis completed', 'news': 'News sentiment analysis completed', 'business': 'Business analysis completed'}}
+[2026-04-06 16:24:48] INFO | System: ✅ /Users/jju/Documents/Stock_ML/data/raw/fundamentals_quarterly.csv → fundamentals_q_full 저장 완료
+[2026-04-06 16:24:48] INFO | System: LOADING COMPLETED: fundamentals_q_full in /Users/jju/Documents/Stock_ML/data/raw/fundamentals_quarterly.csv
+[2026-04-06 16:24:48] INFO | System: ✅ /Users/jju/Documents/Stock_ML/data/raw/macro_index.csv → macro_index_full 저장 완료
+[2026-04-06 16:24:48] INFO | System: LOADING COMPLETED: macro_index_full in /Users/jju/Documents/Stock_ML/data/raw/macro_index.csv
+[2026-04-06 16:24:48] INFO | System: ✅ /Users/jju/Documents/Stock_ML/data/raw/news_sentiment.csv → news_sentiment 저장 완료
+[2026-04-06 16:24:48] INFO | System: LOADING COMPLETED: news_sentiment in /Users/jju/Documents/Stock_ML/data/raw/news_sentiment.csv
+[2026-04-06 16:24:48] INFO | System: ✅ /Users/jju/Documents/Stock_ML/data/raw/price_daily.csv → price_daily_full 저장 완료
+[2026-04-06 16:24:48] INFO | System: LOADING COMPLETED: price_daily_full in /Users/jju/Documents/Stock_ML/data/raw/price_daily.csv
+[2026-04-06 16:24:48] INFO | System: Done!
+[2026-04-06 16:24:48] INFO | System: Detecting US market regime...
+[2026-04-06 16:24:51] INFO | System:   US regime: Cautious (Late Cycle / Mixed) (score +2)
+[2026-04-06 16:24:51] INFO | System: Detecting KR market regime...
+[2026-04-06 16:24:56] INFO | System:   KR regime: Cautious (Late Cycle / Mixed) (score +0)
+[2026-04-06 16:24:56] INFO | System: Running market timing / valuation...
+[2026-04-06 16:24:59] INFO | System:   US valuation: Expensive | KR valuation: N/A
+[2026-04-06 16:24:59] INFO | System: === KR Pipeline ===
+[2026-04-06 16:24:59] INFO | System: Final Decision: {'timestamp': '2026-04-06 08:24:59 UTC', 'economic_regime': 'unknown', 'regime_metrics': {}, 'equities_favorable': False, 'top_stocks': [], 'alternatives': ['cash', 'short-duration bonds', 'investment-grade bonds', 'gold/commodities', 'defensive equity sectors'], 'recommendation': 'Equities look unfavorable; prioritize defensive alternatives.', 'context_summary': {'macro': {}, 'fundamental': '', 'stock_data': '', 'news': '', 'business': ''}}
+[2026-04-06 16:47:43] INFO | System: Detecting US market regime...
+[2026-04-06 16:47:46] INFO | System:   US regime: Cautious (Late Cycle / Mixed) (score +2)
+[2026-04-06 16:47:46] INFO | System: Detecting KR market regime...
+[2026-04-06 16:47:48] INFO | System:   KR regime: Cautious (Late Cycle / Mixed) (score +0)
+[2026-04-06 16:47:48] INFO | System: Running market timing / valuation...
+[2026-04-06 16:47:51] INFO | System:   US valuation: Expensive | KR valuation: N/A
+[2026-04-06 16:47:51] INFO | System: === KR Pipeline ===
+[2026-04-06 16:47:51] INFO | System: [KR Decision] regime=volatility_clustering top=['006400.KS', '005380.KS', '005930.KS']
+[2026-04-06 16:47:51] INFO | System: [KR] 0 order(s) executed (paper=True)
+[2026-04-06 17:42:02] INFO | System: Detecting US market regime...
+[2026-04-06 17:42:04] INFO | System:   US regime: Cautious (Late Cycle / Mixed) (score +2)
+[2026-04-06 17:42:04] INFO | System: Detecting KR market regime...
+[2026-04-06 17:42:06] INFO | System:   KR regime: Cautious (Late Cycle / Mixed) (score +0)
+[2026-04-06 17:42:06] INFO | System: Running market timing / valuation...
+[2026-04-06 17:42:08] INFO | System:   US valuation: Expensive | KR valuation: N/A
+[2026-04-06 17:42:08] INFO | System: === KR Pipeline ===
+[2026-04-06 17:42:09] INFO | System: [KR Decision] regime=volatility_clustering top=['006400.KS', '005380.KS', '005930.KS']
+[2026-04-06 17:42:09] INFO | System: [KR] 0 order(s) executed (paper=True)

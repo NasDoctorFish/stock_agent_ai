@@ -1,0 +1,115 @@
+# ======================================
+# Korean Stock Tickers — Kiwoom / yfinance
+# ======================================
+# Each entry has:
+#   kiwoom_code : 6-digit KRX stock code (used with Kiwoom API)
+#   yf_ticker   : Yahoo Finance ticker (append .KS for KOSPI, .KQ for KOSDAQ)
+#   name        : Company name
+#   sector      : Sector classification
+
+kr_tickers:
+
+  # 🖥  Technology / Semiconductors
+  - kiwoom_code: "005930"
+    yf_ticker:   "005930.KS"
+    name:        "Samsung Electronics"
+    sector:      "Technology"
+
+  - kiwoom_code: "000660"
+    yf_ticker:   "000660.KS"
+    name:        "SK Hynix"
+    sector:      "Technology"
+
+  - kiwoom_code: "066570"
+    yf_ticker:   "066570.KS"
+    name:        "LG Electronics"
+    sector:      "Technology"
+
+  # 🌐 Internet / Platform
+  - kiwoom_code: "035720"
+    yf_ticker:   "035720.KS"
+    name:        "Kakao"
+    sector:      "Internet"
+
+  - kiwoom_code: "035420"
+    yf_ticker:   "035420.KS"
+    name:        "NAVER"
+    sector:      "Internet"
+
+  # 🚗 Automotive
+  - kiwoom_code: "005380"
+    yf_ticker:   "005380.KS"
+    name:        "Hyundai Motor"
+    sector:      "Automotive"
+
+  - kiwoom_code: "000270"
+    yf_ticker:   "000270.KS"
+    name:        "Kia"
+    sector:      "Automotive"
+
+  # 🔋 Battery / EV Materials
+  - kiwoom_code: "006400"
+    yf_ticker:   "006400.KS"
+    name:        "Samsung SDI"
+    sector:      "Battery"
+
+  - kiwoom_code: "051910"
+    yf_ticker:   "051910.KS"
+    name:        "LG Chem"
+    sector:      "Battery"
+
+  - kiwoom_code: "373220"
+    yf_ticker:   "373220.KS"
+    name:        "LG Energy Solution"
+    sector:      "Battery"
+
+  # 🏗  Industrials / Conglomerates
+  - kiwoom_code: "028260"
+    yf_ticker:   "028260.KS"
+    name:        "Samsung C&T"
+    sector:      "Industrials"
+
+  - kiwoom_code: "003550"
+    yf_ticker:   "003550.KS"
+    name:        "LG Corp"
+    sector:      "Conglomerate"
+
+  - kiwoom_code: "034730"
+    yf_ticker:   "034730.KS"
+    name:        "SK"
+    sector:      "Conglomerate"
+
+  # 💊 Pharmaceuticals / Bio
+  - kiwoom_code: "207940"
+    yf_ticker:   "207940.KS"
+    name:        "Samsung Biologics"
+    sector:      "Pharma"
+
+  - kiwoom_code: "068270"
+    yf_ticker:   "068270.KS"
+    name:        "Celltrion"
+    sector:      "Pharma"
+
+  # 🏦 Finance / Insurance
+  - kiwoom_code: "105560"
+    yf_ticker:   "105560.KS"
+    name:        "KB Financial Group"
+    sector:      "Finance"
+
+  - kiwoom_code: "055550"
+    yf_ticker:   "055550.KS"
+    name:        "Shinhan Financial Group"
+    sector:      "Finance"
+
+  # ⚡ Energy / Utilities
+  - kiwoom_code: "015760"
+    yf_ticker:   "015760.KS"
+    name:        "KEPCO (Korea Electric Power)"
+    sector:      "Utilities"
+
+# KOSPI benchmark (used for regime detection baseline)
+kospi_benchmark: "^KS11"
+
+# VKOSPI (Korean volatility index, equivalent to VIX)
+# NOTE: may not be available on all yfinance versions; falls back gracefully
+vkospi: "^VKOSPI"

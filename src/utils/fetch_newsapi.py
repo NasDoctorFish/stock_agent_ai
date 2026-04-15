@@ -13,62 +13,118 @@ import multiprocessing
 
 
 def fetch_news_sentiment(tickers, start_date, end_date, NEWS_API_KEY):
-    # Import INSIDE the function to ensure it loads in the child process memory space
-    from transformers import pipeline 
-    
-    print(f"[Process {os.getpid()}] Loading FinBERT Model...")
-    # This load happens safely inside the independent child process
-    sentiment = pipeline("sentiment-analysis", model="yiyanghkust/finbert-tone") 
-    
-    records = []
-    for t in tqdm(tickers, desc="Fetching news data"):
-        q = f"{t} stock"
-        url = f"https://newsapi.org/v2/everything?q={q}&from={start_date}&to={end_date}&language=en&apiKey={NEWS_API_KEY}"
-        r = requests.get(url)
-        for art in r.json().get("articles", []):
-            # sent = TextBlob(art["title"]).sentiment.polarity # v.1 sentiment score
-            # FinBERT: 증권/금융 뉴스용 감성 지수
-            # 출력 예시
-            # [{'label': 'negative', 'score': 0.994}]
-            sent = sentiment(art["title"])
-            records.append({
-                "stock_id": t,
-                "date": art["publishedAt"][:10],
-                "source": art["source"]["name"],
-                "headline": art["title"],
-                "sentiment_label": sent[0]['label'],
-                "sentiment_score": sent[0]['score']
-            })
-    return pd.DataFrame(records)
+    import socket
+    from transformers import pipeline
 
-# Rename this function to clarify it only gets text
-def fetch_news_text_only(tickers, start_date, end_date, NEWS_API_KEY):
-    # REMOVE: from transformers import pipeline
-    # REMOVE: sentiment = pipeline(...) 
-    
+    # DNS pre-check — avoids per-ticker spam if the host is unreachable
+    try:
+        socket.getaddrinfo("newsapi.org", 443, socket.AF_INET, socket.SOCK_STREAM)
+    except socket.gaierror as dns_err:
+        print(f"[NewsAPI] DNS resolution failed — skipping sentiment fetch. ({dns_err})")
+        return pd.DataFrame()
+
+    print(f"[Process {os.getpid()}] Loading FinBERT Model...")
+    sentiment = pipeline("sentiment-analysis", model="yiyanghkust/finbert-tone")
+
     records = []
-    for t in tqdm(tickers, desc="Fetching news data"):
+    consecutive_failures = 0
+    MAX_CONSECUTIVE_FAILURES = 3
+
+    for t in tqdm(tickers, desc="Fetching news + sentiment"):
         q = f"{t} stock"
-        url = f"https://newsapi.org/v2/everything?q={q}&from={start_date}&to={end_date}&language=en&apiKey={NEWS_API_KEY}"
-        
+        url = (
+            f"https://newsapi.org/v2/everything"
+            f"?q={q}&from={start_date}&to={end_date}&language=en&apiKey={NEWS_API_KEY}"
+        )
         try:
-            r = requests.get(url, timeout=10) # Good practice to add timeout
-            data = r.json()
-            
-            for art in data.get("articles", []):
-                # Just save the raw text. No analysis yet.
+            r = requests.get(url, timeout=10)
+            r.raise_for_status()
+            consecutive_failures = 0
+            for art in r.json().get("articles", []):
+                sent = sentiment(art["title"])
                 records.append({
                     "stock_id": t,
                     "date": art["publishedAt"][:10],
                     "source": art["source"]["name"],
                     "headline": art["title"],
-                    # placeholders for now
-                    "sentiment_label": None, 
-                    "sentiment_score": 0.0
+                    "sentiment_label": sent[0]["label"],
+                    "sentiment_score": sent[0]["score"],
                 })
+        except requests.exceptions.ConnectionError as e:
+            consecutive_failures += 1
+            print(f"[NewsAPI] Connection error for {t}: {e}")
+            if consecutive_failures >= MAX_CONSECUTIVE_FAILURES:
+                print("[NewsAPI] Too many connection errors — aborting.")
+                break
         except Exception as e:
-            print(f"Error fetching {t}: {e}")
-            
+            print(f"[NewsAPI] Error fetching {t}: {e}")
+
+    return pd.DataFrame(records)
+
+# Rename this function to clarify it only gets text
+def fetch_news_text_only(tickers, start_date, end_date, NEWS_API_KEY):
+    # REMOVE: from transformers import pipeline
+    # REMOVE: sentiment = pipeline(...)
+
+    import socket
+
+    # Quick DNS probe before looping over all tickers.
+    # If newsapi.org is unreachable, bail out immediately instead of
+    # printing the same connection error for every ticker.
+    try:
+        socket.getaddrinfo("newsapi.org", 443, socket.AF_INET, socket.SOCK_STREAM)
+    except socket.gaierror as dns_err:
+        print(f"[NewsAPI] DNS resolution failed for newsapi.org — skipping news fetch. ({dns_err})")
+        return pd.DataFrame()
+
+    records = []
+    consecutive_failures = 0
+    MAX_CONSECUTIVE_FAILURES = 3  # abort after 3 back-to-back network errors
+
+    for t in tqdm(tickers, desc="Fetching news data"):
+        q = f"{t} stock"
+        url = (
+            f"https://newsapi.org/v2/everything"
+            f"?q={q}&from={start_date}&to={end_date}&language=en&apiKey={NEWS_API_KEY}"
+        )
+
+        try:
+            r = requests.get(url, timeout=10)
+            r.raise_for_status()
+            data = r.json()
+            consecutive_failures = 0  # reset on success
+
+            for art in data.get("articles", []):
+                records.append({
+                    "stock_id": t,
+                    "date": art["publishedAt"][:10],
+                    "source": art["source"]["name"],
+                    "headline": art["title"],
+                    "sentiment_label": None,
+                    "sentiment_score": 0.0,
+                })
+
+        except requests.exceptions.ConnectionError as e:
+            consecutive_failures += 1
+            print(f"[NewsAPI] Connection error for {t}: {e}")
+            if consecutive_failures >= MAX_CONSECUTIVE_FAILURES:
+                print(
+                    f"[NewsAPI] {MAX_CONSECUTIVE_FAILURES} consecutive connection failures — "
+                    "aborting news fetch to avoid spamming errors."
+                )
+                break
+
+        except requests.exceptions.Timeout:
+            consecutive_failures += 1
+            print(f"[NewsAPI] Timeout for {t}")
+            if consecutive_failures >= MAX_CONSECUTIVE_FAILURES:
+                print("[NewsAPI] Too many timeouts — aborting news fetch.")
+                break
+
+        except Exception as e:
+            # Non-network errors (bad JSON, HTTP 4xx/5xx) — log and continue
+            print(f"[NewsAPI] Error fetching {t}: {e}")
+
     return pd.DataFrame(records)
 
 

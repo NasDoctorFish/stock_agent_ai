@@ -1,0 +1,163 @@
+{
+  "timestamp": "2026-02-14T12:50:32Z",
+  "regime": {
+    "economic_regime": "growth",
+    "equities_favorable": true,
+    "metrics": {
+      "mean_log_return": 0.0015265924464830684,
+      "volatility": 0.009511936194250448,
+      "long_run_volatility": 0.014398299613872807,
+      "vol_cluster": 0.2569260925663544
+    }
+  },
+  "macro_context": {
+    "macro_trend": "bearish",
+    "prob_bullish": 0.092,
+    "latest_date": "2026-02-13",
+    "model_used": "lstm"
+  },
+  "recommendation": "Equities appear favorable based on the detected regime.",
+  "stocks": [
+    {
+      "ticker": "DNN",
+      "score": 5.4822043001398795,
+      "category": "uranium",
+      "reasons": ["positive momentum", "healthy margin", "positive sentiment"],
+      "outlook": "negative",
+      "metrics": {
+        "momentum": 0.23611109731374036,
+        "volatility": 0.03684133442027003,
+        "drawdown": -0.18730286745481217,
+        "sentiment": 0.9993254542350769,
+        "fundamental": {
+          "latest_fiscal_date": "2025-06-30",
+          "revenue": 1276000.0,
+          "net_income": 12498000.0,
+          "revenue_growth": 0.0,
+          "net_margin": 9.794670846394984,
+          "operating_margin": -14.725705329153605
+        }
+      }
+    },
+    {
+      "ticker": "INTC",
+      "score": 1.5128259675450038,
+      "category": "semiconductor",
+      "reasons": ["positive momentum", "positive sentiment"],
+      "outlook": "negative",
+      "metrics": {
+        "momentum": 0.7597433291113966,
+        "volatility": 0.04185612086024059,
+        "drawdown": -0.11468766628910343,
+        "sentiment": 0.9639917509724395,
+        "fundamental": {
+          "latest_fiscal_date": "2025-06-30",
+          "revenue": 12859000000.0,
+          "net_income": -2918000000.0,
+          "revenue_growth": 0.0,
+          "net_margin": -0.22692277782098141,
+          "operating_margin": -0.10000777665448324
+        }
+      }
+    },
+    {
+      "ticker": "LEU",
+      "score": 1.168322457287502,
+      "category": "nuclear_fuel",
+      "reasons": [
+        "positive momentum",
+        "healthy margin",
+        "positive sentiment",
+        "solid operating margin"
+      ],
+      "outlook": "positive",
+      "metrics": {
+        "momentum": 0.49850493767882686,
+        "volatility": 0.06410922148525189,
+        "drawdown": -0.3256094753948693,
+        "sentiment": 0.9746687737378207,
+        "fundamental": {
+          "latest_fiscal_date": "2025-06-30",
+          "revenue": 154500000.0,
+          "net_income": 28900000.0,
+          "revenue_growth": 0.0,
+          "net_margin": 0.18705501618122977,
+          "operating_margin": 0.2168284789644013
+        }
+      }
+    },
+    {
+      "ticker": "AMD",
+      "score": 1.0801113544662326,
+      "category": "semiconductor",
+      "reasons": ["positive momentum", "healthy margin", "positive sentiment"],
+      "outlook": "negative",
+      "metrics": {
+        "momentum": 0.46516142351290934,
+        "volatility": 0.04199518828695025,
+        "drawdown": -0.1990091996280201,
+        "sentiment": 0.946510414481163,
+        "fundamental": {
+          "latest_fiscal_date": "2025-06-30",
+          "revenue": 7685000000.0,
+          "net_income": 872000000.0,
+          "revenue_growth": 0.0,
+          "net_margin": 0.11346779440468445,
+          "operating_margin": -0.017436564736499675
+        }
+      }
+    },
+    {
+      "ticker": "GOOGL",
+      "score": 1.060553024173901,
+      "category": "mega_cap_tech",
+      "reasons": [
+        "positive momentum",
+        "healthy margin",
+        "positive sentiment",
+        "solid operating margin"
+      ],
+      "outlook": "positive",
+      "metrics": {
+        "momentum": 0.39945060087056006,
+        "volatility": 0.018202805093375345,
+        "drawdown": -0.0739207292639863,
+        "sentiment": 0.9398098334670066,
+        "fundamental": {
+          "latest_fiscal_date": "2025-06-30",
+          "revenue": 96428000000.0,
+          "net_income": 28196000000.0,
+          "revenue_growth": 0.0,
+          "net_margin": 0.2924046957315303,
+          "operating_margin": 0.3242937735927324
+        }
+      }
+    },
+    {
+      "ticker": "CAT",
+      "score": 0.9508805796102898,
+      "category": "industrial",
+      "reasons": [
+        "positive momentum",
+        "healthy margin",
+        "positive sentiment",
+        "solid operating margin"
+      ],
+      "outlook": "positive",
+      "metrics": {
+        "momentum": 0.3830177046420231,
+        "volatility": 0.021984504997401257,
+        "drawdown": -0.06694048584563017,
+        "sentiment": 0.9559204839930242,
+        "fundamental": {
+          "latest_fiscal_date": "2025-06-30",
+          "revenue": 16569000000.0,
+          "net_income": 2179000000.0,
+          "revenue_growth": 0.0,
+          "net_margin": 0.13151065242319995,
+          "operating_margin": 0.1726115034099825
+        }
+      }
+    }
+  ]
+}

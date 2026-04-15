@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Stock_ML Dashboard</title>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+  <style>
+    /* ── Reset & base ─────────────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #0d1117;
+      --bg2:       #161b22;
+      --bg3:       #21262d;
+      --border:    #30363d;
+      --text:      #c9d1d9;
+      --text-dim:  #8b949e;
+      --green:     #3fb950;
+      --red:       #f85149;
+      --yellow:    #d29922;
+      --blue:      #58a6ff;
+      --purple:    #bc8cff;
+      --orange:    #ffa657;
+      --accent:    #1f6feb;
+      --radius:    8px;
+      --font-mono: "JetBrains Mono", "Fira Code", "Cascadia Code", monospace;
+      --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    html, body { height: 100%; background: var(--bg); color: var(--text); font-family: var(--font-sans); font-size: 14px; }
+
+    /* ── Layout ───────────────────────────────────────────────────────────── */
+    #app { display: flex; flex-direction: column; min-height: 100vh; }
+
+    header {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 12px 24px; border-bottom: 1px solid var(--border);
+      background: var(--bg2); position: sticky; top: 0; z-index: 100;
+    }
+    .logo { font-size: 18px; font-weight: 700; color: var(--blue); font-family: var(--font-mono); }
+    .logo span { color: var(--green); }
+
+    nav { display: flex; gap: 4px; }
+    nav button {
+      padding: 6px 14px; border-radius: var(--radius); border: 1px solid transparent;
+      background: transparent; color: var(--text-dim); cursor: pointer;
+      font-size: 13px; font-family: var(--font-sans); transition: all .15s;
+    }
+    nav button:hover { color: var(--text); background: var(--bg3); }
+    nav button.active { color: var(--blue); border-color: var(--accent); background: rgba(31,111,235,.12); }
+
+    .header-right { display: flex; align-items: center; gap: 10px; }
+    .pulse { width: 8px; height: 8px; border-radius: 50%; background: var(--green); animation: pulse 2s infinite; }
+    @keyframes pulse { 0%,100%{opacity:1;} 50%{opacity:.3;} }
+    .last-update { font-size: 12px; color: var(--text-dim); font-family: var(--font-mono); }
+
+    .btn-refresh {
+      padding: 5px 12px; border-radius: var(--radius); border: 1px solid var(--border);
+      background: var(--bg3); color: var(--text); cursor: pointer; font-size: 12px; transition: all .15s;
+    }
+    .btn-refresh:hover { border-color: var(--blue); color: var(--blue); }
+
+    main { flex: 1; padding: 24px; max-width: 1400px; margin: 0 auto; width: 100%; }
+
+    /* ── Cards ─────────────────────────────────────────────────────────────── */
+    .card {
+      background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius);
+      padding: 18px 20px; margin-bottom: 16px;
+    }
+    .card-title {
+      font-size: 13px; font-weight: 600; color: var(--text-dim); text-transform: uppercase;
+      letter-spacing: .6px; margin-bottom: 14px; display: flex; align-items: center; gap: 8px;
+    }
+    .card-title .icon { font-size: 16px; }
+
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+
+    @media (max-width: 900px) {
+      .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 1100px) {
+      .grid-4 { grid-template-columns: 1fr 1fr; }
+    }
+
+    /* ── Regime card ──────────────────────────────────────────────────────── */
+    .regime-card {
+      border-radius: var(--radius); padding: 18px 20px;
+      border: 1px solid var(--border); background: var(--bg2);
+    }
+    .regime-card.bullish { border-color: var(--green); }
+    .regime-card.cautious { border-color: var(--yellow); }
+    .regime-card.bearish  { border-color: var(--red); }
+
+    .regime-label { font-size: 11px; color: var(--text-dim); text-transform: uppercase; letter-spacing: .5px; margin-bottom: 6px; }
+    .regime-name  { font-size: 16px; font-weight: 700; margin-bottom: 6px; }
+    .regime-score { font-family: var(--font-mono); font-size: 22px; font-weight: 700; margin-bottom: 12px; }
+
+    .score-bar { display: flex; gap: 4px; margin-bottom: 14px; }
+    .score-pip {
+      width: 24px; height: 6px; border-radius: 3px; background: var(--bg3);
+    }
+    .score-pip.pos { background: var(--green); }
+    .score-pip.neg { background: var(--red); }
+
+    .signals-grid { display: flex; flex-direction: column; gap: 4px; }
+    .signal-row { display: flex; align-items: center; gap: 8px; font-size: 13px; }
+    .signal-icon { font-size: 14px; width: 18px; }
+    .signal-name { color: var(--text-dim); }
+
+    /* ── Valuation ────────────────────────────────────────────────────────── */
+    .val-number { font-family: var(--font-mono); font-size: 28px; font-weight: 700; }
+    .val-label  { font-size: 12px; color: var(--text-dim); margin-top: 4px; }
+    .val-spread { font-family: var(--font-mono); font-size: 18px; margin-top: 8px; }
+
+    .tag {
+      display: inline-block; padding: 2px 8px; border-radius: 4px;
+      font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: .4px;
+    }
+    .tag-green  { background: rgba(63,185,80,.15);  color: var(--green); }
+    .tag-red    { background: rgba(248,81,73,.15);   color: var(--red); }
+    .tag-yellow { background: rgba(210,153,34,.15);  color: var(--yellow); }
+    .tag-blue   { background: rgba(88,166,255,.15);  color: var(--blue); }
+    .tag-grey   { background: rgba(139,148,158,.15); color: var(--text-dim); }
+
+    /* ── Stock table ──────────────────────────────────────────────────────── */
+    table { width: 100%; border-collapse: collapse; font-family: var(--font-mono); font-size: 13px; }
+    th, td { padding: 8px 12px; text-align: left; border-bottom: 1px solid var(--border); }
+    th { color: var(--text-dim); font-size: 11px; text-transform: uppercase; letter-spacing: .5px; background: var(--bg3); }
+    tr:hover td { background: rgba(255,255,255,.03); }
+    .score-pos { color: var(--green); }
+    .score-neg { color: var(--red); }
+    .score-neu { color: var(--yellow); }
+    .ticker-cell { color: var(--blue); font-weight: 600; }
+    .code-cell   { color: var(--purple); }
+    .reason-cell { color: var(--text-dim); font-family: var(--font-sans); font-size: 12px; }
+
+    /* ── Crypto grid ──────────────────────────────────────────────────────── */
+    .crypto-card {
+      background: var(--bg3); border: 1px solid var(--border); border-radius: var(--radius);
+      padding: 16px; text-align: center;
+    }
+    .crypto-sym  { font-family: var(--font-mono); font-size: 16px; font-weight: 700; color: var(--blue); margin-bottom: 6px; }
+    .crypto-price{ font-family: var(--font-mono); font-size: 20px; font-weight: 700; margin-bottom: 4px; }
+    .crypto-meta { font-size: 11px; color: var(--text-dim); }
+
+    /* ── Reports ──────────────────────────────────────────────────────────── */
+    .report-list { display: flex; flex-direction: column; gap: 4px; margin-bottom: 16px; }
+    .report-item {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 8px 12px; border-radius: 6px; border: 1px solid var(--border);
+      background: var(--bg3); cursor: pointer; transition: all .15s;
+    }
+    .report-item:hover { border-color: var(--blue); }
+    .report-item.selected { border-color: var(--blue); background: rgba(31,111,235,.1); }
+    .report-filename { font-family: var(--font-mono); font-size: 12px; color: var(--blue); }
+    .report-ts { font-size: 11px; color: var(--text-dim); }
+
+    .report-viewer {
+      background: var(--bg3); border: 1px solid var(--border); border-radius: var(--radius);
+      padding: 20px; white-space: pre-wrap; font-family: var(--font-mono); font-size: 12px;
+      max-height: 600px; overflow-y: auto; line-height: 1.7;
+    }
+
+    /* ── Status bar ───────────────────────────────────────────────────────── */
+    .status-bar {
+      background: var(--bg2); border-top: 1px solid var(--border);
+      padding: 6px 24px; font-size: 11px; color: var(--text-dim);
+      display: flex; gap: 20px; font-family: var(--font-mono);
+    }
+
+    /* ── Loading / empty states ───────────────────────────────────────────── */
+    .loading { text-align: center; padding: 40px; color: var(--text-dim); }
+    .spinner {
+      display: inline-block; width: 20px; height: 20px; border: 2px solid var(--border);
+      border-top-color: var(--blue); border-radius: 50%; animation: spin .7s linear infinite;
+      margin-right: 8px; vertical-align: middle;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .empty { color: var(--text-dim); font-style: italic; padding: 12px 0; }
+
+    /* ── Section header ───────────────────────────────────────────────────── */
+    .section-header {
+      display: flex; align-items: center; justify-content: space-between; margin-bottom: 18px;
+    }
+    .section-title { font-size: 20px; font-weight: 700; }
+    .section-sub   { font-size: 12px; color: var(--text-dim); margin-top: 2px; }
+
+    /* ── Mode badge ───────────────────────────────────────────────────────── */
+    .mode-badge {
+      padding: 4px 10px; border-radius: 20px; font-size: 11px; font-weight: 700;
+      letter-spacing: .4px;
+    }
+    .mode-paper { background: rgba(88,166,255,.15); color: var(--blue); border: 1px solid rgba(88,166,255,.3); }
+    .mode-live  { background: rgba(248,81,73,.2);   color: var(--red);  border: 1px solid rgba(248,81,73,.4); }
+
+    /* ── Stat pills ───────────────────────────────────────────────────────── */
+    .stat-row { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 14px; }
+    .stat-pill {
+      background: var(--bg3); border: 1px solid var(--border); border-radius: var(--radius);
+      padding: 10px 16px; min-width: 120px;
+    }
+    .stat-pill-label { font-size: 11px; color: var(--text-dim); margin-bottom: 4px; }
+    .stat-pill-value { font-family: var(--font-mono); font-size: 16px; font-weight: 700; }
+  </style>
+</head>
+<body>
+<div id="app">
+  <header>
+    <div class="logo">Stock<span>_ML</span></div>
+    <nav>
+      <button v-for="tab in tabs" :key="tab.id"
+              :class="{ active: activeTab === tab.id }"
+              @click="activeTab = tab.id">
+        {{ tab.icon }} {{ tab.label }}
+      </button>
+    </nav>
+    <div class="header-right">
+      <div class="pulse"></div>
+      <span class="last-update">{{ lastUpdateLabel }}</span>
+      <button class="btn-refresh" @click="refreshAll" :disabled="loading">
+        {{ loading ? '⟳' : '↺' }} Refresh
+      </button>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ── DASHBOARD ─────────────────────────────────────────────────────── -->
+    <template v-if="activeTab === 'dashboard'">
+      <div class="section-header">
+        <div>
+          <div class="section-title">📊 Dashboard</div>
+          <div class="section-sub">Real-time market overview</div>
+        </div>
+        <span :class="modeBadgeClass">{{ modeLabel }}</span>
+      </div>
+
+      <!-- Regime cards -->
+      <div class="grid-2" style="margin-bottom:16px">
+        <div :class="['regime-card', regimeClass(regime.us)]" v-if="regime.us && regime.us.regime">
+          <div class="regime-label">🇺🇸 US Market Regime</div>
+          <div class="regime-name">{{ regime.us.regime }}</div>
+          <div class="regime-score" :style="{ color: scoreColor(regime.us.score) }">
+            {{ regime.us.score > 0 ? '+' : '' }}{{ regime.us.score }}<small style="font-size:14px;color:var(--text-dim)">/6</small>
+          </div>
+          <div class="score-bar">
+            <div v-for="i in 6" :key="i"
+                 :class="['score-pip', i <= Math.abs(regime.us.score) ? (regime.us.score >= 0 ? 'pos' : 'neg') : '']">
+            </div>
+          </div>
+          <div class="signals-grid">
+            <div class="signal-row" v-for="(v, k) in regime.us.signals" :key="k">
+              <span class="signal-icon">{{ v === 1 ? '✅' : '❌' }}</span>
+              <span class="signal-name">{{ k.replace(/_/g,' ') }}</span>
+            </div>
+          </div>
+          <div style="margin-top:10px;font-size:11px;color:var(--text-dim)">As of {{ regime.us.as_of }}</div>
+        </div>
+        <div class="card loading" v-else><span class="spinner"></span> Loading US regime…</div>
+
+        <div :class="['regime-card', regimeClass(regime.kr)]" v-if="regime.kr && regime.kr.regime">
+          <div class="regime-label">🇰🇷 KR Market Regime</div>
+          <div class="regime-name">{{ regime.kr.regime }}</div>
+          <div class="regime-score" :style="{ color: scoreColor(regime.kr.score) }">
+            {{ regime.kr.score > 0 ? '+' : '' }}{{ regime.kr.score }}<small style="font-size:14px;color:var(--text-dim)">/6</small>
+          </div>
+          <div class="score-bar">
+            <div v-for="i in 6" :key="i"
+                 :class="['score-pip', i <= Math.abs(regime.kr.score) ? (regime.kr.score >= 0 ? 'pos' : 'neg') : '']">
+            </div>
+          </div>
+          <div class="signals-grid">
+            <div class="signal-row" v-for="(v, k) in regime.kr.signals" :key="k">
+              <span class="signal-icon">{{ v === 1 ? '✅' : '❌' }}</span>
+              <span class="signal-name">{{ k.replace(/_/g,' ') }}</span>
+            </div>
+          </div>
+          <div style="margin-top:10px;font-size:11px;color:var(--text-dim)">As of {{ regime.kr.as_of }}</div>
+        </div>
+        <div class="card loading" v-else><span class="spinner"></span> Loading KR regime…</div>
+      </div>
+
+      <!-- Valuation row -->
+      <div class="grid-2" style="margin-bottom:16px">
+        <div class="card" v-if="valuation.us && valuation.us.label">
+          <div class="card-title"><span class="icon">💰</span> US Valuation</div>
+          <div class="val-number" :style="{ color: valuationColor(valuation.us.valuation_signal) }">
+            {{ valuation.us.pe_ratio ? valuation.us.pe_ratio.toFixed(1) + 'x' : 'N/A' }}
+          </div>
+          <div class="val-label">P/E Ratio</div>
+          <div style="margin-top:10px">
+            <span :class="valuationTag(valuation.us.valuation_signal)">{{ valuation.us.label }}</span>
+          </div>
+          <div class="val-spread" v-if="valuation.us.fed_model_spread_pp != null" style="font-size:14px;margin-top:8px">
+            <span :style="{ color: valuation.us.fed_model_spread_pp >= 0 ? 'var(--green)' : 'var(--red)' }">
+              {{ valuation.us.fed_model_spread_pp >= 0 ? '+' : '' }}{{ valuation.us.fed_model_spread_pp?.toFixed(1) }}pp
+            </span>
+            <span style="color:var(--text-dim);font-size:11px"> earnings yield spread</span>
+          </div>
+        </div>
+        <div class="card loading" v-else><span class="spinner"></span> Loading valuation…</div>
+
+        <div class="card" v-if="valuation.kr && valuation.kr.label">
+          <div class="card-title"><span class="icon">💰</span> KR Valuation</div>
+          <div class="val-number" :style="{ color: valuationColor(valuation.kr.valuation_signal) }">
+            {{ valuation.kr.pe_ratio ? valuation.kr.pe_ratio.toFixed(1) + 'x' : 'N/A' }}
+          </div>
+          <div class="val-label">P/E Ratio</div>
+          <div style="margin-top:10px">
+            <span :class="valuationTag(valuation.kr.valuation_signal)">{{ valuation.kr.label }}</span>
+          </div>
+        </div>
+        <div class="card loading" v-else><span class="spinner"></span> Loading valuation…</div>
+      </div>
+
+      <!-- Recent orders -->
+      <div class="card">
+        <div class="card-title"><span class="icon">📋</span> Recent Orders</div>
+        <div v-if="orders.length" class="signals-grid">
+          <div v-for="(o, i) in orders" :key="i"
+               style="font-family:var(--font-mono);font-size:12px;padding:4px 0;border-bottom:1px solid var(--border)">
+            {{ o }}
+          </div>
+        </div>
+        <div v-else class="empty">No orders placed this cycle</div>
+      </div>
+    </template>
+
+    <!-- ── US MARKET ──────────────────────────────────────────────────────── -->
+    <template v-if="activeTab === 'us'">
+      <div class="section-header">
+        <div>
+          <div class="section-title">🇺🇸 US Market</div>
+          <div class="section-sub">Regime signals & top stock picks</div>
+        </div>
+      </div>
+
+      <div class="grid-2" style="margin-bottom:16px">
+        <div :class="['regime-card', regimeClass(regime.us)]" v-if="regime.us && regime.us.regime">
+          <div class="regime-label">Regime</div>
+          <div class="regime-name">{{ regime.us.regime }}</div>
+          <div class="regime-score" :style="{ color: scoreColor(regime.us.score) }">
+            {{ regime.us.score > 0 ? '+' : '' }}{{ regime.us.score }}/6
+          </div>
+          <div class="score-bar">
+            <div v-for="i in 6" :key="i"
+                 :class="['score-pip', i <= Math.abs(regime.us.score) ? (regime.us.score >= 0 ? 'pos' : 'neg') : '']">
+            </div>
+          </div>
+          <div class="signals-grid" style="margin-top:8px">
+            <div class="signal-row" v-for="(v, k) in regime.us.signals" :key="k">
+              <span class="signal-icon">{{ v === 1 ? '✅' : '❌' }}</span>
+              <span class="signal-name">{{ k.replace(/_/g,' ') }}</span>
+            </div>
+          </div>
+        </div>
+        <div class="card loading" v-else><span class="spinner"></span></div>
+
+        <div class="card" v-if="valuation.us">
+          <div class="card-title"><span class="icon">📊</span> Valuation</div>
+          <div class="stat-row">
+            <div class="stat-pill">
+              <div class="stat-pill-label">P/E Ratio</div>
+              <div class="stat-pill-value" :style="{ color: valuationColor(valuation.us.valuation_signal) }">
+                {{ valuation.us.pe_ratio?.toFixed(1) || 'N/A' }}x
+              </div>
+            </div>
+            <div class="stat-pill" v-if="valuation.us.fed_model_spread_pp != null">
+              <div class="stat-pill-label">Earnings Yield Spread</div>
+              <div class="stat-pill-value" :style="{ color: valuation.us.fed_model_spread_pp >= 0 ? 'var(--green)' : 'var(--red)' }">
+                {{ valuation.us.fed_model_spread_pp >= 0 ? '+' : '' }}{{ valuation.us.fed_model_spread_pp?.toFixed(2) }}pp
+              </div>
+            </div>
+            <div class="stat-pill" v-if="valuation.us.buffett_indicator_pct != null">
+              <div class="stat-pill-label">Buffett Indicator</div>
+              <div class="stat-pill-value">{{ valuation.us.buffett_indicator_pct?.toFixed(0) }}%</div>
+            </div>
+          </div>
+          <span :class="valuationTag(valuation.us.valuation_signal)" v-if="valuation.us.label">
+            {{ valuation.us.label }}
+          </span>
+          <div style="margin-top:10px;font-size:11px;color:var(--text-dim)">
+            {{ valuation.us.note }}
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title"><span class="icon">📈</span> US Top Stocks</div>
+        <div v-if="usStocksSection.length" class="signals-grid">
+          <div v-for="(line, i) in usStocksSection" :key="i"
+               style="font-size:13px;padding:4px 0;border-bottom:1px solid var(--border)">
+            {{ line }}
+          </div>
+        </div>
+        <div v-else class="empty">No US stock data from latest report</div>
+      </div>
+    </template>
+
+    <!-- ── KOREA ──────────────────────────────────────────────────────────── -->
+    <template v-if="activeTab === 'kr'">
+      <div class="section-header">
+        <div>
+          <div class="section-title">🇰🇷 Korea Market</div>
+          <div class="section-sub">KOSPI regime & KR stock picks</div>
+        </div>
+        <button class="btn-refresh" @click="fetchKRStocks">⟳ Refresh KR Data</button>
+      </div>
+
+      <div class="grid-2" style="margin-bottom:16px">
+        <div :class="['regime-card', regimeClass(regime.kr)]" v-if="regime.kr && regime.kr.regime">
+          <div class="regime-label">KOSPI Regime</div>
+          <div class="regime-name">{{ regime.kr.regime }}</div>
+          <div class="regime-score" :style="{ color: scoreColor(regime.kr.score) }">
+            {{ regime.kr.score > 0 ? '+' : '' }}{{ regime.kr.score }}/6
+          </div>
+          <div class="score-bar">
+            <div v-for="i in 6" :key="i"
+                 :class="['score-pip', i <= Math.abs(regime.kr.score) ? (regime.kr.score >= 0 ? 'pos' : 'neg') : '']">
+            </div>
+          </div>
+          <div class="signals-grid" style="margin-top:8px">
+            <div class="signal-row" v-for="(v, k) in regime.kr.signals" :key="k">
+              <span class="signal-icon">{{ v === 1 ? '✅' : '❌' }}</span>
+              <span class="signal-name">{{ k.replace(/_/g,' ') }}</span>
+            </div>
+          </div>
+        </div>
+        <div class="card loading" v-else><span class="spinner"></span></div>
+
+        <div class="card" v-if="krStocks.economic_regime">
+          <div class="card-title"><span class="icon">🏢</span> KR Decision</div>
+          <div style="margin-bottom:10px">
+            <div style="font-size:12px;color:var(--text-dim);margin-bottom:4px">Market Regime</div>
+            <span class="tag tag-blue">{{ krStocks.economic_regime }}</span>
+          </div>
+          <div style="margin-bottom:10px">
+            <div style="font-size:12px;color:var(--text-dim);margin-bottom:4px">Equities Outlook</div>
+            <span :class="krStocks.equities_favorable ? 'tag tag-green' : 'tag tag-red'">
+              {{ krStocks.equities_favorable ? 'Favorable ✅' : 'Unfavorable ❌' }}
+            </span>
+          </div>
+          <div style="font-size:12px;color:var(--text-dim);line-height:1.5">
+            {{ krStocks.recommendation?.slice(0,160) }}
+          </div>
+          <div v-if="krStocks.alternatives && krStocks.alternatives.length" style="margin-top:10px">
+            <div style="font-size:12px;color:var(--text-dim);margin-bottom:4px">Alternatives</div>
+            <div v-for="alt in krStocks.alternatives" :key="alt"
+                 style="font-size:12px;color:var(--orange)">• {{ alt }}</div>
+          </div>
+        </div>
+        <div class="card loading" v-else-if="loadingKR"><span class="spinner"></span> Fetching KR data…</div>
+        <div class="card empty" v-else>Click "Refresh KR Data" to load</div>
+      </div>
+
+      <!-- KR stock table -->
+      <div class="card">
+        <div class="card-title"><span class="icon">📋</span> KR Top Picks</div>
+        <div v-if="krTopStocks.length">
+          <table>
+            <thead>
+              <tr>
+                <th>Ticker</th>
+                <th>Kiwoom</th>
+                <th>Score</th>
+                <th>Momentum</th>
+                <th>Volatility</th>
+                <th>Reasons</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="s in krTopStocks" :key="s.stock_id">
+                <td class="ticker-cell">{{ s.stock_id }}</td>
+                <td class="code-cell">{{ s.kiwoom_code || '—' }}</td>
+                <td :class="scoreClass(s.score)">{{ s.score >= 0 ? '+' : '' }}{{ s.score?.toFixed(3) }}</td>
+                <td :class="scoreClass(s.momentum)">{{ s.momentum != null ? (s.momentum >= 0 ? '+' : '') + (s.momentum * 100).toFixed(1) + '%' : '—' }}</td>
+                <td>{{ s.volatility != null ? (s.volatility * 100).toFixed(1) + '%' : '—' }}</td>
+                <td class="reason-cell">{{ (s.reasons || []).join(', ') || '—' }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div v-else class="empty">No KR stock data loaded</div>
+      </div>
+    </template>
+
+    <!-- ── CRYPTO ─────────────────────────────────────────────────────────── -->
+    <template v-if="activeTab === 'crypto'">
+      <div class="section-header">
+        <div>
+          <div class="section-title">🪙 Crypto</div>
+          <div class="section-sub">Live Coinone KRW pairs (1-min cache)</div>
+        </div>
+        <button class="btn-refresh" @click="fetchCrypto">⟳ Refresh Prices</button>
+      </div>
+
+      <div class="grid-3" style="margin-bottom:16px">
+        <div class="crypto-card" v-for="(data, sym) in crypto.tickers" :key="sym">
+          <div class="crypto-sym">{{ sym }}</div>
+          <div v-if="data.error" style="color:var(--red);font-size:12px">{{ data.error }}</div>
+          <template v-else>
+            <div class="crypto-price">₩{{ formatKRW(data.last) }}</div>
+            <div class="crypto-meta">
+              H: ₩{{ formatKRW(data.high) }} · L: ₩{{ formatKRW(data.low) }}
+            </div>
+            <div class="crypto-meta" style="margin-top:4px">
+              Vol: {{ data.volume?.toFixed(4) }} {{ sym }}
+            </div>
+          </template>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title"><span class="icon">ℹ️</span> Notes</div>
+        <div style="font-size:12px;color:var(--text-dim);line-height:1.8">
+          • All prices in KRW (Korean Won)<br>
+          • Data source: Coinone public API (no authentication required)<br>
+          • Prices cached for 60 seconds — click Refresh for latest<br>
+          • Trading only available in live mode via Coinone broker
+        </div>
+      </div>
+    </template>
+
+    <!-- ── REPORTS ─────────────────────────────────────────────────────────── -->
+    <template v-if="activeTab === 'reports'">
+      <div class="section-header">
+        <div>
+          <div class="section-title">📂 Reports</div>
+          <div class="section-sub">Saved pipeline run reports</div>
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-title"><span class="icon">📄</span> Report Files</div>
+          <div class="report-list">
+            <div v-for="name in reportFiles" :key="name"
+                 :class="['report-item', selectedReport === name ? 'selected' : '']"
+                 @click="loadReport(name)">
+              <span class="report-filename">{{ name }}</span>
+              <span class="report-ts">{{ parseReportTs(name) }}</span>
+            </div>
+          </div>
+          <div v-if="!reportFiles.length" class="empty">No reports found</div>
+        </div>
+
+        <div class="card">
+          <div class="card-title"><span class="icon">👁️</span> Report Viewer</div>
+          <div v-if="reportContent" class="report-viewer">{{ reportContent }}</div>
+          <div v-else class="empty">Select a report to view</div>
+        </div>
+      </div>
+    </template>
+
+  </main>
+
+  <footer class="status-bar">
+    <span>Stock_ML v0.1</span>
+    <span>Server: localhost:8080</span>
+    <span v-if="status.last_report">Last report: {{ status.last_report }}</span>
+    <span v-if="status.report_count">Total reports: {{ status.report_count }}</span>
+    <span>{{ status.server_time_utc ? new Date(status.server_time_utc).toLocaleString() : '' }}</span>
+  </footer>
+</div>
+
+<script>
+const { createApp, ref, computed, onMounted, onUnmounted } = Vue;
+
+createApp({
+  setup() {
+    const BASE = '';  // same-origin
+
+    const activeTab = ref('dashboard');
+    const loading = ref(false);
+    const loadingKR = ref(false);
+    const lastUpdate = ref(null);
+
+    const tabs = [
+      { id: 'dashboard', icon: '📊', label: 'Dashboard' },
+      { id: 'us',        icon: '🇺🇸', label: 'US Market' },
+      { id: 'kr',        icon: '🇰🇷', label: 'Korea' },
+      { id: 'crypto',    icon: '🪙',  label: 'Crypto' },
+      { id: 'reports',   icon: '📂',  label: 'Reports' },
+    ];
+
+    // Data state
+    const status     = ref({});
+    const regime     = ref({ us: {}, kr: {} });
+    const valuation  = ref({ us: {}, kr: {} });
+    const krStocks   = ref({});
+    const crypto     = ref({ tickers: {} });
+    const orders     = ref([]);
+    const usStocksSection = ref([]);
+    const reportFiles = ref([]);
+    const selectedReport = ref(null);
+    const reportContent  = ref(null);
+
+    // Computed
+    const lastUpdateLabel = computed(() =>
+      lastUpdate.value ? new Date(lastUpdate.value).toLocaleTimeString() : 'Never'
+    );
+
+    const modeLabel = computed(() => {
+      const r = status.value.last_report || '';
+      return 'PAPER';  // default; future: parse from report
+    });
+
+    const modeBadgeClass = computed(() => ({
+      'mode-badge': true,
+      'mode-paper': true,
+    }));
+
+    // ── Helpers ────────────────────────────────────────────────────────────
+    function regimeClass(r) {
+      if (!r || r.score == null) return '';
+      if (r.score >= 3) return 'bullish';
+      if (r.score >= 0) return 'cautious';
+      return 'bearish';
+    }
+
+    function scoreColor(s) {
+      if (s == null) return 'var(--text)';
+      if (s >= 3) return 'var(--green)';
+      if (s >= 0) return 'var(--yellow)';
+      return 'var(--red)';
+    }
+
+    function scoreClass(v) {
+      if (v == null) return '';
+      if (v > 0) return 'score-pos';
+      if (v < 0) return 'score-neg';
+      return 'score-neu';
+    }
+
+    function valuationColor(sig) {
+      if (sig === 1)  return 'var(--green)';
+      if (sig === -1) return 'var(--red)';
+      return 'var(--yellow)';
+    }
+
+    function valuationTag(sig) {
+      if (sig === 1)  return 'tag tag-green';
+      if (sig === -1) return 'tag tag-red';
+      return 'tag tag-yellow';
+    }
+
+    function formatKRW(v) {
+      if (!v) return '0';
+      return Number(v).toLocaleString('ko-KR');
+    }
+
+    function parseReportTs(name) {
+      // report_2026-04-06_0942_UTC.md → 2026-04-06 09:42 UTC
+      const m = name.match(/report_(\d{4}-\d{2}-\d{2})_(\d{2})(\d{2})_UTC/);
+      if (m) return `${m[1]} ${m[2]}:${m[3]} UTC`;
+      return '';
+    }
+
+    const krTopStocks = computed(() => (krStocks.value.top_stocks || []).slice(0, 10));
+
+    // ── Fetch functions ─────────────────────────────────────────────────────
+    async function fetchJSON(url) {
+      const resp = await fetch(BASE + url);
+      if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+      return resp.json();
+    }
+
+    async function fetchStatus() {
+      try { status.value = await fetchJSON('/api/status'); } catch {}
+    }
+
+    async function fetchRegime() {
+      try {
+        const d = await fetchJSON('/api/regime');
+        regime.value = { us: d.us || {}, kr: d.kr || {} };
+      } catch {}
+    }
+
+    async function fetchValuation() {
+      try {
+        const d = await fetchJSON('/api/valuation');
+        valuation.value = { us: d.us || {}, kr: d.kr || {} };
+      } catch {}
+    }
+
+    async function fetchUSStocks() {
+      try {
+        const d = await fetchJSON('/api/stocks/us');
+        usStocksSection.value = d.section || [];
+      } catch {}
+    }
+
+    async function fetchKRStocks() {
+      loadingKR.value = true;
+      try {
+        const d = await fetchJSON('/api/stocks/kr');
+        krStocks.value = d;
+      } catch (e) {
+        console.warn('KR stocks error:', e);
+      } finally {
+        loadingKR.value = false;
+      }
+    }
+
+    async function fetchCrypto() {
+      try {
+        const d = await fetchJSON('/api/crypto');
+        crypto.value = d;
+      } catch {}
+    }
+
+    async function fetchOrders() {
+      try {
+        const d = await fetchJSON('/api/orders');
+        orders.value = d.orders || [];
+      } catch {}
+    }
+
+    async function fetchReportsList() {
+      try {
+        const d = await fetchJSON('/api/reports');
+        reportFiles.value = d.reports || [];
+      } catch {}
+    }
+
+    async function loadReport(name) {
+      selectedReport.value = name;
+      try {
+        const d = await fetchJSON(`/api/report/${name}`);
+        reportContent.value = d.content;
+      } catch {
+        reportContent.value = 'Failed to load report.';
+      }
+    }
+
+    async function refreshAll() {
+      loading.value = true;
+      try {
+        await fetch(BASE + '/api/refresh', { method: 'POST' });
+        await Promise.all([
+          fetchStatus(),
+          fetchRegime(),
+          fetchValuation(),
+          fetchUSStocks(),
+          fetchCrypto(),
+          fetchOrders(),
+          fetchReportsList(),
+        ]);
+        lastUpdate.value = new Date();
+      } finally {
+        loading.value = false;
+      }
+    }
+
+    // ── Lifecycle ───────────────────────────────────────────────────────────
+    let autoRefreshInterval = null;
+
+    onMounted(async () => {
+      // Initial load — staggered to avoid hammering the server
+      await fetchStatus();
+      await fetchRegime();
+      fetchValuation();
+      fetchUSStocks();
+      fetchCrypto();
+      fetchOrders();
+      fetchReportsList();
+      lastUpdate.value = new Date();
+
+      // Auto-refresh every 3 minutes
+      autoRefreshInterval = setInterval(async () => {
+        await fetchStatus();
+        await fetchCrypto();
+        await fetchOrders();
+      }, 3 * 60 * 1000);
+    });
+
+    onUnmounted(() => {
+      if (autoRefreshInterval) clearInterval(autoRefreshInterval);
+    });
+
+    return {
+      activeTab, tabs, loading, loadingKR, lastUpdateLabel,
+      status, regime, valuation, krStocks, crypto, orders,
+      usStocksSection, reportFiles, selectedReport, reportContent,
+      krTopStocks, modeLabel, modeBadgeClass,
+      regimeClass, scoreColor, scoreClass, valuationColor, valuationTag,
+      formatKRW, parseReportTs,
+      refreshAll, fetchKRStocks, fetchCrypto, loadReport,
+    };
+  }
+}).mount('#app');
+</script>
+</body>
+</html>

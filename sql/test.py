@@ -28,5 +28,5 @@ conn = duckdb.connect("data/dart.duckdb")
 print(conn.execute("SHOW TABLES").fetchall())
 print(conn.execute("DESCRIBE dart_filings").fetchdf())
 
-
+print(conn.execute("SELECT corp_code, corp_name, rcept_no, report_name, report_date FROM dart_filings LIMIT 5;").fetchdf())
 # poetry run python3 sql/test.py

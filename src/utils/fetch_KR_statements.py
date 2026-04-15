@@ -60,9 +60,9 @@ from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
 
 
-# status logger
-from src.core.status_logger import StatusLogger
-from src.core.dart_disclosure_analyzer import DartDisclosureAnalyzer
+# status logger — use package-relative imports (not src.core.*)
+from core.status_logger import StatusLogger
+from core.dart_disclosure_analyzer import DartDisclosureAnalyzer
 
 init(autoreset=True)
 dotenv.load_dotenv()
@@ -195,12 +195,47 @@ def validate_unique_corp_codes(df: pd.DataFrame):
 # ===============================
 # DART Fetcher
 # ===============================
+def _dart_dns_ok() -> bool:
+    """Quick DNS pre-check before looping over corp codes."""
+    import socket
+    try:
+        socket.getaddrinfo("opendart.fss.or.kr", 443, socket.AF_INET, socket.SOCK_STREAM)
+        return True
+    except socket.gaierror as exc:
+        logger.warn(f"[DART] DNS resolution failed for opendart.fss.or.kr: {exc}")
+        return False
+
+
 def fetch_dart_filing_list(
     corp_codes: list[str],
     api_key: str,
     years: int = 5,
     target_reports: set[str] | None = None,
 ) -> pd.DataFrame:
+    """
+    Fetch DART filing list for the given corp_codes.
+
+    Uses the SESSION object (with retry adapter) instead of bare requests.get().
+    Aborts early if DART DNS is unreachable.
+
+    Args:
+        corp_codes:     List of 8-digit DART corp codes
+        api_key:        OPEN_DART_API_KEY
+        years:          Look-back window in years
+        target_reports: Set of report codes (e.g. {"11011", "11013"});
+                        None = all report types
+
+    Returns:
+        DataFrame with columns: corp_code, corp_name, rcept_no, dcm_no,
+                                 reprt_code, report_name, report_date
+    """
+    if not api_key:
+        logger.warn("[DART] OPEN_DART_API_KEY is not set — skipping filing fetch")
+        return pd.DataFrame()
+
+    if not _dart_dns_ok():
+        logger.warn("[DART] Aborting filing fetch — host unreachable")
+        return pd.DataFrame()
 
     url = "https://opendart.fss.or.kr/api/list.json"
     today = datetime.today()
@@ -213,21 +248,27 @@ def fetch_dart_filing_list(
     }
 
     records = []
+    consecutive_errors = 0
+    MAX_CONSECUTIVE_ERRORS = 5
 
     for corp_code in tqdm(corp_codes, desc="Fetching DART filings"):
-        # ✅ 보고서 코드별로 나눠서 호출
         for reprt_code in target_reports or [None]:
-            params = base_params | {"corp_code": corp_code}
-
+            params = dict(base_params)
+            params["corp_code"] = corp_code
             if reprt_code:
                 params["reprt_code"] = reprt_code
 
             try:
-                res = requests.get(url, params=params, timeout=10)
-                data = res.json() #여기에 dcmNo 있음.
+                # Use SESSION (has retry adapter) instead of bare requests.get
+                res = SESSION.get(url, params=params, timeout=10)
+                res.raise_for_status()
+                data = res.json()
+                consecutive_errors = 0  # reset on success
 
                 if data.get("status") != "000":
-                    print(Fore.RED + f"[{corp_code}] {data.get('message')}")
+                    logger.warn(
+                        Fore.YELLOW + f"[DART][{corp_code}] API error: {data.get('message')}"
+                    )
                     continue
 
                 for f in data.get("list", []):
@@ -235,15 +276,22 @@ def fetch_dart_filing_list(
                         "corp_code": corp_code,
                         "corp_name": f.get("corp_name"),
                         "rcept_no": f.get("rcept_no"),
-                        "dcm_no": f.get("dcm_no"),   # 🔥 추가
+                        "dcm_no": f.get("dcm_no"),
                         "reprt_code": f.get("reprt_code"),
                         "report_name": f.get("report_nm"),
                         "report_date": f.get("rcept_dt"),
                     })
-                    
 
-            except Exception as e:
-                print(Fore.RED + f"[{corp_code}] {e}")
+            except requests.exceptions.ConnectionError as exc:
+                consecutive_errors += 1
+                logger.warn(Fore.YELLOW + f"[DART][{corp_code}] Connection error: {exc}")
+                if consecutive_errors >= MAX_CONSECUTIVE_ERRORS:
+                    logger.warn("[DART] Too many consecutive errors — aborting fetch")
+                    return pd.DataFrame(records)
+
+            except Exception as exc:
+                logger.warn(Fore.YELLOW + f"[DART][{corp_code}] {exc}")
+
     return pd.DataFrame(records)
 
 
@@ -615,13 +663,167 @@ def collect_disclosure_documents(
 
 
 # ===============================
+# Financial Statement Fetch
+# (structured data for KRStockDataAnalyst)
+# ===============================
+
+# DART financial statement API endpoint
+_DART_FINSTATE_URL = "https://opendart.fss.or.kr/api/fnlttSinglAcntAll.json"
+
+# Account codes for key P&L / BS items
+_DART_ACCOUNT_CODES = {
+    "revenue":          "ifrs-full_Revenue",
+    "operating_income": "ifrs-full_ProfitLossFromOperatingActivities",
+    "net_income":       "ifrs-full_ProfitLoss",
+    "total_assets":     "ifrs-full_Assets",
+    "total_equity":     "ifrs-full_Equity",
+}
+
+
+def fetch_kr_financials(
+    corp_code: str,
+    api_key: str,
+    year: int | None = None,
+    reprt_code: str = "11011",  # 11011 = annual report
+) -> dict:
+    """
+    Fetch key financial statement figures for a single Korean company from DART.
+
+    Uses the DART single company financial statement API
+    (opendart.fss.or.kr/api/fnlttSinglAcntAll.json).
+
+    Args:
+        corp_code:  8-digit DART corporate code
+        api_key:    OPEN_DART_API_KEY
+        year:       Fiscal year (4-digit int); defaults to last completed year
+        reprt_code: "11011" annual | "11012" semi-annual | "11013" Q1 | "11014" Q3
+
+    Returns:
+        dict with keys: corp_code, year, revenue, operating_income, net_income,
+                        total_assets, total_equity, operating_margin, net_margin
+                        (all values in KRW billions; None if unavailable)
+
+    Example:
+        data = fetch_kr_financials("00126380", api_key)
+        # {"corp_code": "00126380", "revenue": 302231.0, "net_income": 26908.0, ...}
+    """
+    if not api_key:
+        logger.warn("[DART] fetch_kr_financials: OPEN_DART_API_KEY not set")
+        return {}
+
+    if not _dart_dns_ok():
+        logger.warn("[DART] fetch_kr_financials: host unreachable")
+        return {}
+
+    from datetime import datetime as _dt
+    if year is None:
+        year = _dt.today().year - 1  # last completed fiscal year
+
+    params = {
+        "crtfc_key": api_key,
+        "corp_code": corp_code,
+        "bsns_year": str(year),
+        "reprt_code": reprt_code,
+        "fs_div": "CFS",  # CFS = consolidated financial statements
+    }
+
+    try:
+        res = SESSION.get(_DART_FINSTATE_URL, params=params, timeout=15)
+        res.raise_for_status()
+        data = res.json()
+    except Exception as exc:
+        logger.warn(f"[DART] fetch_kr_financials({corp_code}): {exc}")
+        return {}
+
+    if data.get("status") != "000":
+        logger.warn(
+            f"[DART] fetch_kr_financials({corp_code}): "
+            f"API error {data.get('status')} — {data.get('message')}"
+        )
+        return {}
+
+    # Parse the flat list of account items into a lookup dict
+    items = data.get("list", [])
+    lookup: dict[str, float] = {}
+    for item in items:
+        acnt_id = item.get("account_id", "")
+        thstrm_amount = item.get("thstrm_amount", "")  # current year amount
+        if acnt_id and thstrm_amount:
+            try:
+                # DART amounts are in KRW; convert to billions for readability
+                lookup[acnt_id] = float(str(thstrm_amount).replace(",", "")) / 1e9
+            except ValueError:
+                pass
+
+    rev = lookup.get(_DART_ACCOUNT_CODES["revenue"])
+    op_inc = lookup.get(_DART_ACCOUNT_CODES["operating_income"])
+    net_inc = lookup.get(_DART_ACCOUNT_CODES["net_income"])
+    assets = lookup.get(_DART_ACCOUNT_CODES["total_assets"])
+    equity = lookup.get(_DART_ACCOUNT_CODES["total_equity"])
+
+    op_margin = (op_inc / rev) if (rev and op_inc) else None
+    net_margin = (net_inc / rev) if (rev and net_inc) else None
+
+    return {
+        "corp_code": corp_code,
+        "year": year,
+        "reprt_code": reprt_code,
+        "revenue_bn_krw": rev,
+        "operating_income_bn_krw": op_inc,
+        "net_income_bn_krw": net_inc,
+        "total_assets_bn_krw": assets,
+        "total_equity_bn_krw": equity,
+        "operating_margin": op_margin,
+        "net_margin": net_margin,
+    }
+
+
+def fetch_kr_financials_batch(
+    corp_codes: list[str],
+    api_key: str,
+    year: int | None = None,
+    reprt_code: str = "11011",
+) -> pd.DataFrame:
+    """
+    Fetch financial statements for multiple Korean companies.
+
+    Args:
+        corp_codes: List of 8-digit DART corp codes
+        api_key:    OPEN_DART_API_KEY
+        year:       Fiscal year; defaults to last completed year
+        reprt_code: Report type code
+
+    Returns:
+        DataFrame with one row per company; NaN for unavailable fields.
+    """
+    if not api_key:
+        logger.warn("[DART] fetch_kr_financials_batch: OPEN_DART_API_KEY not set")
+        return pd.DataFrame()
+
+    records = []
+    for corp_code in tqdm(corp_codes, desc="Fetching KR financials"):
+        result = fetch_kr_financials(corp_code, api_key, year, reprt_code)
+        if result:
+            records.append(result)
+        time.sleep(0.3)  # be polite to DART servers
+
+    return pd.DataFrame(records) if records else pd.DataFrame()
+
+
+# ===============================
 # Main
 # ===============================
 def main():
+    # Guard: fail fast if API key is missing
+    if not OPEN_DART_API_KEY:
+        raise RuntimeError(
+            "OPEN_DART_API_KEY is not set in .env — cannot fetch DART data"
+        )
+
     # ===============================
     # Core Corp Registry
     # ===============================
-    from src.utils.corp_code_registry import load_corp_code_table, resolve_corp_codes
+    from utils.corp_code_registry import load_corp_code_table, resolve_corp_codes
 
     corp_code_df = load_corp_code_table(OPEN_DART_API_KEY)
 
