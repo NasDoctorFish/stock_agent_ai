@@ -214,16 +214,3 @@ src/
 | 🔹 **Investor Feedback Loop** | 과거 결정 → 수익률 → 다음 판단으로 이어지는 self-learning 구조           |
 
 ---
-
-## 🧠 한줄 요약
-
-> 지금 네 구조는 이미 **“투자 인공지능 운영체제(Investment OS)”** 수준이고,
-> **각 모듈이 독립적으로 교체 가능한 계층형 설계(Clean Architecture)** 형태야.
->
-> 여기에 Event-driven 실행과 모델 버전 관리만 더하면
-> 진짜 실전 운용 가능한 프레임워크로 완성된다. 💥
-
----
-
-원하면 위 구조를 **PlantUML 코드**나 **Mermaid 다이어그램 (Markdown에서 바로 시각화 가능한 형식)** 으로 변환해줄까?
-→ GitHub나 Notion에서 바로 볼 수 있게.

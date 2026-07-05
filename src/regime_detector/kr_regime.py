@@ -216,11 +216,12 @@ class KRRegimeDetector:
             kospi_w = pd.Series(dtype=float)
 
         # ── 2. VKOSPI ─────────────────────────────────────────────────────────
+        # Switched to ^VIX
         vkospi_w = None
         try:
-            vkospi_w = _yf_weekly_close("^VKOSPI", self.lookback_years)
+            vkospi_w = _yf_weekly_close("^VIX", self.lookback_years)
         except Exception as exc:
-            logger.info(f"VKOSPI unavailable ({exc}); using volatility fallback")
+            logger.info(f"VKOSPI (Changed to ^VIX) unavailable ({exc}); using volatility fallback")
 
         # ── 3. USD/KRW ────────────────────────────────────────────────────────
         usdkrw_w = None
