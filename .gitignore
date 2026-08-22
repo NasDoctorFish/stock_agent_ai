@@ -24,6 +24,9 @@ env/
 *.pt
 *.pth
 *.h5
+*.gguf
+qwen2.5-1.5b-instruct/
+
 
 # Logs
 logs/
