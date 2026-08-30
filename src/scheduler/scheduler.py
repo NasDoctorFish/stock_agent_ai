@@ -15,6 +15,8 @@ Job schedule (all times in UTC):
   │ market_regime        │ 60 min   │ US + KR regime detectors    │
   │ market_timing        │ 60 min   │ Valuation / market timer    │
   │ send_report          │  3 hr    │ Telegram 3-hour report      │
+  │ daily_report         │ 2x/day   │ 04:00 & 16:00 UTC            │
+  │                      │          │ (00:00 & 12:00 SGT)          │
   └──────────────────────────────────────────────────────────────┘
 
 The scheduler runs an initial pass of all jobs on startup before
@@ -60,6 +62,7 @@ _MAX_CONSECUTIVE_ERRORS = 10
 try:
     from apscheduler.schedulers.background import BackgroundScheduler
     from apscheduler.triggers.interval import IntervalTrigger
+    from apscheduler.triggers.cron import CronTrigger
     _HAS_APSCHEDULER = True
 except ImportError:
     _HAS_APSCHEDULER = False
@@ -96,7 +99,7 @@ class SchedulerPipeline:
         from regime_detector.kr_regime import KRRegimeDetector
         from market_timer.market_timer import MarketTimer
         from reporters.report_generator import ReportGenerator
-        from reporters.telegram_sender import TelegramSender
+        from reporters.daily_report import DailyReportGenerator
 
         self.logger = StatusLogger("scheduler")
         self.db = DBHandler(self.logger)
@@ -127,9 +130,9 @@ class SchedulerPipeline:
         # Market timer
         self.market_timer = MarketTimer(fred_api_key=fred_key)
 
-        # Reporter
-        self.sender = TelegramSender()
-        self.reporter = ReportGenerator(sender=self.sender)
+        # Reporter (sends via Discord webhook, configured from env)
+        self.reporter = ReportGenerator()
+        self.daily_reporter = DailyReportGenerator()
 
         # Shared state updated by jobs
         self.last_us_regime: Optional[Dict] = None
@@ -237,6 +240,22 @@ def job_send_report(pipeline: SchedulerPipeline) -> None:
         pipeline.consecutive_errors += 1
 
 
+def job_daily_report(pipeline: SchedulerPipeline) -> None:
+    """Assemble and send the once-daily market briefing."""
+    pipeline.logger.info("[JOB] daily_report — starting")
+    try:
+        pipeline.daily_reporter.generate_and_send(
+            us_regime=pipeline.last_us_regime,
+            us_decision=pipeline.last_us_decision,
+            kr_decision=pipeline.last_kr_decision,
+        )
+        pipeline.logger.info("[JOB] daily_report — complete")
+        pipeline.consecutive_errors = 0
+    except Exception as exc:
+        pipeline.logger.error(f"[JOB] daily_report failed: {exc}\n{traceback.format_exc()}")
+        pipeline.consecutive_errors += 1
+
+
 def _run_all_jobs(pipeline: SchedulerPipeline) -> None:
     """Execute all jobs sequentially for the initial warm-up pass."""
     for fn in [
@@ -287,6 +306,11 @@ def run_with_apscheduler(pipeline: SchedulerPipeline) -> None:
         args=[pipeline], id="send_report", name="3h Report",
         max_instances=1, coalesce=True,
     )
+    sched.add_job(
+        job_daily_report, CronTrigger(hour="4,16", minute=0, timezone="UTC"),
+        args=[pipeline], id="daily_report", name="Daily Market Report",
+        max_instances=1, coalesce=True,
+    )
 
     sched.start()
     pipeline.logger.info("APScheduler started — all jobs scheduled")
@@ -294,6 +318,7 @@ def run_with_apscheduler(pipeline: SchedulerPipeline) -> None:
     pipeline.logger.info("  regime/timing: every 60 min")
     pipeline.logger.info("  us/kr_analysis: every 60 min")
     pipeline.logger.info("  send_report  : every 3 hours")
+    pipeline.logger.info("  daily_report : 04:00 & 16:00 UTC (00:00 & 12:00 SGT)")
 
     # Keep the main thread alive; handle graceful shutdown
     stop_event = _setup_signal_handlers()
@@ -333,6 +358,8 @@ def run_with_sleep_loop(pipeline: SchedulerPipeline) -> None:
     }
 
     last_run: Dict[str, float] = {k: 0.0 for k in INTERVALS}
+    last_daily_report_slot: Optional[str] = None  # "YYYY-MM-DD-HH", one entry per fired slot
+    DAILY_REPORT_HOURS_UTC = (4, 16)  # 00:00 & 12:00 SGT
     stop_event = _setup_signal_handlers()
 
     pipeline.logger.info("Sleep-loop scheduler started (APScheduler not installed)")
@@ -360,6 +387,12 @@ def run_with_sleep_loop(pipeline: SchedulerPipeline) -> None:
         if now - last_run["send_report"] >= INTERVALS["send_report"]:
             threading.Thread(target=job_send_report, args=(pipeline,), daemon=True).start()
             last_run["send_report"] = now
+
+        now_utc = datetime.utcnow()
+        slot = now_utc.strftime("%Y-%m-%d-%H")
+        if now_utc.hour in DAILY_REPORT_HOURS_UTC and now_utc.minute == 0 and last_daily_report_slot != slot:
+            threading.Thread(target=job_daily_report, args=(pipeline,), daemon=True).start()
+            last_daily_report_slot = slot
 
         if pipeline.consecutive_errors >= _MAX_CONSECUTIVE_ERRORS:
             pipeline.logger.error("Too many consecutive errors. Shutting down.")

@@ -86,9 +86,10 @@ class TelegramSender:
         payload = {
             "chat_id": self._chat_id,
             "text": text,
-            "parse_mode": self._parse_mode,
             "disable_web_page_preview": True,
         }
+        if self._parse_mode:
+            payload["parse_mode"] = self._parse_mode
 
         try:
             resp = requests.post(url, json=payload, timeout=self._timeout)
