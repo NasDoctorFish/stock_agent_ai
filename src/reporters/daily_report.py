@@ -24,6 +24,7 @@ from __future__ import annotations
 import json
 import logging
 import os
+import re
 import sys
 from datetime import datetime, timedelta
 from pathlib import Path
@@ -52,8 +53,14 @@ from monitors.watchlist_config import load_watchlist_config
 logger = logging.getLogger(__name__)
 
 REPORTS_DIR = Path(__file__).resolve().parents[2] / "reports"
-WATCHLIST_LIMIT = 8
 MODEL_ID = "claude-opus-5"
+
+# watchlist.yaml lists the 16 US + 10 KR individual stocks first, then ETF
+# sections (index/gold/bond funds) — this report covers only the individual
+# stocks, so we take the first 26 entries. If watchlist.yaml's stock section
+# grows/shrinks, update this count.
+WATCHLIST_STOCK_COUNT = 26
+_WATCHLIST_YAML = Path(__file__).resolve().parents[2] / "Feb_08_2026" / "src" / "config" / "watchlist.yaml"
 
 _SNAPSHOT_TICKERS = {
     "sp500": "^GSPC",
@@ -63,14 +70,47 @@ _SNAPSHOT_TICKERS = {
     "us10y": "^TNX",
 }
 
+# US stock tickers have no inline comment in watchlist.yaml (unlike KR
+# tickers), so their names are hardcoded here.
+_US_STOCK_NAMES = {
+    "MSFT": "Microsoft", "GOOGL": "Alphabet", "AAPL": "Apple",
+    "BRK-B": "Berkshire Hathaway", "PG": "Procter & Gamble",
+    "CEG": "Constellation Energy", "V": "Visa", "COST": "Costco",
+    "AMZN": "Amazon", "AVGO": "Broadcom", "NVDA": "NVIDIA",
+    "META": "Meta Platforms", "WMT": "Walmart", "JPM": "JPMorgan Chase",
+    "NEE": "NextEra Energy", "XOM": "Exxon Mobil",
+}
+
+
+def _load_kr_names_from_yaml() -> Dict[str, str]:
+    """KR tickers already carry their company name as an inline YAML comment
+    (`symbol: 005930.KS  # Samsung Electronics`) — reuse it instead of
+    hardcoding a second copy."""
+    names: Dict[str, str] = {}
+    try:
+        for line in _WATCHLIST_YAML.read_text(encoding="utf-8").splitlines():
+            m = re.match(r"\s*-\s*symbol:\s*(\S+\.KS)\s*#\s*(.+)", line)
+            if m:
+                names[m.group(1)] = m.group(2).strip()
+    except Exception as exc:
+        logger.warning(f"[DailyReport] KR name parse failed: {exc}")
+    return names
+
+
+def resolve_company_name(ticker: str, kr_names: Optional[Dict[str, str]] = None) -> str:
+    if ticker in _US_STOCK_NAMES:
+        return _US_STOCK_NAMES[ticker]
+    if kr_names and ticker in kr_names:
+        return kr_names[ticker]
+    return ticker  # unknown — never fabricate a name
+
 
 # ── data gathering ───────────────────────────────────────────────────────────
 
-def _load_watchlist_tickers(limit: int = WATCHLIST_LIMIT) -> List[str]:
+def _load_watchlist_tickers(limit: int = WATCHLIST_STOCK_COUNT) -> List[str]:
     try:
         cfg = load_watchlist_config()
-        tickers = [t.symbol for t in cfg.tickers if not t.symbol.endswith(".KS")]
-        return tickers[:limit]
+        return [t.symbol for t in cfg.tickers][:limit]
     except Exception as exc:
         logger.error(f"[DailyReport] watchlist load failed: {exc}")
         return []
@@ -161,6 +201,8 @@ def gather_watchlist_and_signals(
             score_by_ticker[sid] = s.get("score")
             reasons_by_ticker[sid] = s.get("reasons", [])[:2]
 
+    kr_names = _load_kr_names_from_yaml()
+
     try:
         data = yf.download(
             tickers, period="4mo", interval="1d",
@@ -178,6 +220,8 @@ def gather_watchlist_and_signals(
             last, prev = closes.iloc[-1], closes.iloc[-2]
             watchlist.append({
                 "ticker": t,
+                "name": resolve_company_name(t, kr_names),
+                "currency": "KRW" if t.endswith(".KS") else "USD",
                 "price": round(float(last), 2),
                 "pct_change": round((last / prev - 1) * 100, 2),
             })
@@ -193,6 +237,7 @@ def gather_watchlist_and_signals(
             )
             ai_signals.append({
                 "ticker": t,
+                "name": resolve_company_name(t, kr_names),
                 "signal": label,
                 "confidence_pct": confidence,
                 "momentum_5d_pct": round(float(momentum_5d), 2),
@@ -300,11 +345,14 @@ Reproduce this exact structure (section order, emoji headers, and the divider li
  Then a "Market Mood: {emoji} {label}" line.)
 ━━━━━━━━━━━━━━━━━━
 🔥 WATCHLIST
-(one line per watchlist ticker: ticker, price, ▲/▼ arrow, +/-% change.
- Then "⭐ Strongest:" and "⚠️ Weakest:" lines picking the max/min pct_change.)
+(one line per watchlist ticker, ALWAYS in the form "Company Name (TICKER)  price  ▲/▼ +/-% change" —
+ use the "name" field verbatim, never invent or translate it; use "currency" to pick the $/₩ symbol
+ (USD -> $, KRW -> ₩) before the price. Then "⭐ Strongest:" and "⚠️ Weakest:" lines picking the
+ max/min pct_change, also showing "Company Name (TICKER)".)
 ━━━━━━━━━━━━━━━━━━
 🤖 AI SIGNALS
-(for each entry in ai_signals: ticker, Signal (🟢 BULLISH / 🟡 NEUTRAL / 🔴 BEARISH),
+(for each entry in ai_signals, ALWAYS start the line with "Company Name (TICKER)" using the "name"
+ field verbatim, then Signal (🟢 BULLISH / 🟡 NEUTRAL / 🔴 BEARISH),
  Confidence (label it as a heuristic score, e.g. "Confidence (heuristic) NN%"),
  Momentum (momentum_5d_pct), Trend (trend_vs_ma20 / trend_vs_ma60).
  Do NOT include a 1-day forecast line — no forecasting model exists, never invent one.)
@@ -371,11 +419,12 @@ def _fallback_plaintext(payload: Dict) -> str:
     lines += ["━━━━━━━━━━━━━━━━━━", "🔥 WATCHLIST"]
     for w in payload.get("watchlist", []):
         arrow = "▲" if w["pct_change"] >= 0 else "▼"
-        lines.append(f"{w['ticker']}  ${w['price']}  {arrow} {w['pct_change']:+.2f}%")
+        sign = "₩" if w.get("currency") == "KRW" else "$"
+        lines.append(f"{w.get('name', w['ticker'])} ({w['ticker']})  {sign}{w['price']}  {arrow} {w['pct_change']:+.2f}%")
 
     lines += ["━━━━━━━━━━━━━━━━━━", "🤖 AI SIGNALS"]
     for s in payload.get("ai_signals", []):
-        lines.append(f"{s['ticker']}: {s['signal']} (confidence heuristic {s['confidence_pct']}%), "
+        lines.append(f"{s.get('name', s['ticker'])} ({s['ticker']}): {s['signal']} (confidence heuristic {s['confidence_pct']}%), "
                       f"momentum {s['momentum_5d_pct']:+.2f}%, MA20 {s['trend_vs_ma20']}, MA60 {s['trend_vs_ma60']}")
 
     lines += ["━━━━━━━━━━━━━━━━━━", "📰 MARKET DRIVERS"]
