@@ -1,0 +1,9 @@
+node_modules
+npm-debug.log
+dist
+.env
+install.sh
+key.pem
+cert.pem
+docker.txt
+# .env는 보안상 이미지에 포함하지 않고 실행 시 주입하는 게 정석입니다.

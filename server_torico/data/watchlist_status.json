@@ -1,0 +1,297 @@
+{
+  "232080.KS": {
+    "symbol": "232080.KS",
+    "current_price": 14080,
+    "last_checked": "2026-08-23T03:40:04.810461+00:00"
+  },
+  "005930.KS": {
+    "symbol": "005930.KS",
+    "current_price": 281500,
+    "last_checked": "2026-08-23T04:20:24.664038+00:00"
+  },
+  "000270.KS": {
+    "symbol": "000270.KS",
+    "current_price": 130900,
+    "last_checked": "2026-08-23T04:20:25.986982+00:00"
+  },
+  "012450.KS": {
+    "symbol": "012450.KS",
+    "current_price": 1085000,
+    "last_checked": "2026-08-23T03:50:09.083229+00:00"
+  },
+  "367380.KS": {
+    "symbol": "367380.KS",
+    "current_price": 30890,
+    "last_checked": "2026-08-23T04:10:22.317371+00:00"
+  },
+  "132030.KS": {
+    "symbol": "132030.KS",
+    "current_price": 25595,
+    "last_checked": "2026-08-23T03:50:12.949905+00:00"
+  },
+  "005380.KS": {
+    "symbol": "005380.KS",
+    "current_price": 415000,
+    "last_checked": "2026-08-23T04:00:14.717067+00:00"
+  },
+  "411060.KS": {
+    "symbol": "411060.KS",
+    "current_price": 28450,
+    "last_checked": "2026-08-23T04:10:23.301149+00:00"
+  },
+  "379810.KS": {
+    "symbol": "379810.KS",
+    "current_price": 26875,
+    "last_checked": "2026-08-23T03:29:54.911056+00:00"
+  },
+  "035420.KS": {
+    "symbol": "035420.KS",
+    "current_price": 222000,
+    "last_checked": "2026-08-23T04:20:27.123850+00:00"
+  },
+  "360200.KS": {
+    "symbol": "360200.KS",
+    "current_price": 26585,
+    "last_checked": "2026-08-23T03:29:53.921947+00:00"
+  },
+  "229200.KS": {
+    "symbol": "229200.KS",
+    "current_price": 13810,
+    "last_checked": "2026-08-23T03:29:57.309422+00:00"
+  },
+  "267260.KS": {
+    "symbol": "267260.KS",
+    "current_price": 718000,
+    "last_checked": "2026-08-23T04:20:28.318895+00:00"
+  },
+  "069500.KS": {
+    "symbol": "069500.KS",
+    "current_price": 109980,
+    "last_checked": "2026-08-23T04:20:31.526425+00:00"
+  },
+  "105560.KS": {
+    "symbol": "105560.KS",
+    "current_price": 164300,
+    "last_checked": "2026-08-23T03:40:01.779087+00:00"
+  },
+  "207940.KS": {
+    "symbol": "207940.KS",
+    "current_price": 1551000,
+    "last_checked": "2026-08-23T04:00:15.606530+00:00"
+  },
+  "360750.KS": {
+    "symbol": "360750.KS",
+    "current_price": 26295,
+    "last_checked": "2026-08-23T03:50:10.011473+00:00"
+  },
+  "379800.KS": {
+    "symbol": "379800.KS",
+    "current_price": 23910,
+    "last_checked": "2026-08-23T04:20:29.265671+00:00"
+  },
+  "319640.KS": {
+    "symbol": "319640.KS",
+    "current_price": 26855,
+    "last_checked": "2026-08-23T03:29:59.421381+00:00"
+  },
+  "102110.KS": {
+    "symbol": "102110.KS",
+    "current_price": 110225,
+    "last_checked": "2026-08-23T04:00:17.655226+00:00"
+  },
+  "373220.KS": {
+    "symbol": "373220.KS",
+    "current_price": 343500,
+    "last_checked": "2026-08-23T03:40:02.679865+00:00"
+  },
+  "133690.KS": {
+    "symbol": "133690.KS",
+    "current_price": 179715,
+    "last_checked": "2026-08-23T04:20:30.193012+00:00"
+  },
+  "000660.KS": {
+    "symbol": "000660.KS",
+    "current_price": 1730000,
+    "last_checked": "2026-08-23T02:38:53.568898+00:00"
+  },
+  "MSFT": {
+    "symbol": "MSFT",
+    "current_price": 483.3699951171875,
+    "last_checked": "2026-08-21T19:53:46.938871+00:00"
+  },
+  "PG": {
+    "symbol": "PG",
+    "current_price": 144.77999877929688,
+    "last_checked": "2026-08-21T19:33:23.273650+00:00"
+  },
+  "AVGO": {
+    "symbol": "AVGO",
+    "current_price": 366.052001953125,
+    "last_checked": "2026-08-21T18:42:21.525804+00:00"
+  },
+  "JPM": {
+    "symbol": "JPM",
+    "current_price": 352.19500732421875,
+    "last_checked": "2026-08-21T19:13:00.296615+00:00"
+  },
+  "IVV": {
+    "symbol": "IVV",
+    "current_price": 769.9199829101562,
+    "last_checked": "2026-08-21T19:43:40.417393+00:00"
+  },
+  "QQQ": {
+    "symbol": "QQQ",
+    "current_price": 713.4600219726562,
+    "last_checked": "2026-08-21T19:53:53.715776+00:00"
+  },
+  "GLD": {
+    "symbol": "GLD",
+    "current_price": 424.0899963378906,
+    "last_checked": "2026-08-21T18:52:39.492626+00:00"
+  },
+  "JNK": {
+    "symbol": "JNK",
+    "current_price": 95.86499786376953,
+    "last_checked": "2026-08-21T19:43:42.307825+00:00"
+  },
+  "SPHY": {
+    "symbol": "SPHY",
+    "current_price": 23.295000076293945,
+    "last_checked": "2026-08-21T18:52:40.468720+00:00"
+  },
+  "SGOV": {
+    "symbol": "SGOV",
+    "current_price": 100.625,
+    "last_checked": "2026-08-21T19:23:18.362887+00:00"
+  },
+  "IEI": {
+    "symbol": "IEI",
+    "current_price": 116.38500213623047,
+    "last_checked": "2026-08-21T19:43:43.428677+00:00"
+  },
+  "EDV": {
+    "symbol": "EDV",
+    "current_price": 59.505001068115234,
+    "last_checked": "2026-08-21T19:53:56.766484+00:00"
+  },
+  "VOO": {
+    "symbol": "VOO",
+    "current_price": 704.1099853515625,
+    "last_checked": "2026-08-21T19:53:52.788346+00:00"
+  },
+  "GLDM": {
+    "symbol": "GLDM",
+    "current_price": 91.2249984741211,
+    "last_checked": "2026-08-21T15:59:00.602131+00:00"
+  },
+  "HYG": {
+    "symbol": "HYG",
+    "current_price": 79.62000274658203,
+    "last_checked": "2026-08-21T19:53:54.764170+00:00"
+  },
+  "SHY": {
+    "symbol": "SHY",
+    "current_price": 81.98500061035156,
+    "last_checked": "2026-08-21T18:32:15.945592+00:00"
+  },
+  "TLT": {
+    "symbol": "TLT",
+    "current_price": 81.98999786376953,
+    "last_checked": "2026-08-21T19:23:19.424545+00:00"
+  },
+  "GOOGL": {
+    "symbol": "GOOGL",
+    "current_price": 344.8399963378906,
+    "last_checked": "2026-08-19T19:51:25.888947+00:00"
+  },
+  "V": {
+    "symbol": "V",
+    "current_price": 371.42999267578125,
+    "last_checked": "2026-08-21T17:00:12.732274+00:00"
+  },
+  "COST": {
+    "symbol": "COST",
+    "current_price": 948.1799926757812,
+    "last_checked": "2026-08-21T19:53:48.995707+00:00"
+  },
+  "AMZN": {
+    "symbol": "AMZN",
+    "current_price": 258.2298889160156,
+    "last_checked": "2026-08-21T18:32:09.181761+00:00"
+  },
+  "WMT": {
+    "symbol": "WMT",
+    "current_price": 103.5250015258789,
+    "last_checked": "2026-08-21T19:53:49.894982+00:00"
+  },
+  "XOM": {
+    "symbol": "XOM",
+    "current_price": 164.91000366210938,
+    "last_checked": "2026-08-21T19:53:50.776946+00:00"
+  },
+  "QQQM": {
+    "symbol": "QQQM",
+    "current_price": 293.7699890136719,
+    "last_checked": "2026-08-21T19:23:16.421653+00:00"
+  },
+  "IAU": {
+    "symbol": "IAU",
+    "current_price": 86.19999694824219,
+    "last_checked": "2026-08-21T13:56:18.395873+00:00"
+  },
+  "IEF": {
+    "symbol": "IEF",
+    "current_price": 92.79499816894531,
+    "last_checked": "2026-08-21T18:52:41.454821+00:00"
+  },
+  "VTI": {
+    "symbol": "VTI",
+    "current_price": 378.57501220703125,
+    "last_checked": "2026-08-21T19:43:41.307714+00:00"
+  },
+  "USHY": {
+    "symbol": "USHY",
+    "current_price": 36.830101013183594,
+    "last_checked": "2026-08-21T19:23:17.447731+00:00"
+  },
+  "HYLB": {
+    "symbol": "HYLB",
+    "current_price": 36.314998626708984,
+    "last_checked": "2026-08-21T15:59:01.513469+00:00"
+  },
+  "BIL": {
+    "symbol": "BIL",
+    "current_price": 91.59770202636719,
+    "last_checked": "2026-08-21T19:53:55.686416+00:00"
+  },
+  "BRK-B": {
+    "symbol": "BRK-B",
+    "current_price": 495.8699951171875,
+    "last_checked": "2026-08-21T19:53:48.069198+00:00"
+  },
+  "META": {
+    "symbol": "META",
+    "current_price": 550.6900024414062,
+    "last_checked": "2026-08-21T19:43:37.321095+00:00"
+  },
+  "NEE": {
+    "symbol": "NEE",
+    "current_price": 83.80500030517578,
+    "last_checked": "2026-08-21T19:23:13.223003+00:00"
+  },
+  "CEG": {
+    "symbol": "CEG",
+    "current_price": 273.1099853515625,
+    "last_checked": "2026-08-21T19:43:36.324660+00:00"
+  },
+  "NVDA": {
+    "symbol": "NVDA",
+    "current_price": 215.10000610351562,
+    "last_checked": "2026-08-21T19:23:12.318153+00:00"
+  },
+  "AAPL": {
+    "symbol": "AAPL",
+    "current_price": 309.5799865722656,
+    "last_checked": "2026-08-21T19:43:35.299589+00:00"
+  }
+}

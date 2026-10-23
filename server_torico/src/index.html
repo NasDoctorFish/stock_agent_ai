@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Coinone Home Server | Secure Trading Console</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@300;400;600&display=swap');
+
+    :root {
+      --bg-0: #06070c;
+      --bg-1: #0c1120;
+      --glass: rgba(16, 24, 39, 0.72);
+      --line: rgba(148, 163, 184, 0.18);
+      --accent: #6ee7ff;
+      --accent-2: #36f2a7;
+      --accent-3: #ffba6b;
+    }
+
+    body {
+      font-family: 'Space Grotesk', system-ui, sans-serif;
+      background: radial-gradient(circle at top, #121b36 0%, #07080f 45%, #05060b 100%);
+      color: #e5e7eb;
+      min-height: 100vh;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(110, 231, 255, 0.15), transparent 35%),
+        radial-gradient(circle at 80% 10%, rgba(54, 242, 167, 0.12), transparent 40%),
+        radial-gradient(circle at 70% 80%, rgba(255, 186, 107, 0.15), transparent 40%);
+      pointer-events: none;
+      z-index: -2;
+    }
+
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="160" height="160" viewBox="0 0 160 160"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="3" stitchTiles="stitch"/></filter><rect width="160" height="160" filter="url(%23n)" opacity="0.12"/></svg>');
+      mix-blend-mode: soft-light;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .glass {
+      background: var(--glass);
+      border: 1px solid var(--line);
+      backdrop-filter: blur(16px);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+    }
+
+    .mono {
+      font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+    }
+
+    .price-up {
+      color: #22c55e;
+      animation: flash-green 0.6s ease;
+    }
+
+    .price-down {
+      color: #f87171;
+      animation: flash-red 0.6s ease;
+    }
+
+    .fade-up {
+      animation: fade-up 0.9s ease forwards;
+      opacity: 0;
+      transform: translateY(18px);
+    }
+
+    .floaty {
+      animation: floaty 6s ease-in-out infinite;
+    }
+
+    @keyframes flash-green {
+      from { box-shadow: 0 0 0 rgba(34, 197, 94, 0.5); background: rgba(34, 197, 94, 0.08); }
+      to { box-shadow: 0 0 40px rgba(34, 197, 94, 0.1); background: transparent; }
+    }
+
+    @keyframes flash-red {
+      from { box-shadow: 0 0 0 rgba(248, 113, 113, 0.45); background: rgba(248, 113, 113, 0.08); }
+      to { box-shadow: 0 0 40px rgba(248, 113, 113, 0.1); background: transparent; }
+    }
+
+    @keyframes fade-up {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes floaty {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
+    }
+  </style>
+</head>
+<body class="px-5 py-10 md:px-12">
+  <div class="max-w-7xl mx-auto space-y-10">
+    <header class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 fade-up" style="animation-delay: 0.1s;">
+      <div>
+        <div class="flex items-center gap-3 text-xs uppercase tracking-[0.3em] text-slate-400">
+          <span class="inline-flex h-2 w-2 rounded-full bg-emerald-400"></span>
+          Private Home Server
+        </div>
+        <h1 class="text-3xl md:text-4xl font-semibold mt-3">
+          Coinone <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 via-emerald-200 to-amber-200">Secure Trade Console</span>
+        </h1>
+        <p class="text-slate-400 mt-2">TOTP + JWT 보호 레이어 위에서 Coinone v2.1 주문을 실행합니다.</p>
+      </div>
+      <div class="glass px-6 py-4 rounded-2xl flex items-center gap-6 floaty">
+        <div>
+          <div class="text-[11px] uppercase tracking-[0.2em] text-slate-400">Live BTC/KRW</div>
+          <div id="live-price" class="text-2xl font-semibold mono">---</div>
+        </div>
+        <div class="h-10 w-px bg-slate-700"></div>
+        <div>
+          <div class="text-[11px] uppercase tracking-[0.2em] text-slate-400">Session</div>
+          <div id="auth-status" class="text-sm text-amber-200">OTP pending</div>
+        </div>
+        <div class="h-10 w-px bg-slate-700"></div>
+        <div>
+          <div class="text-[11px] uppercase tracking-[0.2em] text-slate-400">Server</div>
+          <div id="health-status" class="text-sm text-slate-400 flex items-center gap-2">
+            <span id="health-dot" class="h-2 w-2 rounded-full bg-slate-500"></span>
+            Checking...
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <section class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+      <div class="lg:col-span-4 space-y-6 fade-up" style="animation-delay: 0.2s;">
+        <div class="glass rounded-3xl p-6 space-y-5">
+          <div class="flex items-center gap-3">
+            <div class="h-10 w-10 rounded-2xl bg-cyan-500/10 text-cyan-300 flex items-center justify-center">
+              <i data-lucide="shield-check" class="h-5 w-5"></i>
+            </div>
+            <div>
+              <h2 class="text-lg font-semibold">Security Gate</h2>
+              <p class="text-xs text-slate-400">OTP 인증 후 JWT 발급</p>
+            </div>
+          </div>
+          <button onclick="setupOTP()" aria-label="Issue OTP QR code" class="w-full py-3 rounded-xl bg-slate-900/60 border border-slate-700 hover:border-cyan-400 hover:text-cyan-200 transition">QR Code 발급</button>
+          <div id="qr-display" class="hidden bg-white rounded-2xl p-4 w-fit mx-auto">
+            <img id="qr-image" src="" alt="OTP setup QR code" class="w-32 h-32" />
+          </div>
+          <label for="otp-input" class="sr-only">OTP 6-digit code</label>
+          <input id="otp-input" type="text" placeholder="OTP 6자리" aria-label="OTP 6-digit code" class="w-full bg-slate-900/70 border border-slate-700 rounded-xl px-4 py-3 text-center text-lg font-semibold tracking-[0.2em] outline-none focus:border-cyan-300" />
+          <button onclick="verifyOTP()" aria-label="Verify OTP and log in" class="w-full py-3 rounded-xl bg-gradient-to-r from-cyan-400 to-emerald-300 text-slate-900 font-semibold shadow-lg shadow-emerald-500/20">인증 및 로그인</button>
+          <div class="text-[11px] text-slate-500">성공 시 5분 유효 JWT가 저장됩니다.</div>
+        </div>
+
+        <div class="glass rounded-3xl p-6 space-y-4">
+          <div class="flex items-center gap-3">
+            <div class="h-10 w-10 rounded-2xl bg-amber-500/10 text-amber-200 flex items-center justify-center">
+              <i data-lucide="activity" class="h-5 w-5"></i>
+            </div>
+            <div>
+              <h2 class="text-lg font-semibold">Realtime Feed</h2>
+              <p class="text-xs text-slate-400">2초 간격 BTC 시세</p>
+            </div>
+          </div>
+          <canvas id="price-chart" class="w-full h-40"></canvas>
+        </div>
+      </div>
+
+      <div class="lg:col-span-8 space-y-6 fade-up" style="animation-delay: 0.3s;">
+        <div class="glass rounded-3xl p-8 space-y-6">
+          <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+            <div class="flex items-center gap-3">
+              <div class="h-10 w-10 rounded-2xl bg-emerald-500/10 text-emerald-200 flex items-center justify-center">
+                <i data-lucide="candlestick-chart" class="h-5 w-5"></i>
+              </div>
+              <div>
+                <h2 class="text-xl font-semibold">Order Desk</h2>
+                <p class="text-xs text-slate-400">Coinone v2.1 프록시 실행</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-2 text-xs text-emerald-200">
+              <span class="h-2 w-2 rounded-full bg-emerald-400"></span>
+              Connected to /api/order
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="space-y-5">
+              <div>
+                <label class="text-xs text-slate-400 font-semibold uppercase tracking-[0.2em]">Order Type</label>
+                <select id="order-type" onchange="toggleOrderFields()" class="mt-2 w-full bg-slate-900/70 border border-slate-700 rounded-xl px-4 py-3 outline-none focus:border-emerald-300">
+                  <option value="LIMIT">Limit</option>
+                  <option value="MARKET">Market</option>
+                  <option value="STOP_LIMIT">Stop-Limit</option>
+                </select>
+              </div>
+
+              <div id="price-field">
+                <label class="text-xs text-slate-400 font-semibold uppercase tracking-[0.2em]">Price (KRW)</label>
+                <div class="relative mt-2">
+                  <input id="trade-price" type="text" class="w-full bg-slate-900/70 border border-slate-700 rounded-xl px-4 py-3 mono outline-none" />
+                  <button onclick="setPriceToCurrent()" class="absolute right-3 top-2.5 text-[10px] uppercase tracking-widest bg-slate-800 px-2 py-1 rounded text-slate-300 hover:text-white">Current</button>
+                </div>
+              </div>
+
+              <div id="trigger-field" class="hidden">
+                <label class="text-xs text-rose-200 font-semibold uppercase tracking-[0.2em]">Trigger Price</label>
+                <input id="trigger-price" type="text" class="mt-2 w-full bg-slate-900/70 border border-rose-900/60 rounded-xl px-4 py-3 mono outline-none" />
+              </div>
+
+              <div>
+                <label class="text-xs text-slate-400 font-semibold uppercase tracking-[0.2em]">Quantity (BTC)</label>
+                <input id="trade-qty" type="text" value="0.001" class="mt-2 w-full bg-slate-900/70 border border-slate-700 rounded-xl px-4 py-3 mono outline-none" />
+              </div>
+            </div>
+
+            <div class="flex flex-col">
+              <label class="text-xs text-slate-400 font-semibold uppercase tracking-[0.2em]">Execution Log</label>
+              <div id="log-display" class="mt-2 flex-1 bg-black/40 border border-slate-800 rounded-2xl p-4 mono text-[11px] text-slate-300 overflow-y-auto leading-relaxed min-h-[200px]">
+                > System ready. Waiting for auth...
+              </div>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 gap-4">
+            <button onclick="executeOrder('BUY')" aria-label="Execute BUY order" class="py-4 rounded-2xl font-semibold bg-emerald-500/90 hover:bg-emerald-400 text-slate-900 shadow-lg shadow-emerald-900/40">BUY</button>
+            <button onclick="executeOrder('SELL')" aria-label="Execute SELL order" class="py-4 rounded-2xl font-semibold bg-rose-500/90 hover:bg-rose-400 text-slate-900 shadow-lg shadow-rose-900/30">SELL</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="fade-up" style="animation-delay: 0.4s;">
+      <div class="glass rounded-3xl p-8 space-y-6">
+        <div class="flex items-center gap-3">
+          <div class="h-10 w-10 rounded-2xl bg-rose-500/10 text-rose-200 flex items-center justify-center">
+            <i data-lucide="trending-down" class="h-5 w-5"></i>
+          </div>
+          <div>
+            <h2 class="text-xl font-semibold">Plunge Watchlist</h2>
+            <p class="text-xs text-slate-400">Python 폴러가 감시 중인 종목과 최근 알림</p>
+          </div>
+          <span id="watchlist-stale-badge" class="hidden ml-auto text-[11px] uppercase tracking-widest px-3 py-1 rounded-full bg-amber-500/10 text-amber-200 border border-amber-500/30">Stale — retrying</span>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <div>
+            <label class="text-xs text-slate-400 font-semibold uppercase tracking-[0.2em]">Watchlist</label>
+            <table class="mt-2 w-full text-sm mono">
+              <thead>
+                <tr class="text-left text-slate-400 text-xs uppercase tracking-wider">
+                  <th class="pb-2">Symbol</th>
+                  <th class="pb-2">Price</th>
+                  <th class="pb-2">Last Checked</th>
+                </tr>
+              </thead>
+              <tbody id="watchlist-rows">
+                <tr><td colspan="3" class="text-slate-500 py-3">로그인 후 표시됩니다.</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div>
+            <label class="text-xs text-slate-400 font-semibold uppercase tracking-[0.2em]">Recent Alerts</label>
+            <div id="alert-rows" class="mt-2 space-y-2 text-sm max-h-64 overflow-y-auto pr-1">
+              <div class="text-slate-500">로그인 후 표시됩니다.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    lucide.createIcons();
+
+    let currentBtcPrice = 0;
+    const priceHistory = [];
+    const maxPoints = 30;
+
+    const ctx = document.getElementById('price-chart');
+    const priceChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: Array.from({ length: maxPoints }, (_, i) => `${maxPoints - i}s`),
+        datasets: [
+          {
+            label: 'BTC/KRW',
+            data: Array(maxPoints).fill(0),
+            tension: 0.35,
+            borderColor: 'rgba(110, 231, 255, 0.9)',
+            backgroundColor: 'rgba(110, 231, 255, 0.12)',
+            fill: true,
+            pointRadius: 0
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+          x: { display: false },
+          y: { display: false }
+        },
+        plugins: {
+          legend: { display: false }
+        }
+      }
+    });
+
+    const logBox = document.getElementById('log-display');
+
+    const pushLog = (message, tone = 'text-slate-300') => {
+      const line = `<br/><span class="${tone}">> ${message}</span>`;
+      logBox.innerHTML += line;
+      logBox.scrollTop = logBox.scrollHeight;
+    };
+
+    async function updatePrice() {
+      try {
+        const res = await fetch('/api/ticker');
+        const data = await res.json();
+        const newPrice = Number(data?.tickers?.[0]?.last ?? 0);
+
+        if (!newPrice) {
+          return;
+        }
+
+        const priceEl = document.getElementById('live-price');
+        if (currentBtcPrice !== 0 && priceEl) {
+          priceEl.className = newPrice > currentBtcPrice ? 'text-2xl font-semibold mono price-up' : 'text-2xl font-semibold mono price-down';
+        }
+        currentBtcPrice = newPrice;
+        priceEl.innerText = `${newPrice.toLocaleString()} ₩`;
+
+        priceHistory.push(newPrice);
+        if (priceHistory.length > maxPoints) {
+          priceHistory.shift();
+        }
+        priceChart.data.datasets[0].data = [...priceHistory];
+        priceChart.update('none');
+      } catch (error) {
+        pushLog('Price fetch error. Check /api/ticker proxy.', 'text-rose-300');
+      }
+    }
+
+    setInterval(updatePrice, 2000);
+    updatePrice();
+
+    async function updateHealth() {
+      const dot = document.getElementById('health-dot');
+      const status = document.getElementById('health-status');
+      try {
+        const res = await fetch('/', { method: 'HEAD' });
+        if (!res.ok) throw new Error('bad status');
+        dot.className = 'h-2 w-2 rounded-full bg-emerald-400';
+        status.lastChild.textContent = 'Server OK';
+      } catch (error) {
+        dot.className = 'h-2 w-2 rounded-full bg-rose-400';
+        status.lastChild.textContent = 'Unreachable';
+      }
+    }
+
+    setInterval(updateHealth, 10000);
+    updateHealth();
+
+    function timeAgo(isoString) {
+      const seconds = Math.max(0, Math.floor((Date.now() - new Date(isoString).getTime()) / 1000));
+      if (seconds < 60) return `${seconds}s ago`;
+      const minutes = Math.floor(seconds / 60);
+      if (minutes < 60) return `${minutes}m ago`;
+      const hours = Math.floor(minutes / 60);
+      return `${hours}h ago`;
+    }
+
+    function setPriceToCurrent() {
+      document.getElementById('trade-price').value = currentBtcPrice || '';
+    }
+
+    function toggleOrderFields() {
+      const type = document.getElementById('order-type').value;
+      const priceField = document.getElementById('price-field');
+      const triggerField = document.getElementById('trigger-field');
+
+      if (type === 'MARKET') {
+        priceField.classList.add('opacity-50', 'pointer-events-none');
+        triggerField.classList.add('hidden');
+      } else if (type === 'STOP_LIMIT') {
+        priceField.classList.remove('opacity-50', 'pointer-events-none');
+        triggerField.classList.remove('hidden');
+      } else {
+        priceField.classList.remove('opacity-50', 'pointer-events-none');
+        triggerField.classList.add('hidden');
+      }
+    }
+
+    async function setupOTP() {
+      const res = await fetch('/api/users/1/setup-otp');
+      const data = await res.json();
+      if (data.success) {
+        document.getElementById('qr-display').classList.remove('hidden');
+        document.getElementById('qr-image').src = data.qrCode;
+        pushLog('OTP QR 생성 완료. 앱에서 스캔하세요.', 'text-cyan-200');
+      }
+    }
+
+    async function verifyOTP() {
+      const token = document.getElementById('otp-input').value;
+      const res = await fetch('/api/verify-otp', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ userId: 1, token })
+      });
+      const data = await res.json();
+      if (data.success) {
+        localStorage.setItem('lab_jwt', data.accessToken);
+        document.getElementById('auth-status').innerText = 'JWT active (5m)';
+        pushLog('JWT 발급 완료. 주문 가능 상태입니다.', 'text-emerald-200');
+        fetchWatchlistStatus();
+      } else {
+        pushLog('OTP 인증 실패.', 'text-rose-300');
+      }
+    }
+
+    let watchlistFailures = 0;
+    let watchlistLoaded = false;
+    const STALE_MS = 60000;
+
+    function setStaleBadge(show) {
+      document.getElementById('watchlist-stale-badge').classList.toggle('hidden', !show);
+    }
+
+    function alertSeverityClasses(dropPct) {
+      return dropPct >= 10
+        ? 'border-rose-900/60 bg-rose-500/10 animate-pulse'
+        : 'border-amber-900/40 bg-amber-500/5';
+    }
+
+    async function fetchWatchlistStatus() {
+      const token = localStorage.getItem('lab_jwt');
+      const rowsEl = document.getElementById('watchlist-rows');
+      const alertsEl = document.getElementById('alert-rows');
+      if (!token) {
+        return;
+      }
+
+      if (!watchlistLoaded) {
+        rowsEl.innerHTML = '<tr><td colspan="3" class="text-slate-500 py-3">Loading...</td></tr>';
+      }
+
+      try {
+        const res = await fetch('/api/watchlist/status', {
+          headers: { 'Authorization': `Bearer ${token}` }
+        });
+        if (!res.ok) {
+          throw new Error('bad status');
+        }
+        const data = await res.json();
+        watchlistFailures = 0;
+        watchlistLoaded = true;
+        setStaleBadge(false);
+
+        const tickers = [...data.tickers].sort((a, b) => a.symbol.localeCompare(b.symbol));
+
+        rowsEl.innerHTML = tickers.length
+          ? tickers.map((t) => {
+              const isStale = Date.now() - new Date(t.last_checked).getTime() > STALE_MS;
+              return `
+              <tr class="border-t border-slate-800${isStale ? ' opacity-50' : ''}">
+                <td class="py-2 text-cyan-200">${t.symbol}</td>
+                <td class="py-2">${t.current_price}</td>
+                <td class="py-2 text-slate-400 text-xs" title="${new Date(t.last_checked).toLocaleString()}">${timeAgo(t.last_checked)}</td>
+              </tr>`;
+            }).join('')
+          : '<tr><td colspan="3" class="text-slate-500 py-3">데이터 없음</td></tr>';
+
+        alertsEl.innerHTML = data.recentAlerts.length
+          ? data.recentAlerts.map((a) => `
+              <div class="border rounded-xl px-4 py-2 ${alertSeverityClasses(a.drop_pct)}">
+                <div class="text-rose-200 font-semibold">${a.symbol} −${a.drop_pct}%</div>
+                <div class="text-xs text-slate-400" title="${new Date(a.triggered_at).toLocaleString()}">${a.current_price} vs ${a.reference_type} ${a.reference_price} &middot; ${timeAgo(a.triggered_at)}</div>
+              </div>`).join('')
+          : '<div class="text-slate-500">알림 없음</div>';
+      } catch (error) {
+        watchlistFailures += 1;
+        if (watchlistFailures >= 2) {
+          setStaleBadge(true);
+        }
+      }
+    }
+
+    setInterval(fetchWatchlistStatus, 30000);
+    fetchWatchlistStatus();
+
+    async function executeOrder(side) {
+      const token = localStorage.getItem('lab_jwt');
+      if (!token) {
+        pushLog('JWT 없음: OTP 인증 후 진행하세요.', 'text-amber-200');
+        return;
+      }
+
+      const type = document.getElementById('order-type').value;
+      const price = Number(document.getElementById('trade-price').value || 0);
+      const qty = Number(document.getElementById('trade-qty').value || 0);
+      const triggerPrice = Number(document.getElementById('trigger-price').value || 0);
+
+      pushLog(`${type} ${side} 주문 전송중...`, 'text-cyan-200');
+
+      try {
+        const res = await fetch('/api/order', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+          },
+          body: JSON.stringify({
+            side,
+            type,
+            price: price || undefined,
+            qty,
+            triggerPrice: triggerPrice || undefined
+          })
+        });
+        const data = await res.json();
+        pushLog(`Response: ${JSON.stringify(data)}`, 'text-slate-100');
+      } catch (error) {
+        pushLog('Order 요청 실패. 서버 상태 확인.', 'text-rose-300');
+      }
+    }
+  </script>
+</body>
+</html>

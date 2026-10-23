@@ -1,0 +1,17 @@
+{
+  "name": "coinone-rss-bot",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "RSS buzz scanner & trading signal bot for Coinone",
+  "main": "rss_scanner.js",
+  "scripts": {
+    "start": "node rss_scanner.js",
+    "dry": "DRY_RUN=true node rss_scanner.js",
+    "live": "DRY_RUN=false node rss_scanner.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.0.0",
+    "fast-xml-parser": "^4.3.0",
+    "node-fetch": "^3.3.2"
+  }
+}

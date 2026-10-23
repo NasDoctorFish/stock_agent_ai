@@ -34,3 +34,24 @@ logs/
 
 # OS
 .DS_Store
+
+# Keras/model files
+*.keras
+*.model
+
+# Node
+node_modules/
+npm-debug.log
+
+# server_torico specifics
+server_torico/logs/
+server_torico/reports/
+server_torico/dist/
+
+# pm2-dashboard
+pm2-dashboard/node_modules/
+
+# misc large/generated
+*.log.2*
+docs_cache/
+__pycache__/

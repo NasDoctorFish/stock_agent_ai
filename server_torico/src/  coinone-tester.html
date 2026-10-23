@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coinone API Professional Lab</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600&family=Pretendard:wght@400;700&display=swap');
+        body { font-family: 'Pretendard', sans-serif; background-color: #0b0e11; color: #eaecef; }
+        .mono { font-family: 'JetBrains Mono', monospace; }
+        .glass { background: rgba(23, 27, 34, 0.8); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.05); }
+        .coinone-blue { color: #1772f8; }
+        .btn-primary { background: linear-gradient(135deg, #1772f8 0%, #0052cc 100%); transition: all 0.3s ease; }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 4px 15px rgba(23, 114, 248, 0.4); }
+        input, select { background: #1e2329 !important; border: 1px solid #474d57 !important; color: white !important; }
+        input:focus { border-color: #1772f8 !important; outline: none; }
+    </style>
+</head>
+<body class="p-4 md:p-10">
+    <div class="max-w-6xl mx-auto">
+        <header class="flex flex-col md:flex-row justify-between items-center mb-10 gap-4">
+            <div>
+                <h1 class="text-3xl font-bold flex items-center gap-3">
+                    <i class="fa-solid fa-chart-line coinone-blue"></i>
+                    Coinone <span class="text-slate-400 font-light italic">API Lab</span>
+                </h1>
+                <p class="text-slate-500 text-sm mt-1">인증 헤더 자동 생성 및 API 실시간 테스트 도구</p>
+            </div>
+            <div class="flex gap-2">
+                <span class="px-3 py-1 bg-green-500/10 text-green-500 rounded-full text-xs border border-green-500/20 flex items-center gap-1">
+                    <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span> API Status: Operational
+                </span>
+            </div>
+        </header>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+            <div class="lg:col-span-4 space-y-6">
+                <section class="glass p-6 rounded-2xl shadow-2xl">
+                    <h2 class="text-lg font-bold mb-4 flex items-center gap-2">
+                        <i class="fa-solid fa-shield-halved text-sky-400"></i> API Credentials
+                    </h2>
+                    <div class="space-y-4">
+                        <div>
+                            <label class="text-xs text-slate-400 mb-1 block">ACCESS TOKEN</label>
+                            <input type="password" id="access-token" placeholder="코인원 엑세스 토큰" class="w-full p-3 rounded-lg text-sm">
+                        </div>
+                        <div>
+                            <label class="text-xs text-slate-400 mb-1 block">SECRET KEY</label>
+                            <input type="password" id="secret-key" placeholder="코인원 시크릿 키" class="w-full p-3 rounded-lg text-sm">
+                        </div>
+                    </div>
+                </section>
+
+                <section class="glass p-6 rounded-2xl shadow-2xl">
+                    <h2 class="text-lg font-bold mb-4 flex items-center gap-2">
+                        <i class="fa-solid fa-sliders text-indigo-400"></i> Request Settings
+                    </h2>
+                    <div class="space-y-4">
+                        <div>
+                            <label class="text-xs text-slate-400 mb-1 block">API ENDPOINT</label>
+                            <select id="api-endpoint" class="w-full p-3 rounded-lg text-sm cursor-pointer">
+                                <optgroup label="Account (Private)">
+                                    <option value="/v2/account/balance/">내 잔고 조회</option>
+                                    <option value="/v2/account/user_info/">유저 정보 조회</option>
+                                </optgroup>
+                                <optgroup label="Order (Private)">
+                                    <option value="/v2/order/limit_buy/">지정가 매수</option>
+                                    <option value="/v2/order/limit_sell/">지정가 매도</option>
+                                    <option value="/v2/order/cancel/">주문 취소</option>
+                                </optgroup>
+                                <optgroup label="Market (Public)">
+                                    <option value="/v2/ticker/">티커 조회 (모든 코인)</option>
+                                </optgroup>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="text-xs text-slate-400 mb-1 block">CURRENCY (Target)</label>
+                            <input type="text" id="currency" value="BTC" class="w-full p-3 rounded-lg text-sm uppercase font-bold text-sky-400">
+                        </div>
+                        <button onclick="executeRequest()" class="w-full btn-primary text-white font-bold py-3 rounded-xl shadow-lg mt-2">
+                            API 호출하기
+                        </button>
+                    </div>
+                </section>
+            </div>
+
+            <div class="lg:col-span-8 space-y-6">
+                <section class="glass p-6 rounded-2xl shadow-2xl flex flex-col h-full min-h-[550px]">
+                    <div class="flex justify-between items-center mb-4">
+                        <h2 class="text-lg font-bold flex items-center gap-2">
+                            <i class="fa-solid fa-terminal text-emerald-400"></i> Response Output
+                        </h2>
+                        <button onclick="clearConsole()" class="text-xs text-slate-500 hover:text-white transition-colors">
+                            <i class="fa-solid fa-trash-can"></i> Clear
+                        </button>
+                    </div>
+                    
+                    <div id="response-container" class="bg-[#0b0e11] rounded-xl flex-grow p-4 overflow-y-auto border border-slate-800 mono text-sm leading-relaxed">
+                        <div class="text-slate-600 italic">// API 호출 결과가 여기에 표시됩니다.</div>
+                    </div>
+
+                    <div class="mt-4 p-4 bg-slate-900/50 rounded-lg border border-slate-800">
+                        <h3 class="text-xs font-bold text-slate-500 uppercase mb-2">Generated Headers (Debug)</h3>
+                        <div id="header-info" class="grid grid-cols-1 gap-2 text-[10px] mono text-slate-400">
+                            <div>X-COINONE-PAYLOAD: <span class="text-slate-600">waiting...</span></div>
+                            <div>X-COINONE-SIGNATURE: <span class="text-slate-600">waiting...</span></div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+    <script>
+        function logResponse(data, isError = false) {
+            const container = document.getElementById('response-container');
+            const time = new Date().toLocaleTimeString();
+            const colorClass = isError ? 'text-red-400' : 'text-emerald-400';
+            
+            const html = `
+                <div class="mb-4 border-b border-slate-800 pb-2">
+                    <div class="text-[10px] text-slate-500">[${time}] API Response:</div>
+                    <pre class="${colorClass}">${JSON.stringify(data, null, 2)}</pre>
+                </div>
+            `;
+            container.innerHTML = html + container.innerHTML;
+        }
+
+        function clearConsole() {
+            document.getElementById('response-container').innerHTML = '<div class="text-slate-600 italic">// 콘솔이 비워졌습니다.</div>';
+        }
+
+        async function executeRequest() {
+            // 1. 3000번 서버에서 받은 JWT 꺼내기
+            const jwtToken = localStorage.getItem('lab_jwt');
+            if (!jwtToken) {
+                alert("OTP 인증을 먼저 완료해주세요! (3000번 포트)");
+                return;
+            }
+
+            // 인풋 값들
+            const price = prompt("가격을 입력하세요 (예: 50000000)", "10000000");
+            const qty = prompt("수량을 입력하세요 (예: 0.001)", "0.001");
+
+            if (!price || !qty) return;
+
+            // 2. 4000번 프록시 서버로 요청 보내기 (코인원으로 직접 X)
+            try {
+                logResponse({ info: "4000번 서버로 주문 요청을 전송합니다..." });
+
+                const res = await fetch(`http://localhost:4000/api/order/limit-buy?price=${price}&qty=${qty}`, {
+                    method: 'GET', // 서버 설정에 맞춰 GET 사용
+                    headers: {
+                        'Authorization': `Bearer ${jwtToken}` // 우리 서버 인증용 JWT
+                    }
+                });
+
+                const data = await res.json();
+                
+                if (res.ok) {
+                    logResponse(data); // 성공 시 코인원 응답 출력
+                } else {
+                    logResponse(data, true); // 에러 출력
+                }
+            } catch (error) {
+                logResponse({ error: "4000번 서버 연결 실패. 서버가 켜져 있나요?", details: error.message }, true);
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,6 @@
+.env
+install.sh
+key.pem
+cert.pem
+docker.txt
+package-lock.json

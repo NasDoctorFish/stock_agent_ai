@@ -1,0 +1,4502 @@
+[
+  {
+    "symbol": "000270.KS",
+    "current_price": 130900,
+    "reference_price": 146800,
+    "reference_type": "n_day_high",
+    "drop_pct": 10.83,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-21T21:45:07.516783+00:00"
+  },
+  {
+    "symbol": "000270.KS",
+    "current_price": 130900,
+    "reference_price": 146800,
+    "reference_type": "n_day_high",
+    "drop_pct": 10.83,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-21T21:55:12.787651+00:00"
+  },
+  {
+    "symbol": "267260.KS",
+    "current_price": 718000,
+    "reference_price": 868519.5902777778,
+    "reference_type": "n_day_high",
+    "drop_pct": 17.33,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-21T21:55:14.939683+00:00"
+  },
+  {
+    "symbol": "232080.KS",
+    "current_price": 14080,
+    "reference_price": 15525,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.31,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-21T21:55:16.835138+00:00"
+  },
+  {
+    "symbol": "000270.KS",
+    "current_price": 130900,
+    "reference_price": 146800,
+    "reference_type": "n_day_high",
+    "drop_pct": 10.83,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-21T22:05:18.800275+00:00"
+  },
+  {
+    "symbol": "373220.KS",
+    "current_price": 343500,
+    "reference_price": 371500,
+    "reference_type": "n_day_high",
+    "drop_pct": 7.54,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-21T22:05:19.729816+00:00"
+  },
+  {
+    "symbol": "232080.KS",
+    "current_price": 14080,
+    "reference_price": 15525,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.31,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-21T22:05:21.788947+00:00"
+  },
+  {
+    "symbol": "005380.KS",
+    "current_price": 415000,
+    "reference_price": 459500,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.68,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-21T22:15:24.349473+00:00"
+  },
+  {
+    "symbol": "105560.KS",
+    "current_price": 164300,
+    "reference_price": 176900,
+    "reference_type": "n_day_high",
+    "drop_pct": 7.12,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-21T22:15:25.529176+00:00"
+  },
+  {
+    "symbol": "373220.KS",
+    "current_price": 343500,
+    "reference_price": 371500,
+    "reference_type": "n_day_high",
+    "drop_pct": 7.54,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-21T22:15:27.882591+00:00"
+  },
+  {
+    "symbol": "267260.KS",
+    "current_price": 718000,
+    "reference_price": 868519.5902777778,
+    "reference_type": "n_day_high",
+    "drop_pct": 17.33,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-21T22:15:29.522301+00:00"
+  },
+  {
+    "symbol": "232080.KS",
+    "current_price": 14080,
+    "reference_price": 15525,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.31,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-21T22:15:37.339853+00:00"
+  },
+  {
+    "symbol": "000270.KS",
+    "current_price": 130900,
+    "reference_price": 146800,
+    "reference_type": "n_day_high",
+    "drop_pct": 10.83,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-21T22:25:40.872163+00:00"
+  },
+  {
+    "symbol": "373220.KS",
+    "current_price": 343500,
+    "reference_price": 371500,
+    "reference_type": "n_day_high",
+    "drop_pct": 7.54,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-21T22:25:41.797885+00:00"
+  },
+  {
+    "symbol": "232080.KS",
+    "current_price": 14080,
+    "reference_price": 15525,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.31,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-21T22:25:43.917689+00:00"
+  },
+  {
+    "symbol": "005380.KS",
+    "current_price": 415000,
+    "reference_price": 459500,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.68,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-21T22:35:46.804256+00:00"
+  },
+  {
+    "symbol": "105560.KS",
+    "current_price": 164300,
+    "reference_price": 176900,
+    "reference_type": "n_day_high",
+    "drop_pct": 7.12,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-21T22:35:48.135643+00:00"
+  },
+  {
+    "symbol": "012450.KS",
+    "current_price": 1085000,
+    "reference_price": 1255000,
+    "reference_type": "n_day_high",
+    "drop_pct": 13.55,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-21T22:35:50.998991+00:00"
+  },
+  {
+    "symbol": "232080.KS",
+    "current_price": 14080,
+    "reference_price": 15525,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.31,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-21T22:35:57.523274+00:00"
+  },
+  {
+    "symbol": "000270.KS",
+    "current_price": 130900,
+    "reference_price": 146800,
+    "reference_type": "n_day_high",
+    "drop_pct": 10.83,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-21T22:46:01.685294+00:00"
+  },
+  {
+    "symbol": "267260.KS",
+    "current_price": 718000,
+    "reference_price": 868519.5902777778,
+    "reference_type": "n_day_high",
+    "drop_pct": 17.33,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-21T22:46:03.944640+00:00"
+  },
+  {
+    "symbol": "229200.KS",
+    "current_price": 13810,
+    "reference_price": 15220,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.26,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-21T22:46:06.216693+00:00"
+  },
+  {
+    "symbol": "000270.KS",
+    "current_price": 130900,
+    "reference_price": 146800,
+    "reference_type": "n_day_high",
+    "drop_pct": 10.83,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-21T22:56:08.393623+00:00"
+  },
+  {
+    "symbol": "012450.KS",
+    "current_price": 1085000,
+    "reference_price": 1255000,
+    "reference_type": "n_day_high",
+    "drop_pct": 13.55,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-21T22:56:09.493445+00:00"
+  },
+  {
+    "symbol": "000270.KS",
+    "current_price": 130900,
+    "reference_price": 146800,
+    "reference_type": "n_day_high",
+    "drop_pct": 10.83,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-21T23:06:14.226560+00:00"
+  },
+  {
+    "symbol": "267260.KS",
+    "current_price": 718000,
+    "reference_price": 868519.5902777778,
+    "reference_type": "n_day_high",
+    "drop_pct": 17.33,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-21T23:06:15.188049+00:00"
+  },
+  {
+    "symbol": "105560.KS",
+    "current_price": 164300,
+    "reference_price": 176900,
+    "reference_type": "n_day_high",
+    "drop_pct": 7.12,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-21T23:16:18.840093+00:00"
+  },
+  {
+    "symbol": "000270.KS",
+    "current_price": 130900,
+    "reference_price": 146800,
+    "reference_type": "n_day_high",
+    "drop_pct": 10.83,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-21T23:26:23.171295+00:00"
+  },
+  {
+    "symbol": "012450.KS",
+    "current_price": 1085000,
+    "reference_price": 1255000,
+    "reference_type": "n_day_high",
+    "drop_pct": 13.55,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-21T23:26:24.166858+00:00"
+  },
+  {
+    "symbol": "000270.KS",
+    "current_price": 130900,
+    "reference_price": 146800,
+    "reference_type": "n_day_high",
+    "drop_pct": 10.83,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-21T23:36:27.855829+00:00"
+  },
+  {
+    "symbol": "229200.KS",
+    "current_price": 13810,
+    "reference_price": 15220,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.26,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-21T23:36:30.756243+00:00"
+  },
+  {
+    "symbol": "000270.KS",
+    "current_price": 130900,
+    "reference_price": 146800,
+    "reference_type": "n_day_high",
+    "drop_pct": 10.83,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-21T23:46:32.734119+00:00"
+  },
+  {
+    "symbol": "267260.KS",
+    "current_price": 718000,
+    "reference_price": 868519.5902777778,
+    "reference_type": "n_day_high",
+    "drop_pct": 17.33,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-21T23:46:34.565712+00:00"
+  },
+  {
+    "symbol": "000270.KS",
+    "current_price": 130900,
+    "reference_price": 146800,
+    "reference_type": "n_day_high",
+    "drop_pct": 10.83,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-21T23:56:38.242037+00:00"
+  },
+  {
+    "symbol": "012450.KS",
+    "current_price": 1085000,
+    "reference_price": 1255000,
+    "reference_type": "n_day_high",
+    "drop_pct": 13.55,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-21T23:56:39.307629+00:00"
+  },
+  {
+    "symbol": "105560.KS",
+    "current_price": 164300,
+    "reference_price": 176900,
+    "reference_type": "n_day_high",
+    "drop_pct": 7.12,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T00:06:43.064771+00:00"
+  },
+  {
+    "symbol": "267260.KS",
+    "current_price": 718000,
+    "reference_price": 868519.5902777778,
+    "reference_type": "n_day_high",
+    "drop_pct": 17.33,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T00:06:44.337730+00:00"
+  },
+  {
+    "symbol": "005380.KS",
+    "current_price": 415000,
+    "reference_price": 459500,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.68,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T00:16:48.104464+00:00"
+  },
+  {
+    "symbol": "012450.KS",
+    "current_price": 1085000,
+    "reference_price": 1255000,
+    "reference_type": "n_day_high",
+    "drop_pct": 13.55,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T00:16:50.561749+00:00"
+  },
+  {
+    "symbol": "000270.KS",
+    "current_price": 130900,
+    "reference_price": 146800,
+    "reference_type": "n_day_high",
+    "drop_pct": 10.83,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T00:26:56.981160+00:00"
+  },
+  {
+    "symbol": "012450.KS",
+    "current_price": 1085000,
+    "reference_price": 1255000,
+    "reference_type": "n_day_high",
+    "drop_pct": 13.55,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T00:26:59.236718+00:00"
+  },
+  {
+    "symbol": "000270.KS",
+    "current_price": 130900,
+    "reference_price": 146800,
+    "reference_type": "n_day_high",
+    "drop_pct": 10.83,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T00:37:04.837285+00:00"
+  },
+  {
+    "symbol": "267260.KS",
+    "current_price": 718000,
+    "reference_price": 868519.5902777778,
+    "reference_type": "n_day_high",
+    "drop_pct": 17.33,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T00:37:07.090335+00:00"
+  },
+  {
+    "symbol": "000270.KS",
+    "current_price": 130900,
+    "reference_price": 146800,
+    "reference_type": "n_day_high",
+    "drop_pct": 10.83,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T00:47:11.368143+00:00"
+  },
+  {
+    "symbol": "012450.KS",
+    "current_price": 1085000,
+    "reference_price": 1255000,
+    "reference_type": "n_day_high",
+    "drop_pct": 13.55,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T00:47:13.203420+00:00"
+  },
+  {
+    "symbol": "005380.KS",
+    "current_price": 415000,
+    "reference_price": 459500,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.68,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T00:57:18.813372+00:00"
+  },
+  {
+    "symbol": "105560.KS",
+    "current_price": 164300,
+    "reference_price": 176900,
+    "reference_type": "n_day_high",
+    "drop_pct": 7.12,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T00:57:19.941857+00:00"
+  },
+  {
+    "symbol": "267260.KS",
+    "current_price": 718000,
+    "reference_price": 868519.5902777778,
+    "reference_type": "n_day_high",
+    "drop_pct": 17.33,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T00:57:22.291398+00:00"
+  },
+  {
+    "symbol": "229200.KS",
+    "current_price": 13810,
+    "reference_price": 15220,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.26,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T00:57:26.518662+00:00"
+  },
+  {
+    "symbol": "000270.KS",
+    "current_price": 130900,
+    "reference_price": 146800,
+    "reference_type": "n_day_high",
+    "drop_pct": 10.83,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T01:07:29.329560+00:00"
+  },
+  {
+    "symbol": "012450.KS",
+    "current_price": 1085000,
+    "reference_price": 1255000,
+    "reference_type": "n_day_high",
+    "drop_pct": 13.55,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T01:07:31.471408+00:00"
+  },
+  {
+    "symbol": "000270.KS",
+    "current_price": 130900,
+    "reference_price": 146800,
+    "reference_type": "n_day_high",
+    "drop_pct": 10.83,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T01:17:36.056362+00:00"
+  },
+  {
+    "symbol": "000660.KS",
+    "current_price": 1730000,
+    "reference_price": 1894000,
+    "reference_type": "n_day_high",
+    "drop_pct": 8.66,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T01:37:46.430895+00:00"
+  },
+  {
+    "symbol": "005380.KS",
+    "current_price": 415000,
+    "reference_price": 459500,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.68,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T01:37:47.557570+00:00"
+  },
+  {
+    "symbol": "000270.KS",
+    "current_price": 130900,
+    "reference_price": 146800,
+    "reference_type": "n_day_high",
+    "drop_pct": 10.83,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T01:37:48.486126+00:00"
+  },
+  {
+    "symbol": "105560.KS",
+    "current_price": 164300,
+    "reference_price": 176900,
+    "reference_type": "n_day_high",
+    "drop_pct": 7.12,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T01:37:49.606692+00:00"
+  },
+  {
+    "symbol": "373220.KS",
+    "current_price": 343500,
+    "reference_price": 371500,
+    "reference_type": "n_day_high",
+    "drop_pct": 7.54,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T01:37:52.478008+00:00"
+  },
+  {
+    "symbol": "267260.KS",
+    "current_price": 718000,
+    "reference_price": 868519.5902777778,
+    "reference_type": "n_day_high",
+    "drop_pct": 17.33,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T01:37:54.201060+00:00"
+  },
+  {
+    "symbol": "229200.KS",
+    "current_price": 13810,
+    "reference_price": 15220,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.26,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T01:38:02.509922+00:00"
+  },
+  {
+    "symbol": "000270.KS",
+    "current_price": 130900,
+    "reference_price": 146800,
+    "reference_type": "n_day_high",
+    "drop_pct": 10.83,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T01:48:08.111432+00:00"
+  },
+  {
+    "symbol": "005380.KS",
+    "current_price": 415000,
+    "reference_price": 459500,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.68,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T01:58:13.508180+00:00"
+  },
+  {
+    "symbol": "000270.KS",
+    "current_price": 130900,
+    "reference_price": 146800,
+    "reference_type": "n_day_high",
+    "drop_pct": 10.83,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T02:08:18.798467+00:00"
+  },
+  {
+    "symbol": "012450.KS",
+    "current_price": 1085000,
+    "reference_price": 1255000,
+    "reference_type": "n_day_high",
+    "drop_pct": 13.55,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T02:08:19.706217+00:00"
+  },
+  {
+    "symbol": "232080.KS",
+    "current_price": 14080,
+    "reference_price": 15525,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.31,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T02:08:21.727796+00:00"
+  },
+  {
+    "symbol": "000270.KS",
+    "current_price": 130900,
+    "reference_price": 146800,
+    "reference_type": "n_day_high",
+    "drop_pct": 10.83,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T02:18:23.792281+00:00"
+  },
+  {
+    "symbol": "267260.KS",
+    "current_price": 718000,
+    "reference_price": 868519.5902777778,
+    "reference_type": "n_day_high",
+    "drop_pct": 17.33,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T02:18:26.039550+00:00"
+  },
+  {
+    "symbol": "000270.KS",
+    "current_price": 130900,
+    "reference_price": 146800,
+    "reference_type": "n_day_high",
+    "drop_pct": 10.83,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T02:28:29.897727+00:00"
+  },
+  {
+    "symbol": "373220.KS",
+    "current_price": 343500,
+    "reference_price": 371500,
+    "reference_type": "n_day_high",
+    "drop_pct": 7.54,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T02:28:30.850130+00:00"
+  },
+  {
+    "symbol": "232080.KS",
+    "current_price": 14080,
+    "reference_price": 15525,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.31,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T02:28:33.013282+00:00"
+  },
+  {
+    "symbol": "000270.KS",
+    "current_price": 130900,
+    "reference_price": 146800,
+    "reference_type": "n_day_high",
+    "drop_pct": 10.83,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T02:38:35.125293+00:00"
+  },
+  {
+    "symbol": "012450.KS",
+    "current_price": 1085000,
+    "reference_price": 1255000,
+    "reference_type": "n_day_high",
+    "drop_pct": 13.55,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T02:38:36.214521+00:00"
+  },
+  {
+    "symbol": "232080.KS",
+    "current_price": 14080,
+    "reference_price": 15525,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.31,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T02:38:38.159338+00:00"
+  },
+  {
+    "symbol": "000270.KS",
+    "current_price": 130900,
+    "reference_price": 146800,
+    "reference_type": "n_day_high",
+    "drop_pct": 10.83,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T02:48:39.973285+00:00"
+  },
+  {
+    "symbol": "012450.KS",
+    "current_price": 1085000,
+    "reference_price": 1255000,
+    "reference_type": "n_day_high",
+    "drop_pct": 13.55,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T02:48:41.052459+00:00"
+  },
+  {
+    "symbol": "232080.KS",
+    "current_price": 14080,
+    "reference_price": 15525,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.31,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T02:48:43.053409+00:00"
+  },
+  {
+    "symbol": "000270.KS",
+    "current_price": 130900,
+    "reference_price": 146800,
+    "reference_type": "n_day_high",
+    "drop_pct": 10.83,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T02:58:45.060709+00:00"
+  },
+  {
+    "symbol": "005380.KS",
+    "current_price": 415000,
+    "reference_price": 459500,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.68,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T03:08:50.355332+00:00"
+  },
+  {
+    "symbol": "000660.KS",
+    "current_price": 1730000,
+    "reference_price": 1894000,
+    "reference_type": "n_day_high",
+    "drop_pct": 8.66,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T03:18:56.063907+00:00"
+  },
+  {
+    "symbol": "000270.KS",
+    "current_price": 130900,
+    "reference_price": 146800,
+    "reference_type": "n_day_high",
+    "drop_pct": 10.83,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T03:18:57.190338+00:00"
+  },
+  {
+    "symbol": "373220.KS",
+    "current_price": 343500,
+    "reference_price": 371500,
+    "reference_type": "n_day_high",
+    "drop_pct": 7.54,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T03:19:00.354836+00:00"
+  },
+  {
+    "symbol": "267260.KS",
+    "current_price": 718000,
+    "reference_price": 868519.5902777778,
+    "reference_type": "n_day_high",
+    "drop_pct": 17.33,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T03:19:01.734249+00:00"
+  },
+  {
+    "symbol": "232080.KS",
+    "current_price": 14080,
+    "reference_price": 15525,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.31,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T03:19:11.365455+00:00"
+  },
+  {
+    "symbol": "005380.KS",
+    "current_price": 415000,
+    "reference_price": 459500,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.68,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T03:29:15.902193+00:00"
+  },
+  {
+    "symbol": "105560.KS",
+    "current_price": 164300,
+    "reference_price": 176900,
+    "reference_type": "n_day_high",
+    "drop_pct": 7.12,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T03:29:16.925241+00:00"
+  },
+  {
+    "symbol": "012450.KS",
+    "current_price": 1085000,
+    "reference_price": 1255000,
+    "reference_type": "n_day_high",
+    "drop_pct": 13.55,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T03:29:19.305989+00:00"
+  },
+  {
+    "symbol": "232080.KS",
+    "current_price": 14080,
+    "reference_price": 15525,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.31,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T03:29:29.246522+00:00"
+  },
+  {
+    "symbol": "000270.KS",
+    "current_price": 130900,
+    "reference_price": 146800,
+    "reference_type": "n_day_high",
+    "drop_pct": 10.83,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T03:39:33.483516+00:00"
+  },
+  {
+    "symbol": "267260.KS",
+    "current_price": 718000,
+    "reference_price": 868519.5902777778,
+    "reference_type": "n_day_high",
+    "drop_pct": 17.33,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T03:39:35.772673+00:00"
+  },
+  {
+    "symbol": "232080.KS",
+    "current_price": 14080,
+    "reference_price": 15525,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.31,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T03:39:37.742134+00:00"
+  },
+  {
+    "symbol": "005380.KS",
+    "current_price": 415000,
+    "reference_price": 459500,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.68,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T03:49:40.551980+00:00"
+  },
+  {
+    "symbol": "000270.KS",
+    "current_price": 130900,
+    "reference_price": 146800,
+    "reference_type": "n_day_high",
+    "drop_pct": 10.83,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T03:49:41.677963+00:00"
+  },
+  {
+    "symbol": "373220.KS",
+    "current_price": 343500,
+    "reference_price": 371500,
+    "reference_type": "n_day_high",
+    "drop_pct": 7.54,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T03:49:44.339273+00:00"
+  },
+  {
+    "symbol": "267260.KS",
+    "current_price": 718000,
+    "reference_price": 868519.5902777778,
+    "reference_type": "n_day_high",
+    "drop_pct": 17.33,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T03:49:46.082096+00:00"
+  },
+  {
+    "symbol": "232080.KS",
+    "current_price": 14080,
+    "reference_price": 15525,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.31,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T03:49:52.805419+00:00"
+  },
+  {
+    "symbol": "005380.KS",
+    "current_price": 415000,
+    "reference_price": 459500,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.68,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T03:59:56.577904+00:00"
+  },
+  {
+    "symbol": "105560.KS",
+    "current_price": 164300,
+    "reference_price": 176900,
+    "reference_type": "n_day_high",
+    "drop_pct": 7.12,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T03:59:57.492516+00:00"
+  },
+  {
+    "symbol": "012450.KS",
+    "current_price": 1085000,
+    "reference_price": 1255000,
+    "reference_type": "n_day_high",
+    "drop_pct": 13.55,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T03:59:59.541274+00:00"
+  },
+  {
+    "symbol": "229200.KS",
+    "current_price": 13810,
+    "reference_price": 15220,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.26,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T04:00:02.914224+00:00"
+  },
+  {
+    "symbol": "005380.KS",
+    "current_price": 415000,
+    "reference_price": 459500,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.68,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T04:10:05.133594+00:00"
+  },
+  {
+    "symbol": "012450.KS",
+    "current_price": 1085000,
+    "reference_price": 1255000,
+    "reference_type": "n_day_high",
+    "drop_pct": 13.55,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T04:10:07.394751+00:00"
+  },
+  {
+    "symbol": "000270.KS",
+    "current_price": 130900,
+    "reference_price": 146800,
+    "reference_type": "n_day_high",
+    "drop_pct": 10.83,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T04:20:12.781857+00:00"
+  },
+  {
+    "symbol": "005380.KS",
+    "current_price": 415000,
+    "reference_price": 459500,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.68,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T04:30:18.332793+00:00"
+  },
+  {
+    "symbol": "105560.KS",
+    "current_price": 164300,
+    "reference_price": 176900,
+    "reference_type": "n_day_high",
+    "drop_pct": 7.12,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T04:30:19.307917+00:00"
+  },
+  {
+    "symbol": "000270.KS",
+    "current_price": 130900,
+    "reference_price": 146800,
+    "reference_type": "n_day_high",
+    "drop_pct": 10.83,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T04:40:24.507724+00:00"
+  },
+  {
+    "symbol": "267260.KS",
+    "current_price": 718000,
+    "reference_price": 868519.5902777778,
+    "reference_type": "n_day_high",
+    "drop_pct": 17.33,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T04:40:25.531178+00:00"
+  },
+  {
+    "symbol": "000270.KS",
+    "current_price": 130900,
+    "reference_price": 146800,
+    "reference_type": "n_day_high",
+    "drop_pct": 10.83,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T04:50:29.385527+00:00"
+  },
+  {
+    "symbol": "012450.KS",
+    "current_price": 1085000,
+    "reference_price": 1255000,
+    "reference_type": "n_day_high",
+    "drop_pct": 13.55,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T04:50:30.407294+00:00"
+  },
+  {
+    "symbol": "000270.KS",
+    "current_price": 130900,
+    "reference_price": 146800,
+    "reference_type": "n_day_high",
+    "drop_pct": 10.83,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T05:00:34.172531+00:00"
+  },
+  {
+    "symbol": "012450.KS",
+    "current_price": 1085000,
+    "reference_price": 1255000,
+    "reference_type": "n_day_high",
+    "drop_pct": 13.55,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T05:00:35.142924+00:00"
+  },
+  {
+    "symbol": "232080.KS",
+    "current_price": 14080,
+    "reference_price": 15525,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.31,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T05:00:37.234912+00:00"
+  },
+  {
+    "symbol": "000270.KS",
+    "current_price": 130900,
+    "reference_price": 146800,
+    "reference_type": "n_day_high",
+    "drop_pct": 10.83,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T05:10:39.261841+00:00"
+  },
+  {
+    "symbol": "000270.KS",
+    "current_price": 130900,
+    "reference_price": 146800,
+    "reference_type": "n_day_high",
+    "drop_pct": 10.83,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T05:20:44.753622+00:00"
+  },
+  {
+    "symbol": "012450.KS",
+    "current_price": 1085000,
+    "reference_price": 1255000,
+    "reference_type": "n_day_high",
+    "drop_pct": 13.55,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T05:20:46.699291+00:00"
+  },
+  {
+    "symbol": "005380.KS",
+    "current_price": 415000,
+    "reference_price": 459500,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.68,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T05:30:51.683369+00:00"
+  },
+  {
+    "symbol": "012450.KS",
+    "current_price": 1085000,
+    "reference_price": 1255000,
+    "reference_type": "n_day_high",
+    "drop_pct": 13.55,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T05:30:53.643215+00:00"
+  },
+  {
+    "symbol": "000270.KS",
+    "current_price": 130900,
+    "reference_price": 146800,
+    "reference_type": "n_day_high",
+    "drop_pct": 10.83,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T05:40:57.497042+00:00"
+  },
+  {
+    "symbol": "373220.KS",
+    "current_price": 343500,
+    "reference_price": 371500,
+    "reference_type": "n_day_high",
+    "drop_pct": 7.54,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T05:41:00.021947+00:00"
+  },
+  {
+    "symbol": "267260.KS",
+    "current_price": 718000,
+    "reference_price": 868519.5902777778,
+    "reference_type": "n_day_high",
+    "drop_pct": 17.33,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T05:41:00.932726+00:00"
+  },
+  {
+    "symbol": "000270.KS",
+    "current_price": 130900,
+    "reference_price": 146800,
+    "reference_type": "n_day_high",
+    "drop_pct": 10.83,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T05:51:05.456030+00:00"
+  },
+  {
+    "symbol": "000270.KS",
+    "current_price": 130900,
+    "reference_price": 146800,
+    "reference_type": "n_day_high",
+    "drop_pct": 10.83,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T06:01:10.459014+00:00"
+  },
+  {
+    "symbol": "267260.KS",
+    "current_price": 718000,
+    "reference_price": 868519.5902777778,
+    "reference_type": "n_day_high",
+    "drop_pct": 17.33,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T06:01:11.499595+00:00"
+  },
+  {
+    "symbol": "000270.KS",
+    "current_price": 130900,
+    "reference_price": 146800,
+    "reference_type": "n_day_high",
+    "drop_pct": 10.83,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T06:11:15.328189+00:00"
+  },
+  {
+    "symbol": "000270.KS",
+    "current_price": 130900,
+    "reference_price": 146800,
+    "reference_type": "n_day_high",
+    "drop_pct": 10.83,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T06:21:20.621037+00:00"
+  },
+  {
+    "symbol": "005380.KS",
+    "current_price": 415000,
+    "reference_price": 459500,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.68,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T06:31:25.907102+00:00"
+  },
+  {
+    "symbol": "000270.KS",
+    "current_price": 130900,
+    "reference_price": 146800,
+    "reference_type": "n_day_high",
+    "drop_pct": 10.83,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T06:31:26.828812+00:00"
+  },
+  {
+    "symbol": "373220.KS",
+    "current_price": 343500,
+    "reference_price": 371500,
+    "reference_type": "n_day_high",
+    "drop_pct": 7.54,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T06:31:29.298143+00:00"
+  },
+  {
+    "symbol": "012450.KS",
+    "current_price": 1085000,
+    "reference_price": 1255000,
+    "reference_type": "n_day_high",
+    "drop_pct": 13.55,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T06:31:30.243488+00:00"
+  },
+  {
+    "symbol": "232080.KS",
+    "current_price": 14080,
+    "reference_price": 15525,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.31,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T06:31:38.949513+00:00"
+  },
+  {
+    "symbol": "005380.KS",
+    "current_price": 415000,
+    "reference_price": 459500,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.68,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T06:41:47.296485+00:00"
+  },
+  {
+    "symbol": "373220.KS",
+    "current_price": 343500,
+    "reference_price": 371500,
+    "reference_type": "n_day_high",
+    "drop_pct": 7.54,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T06:41:49.429265+00:00"
+  },
+  {
+    "symbol": "267260.KS",
+    "current_price": 718000,
+    "reference_price": 868519.5902777778,
+    "reference_type": "n_day_high",
+    "drop_pct": 17.33,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T06:41:50.343207+00:00"
+  },
+  {
+    "symbol": "229200.KS",
+    "current_price": 13810,
+    "reference_price": 15220,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.26,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T06:41:55.266729+00:00"
+  },
+  {
+    "symbol": "000270.KS",
+    "current_price": 130900,
+    "reference_price": 146800,
+    "reference_type": "n_day_high",
+    "drop_pct": 10.83,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T06:51:59.024166+00:00"
+  },
+  {
+    "symbol": "267260.KS",
+    "current_price": 718000,
+    "reference_price": 868519.5902777778,
+    "reference_type": "n_day_high",
+    "drop_pct": 17.33,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T06:52:01.082801+00:00"
+  },
+  {
+    "symbol": "229200.KS",
+    "current_price": 13810,
+    "reference_price": 15220,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.26,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T06:52:03.354019+00:00"
+  },
+  {
+    "symbol": "000270.KS",
+    "current_price": 130900,
+    "reference_price": 146800,
+    "reference_type": "n_day_high",
+    "drop_pct": 10.83,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T07:02:10.462904+00:00"
+  },
+  {
+    "symbol": "229200.KS",
+    "current_price": 13810,
+    "reference_price": 15220,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.26,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T07:02:13.628070+00:00"
+  },
+  {
+    "symbol": "005380.KS",
+    "current_price": 415000,
+    "reference_price": 459500,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.68,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T07:12:16.272113+00:00"
+  },
+  {
+    "symbol": "373220.KS",
+    "current_price": 343500,
+    "reference_price": 371500,
+    "reference_type": "n_day_high",
+    "drop_pct": 7.54,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T07:12:17.287222+00:00"
+  },
+  {
+    "symbol": "229200.KS",
+    "current_price": 13810,
+    "reference_price": 15220,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.26,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T07:12:19.365701+00:00"
+  },
+  {
+    "symbol": "005380.KS",
+    "current_price": 415000,
+    "reference_price": 459500,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.68,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T07:22:21.872386+00:00"
+  },
+  {
+    "symbol": "105560.KS",
+    "current_price": 164300,
+    "reference_price": 176900,
+    "reference_type": "n_day_high",
+    "drop_pct": 7.12,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T07:22:23.015169+00:00"
+  },
+  {
+    "symbol": "012450.KS",
+    "current_price": 1085000,
+    "reference_price": 1255000,
+    "reference_type": "n_day_high",
+    "drop_pct": 13.55,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T07:22:24.216116+00:00"
+  },
+  {
+    "symbol": "229200.KS",
+    "current_price": 13810,
+    "reference_price": 15220,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.26,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T07:22:27.196163+00:00"
+  },
+  {
+    "symbol": "005380.KS",
+    "current_price": 415000,
+    "reference_price": 459500,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.68,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T07:32:29.621588+00:00"
+  },
+  {
+    "symbol": "105560.KS",
+    "current_price": 164300,
+    "reference_price": 176900,
+    "reference_type": "n_day_high",
+    "drop_pct": 7.12,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T07:32:30.645366+00:00"
+  },
+  {
+    "symbol": "000270.KS",
+    "current_price": 130900,
+    "reference_price": 146800,
+    "reference_type": "n_day_high",
+    "drop_pct": 10.83,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T07:42:35.427771+00:00"
+  },
+  {
+    "symbol": "267260.KS",
+    "current_price": 718000,
+    "reference_price": 868519.5902777778,
+    "reference_type": "n_day_high",
+    "drop_pct": 17.33,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T07:42:37.895359+00:00"
+  },
+  {
+    "symbol": "000270.KS",
+    "current_price": 130900,
+    "reference_price": 146800,
+    "reference_type": "n_day_high",
+    "drop_pct": 10.83,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T07:52:44.109177+00:00"
+  },
+  {
+    "symbol": "012450.KS",
+    "current_price": 1085000,
+    "reference_price": 1255000,
+    "reference_type": "n_day_high",
+    "drop_pct": 13.55,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T07:52:45.094387+00:00"
+  },
+  {
+    "symbol": "005380.KS",
+    "current_price": 415000,
+    "reference_price": 459500,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.68,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T08:02:49.092612+00:00"
+  },
+  {
+    "symbol": "105560.KS",
+    "current_price": 164300,
+    "reference_price": 176900,
+    "reference_type": "n_day_high",
+    "drop_pct": 7.12,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T08:02:50.121436+00:00"
+  },
+  {
+    "symbol": "373220.KS",
+    "current_price": 343500,
+    "reference_price": 371500,
+    "reference_type": "n_day_high",
+    "drop_pct": 7.54,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T08:02:51.477914+00:00"
+  },
+  {
+    "symbol": "267260.KS",
+    "current_price": 718000,
+    "reference_price": 868519.5902777778,
+    "reference_type": "n_day_high",
+    "drop_pct": 17.33,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T08:02:52.476221+00:00"
+  },
+  {
+    "symbol": "229200.KS",
+    "current_price": 13810,
+    "reference_price": 15220,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.26,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T08:02:56.666386+00:00"
+  },
+  {
+    "symbol": "000270.KS",
+    "current_price": 130900,
+    "reference_price": 146800,
+    "reference_type": "n_day_high",
+    "drop_pct": 10.83,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T08:12:59.813906+00:00"
+  },
+  {
+    "symbol": "373220.KS",
+    "current_price": 343500,
+    "reference_price": 371500,
+    "reference_type": "n_day_high",
+    "drop_pct": 7.54,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T08:13:00.729297+00:00"
+  },
+  {
+    "symbol": "232080.KS",
+    "current_price": 14080,
+    "reference_price": 15525,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.31,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T08:13:02.733798+00:00"
+  },
+  {
+    "symbol": "000270.KS",
+    "current_price": 130900,
+    "reference_price": 146800,
+    "reference_type": "n_day_high",
+    "drop_pct": 10.83,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T08:33:09.360132+00:00"
+  },
+  {
+    "symbol": "012450.KS",
+    "current_price": 1085000,
+    "reference_price": 1255000,
+    "reference_type": "n_day_high",
+    "drop_pct": 13.55,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T08:33:10.285704+00:00"
+  },
+  {
+    "symbol": "232080.KS",
+    "current_price": 14080,
+    "reference_price": 15525,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.31,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T08:33:12.162061+00:00"
+  },
+  {
+    "symbol": "000270.KS",
+    "current_price": 130900,
+    "reference_price": 146800,
+    "reference_type": "n_day_high",
+    "drop_pct": 10.83,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T08:43:14.158571+00:00"
+  },
+  {
+    "symbol": "267260.KS",
+    "current_price": 718000,
+    "reference_price": 868519.5902777778,
+    "reference_type": "n_day_high",
+    "drop_pct": 17.33,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T08:43:16.217279+00:00"
+  },
+  {
+    "symbol": "229200.KS",
+    "current_price": 13810,
+    "reference_price": 15220,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.26,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T08:43:19.581064+00:00"
+  },
+  {
+    "symbol": "000270.KS",
+    "current_price": 130900,
+    "reference_price": 146800,
+    "reference_type": "n_day_high",
+    "drop_pct": 10.83,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T08:53:21.601729+00:00"
+  },
+  {
+    "symbol": "229200.KS",
+    "current_price": 13810,
+    "reference_price": 15220,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.26,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T08:53:24.600872+00:00"
+  },
+  {
+    "symbol": "005380.KS",
+    "current_price": 415000,
+    "reference_price": 459500,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.68,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T09:03:27.100099+00:00"
+  },
+  {
+    "symbol": "012450.KS",
+    "current_price": 1085000,
+    "reference_price": 1255000,
+    "reference_type": "n_day_high",
+    "drop_pct": 13.55,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T09:03:29.455009+00:00"
+  },
+  {
+    "symbol": "229200.KS",
+    "current_price": 13810,
+    "reference_price": 15220,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.26,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T09:03:35.095918+00:00"
+  },
+  {
+    "symbol": "000270.KS",
+    "current_price": 130900,
+    "reference_price": 146800,
+    "reference_type": "n_day_high",
+    "drop_pct": 10.83,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T09:13:39.166266+00:00"
+  },
+  {
+    "symbol": "373220.KS",
+    "current_price": 343500,
+    "reference_price": 371500,
+    "reference_type": "n_day_high",
+    "drop_pct": 7.54,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T09:13:41.104799+00:00"
+  },
+  {
+    "symbol": "105560.KS",
+    "current_price": 164300,
+    "reference_price": 176900,
+    "reference_type": "n_day_high",
+    "drop_pct": 7.12,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T09:23:48.022119+00:00"
+  },
+  {
+    "symbol": "012450.KS",
+    "current_price": 1085000,
+    "reference_price": 1255000,
+    "reference_type": "n_day_high",
+    "drop_pct": 13.55,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T09:23:49.133995+00:00"
+  },
+  {
+    "symbol": "232080.KS",
+    "current_price": 14080,
+    "reference_price": 15525,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.31,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T09:23:51.057582+00:00"
+  },
+  {
+    "symbol": "000270.KS",
+    "current_price": 130900,
+    "reference_price": 146800,
+    "reference_type": "n_day_high",
+    "drop_pct": 10.83,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T09:33:53.219577+00:00"
+  },
+  {
+    "symbol": "012450.KS",
+    "current_price": 1085000,
+    "reference_price": 1255000,
+    "reference_type": "n_day_high",
+    "drop_pct": 13.55,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T09:33:55.071976+00:00"
+  },
+  {
+    "symbol": "229200.KS",
+    "current_price": 13810,
+    "reference_price": 15220,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.26,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T09:33:59.374656+00:00"
+  },
+  {
+    "symbol": "000270.KS",
+    "current_price": 130900,
+    "reference_price": 146800,
+    "reference_type": "n_day_high",
+    "drop_pct": 10.83,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T09:44:02.720616+00:00"
+  },
+  {
+    "symbol": "373220.KS",
+    "current_price": 343500,
+    "reference_price": 371500,
+    "reference_type": "n_day_high",
+    "drop_pct": 7.54,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T09:44:04.658517+00:00"
+  },
+  {
+    "symbol": "267260.KS",
+    "current_price": 718000,
+    "reference_price": 868519.5902777778,
+    "reference_type": "n_day_high",
+    "drop_pct": 17.33,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T09:44:05.581604+00:00"
+  },
+  {
+    "symbol": "229200.KS",
+    "current_price": 13810,
+    "reference_price": 15220,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.26,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T09:44:07.621487+00:00"
+  },
+  {
+    "symbol": "005380.KS",
+    "current_price": 415000,
+    "reference_price": 459500,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.68,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T09:54:10.773039+00:00"
+  },
+  {
+    "symbol": "000270.KS",
+    "current_price": 130900,
+    "reference_price": 146800,
+    "reference_type": "n_day_high",
+    "drop_pct": 10.83,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T09:54:11.831387+00:00"
+  },
+  {
+    "symbol": "373220.KS",
+    "current_price": 343500,
+    "reference_price": 371500,
+    "reference_type": "n_day_high",
+    "drop_pct": 7.54,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T09:54:14.457964+00:00"
+  },
+  {
+    "symbol": "267260.KS",
+    "current_price": 718000,
+    "reference_price": 868519.5902777778,
+    "reference_type": "n_day_high",
+    "drop_pct": 17.33,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T09:54:15.491943+00:00"
+  },
+  {
+    "symbol": "232080.KS",
+    "current_price": 14080,
+    "reference_price": 15525,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.31,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T09:54:22.333658+00:00"
+  },
+  {
+    "symbol": "000270.KS",
+    "current_price": 130900,
+    "reference_price": 146800,
+    "reference_type": "n_day_high",
+    "drop_pct": 10.83,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T10:04:25.703501+00:00"
+  },
+  {
+    "symbol": "012450.KS",
+    "current_price": 1085000,
+    "reference_price": 1255000,
+    "reference_type": "n_day_high",
+    "drop_pct": 13.55,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T10:04:27.640075+00:00"
+  },
+  {
+    "symbol": "000270.KS",
+    "current_price": 130900,
+    "reference_price": 146800,
+    "reference_type": "n_day_high",
+    "drop_pct": 10.83,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T10:14:33.250892+00:00"
+  },
+  {
+    "symbol": "267260.KS",
+    "current_price": 718000,
+    "reference_price": 868519.5902777778,
+    "reference_type": "n_day_high",
+    "drop_pct": 17.33,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T10:14:34.302374+00:00"
+  },
+  {
+    "symbol": "000270.KS",
+    "current_price": 130900,
+    "reference_price": 146800,
+    "reference_type": "n_day_high",
+    "drop_pct": 10.83,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T10:24:38.025022+00:00"
+  },
+  {
+    "symbol": "012450.KS",
+    "current_price": 1085000,
+    "reference_price": 1255000,
+    "reference_type": "n_day_high",
+    "drop_pct": 13.55,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T10:24:39.102993+00:00"
+  },
+  {
+    "symbol": "232080.KS",
+    "current_price": 14080,
+    "reference_price": 15525,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.31,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T10:24:40.973435+00:00"
+  },
+  {
+    "symbol": "005380.KS",
+    "current_price": 415000,
+    "reference_price": 459500,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.68,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T10:34:43.732344+00:00"
+  },
+  {
+    "symbol": "000270.KS",
+    "current_price": 130900,
+    "reference_price": 146800,
+    "reference_type": "n_day_high",
+    "drop_pct": 10.83,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T10:34:44.658639+00:00"
+  },
+  {
+    "symbol": "373220.KS",
+    "current_price": 343500,
+    "reference_price": 371500,
+    "reference_type": "n_day_high",
+    "drop_pct": 7.54,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T10:34:46.810105+00:00"
+  },
+  {
+    "symbol": "267260.KS",
+    "current_price": 718000,
+    "reference_price": 868519.5902777778,
+    "reference_type": "n_day_high",
+    "drop_pct": 17.33,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T10:34:48.040707+00:00"
+  },
+  {
+    "symbol": "232080.KS",
+    "current_price": 14080,
+    "reference_price": 15525,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.31,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T10:34:54.688362+00:00"
+  },
+  {
+    "symbol": "000270.KS",
+    "current_price": 130900,
+    "reference_price": 146800,
+    "reference_type": "n_day_high",
+    "drop_pct": 10.83,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T10:44:57.525196+00:00"
+  },
+  {
+    "symbol": "229200.KS",
+    "current_price": 13810,
+    "reference_price": 15220,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.26,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T10:45:00.454385+00:00"
+  },
+  {
+    "symbol": "005380.KS",
+    "current_price": 415000,
+    "reference_price": 459500,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.68,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T10:55:03.121234+00:00"
+  },
+  {
+    "symbol": "105560.KS",
+    "current_price": 164300,
+    "reference_price": 176900,
+    "reference_type": "n_day_high",
+    "drop_pct": 7.12,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T10:55:04.046810+00:00"
+  },
+  {
+    "symbol": "373220.KS",
+    "current_price": 343500,
+    "reference_price": 371500,
+    "reference_type": "n_day_high",
+    "drop_pct": 7.54,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T10:55:05.023716+00:00"
+  },
+  {
+    "symbol": "000270.KS",
+    "current_price": 130900,
+    "reference_price": 146800,
+    "reference_type": "n_day_high",
+    "drop_pct": 10.83,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T11:05:09.483314+00:00"
+  },
+  {
+    "symbol": "012450.KS",
+    "current_price": 1085000,
+    "reference_price": 1255000,
+    "reference_type": "n_day_high",
+    "drop_pct": 13.55,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T11:05:10.502175+00:00"
+  },
+  {
+    "symbol": "005380.KS",
+    "current_price": 415000,
+    "reference_price": 459500,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.68,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T11:15:15.048639+00:00"
+  },
+  {
+    "symbol": "105560.KS",
+    "current_price": 164300,
+    "reference_price": 176900,
+    "reference_type": "n_day_high",
+    "drop_pct": 7.12,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T11:15:16.066155+00:00"
+  },
+  {
+    "symbol": "267260.KS",
+    "current_price": 718000,
+    "reference_price": 868519.5902777778,
+    "reference_type": "n_day_high",
+    "drop_pct": 17.33,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T11:15:17.123962+00:00"
+  },
+  {
+    "symbol": "000270.KS",
+    "current_price": 130900,
+    "reference_price": 146800,
+    "reference_type": "n_day_high",
+    "drop_pct": 10.83,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T11:25:20.853916+00:00"
+  },
+  {
+    "symbol": "012450.KS",
+    "current_price": 1085000,
+    "reference_price": 1255000,
+    "reference_type": "n_day_high",
+    "drop_pct": 13.55,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T11:25:21.932757+00:00"
+  },
+  {
+    "symbol": "000270.KS",
+    "current_price": 130900,
+    "reference_price": 146800,
+    "reference_type": "n_day_high",
+    "drop_pct": 10.83,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T11:35:26.716966+00:00"
+  },
+  {
+    "symbol": "373220.KS",
+    "current_price": 343500,
+    "reference_price": 371500,
+    "reference_type": "n_day_high",
+    "drop_pct": 7.54,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T11:35:27.808713+00:00"
+  },
+  {
+    "symbol": "000270.KS",
+    "current_price": 130900,
+    "reference_price": 146800,
+    "reference_type": "n_day_high",
+    "drop_pct": 10.83,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T11:45:32.667432+00:00"
+  },
+  {
+    "symbol": "373220.KS",
+    "current_price": 343500,
+    "reference_price": 371500,
+    "reference_type": "n_day_high",
+    "drop_pct": 7.54,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T11:45:33.622801+00:00"
+  },
+  {
+    "symbol": "105560.KS",
+    "current_price": 164300,
+    "reference_price": 176900,
+    "reference_type": "n_day_high",
+    "drop_pct": 7.12,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T11:55:38.599008+00:00"
+  },
+  {
+    "symbol": "000270.KS",
+    "current_price": 130900,
+    "reference_price": 146800,
+    "reference_type": "n_day_high",
+    "drop_pct": 10.83,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T12:05:43.766975+00:00"
+  },
+  {
+    "symbol": "229200.KS",
+    "current_price": 13810,
+    "reference_price": 15220,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.26,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T12:05:46.767899+00:00"
+  },
+  {
+    "symbol": "000270.KS",
+    "current_price": 130900,
+    "reference_price": 146800,
+    "reference_type": "n_day_high",
+    "drop_pct": 10.83,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T12:15:49.784260+00:00"
+  },
+  {
+    "symbol": "373220.KS",
+    "current_price": 343500,
+    "reference_price": 371500,
+    "reference_type": "n_day_high",
+    "drop_pct": 7.54,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T12:15:52.440712+00:00"
+  },
+  {
+    "symbol": "267260.KS",
+    "current_price": 718000,
+    "reference_price": 868519.5902777778,
+    "reference_type": "n_day_high",
+    "drop_pct": 17.33,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T12:15:53.602583+00:00"
+  },
+  {
+    "symbol": "232080.KS",
+    "current_price": 14080,
+    "reference_price": 15525,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.31,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T12:16:00.349651+00:00"
+  },
+  {
+    "symbol": "005380.KS",
+    "current_price": 415000,
+    "reference_price": 459500,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.68,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T12:26:04.698302+00:00"
+  },
+  {
+    "symbol": "000270.KS",
+    "current_price": 130900,
+    "reference_price": 146800,
+    "reference_type": "n_day_high",
+    "drop_pct": 10.83,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T12:26:05.630303+00:00"
+  },
+  {
+    "symbol": "373220.KS",
+    "current_price": 343500,
+    "reference_price": 371500,
+    "reference_type": "n_day_high",
+    "drop_pct": 7.54,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T12:26:07.568662+00:00"
+  },
+  {
+    "symbol": "267260.KS",
+    "current_price": 718000,
+    "reference_price": 868519.5902777778,
+    "reference_type": "n_day_high",
+    "drop_pct": 17.33,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T12:26:08.593321+00:00"
+  },
+  {
+    "symbol": "229200.KS",
+    "current_price": 13810,
+    "reference_price": 15220,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.26,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T12:26:13.816486+00:00"
+  },
+  {
+    "symbol": "000270.KS",
+    "current_price": 130900,
+    "reference_price": 146800,
+    "reference_type": "n_day_high",
+    "drop_pct": 10.83,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T12:36:17.264126+00:00"
+  },
+  {
+    "symbol": "012450.KS",
+    "current_price": 1085000,
+    "reference_price": 1255000,
+    "reference_type": "n_day_high",
+    "drop_pct": 13.55,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T12:36:18.640009+00:00"
+  },
+  {
+    "symbol": "229200.KS",
+    "current_price": 13810,
+    "reference_price": 15220,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.26,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T12:36:20.614435+00:00"
+  },
+  {
+    "symbol": "005380.KS",
+    "current_price": 415000,
+    "reference_price": 459500,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.68,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T12:46:22.866711+00:00"
+  },
+  {
+    "symbol": "012450.KS",
+    "current_price": 1085000,
+    "reference_price": 1255000,
+    "reference_type": "n_day_high",
+    "drop_pct": 13.55,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T12:46:35.462696+00:00"
+  },
+  {
+    "symbol": "232080.KS",
+    "current_price": 14080,
+    "reference_price": 15525,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.31,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T12:46:39.770959+00:00"
+  },
+  {
+    "symbol": "000270.KS",
+    "current_price": 130900,
+    "reference_price": 146800,
+    "reference_type": "n_day_high",
+    "drop_pct": 10.83,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T12:56:42.394571+00:00"
+  },
+  {
+    "symbol": "000270.KS",
+    "current_price": 130900,
+    "reference_price": 146800,
+    "reference_type": "n_day_high",
+    "drop_pct": 10.83,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T13:06:47.891604+00:00"
+  },
+  {
+    "symbol": "267260.KS",
+    "current_price": 718000,
+    "reference_price": 868519.5902777778,
+    "reference_type": "n_day_high",
+    "drop_pct": 17.33,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T13:06:50.153528+00:00"
+  },
+  {
+    "symbol": "232080.KS",
+    "current_price": 14080,
+    "reference_price": 15525,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.31,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T13:06:54.343145+00:00"
+  },
+  {
+    "symbol": "105560.KS",
+    "current_price": 164300,
+    "reference_price": 176900,
+    "reference_type": "n_day_high",
+    "drop_pct": 7.12,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T13:16:57.286520+00:00"
+  },
+  {
+    "symbol": "000270.KS",
+    "current_price": 130900,
+    "reference_price": 146800,
+    "reference_type": "n_day_high",
+    "drop_pct": 10.83,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T13:27:01.959557+00:00"
+  },
+  {
+    "symbol": "373220.KS",
+    "current_price": 343500,
+    "reference_price": 371500,
+    "reference_type": "n_day_high",
+    "drop_pct": 7.54,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T13:27:02.841940+00:00"
+  },
+  {
+    "symbol": "000270.KS",
+    "current_price": 130900,
+    "reference_price": 146800,
+    "reference_type": "n_day_high",
+    "drop_pct": 10.83,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T13:37:07.253852+00:00"
+  },
+  {
+    "symbol": "373220.KS",
+    "current_price": 343500,
+    "reference_price": 371500,
+    "reference_type": "n_day_high",
+    "drop_pct": 7.54,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T13:37:09.102260+00:00"
+  },
+  {
+    "symbol": "000270.KS",
+    "current_price": 130900,
+    "reference_price": 146800,
+    "reference_type": "n_day_high",
+    "drop_pct": 10.83,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T13:47:13.983104+00:00"
+  },
+  {
+    "symbol": "012450.KS",
+    "current_price": 1085000,
+    "reference_price": 1255000,
+    "reference_type": "n_day_high",
+    "drop_pct": 13.55,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T13:47:15.116352+00:00"
+  },
+  {
+    "symbol": "005380.KS",
+    "current_price": 415000,
+    "reference_price": 459500,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.68,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T13:57:18.770323+00:00"
+  },
+  {
+    "symbol": "105560.KS",
+    "current_price": 164300,
+    "reference_price": 176900,
+    "reference_type": "n_day_high",
+    "drop_pct": 7.12,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T13:57:19.691840+00:00"
+  },
+  {
+    "symbol": "012450.KS",
+    "current_price": 1085000,
+    "reference_price": 1255000,
+    "reference_type": "n_day_high",
+    "drop_pct": 13.55,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T13:57:21.640673+00:00"
+  },
+  {
+    "symbol": "229200.KS",
+    "current_price": 13810,
+    "reference_price": 15220,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.26,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T13:57:25.729780+00:00"
+  },
+  {
+    "symbol": "000270.KS",
+    "current_price": 130900,
+    "reference_price": 146800,
+    "reference_type": "n_day_high",
+    "drop_pct": 10.83,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T14:07:34.095920+00:00"
+  },
+  {
+    "symbol": "012450.KS",
+    "current_price": 1085000,
+    "reference_price": 1255000,
+    "reference_type": "n_day_high",
+    "drop_pct": 13.55,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T14:07:35.061838+00:00"
+  },
+  {
+    "symbol": "232080.KS",
+    "current_price": 14080,
+    "reference_price": 15525,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.31,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T14:07:37.015130+00:00"
+  },
+  {
+    "symbol": "005380.KS",
+    "current_price": 415000,
+    "reference_price": 459500,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.68,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T14:17:39.526447+00:00"
+  },
+  {
+    "symbol": "000270.KS",
+    "current_price": 130900,
+    "reference_price": 146800,
+    "reference_type": "n_day_high",
+    "drop_pct": 10.83,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T14:17:40.859274+00:00"
+  },
+  {
+    "symbol": "373220.KS",
+    "current_price": 343500,
+    "reference_price": 371500,
+    "reference_type": "n_day_high",
+    "drop_pct": 7.54,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T14:17:43.285842+00:00"
+  },
+  {
+    "symbol": "267260.KS",
+    "current_price": 718000,
+    "reference_price": 868519.5902777778,
+    "reference_type": "n_day_high",
+    "drop_pct": 17.33,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T14:17:44.213279+00:00"
+  },
+  {
+    "symbol": "229200.KS",
+    "current_price": 13810,
+    "reference_price": 15220,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.26,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T14:17:49.737201+00:00"
+  },
+  {
+    "symbol": "005380.KS",
+    "current_price": 415000,
+    "reference_price": 459500,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.68,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T14:27:59.057238+00:00"
+  },
+  {
+    "symbol": "105560.KS",
+    "current_price": 164300,
+    "reference_price": 176900,
+    "reference_type": "n_day_high",
+    "drop_pct": 7.12,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T14:28:01.311422+00:00"
+  },
+  {
+    "symbol": "373220.KS",
+    "current_price": 343500,
+    "reference_price": 371500,
+    "reference_type": "n_day_high",
+    "drop_pct": 7.54,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T14:28:04.257175+00:00"
+  },
+  {
+    "symbol": "012450.KS",
+    "current_price": 1085000,
+    "reference_price": 1255000,
+    "reference_type": "n_day_high",
+    "drop_pct": 13.55,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T14:28:05.501562+00:00"
+  },
+  {
+    "symbol": "229200.KS",
+    "current_price": 13810,
+    "reference_price": 15220,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.26,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T14:28:09.494980+00:00"
+  },
+  {
+    "symbol": "105560.KS",
+    "current_price": 164300,
+    "reference_price": 176900,
+    "reference_type": "n_day_high",
+    "drop_pct": 7.12,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T14:38:11.589073+00:00"
+  },
+  {
+    "symbol": "000270.KS",
+    "current_price": 130900,
+    "reference_price": 146800,
+    "reference_type": "n_day_high",
+    "drop_pct": 10.83,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T14:48:15.956766+00:00"
+  },
+  {
+    "symbol": "012450.KS",
+    "current_price": 1085000,
+    "reference_price": 1255000,
+    "reference_type": "n_day_high",
+    "drop_pct": 13.55,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T14:48:18.107018+00:00"
+  },
+  {
+    "symbol": "005380.KS",
+    "current_price": 415000,
+    "reference_price": 459500,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.68,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T14:58:22.376833+00:00"
+  },
+  {
+    "symbol": "373220.KS",
+    "current_price": 343500,
+    "reference_price": 371500,
+    "reference_type": "n_day_high",
+    "drop_pct": 7.54,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T14:58:24.641125+00:00"
+  },
+  {
+    "symbol": "267260.KS",
+    "current_price": 718000,
+    "reference_price": 868519.5902777778,
+    "reference_type": "n_day_high",
+    "drop_pct": 17.33,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T14:58:25.588582+00:00"
+  },
+  {
+    "symbol": "000270.KS",
+    "current_price": 130900,
+    "reference_price": 146800,
+    "reference_type": "n_day_high",
+    "drop_pct": 10.83,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T15:08:29.927901+00:00"
+  },
+  {
+    "symbol": "267260.KS",
+    "current_price": 718000,
+    "reference_price": 868519.5902777778,
+    "reference_type": "n_day_high",
+    "drop_pct": 17.33,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T15:08:32.294671+00:00"
+  },
+  {
+    "symbol": "005380.KS",
+    "current_price": 415000,
+    "reference_price": 459500,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.68,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T15:18:36.660312+00:00"
+  },
+  {
+    "symbol": "105560.KS",
+    "current_price": 164300,
+    "reference_price": 176900,
+    "reference_type": "n_day_high",
+    "drop_pct": 7.12,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T15:18:40.136045+00:00"
+  },
+  {
+    "symbol": "267260.KS",
+    "current_price": 718000,
+    "reference_price": 868519.5902777778,
+    "reference_type": "n_day_high",
+    "drop_pct": 17.33,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T15:18:42.319895+00:00"
+  },
+  {
+    "symbol": "005380.KS",
+    "current_price": 415000,
+    "reference_price": 459500,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.68,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T15:28:46.656723+00:00"
+  },
+  {
+    "symbol": "105560.KS",
+    "current_price": 164300,
+    "reference_price": 176900,
+    "reference_type": "n_day_high",
+    "drop_pct": 7.12,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T15:28:47.556191+00:00"
+  },
+  {
+    "symbol": "005380.KS",
+    "current_price": 415000,
+    "reference_price": 459500,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.68,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T15:38:52.157704+00:00"
+  },
+  {
+    "symbol": "105560.KS",
+    "current_price": 164300,
+    "reference_price": 176900,
+    "reference_type": "n_day_high",
+    "drop_pct": 7.12,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T15:38:53.386848+00:00"
+  },
+  {
+    "symbol": "373220.KS",
+    "current_price": 343500,
+    "reference_price": 371500,
+    "reference_type": "n_day_high",
+    "drop_pct": 7.54,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T15:38:54.724796+00:00"
+  },
+  {
+    "symbol": "000270.KS",
+    "current_price": 130900,
+    "reference_price": 146800,
+    "reference_type": "n_day_high",
+    "drop_pct": 10.83,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T15:49:00.531137+00:00"
+  },
+  {
+    "symbol": "012450.KS",
+    "current_price": 1085000,
+    "reference_price": 1255000,
+    "reference_type": "n_day_high",
+    "drop_pct": 13.55,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T15:49:02.570883+00:00"
+  },
+  {
+    "symbol": "005380.KS",
+    "current_price": 415000,
+    "reference_price": 459500,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.68,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T15:59:08.444928+00:00"
+  },
+  {
+    "symbol": "373220.KS",
+    "current_price": 343500,
+    "reference_price": 371500,
+    "reference_type": "n_day_high",
+    "drop_pct": 7.54,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T15:59:10.844869+00:00"
+  },
+  {
+    "symbol": "232080.KS",
+    "current_price": 14080,
+    "reference_price": 15525,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.31,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T15:59:13.819505+00:00"
+  },
+  {
+    "symbol": "005380.KS",
+    "current_price": 415000,
+    "reference_price": 459500,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.68,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T16:09:15.825212+00:00"
+  },
+  {
+    "symbol": "005380.KS",
+    "current_price": 415000,
+    "reference_price": 459500,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.68,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T16:19:21.225147+00:00"
+  },
+  {
+    "symbol": "012450.KS",
+    "current_price": 1085000,
+    "reference_price": 1255000,
+    "reference_type": "n_day_high",
+    "drop_pct": 13.55,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T16:19:22.332716+00:00"
+  },
+  {
+    "symbol": "232080.KS",
+    "current_price": 14080,
+    "reference_price": 15525,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.31,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T16:19:24.219948+00:00"
+  },
+  {
+    "symbol": "000660.KS",
+    "current_price": 1730000,
+    "reference_price": 1894000,
+    "reference_type": "n_day_high",
+    "drop_pct": 8.66,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T16:29:27.517814+00:00"
+  },
+  {
+    "symbol": "000270.KS",
+    "current_price": 130900,
+    "reference_price": 146800,
+    "reference_type": "n_day_high",
+    "drop_pct": 10.83,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T16:29:28.977250+00:00"
+  },
+  {
+    "symbol": "373220.KS",
+    "current_price": 343500,
+    "reference_price": 371500,
+    "reference_type": "n_day_high",
+    "drop_pct": 7.54,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T16:29:32.451048+00:00"
+  },
+  {
+    "symbol": "267260.KS",
+    "current_price": 718000,
+    "reference_price": 868519.5902777778,
+    "reference_type": "n_day_high",
+    "drop_pct": 17.33,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T16:29:33.990283+00:00"
+  },
+  {
+    "symbol": "229200.KS",
+    "current_price": 13810,
+    "reference_price": 15220,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.26,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T16:29:40.958986+00:00"
+  },
+  {
+    "symbol": "000270.KS",
+    "current_price": 130900,
+    "reference_price": 146800,
+    "reference_type": "n_day_high",
+    "drop_pct": 10.83,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T16:39:45.831983+00:00"
+  },
+  {
+    "symbol": "373220.KS",
+    "current_price": 343500,
+    "reference_price": 371500,
+    "reference_type": "n_day_high",
+    "drop_pct": 7.54,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T16:39:46.790210+00:00"
+  },
+  {
+    "symbol": "232080.KS",
+    "current_price": 14080,
+    "reference_price": 15525,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.31,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T16:39:48.898118+00:00"
+  },
+  {
+    "symbol": "000270.KS",
+    "current_price": 130900,
+    "reference_price": 146800,
+    "reference_type": "n_day_high",
+    "drop_pct": 10.83,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T16:49:51.024131+00:00"
+  },
+  {
+    "symbol": "229200.KS",
+    "current_price": 13810,
+    "reference_price": 15220,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.26,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T16:49:53.983307+00:00"
+  },
+  {
+    "symbol": "005380.KS",
+    "current_price": 415000,
+    "reference_price": 459500,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.68,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T16:59:57.469046+00:00"
+  },
+  {
+    "symbol": "000270.KS",
+    "current_price": 130900,
+    "reference_price": 146800,
+    "reference_type": "n_day_high",
+    "drop_pct": 10.83,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T16:59:59.121044+00:00"
+  },
+  {
+    "symbol": "012450.KS",
+    "current_price": 1085000,
+    "reference_price": 1255000,
+    "reference_type": "n_day_high",
+    "drop_pct": 13.55,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T17:00:04.212181+00:00"
+  },
+  {
+    "symbol": "232080.KS",
+    "current_price": 14080,
+    "reference_price": 15525,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.31,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T17:00:12.225089+00:00"
+  },
+  {
+    "symbol": "000270.KS",
+    "current_price": 130900,
+    "reference_price": 146800,
+    "reference_type": "n_day_high",
+    "drop_pct": 10.83,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T17:10:16.975227+00:00"
+  },
+  {
+    "symbol": "012450.KS",
+    "current_price": 1085000,
+    "reference_price": 1255000,
+    "reference_type": "n_day_high",
+    "drop_pct": 13.55,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T17:10:19.125140+00:00"
+  },
+  {
+    "symbol": "000660.KS",
+    "current_price": 1730000,
+    "reference_price": 1894000,
+    "reference_type": "n_day_high",
+    "drop_pct": 8.66,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T17:20:25.860247+00:00"
+  },
+  {
+    "symbol": "005380.KS",
+    "current_price": 415000,
+    "reference_price": 459500,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.68,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T17:20:27.195624+00:00"
+  },
+  {
+    "symbol": "105560.KS",
+    "current_price": 164300,
+    "reference_price": 176900,
+    "reference_type": "n_day_high",
+    "drop_pct": 7.12,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T17:20:28.106722+00:00"
+  },
+  {
+    "symbol": "373220.KS",
+    "current_price": 343500,
+    "reference_price": 371500,
+    "reference_type": "n_day_high",
+    "drop_pct": 7.54,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T17:20:30.367572+00:00"
+  },
+  {
+    "symbol": "267260.KS",
+    "current_price": 718000,
+    "reference_price": 868519.5902777778,
+    "reference_type": "n_day_high",
+    "drop_pct": 17.33,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T17:20:31.488796+00:00"
+  },
+  {
+    "symbol": "232080.KS",
+    "current_price": 14080,
+    "reference_price": 15525,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.31,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T17:20:38.552962+00:00"
+  },
+  {
+    "symbol": "000270.KS",
+    "current_price": 130900,
+    "reference_price": 146800,
+    "reference_type": "n_day_high",
+    "drop_pct": 10.83,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T17:30:42.105743+00:00"
+  },
+  {
+    "symbol": "012450.KS",
+    "current_price": 1085000,
+    "reference_price": 1255000,
+    "reference_type": "n_day_high",
+    "drop_pct": 13.55,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T17:30:43.035228+00:00"
+  },
+  {
+    "symbol": "232080.KS",
+    "current_price": 14080,
+    "reference_price": 15525,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.31,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T17:30:44.955434+00:00"
+  },
+  {
+    "symbol": "000270.KS",
+    "current_price": 130900,
+    "reference_price": 146800,
+    "reference_type": "n_day_high",
+    "drop_pct": 10.83,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T17:40:47.397004+00:00"
+  },
+  {
+    "symbol": "229200.KS",
+    "current_price": 13810,
+    "reference_price": 15220,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.26,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T17:40:50.374495+00:00"
+  },
+  {
+    "symbol": "000270.KS",
+    "current_price": 130900,
+    "reference_price": 146800,
+    "reference_type": "n_day_high",
+    "drop_pct": 10.83,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T17:50:52.426003+00:00"
+  },
+  {
+    "symbol": "267260.KS",
+    "current_price": 718000,
+    "reference_price": 868519.5902777778,
+    "reference_type": "n_day_high",
+    "drop_pct": 17.33,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T17:50:53.463724+00:00"
+  },
+  {
+    "symbol": "000660.KS",
+    "current_price": 1730000,
+    "reference_price": 1894000,
+    "reference_type": "n_day_high",
+    "drop_pct": 8.66,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T18:00:57.987453+00:00"
+  },
+  {
+    "symbol": "005380.KS",
+    "current_price": 415000,
+    "reference_price": 459500,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.68,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T18:00:59.458724+00:00"
+  },
+  {
+    "symbol": "000270.KS",
+    "current_price": 130900,
+    "reference_price": 146800,
+    "reference_type": "n_day_high",
+    "drop_pct": 10.83,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T18:01:00.855482+00:00"
+  },
+  {
+    "symbol": "105560.KS",
+    "current_price": 164300,
+    "reference_price": 176900,
+    "reference_type": "n_day_high",
+    "drop_pct": 7.12,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T18:01:02.302206+00:00"
+  },
+  {
+    "symbol": "373220.KS",
+    "current_price": 343500,
+    "reference_price": 371500,
+    "reference_type": "n_day_high",
+    "drop_pct": 7.54,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T18:01:04.853194+00:00"
+  },
+  {
+    "symbol": "267260.KS",
+    "current_price": 718000,
+    "reference_price": 868519.5902777778,
+    "reference_type": "n_day_high",
+    "drop_pct": 17.33,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T18:01:06.177932+00:00"
+  },
+  {
+    "symbol": "229200.KS",
+    "current_price": 13810,
+    "reference_price": 15220,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.26,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T18:01:13.556161+00:00"
+  },
+  {
+    "symbol": "232080.KS",
+    "current_price": 14080,
+    "reference_price": 15525,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.31,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T18:01:14.892960+00:00"
+  },
+  {
+    "symbol": "000660.KS",
+    "current_price": 1730000,
+    "reference_price": 1894000,
+    "reference_type": "n_day_high",
+    "drop_pct": 8.66,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T18:11:19.273868+00:00"
+  },
+  {
+    "symbol": "000270.KS",
+    "current_price": 130900,
+    "reference_price": 146800,
+    "reference_type": "n_day_high",
+    "drop_pct": 10.83,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T18:11:20.593733+00:00"
+  },
+  {
+    "symbol": "267260.KS",
+    "current_price": 718000,
+    "reference_price": 868519.5902777778,
+    "reference_type": "n_day_high",
+    "drop_pct": 17.33,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T18:11:22.945820+00:00"
+  },
+  {
+    "symbol": "005380.KS",
+    "current_price": 415000,
+    "reference_price": 459500,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.68,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T18:21:28.342206+00:00"
+  },
+  {
+    "symbol": "000270.KS",
+    "current_price": 130900,
+    "reference_price": 146800,
+    "reference_type": "n_day_high",
+    "drop_pct": 10.83,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T18:21:29.262828+00:00"
+  },
+  {
+    "symbol": "012450.KS",
+    "current_price": 1085000,
+    "reference_price": 1255000,
+    "reference_type": "n_day_high",
+    "drop_pct": 13.55,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T18:21:31.942292+00:00"
+  },
+  {
+    "symbol": "229200.KS",
+    "current_price": 13810,
+    "reference_price": 15220,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.26,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T18:21:36.645603+00:00"
+  },
+  {
+    "symbol": "000270.KS",
+    "current_price": 130900,
+    "reference_price": 146800,
+    "reference_type": "n_day_high",
+    "drop_pct": 10.83,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T18:31:40.710019+00:00"
+  },
+  {
+    "symbol": "000270.KS",
+    "current_price": 130900,
+    "reference_price": 146800,
+    "reference_type": "n_day_high",
+    "drop_pct": 10.83,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T18:41:46.404961+00:00"
+  },
+  {
+    "symbol": "373220.KS",
+    "current_price": 343500,
+    "reference_price": 371500,
+    "reference_type": "n_day_high",
+    "drop_pct": 7.54,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T18:41:47.368696+00:00"
+  },
+  {
+    "symbol": "229200.KS",
+    "current_price": 13810,
+    "reference_price": 15220,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.26,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T18:41:51.764934+00:00"
+  },
+  {
+    "symbol": "000270.KS",
+    "current_price": 130900,
+    "reference_price": 146800,
+    "reference_type": "n_day_high",
+    "drop_pct": 10.83,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T18:51:54.341575+00:00"
+  },
+  {
+    "symbol": "373220.KS",
+    "current_price": 343500,
+    "reference_price": 371500,
+    "reference_type": "n_day_high",
+    "drop_pct": 7.54,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T18:51:55.436439+00:00"
+  },
+  {
+    "symbol": "229200.KS",
+    "current_price": 13810,
+    "reference_price": 15220,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.26,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T18:51:58.486833+00:00"
+  },
+  {
+    "symbol": "005380.KS",
+    "current_price": 415000,
+    "reference_price": 459500,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.68,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T19:02:00.787927+00:00"
+  },
+  {
+    "symbol": "000270.KS",
+    "current_price": 130900,
+    "reference_price": 146800,
+    "reference_type": "n_day_high",
+    "drop_pct": 10.83,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T19:12:06.416433+00:00"
+  },
+  {
+    "symbol": "373220.KS",
+    "current_price": 343500,
+    "reference_price": 371500,
+    "reference_type": "n_day_high",
+    "drop_pct": 7.54,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T19:12:08.981865+00:00"
+  },
+  {
+    "symbol": "267260.KS",
+    "current_price": 718000,
+    "reference_price": 868519.5902777778,
+    "reference_type": "n_day_high",
+    "drop_pct": 17.33,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T19:12:10.071374+00:00"
+  },
+  {
+    "symbol": "232080.KS",
+    "current_price": 14080,
+    "reference_price": 15525,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.31,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T19:12:15.598442+00:00"
+  },
+  {
+    "symbol": "000270.KS",
+    "current_price": 130900,
+    "reference_price": 146800,
+    "reference_type": "n_day_high",
+    "drop_pct": 10.83,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T19:22:18.331522+00:00"
+  },
+  {
+    "symbol": "229200.KS",
+    "current_price": 13810,
+    "reference_price": 15220,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.26,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T19:22:21.459342+00:00"
+  },
+  {
+    "symbol": "005380.KS",
+    "current_price": 415000,
+    "reference_price": 459500,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.68,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T19:32:23.728271+00:00"
+  },
+  {
+    "symbol": "105560.KS",
+    "current_price": 164300,
+    "reference_price": 176900,
+    "reference_type": "n_day_high",
+    "drop_pct": 7.12,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T19:32:24.650870+00:00"
+  },
+  {
+    "symbol": "373220.KS",
+    "current_price": 343500,
+    "reference_price": 371500,
+    "reference_type": "n_day_high",
+    "drop_pct": 7.54,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T19:32:26.083535+00:00"
+  },
+  {
+    "symbol": "267260.KS",
+    "current_price": 718000,
+    "reference_price": 868519.5902777778,
+    "reference_type": "n_day_high",
+    "drop_pct": 17.33,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T19:32:27.415791+00:00"
+  },
+  {
+    "symbol": "232080.KS",
+    "current_price": 14080,
+    "reference_price": 15525,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.31,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T19:32:35.917742+00:00"
+  },
+  {
+    "symbol": "000660.KS",
+    "current_price": 1730000,
+    "reference_price": 1894000,
+    "reference_type": "n_day_high",
+    "drop_pct": 8.66,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T19:42:39.506605+00:00"
+  },
+  {
+    "symbol": "005380.KS",
+    "current_price": 415000,
+    "reference_price": 459500,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.68,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T19:42:40.798063+00:00"
+  },
+  {
+    "symbol": "105560.KS",
+    "current_price": 164300,
+    "reference_price": 176900,
+    "reference_type": "n_day_high",
+    "drop_pct": 7.12,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T19:42:42.682862+00:00"
+  },
+  {
+    "symbol": "373220.KS",
+    "current_price": 343500,
+    "reference_price": 371500,
+    "reference_type": "n_day_high",
+    "drop_pct": 7.54,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T19:42:46.157074+00:00"
+  },
+  {
+    "symbol": "267260.KS",
+    "current_price": 718000,
+    "reference_price": 868519.5902777778,
+    "reference_type": "n_day_high",
+    "drop_pct": 17.33,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T19:42:48.012746+00:00"
+  },
+  {
+    "symbol": "229200.KS",
+    "current_price": 13810,
+    "reference_price": 15220,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.26,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T19:42:57.114372+00:00"
+  },
+  {
+    "symbol": "232080.KS",
+    "current_price": 14080,
+    "reference_price": 15525,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.31,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T19:42:58.547480+00:00"
+  },
+  {
+    "symbol": "000270.KS",
+    "current_price": 130900,
+    "reference_price": 146800,
+    "reference_type": "n_day_high",
+    "drop_pct": 10.83,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T19:53:03.383639+00:00"
+  },
+  {
+    "symbol": "267260.KS",
+    "current_price": 718000,
+    "reference_price": 868519.5902777778,
+    "reference_type": "n_day_high",
+    "drop_pct": 17.33,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T19:53:04.346285+00:00"
+  },
+  {
+    "symbol": "000270.KS",
+    "current_price": 130900,
+    "reference_price": 146800,
+    "reference_type": "n_day_high",
+    "drop_pct": 10.83,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T20:03:07.875324+00:00"
+  },
+  {
+    "symbol": "373220.KS",
+    "current_price": 343500,
+    "reference_price": 371500,
+    "reference_type": "n_day_high",
+    "drop_pct": 7.54,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T20:03:08.764206+00:00"
+  },
+  {
+    "symbol": "232080.KS",
+    "current_price": 14080,
+    "reference_price": 15525,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.31,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T20:03:10.768550+00:00"
+  },
+  {
+    "symbol": "105560.KS",
+    "current_price": 164300,
+    "reference_price": 176900,
+    "reference_type": "n_day_high",
+    "drop_pct": 7.12,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T20:23:16.642371+00:00"
+  },
+  {
+    "symbol": "005380.KS",
+    "current_price": 415000,
+    "reference_price": 459500,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.68,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T20:33:21.109093+00:00"
+  },
+  {
+    "symbol": "105560.KS",
+    "current_price": 164300,
+    "reference_price": 176900,
+    "reference_type": "n_day_high",
+    "drop_pct": 7.12,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T20:33:22.021730+00:00"
+  },
+  {
+    "symbol": "373220.KS",
+    "current_price": 343500,
+    "reference_price": 371500,
+    "reference_type": "n_day_high",
+    "drop_pct": 7.54,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T20:33:23.253415+00:00"
+  },
+  {
+    "symbol": "000270.KS",
+    "current_price": 130900,
+    "reference_price": 146800,
+    "reference_type": "n_day_high",
+    "drop_pct": 10.83,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T20:43:27.934339+00:00"
+  },
+  {
+    "symbol": "373220.KS",
+    "current_price": 343500,
+    "reference_price": 371500,
+    "reference_type": "n_day_high",
+    "drop_pct": 7.54,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T20:43:28.824886+00:00"
+  },
+  {
+    "symbol": "232080.KS",
+    "current_price": 14080,
+    "reference_price": 15525,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.31,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T20:43:30.844293+00:00"
+  },
+  {
+    "symbol": "000270.KS",
+    "current_price": 130900,
+    "reference_price": 146800,
+    "reference_type": "n_day_high",
+    "drop_pct": 10.83,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T20:53:32.810940+00:00"
+  },
+  {
+    "symbol": "267260.KS",
+    "current_price": 718000,
+    "reference_price": 868519.5902777778,
+    "reference_type": "n_day_high",
+    "drop_pct": 17.33,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T20:53:34.970735+00:00"
+  },
+  {
+    "symbol": "000270.KS",
+    "current_price": 130900,
+    "reference_price": 146800,
+    "reference_type": "n_day_high",
+    "drop_pct": 10.83,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T21:03:39.442961+00:00"
+  },
+  {
+    "symbol": "012450.KS",
+    "current_price": 1085000,
+    "reference_price": 1255000,
+    "reference_type": "n_day_high",
+    "drop_pct": 13.55,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T21:03:40.351384+00:00"
+  },
+  {
+    "symbol": "000270.KS",
+    "current_price": 130900,
+    "reference_price": 146800,
+    "reference_type": "n_day_high",
+    "drop_pct": 10.83,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T21:13:43.905747+00:00"
+  },
+  {
+    "symbol": "373220.KS",
+    "current_price": 343500,
+    "reference_price": 371500,
+    "reference_type": "n_day_high",
+    "drop_pct": 7.54,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T21:13:44.802516+00:00"
+  },
+  {
+    "symbol": "232080.KS",
+    "current_price": 14080,
+    "reference_price": 15525,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.31,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T21:13:46.846148+00:00"
+  },
+  {
+    "symbol": "000270.KS",
+    "current_price": 130900,
+    "reference_price": 146800,
+    "reference_type": "n_day_high",
+    "drop_pct": 10.83,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T21:23:49.214341+00:00"
+  },
+  {
+    "symbol": "267260.KS",
+    "current_price": 718000,
+    "reference_price": 868519.5902777778,
+    "reference_type": "n_day_high",
+    "drop_pct": 17.33,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T21:23:51.464461+00:00"
+  },
+  {
+    "symbol": "229200.KS",
+    "current_price": 13810,
+    "reference_price": 15220,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.26,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T21:23:53.389598+00:00"
+  },
+  {
+    "symbol": "005380.KS",
+    "current_price": 415000,
+    "reference_price": 459500,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.68,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T21:33:55.657032+00:00"
+  },
+  {
+    "symbol": "105560.KS",
+    "current_price": 164300,
+    "reference_price": 176900,
+    "reference_type": "n_day_high",
+    "drop_pct": 7.12,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T21:33:56.889614+00:00"
+  },
+  {
+    "symbol": "012450.KS",
+    "current_price": 1085000,
+    "reference_price": 1255000,
+    "reference_type": "n_day_high",
+    "drop_pct": 13.55,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T21:33:59.345133+00:00"
+  },
+  {
+    "symbol": "229200.KS",
+    "current_price": 13810,
+    "reference_price": 15220,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.26,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T21:34:05.557372+00:00"
+  },
+  {
+    "symbol": "000270.KS",
+    "current_price": 130900,
+    "reference_price": 146800,
+    "reference_type": "n_day_high",
+    "drop_pct": 10.83,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T21:44:09.827430+00:00"
+  },
+  {
+    "symbol": "267260.KS",
+    "current_price": 718000,
+    "reference_price": 868519.5902777778,
+    "reference_type": "n_day_high",
+    "drop_pct": 17.33,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T21:44:11.756565+00:00"
+  },
+  {
+    "symbol": "005380.KS",
+    "current_price": 415000,
+    "reference_price": 459500,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.68,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T21:54:15.427782+00:00"
+  },
+  {
+    "symbol": "373220.KS",
+    "current_price": 343500,
+    "reference_price": 371500,
+    "reference_type": "n_day_high",
+    "drop_pct": 7.54,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T21:54:17.509604+00:00"
+  },
+  {
+    "symbol": "232080.KS",
+    "current_price": 14080,
+    "reference_price": 15525,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.31,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T21:54:22.194672+00:00"
+  },
+  {
+    "symbol": "005380.KS",
+    "current_price": 415000,
+    "reference_price": 459500,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.68,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T22:04:25.883753+00:00"
+  },
+  {
+    "symbol": "000270.KS",
+    "current_price": 130900,
+    "reference_price": 146800,
+    "reference_type": "n_day_high",
+    "drop_pct": 10.83,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T22:04:27.709249+00:00"
+  },
+  {
+    "symbol": "105560.KS",
+    "current_price": 164300,
+    "reference_price": 176900,
+    "reference_type": "n_day_high",
+    "drop_pct": 7.12,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T22:04:28.616201+00:00"
+  },
+  {
+    "symbol": "373220.KS",
+    "current_price": 343500,
+    "reference_price": 371500,
+    "reference_type": "n_day_high",
+    "drop_pct": 7.54,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T22:04:31.687669+00:00"
+  },
+  {
+    "symbol": "012450.KS",
+    "current_price": 1085000,
+    "reference_price": 1255000,
+    "reference_type": "n_day_high",
+    "drop_pct": 13.55,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T22:04:32.706022+00:00"
+  },
+  {
+    "symbol": "232080.KS",
+    "current_price": 14080,
+    "reference_price": 15525,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.31,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T22:04:41.118468+00:00"
+  },
+  {
+    "symbol": "005380.KS",
+    "current_price": 415000,
+    "reference_price": 459500,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.68,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T22:14:45.638802+00:00"
+  },
+  {
+    "symbol": "105560.KS",
+    "current_price": 164300,
+    "reference_price": 176900,
+    "reference_type": "n_day_high",
+    "drop_pct": 7.12,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T22:14:46.565988+00:00"
+  },
+  {
+    "symbol": "373220.KS",
+    "current_price": 343500,
+    "reference_price": 371500,
+    "reference_type": "n_day_high",
+    "drop_pct": 7.54,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T22:14:47.690215+00:00"
+  },
+  {
+    "symbol": "232080.KS",
+    "current_price": 14080,
+    "reference_price": 15525,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.31,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T22:14:50.715192+00:00"
+  },
+  {
+    "symbol": "005380.KS",
+    "current_price": 415000,
+    "reference_price": 459500,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.68,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T22:24:53.533426+00:00"
+  },
+  {
+    "symbol": "105560.KS",
+    "current_price": 164300,
+    "reference_price": 176900,
+    "reference_type": "n_day_high",
+    "drop_pct": 7.12,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T22:24:54.878068+00:00"
+  },
+  {
+    "symbol": "012450.KS",
+    "current_price": 1085000,
+    "reference_price": 1255000,
+    "reference_type": "n_day_high",
+    "drop_pct": 13.55,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T22:24:57.034885+00:00"
+  },
+  {
+    "symbol": "229200.KS",
+    "current_price": 13810,
+    "reference_price": 15220,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.26,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T22:25:01.930024+00:00"
+  },
+  {
+    "symbol": "000270.KS",
+    "current_price": 130900,
+    "reference_price": 146800,
+    "reference_type": "n_day_high",
+    "drop_pct": 10.83,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T22:35:04.766921+00:00"
+  },
+  {
+    "symbol": "373220.KS",
+    "current_price": 343500,
+    "reference_price": 371500,
+    "reference_type": "n_day_high",
+    "drop_pct": 7.54,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T22:35:05.694249+00:00"
+  },
+  {
+    "symbol": "232080.KS",
+    "current_price": 14080,
+    "reference_price": 15525,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.31,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T22:35:07.756925+00:00"
+  },
+  {
+    "symbol": "012450.KS",
+    "current_price": 1085000,
+    "reference_price": 1255000,
+    "reference_type": "n_day_high",
+    "drop_pct": 13.55,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T22:45:10.587714+00:00"
+  },
+  {
+    "symbol": "232080.KS",
+    "current_price": 14080,
+    "reference_price": 15525,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.31,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T22:45:13.957288+00:00"
+  },
+  {
+    "symbol": "005380.KS",
+    "current_price": 415000,
+    "reference_price": 459500,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.68,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T22:55:16.933413+00:00"
+  },
+  {
+    "symbol": "000270.KS",
+    "current_price": 130900,
+    "reference_price": 146800,
+    "reference_type": "n_day_high",
+    "drop_pct": 10.83,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T23:05:23.439979+00:00"
+  },
+  {
+    "symbol": "012450.KS",
+    "current_price": 1085000,
+    "reference_price": 1255000,
+    "reference_type": "n_day_high",
+    "drop_pct": 13.55,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T23:05:24.687333+00:00"
+  },
+  {
+    "symbol": "232080.KS",
+    "current_price": 14080,
+    "reference_price": 15525,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.31,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T23:05:27.849176+00:00"
+  },
+  {
+    "symbol": "105560.KS",
+    "current_price": 164300,
+    "reference_price": 176900,
+    "reference_type": "n_day_high",
+    "drop_pct": 7.12,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T23:15:29.953093+00:00"
+  },
+  {
+    "symbol": "267260.KS",
+    "current_price": 718000,
+    "reference_price": 868519.5902777778,
+    "reference_type": "n_day_high",
+    "drop_pct": 17.33,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T23:15:31.064595+00:00"
+  },
+  {
+    "symbol": "229200.KS",
+    "current_price": 13810,
+    "reference_price": 15220,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.26,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T23:15:33.141751+00:00"
+  },
+  {
+    "symbol": "005380.KS",
+    "current_price": 415000,
+    "reference_price": 459500,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.68,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T23:25:36.236719+00:00"
+  },
+  {
+    "symbol": "373220.KS",
+    "current_price": 343500,
+    "reference_price": 371500,
+    "reference_type": "n_day_high",
+    "drop_pct": 7.54,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T23:25:37.323473+00:00"
+  },
+  {
+    "symbol": "232080.KS",
+    "current_price": 14080,
+    "reference_price": 15525,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.31,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T23:25:41.843883+00:00"
+  },
+  {
+    "symbol": "005380.KS",
+    "current_price": 415000,
+    "reference_price": 459500,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.68,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T23:35:48.438187+00:00"
+  },
+  {
+    "symbol": "105560.KS",
+    "current_price": 164300,
+    "reference_price": 176900,
+    "reference_type": "n_day_high",
+    "drop_pct": 7.12,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T23:35:49.784541+00:00"
+  },
+  {
+    "symbol": "012450.KS",
+    "current_price": 1085000,
+    "reference_price": 1255000,
+    "reference_type": "n_day_high",
+    "drop_pct": 13.55,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T23:35:52.497114+00:00"
+  },
+  {
+    "symbol": "229200.KS",
+    "current_price": 13810,
+    "reference_price": 15220,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.26,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T23:35:54.735745+00:00"
+  },
+  {
+    "symbol": "000660.KS",
+    "current_price": 1730000,
+    "reference_price": 1894000,
+    "reference_type": "n_day_high",
+    "drop_pct": 8.66,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T23:45:57.754180+00:00"
+  },
+  {
+    "symbol": "105560.KS",
+    "current_price": 164300,
+    "reference_price": 176900,
+    "reference_type": "n_day_high",
+    "drop_pct": 7.12,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T23:45:58.790209+00:00"
+  },
+  {
+    "symbol": "267260.KS",
+    "current_price": 718000,
+    "reference_price": 868519.5902777778,
+    "reference_type": "n_day_high",
+    "drop_pct": 17.33,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T23:45:59.827276+00:00"
+  },
+  {
+    "symbol": "229200.KS",
+    "current_price": 13810,
+    "reference_price": 15220,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.26,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T23:46:03.763562+00:00"
+  },
+  {
+    "symbol": "105560.KS",
+    "current_price": 164300,
+    "reference_price": 176900,
+    "reference_type": "n_day_high",
+    "drop_pct": 7.12,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T23:56:09.586894+00:00"
+  },
+  {
+    "symbol": "373220.KS",
+    "current_price": 343500,
+    "reference_price": 371500,
+    "reference_type": "n_day_high",
+    "drop_pct": 7.54,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T23:56:10.571943+00:00"
+  },
+  {
+    "symbol": "232080.KS",
+    "current_price": 14080,
+    "reference_price": 15525,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.31,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-22T23:56:14.728886+00:00"
+  },
+  {
+    "symbol": "005380.KS",
+    "current_price": 415000,
+    "reference_price": 459500,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.68,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-23T00:06:19.533215+00:00"
+  },
+  {
+    "symbol": "000270.KS",
+    "current_price": 130900,
+    "reference_price": 146800,
+    "reference_type": "n_day_high",
+    "drop_pct": 10.83,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-23T00:06:20.662009+00:00"
+  },
+  {
+    "symbol": "373220.KS",
+    "current_price": 343500,
+    "reference_price": 371500,
+    "reference_type": "n_day_high",
+    "drop_pct": 7.54,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-23T00:06:22.811529+00:00"
+  },
+  {
+    "symbol": "267260.KS",
+    "current_price": 718000,
+    "reference_price": 868519.5902777778,
+    "reference_type": "n_day_high",
+    "drop_pct": 17.33,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-23T00:06:24.268174+00:00"
+  },
+  {
+    "symbol": "229200.KS",
+    "current_price": 13810,
+    "reference_price": 15220,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.26,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-23T00:06:26.414903+00:00"
+  },
+  {
+    "symbol": "000270.KS",
+    "current_price": 130900,
+    "reference_price": 146800,
+    "reference_type": "n_day_high",
+    "drop_pct": 10.83,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-23T00:16:28.986243+00:00"
+  },
+  {
+    "symbol": "012450.KS",
+    "current_price": 1085000,
+    "reference_price": 1255000,
+    "reference_type": "n_day_high",
+    "drop_pct": 13.55,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-23T00:16:30.112859+00:00"
+  },
+  {
+    "symbol": "105560.KS",
+    "current_price": 164300,
+    "reference_price": 176900,
+    "reference_type": "n_day_high",
+    "drop_pct": 7.12,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-23T00:26:36.447032+00:00"
+  },
+  {
+    "symbol": "012450.KS",
+    "current_price": 1085000,
+    "reference_price": 1255000,
+    "reference_type": "n_day_high",
+    "drop_pct": 13.55,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-23T00:26:37.665704+00:00"
+  },
+  {
+    "symbol": "232080.KS",
+    "current_price": 14080,
+    "reference_price": 15525,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.31,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-23T00:26:41.860132+00:00"
+  },
+  {
+    "symbol": "005380.KS",
+    "current_price": 415000,
+    "reference_price": 459500,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.68,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-23T00:36:44.599698+00:00"
+  },
+  {
+    "symbol": "012450.KS",
+    "current_price": 1085000,
+    "reference_price": 1255000,
+    "reference_type": "n_day_high",
+    "drop_pct": 13.55,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-23T00:36:47.134141+00:00"
+  },
+  {
+    "symbol": "000270.KS",
+    "current_price": 130900,
+    "reference_price": 146800,
+    "reference_type": "n_day_high",
+    "drop_pct": 10.83,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-23T00:46:51.723263+00:00"
+  },
+  {
+    "symbol": "373220.KS",
+    "current_price": 343500,
+    "reference_price": 371500,
+    "reference_type": "n_day_high",
+    "drop_pct": 7.54,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-23T00:46:52.771342+00:00"
+  },
+  {
+    "symbol": "232080.KS",
+    "current_price": 14080,
+    "reference_price": 15525,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.31,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-23T00:46:57.520803+00:00"
+  },
+  {
+    "symbol": "000270.KS",
+    "current_price": 130900,
+    "reference_price": 146800,
+    "reference_type": "n_day_high",
+    "drop_pct": 10.83,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-23T00:56:59.642139+00:00"
+  },
+  {
+    "symbol": "267260.KS",
+    "current_price": 718000,
+    "reference_price": 868519.5902777778,
+    "reference_type": "n_day_high",
+    "drop_pct": 17.33,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-23T00:57:02.110343+00:00"
+  },
+  {
+    "symbol": "232080.KS",
+    "current_price": 14080,
+    "reference_price": 15525,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.31,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-23T00:57:04.033857+00:00"
+  },
+  {
+    "symbol": "005380.KS",
+    "current_price": 415000,
+    "reference_price": 459500,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.68,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-23T01:07:05.996159+00:00"
+  },
+  {
+    "symbol": "000270.KS",
+    "current_price": 130900,
+    "reference_price": 146800,
+    "reference_type": "n_day_high",
+    "drop_pct": 10.83,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-23T01:07:07.457794+00:00"
+  },
+  {
+    "symbol": "012450.KS",
+    "current_price": 1085000,
+    "reference_price": 1255000,
+    "reference_type": "n_day_high",
+    "drop_pct": 13.55,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-23T01:07:13.626276+00:00"
+  },
+  {
+    "symbol": "267260.KS",
+    "current_price": 718000,
+    "reference_price": 868519.5902777778,
+    "reference_type": "n_day_high",
+    "drop_pct": 17.33,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-23T01:07:15.313230+00:00"
+  },
+  {
+    "symbol": "000270.KS",
+    "current_price": 130900,
+    "reference_price": 146800,
+    "reference_type": "n_day_high",
+    "drop_pct": 10.83,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-23T01:27:28.468741+00:00"
+  },
+  {
+    "symbol": "232080.KS",
+    "current_price": 14080,
+    "reference_price": 15525,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.31,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-23T01:37:37.982526+00:00"
+  },
+  {
+    "symbol": "012450.KS",
+    "current_price": 1085000,
+    "reference_price": 1255000,
+    "reference_type": "n_day_high",
+    "drop_pct": 13.55,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-23T01:47:41.198953+00:00"
+  },
+  {
+    "symbol": "229200.KS",
+    "current_price": 13810,
+    "reference_price": 15220,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.26,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-23T01:47:43.272771+00:00"
+  },
+  {
+    "symbol": "000660.KS",
+    "current_price": 1730000,
+    "reference_price": 1894000,
+    "reference_type": "n_day_high",
+    "drop_pct": 8.66,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-23T01:57:49.988519+00:00"
+  },
+  {
+    "symbol": "000270.KS",
+    "current_price": 130900,
+    "reference_price": 146800,
+    "reference_type": "n_day_high",
+    "drop_pct": 10.83,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-23T01:57:51.082409+00:00"
+  },
+  {
+    "symbol": "012450.KS",
+    "current_price": 1085000,
+    "reference_price": 1255000,
+    "reference_type": "n_day_high",
+    "drop_pct": 13.55,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-23T01:57:52.147225+00:00"
+  },
+  {
+    "symbol": "229200.KS",
+    "current_price": 13810,
+    "reference_price": 15220,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.26,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-23T01:57:56.949264+00:00"
+  },
+  {
+    "symbol": "232080.KS",
+    "current_price": 14080,
+    "reference_price": 15525,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.31,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-23T01:57:58.602580+00:00"
+  },
+  {
+    "symbol": "000270.KS",
+    "current_price": 130900,
+    "reference_price": 146800,
+    "reference_type": "n_day_high",
+    "drop_pct": 10.83,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-23T02:08:07.908098+00:00"
+  },
+  {
+    "symbol": "373220.KS",
+    "current_price": 343500,
+    "reference_price": 371500,
+    "reference_type": "n_day_high",
+    "drop_pct": 7.54,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-23T02:08:08.836356+00:00"
+  },
+  {
+    "symbol": "229200.KS",
+    "current_price": 13810,
+    "reference_price": 15220,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.26,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-23T02:08:12.265858+00:00"
+  },
+  {
+    "symbol": "000660.KS",
+    "current_price": 1730000,
+    "reference_price": 1894000,
+    "reference_type": "n_day_high",
+    "drop_pct": 8.66,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-23T02:18:15.743600+00:00"
+  },
+  {
+    "symbol": "005380.KS",
+    "current_price": 415000,
+    "reference_price": 459500,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.68,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-23T02:18:18.599770+00:00"
+  },
+  {
+    "symbol": "000270.KS",
+    "current_price": 130900,
+    "reference_price": 146800,
+    "reference_type": "n_day_high",
+    "drop_pct": 10.83,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-23T02:18:19.691312+00:00"
+  },
+  {
+    "symbol": "105560.KS",
+    "current_price": 164300,
+    "reference_price": 176900,
+    "reference_type": "n_day_high",
+    "drop_pct": 7.12,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-23T02:18:20.872255+00:00"
+  },
+  {
+    "symbol": "373220.KS",
+    "current_price": 343500,
+    "reference_price": 371500,
+    "reference_type": "n_day_high",
+    "drop_pct": 7.54,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-23T02:18:22.566426+00:00"
+  },
+  {
+    "symbol": "267260.KS",
+    "current_price": 718000,
+    "reference_price": 868519.5902777778,
+    "reference_type": "n_day_high",
+    "drop_pct": 17.33,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-23T02:18:23.657420+00:00"
+  },
+  {
+    "symbol": "232080.KS",
+    "current_price": 14080,
+    "reference_price": 15525,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.31,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-23T02:18:25.826436+00:00"
+  },
+  {
+    "symbol": "005380.KS",
+    "current_price": 415000,
+    "reference_price": 459500,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.68,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-23T02:28:28.040835+00:00"
+  },
+  {
+    "symbol": "012450.KS",
+    "current_price": 1085000,
+    "reference_price": 1255000,
+    "reference_type": "n_day_high",
+    "drop_pct": 13.55,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-23T02:28:35.060371+00:00"
+  },
+  {
+    "symbol": "267260.KS",
+    "current_price": 718000,
+    "reference_price": 868519.5902777778,
+    "reference_type": "n_day_high",
+    "drop_pct": 17.33,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-23T02:28:36.379649+00:00"
+  },
+  {
+    "symbol": "000660.KS",
+    "current_price": 1730000,
+    "reference_price": 1894000,
+    "reference_type": "n_day_high",
+    "drop_pct": 8.66,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-23T02:38:53.568898+00:00"
+  },
+  {
+    "symbol": "005380.KS",
+    "current_price": 415000,
+    "reference_price": 459500,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.68,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-23T02:38:56.433979+00:00"
+  },
+  {
+    "symbol": "232080.KS",
+    "current_price": 14080,
+    "reference_price": 15525,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.31,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-23T02:39:06.175962+00:00"
+  },
+  {
+    "symbol": "000270.KS",
+    "current_price": 130900,
+    "reference_price": 146800,
+    "reference_type": "n_day_high",
+    "drop_pct": 10.83,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-23T02:49:13.438312+00:00"
+  },
+  {
+    "symbol": "012450.KS",
+    "current_price": 1085000,
+    "reference_price": 1255000,
+    "reference_type": "n_day_high",
+    "drop_pct": 13.55,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-23T02:49:15.610684+00:00"
+  },
+  {
+    "symbol": "005380.KS",
+    "current_price": 415000,
+    "reference_price": 459500,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.68,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-23T02:59:24.418067+00:00"
+  },
+  {
+    "symbol": "105560.KS",
+    "current_price": 164300,
+    "reference_price": 176900,
+    "reference_type": "n_day_high",
+    "drop_pct": 7.12,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-23T02:59:25.964317+00:00"
+  },
+  {
+    "symbol": "012450.KS",
+    "current_price": 1085000,
+    "reference_price": 1255000,
+    "reference_type": "n_day_high",
+    "drop_pct": 13.55,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-23T02:59:28.372991+00:00"
+  },
+  {
+    "symbol": "229200.KS",
+    "current_price": 13810,
+    "reference_price": 15220,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.26,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-23T02:59:30.450941+00:00"
+  },
+  {
+    "symbol": "105560.KS",
+    "current_price": 164300,
+    "reference_price": 176900,
+    "reference_type": "n_day_high",
+    "drop_pct": 7.12,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-23T03:09:33.528305+00:00"
+  },
+  {
+    "symbol": "267260.KS",
+    "current_price": 718000,
+    "reference_price": 868519.5902777778,
+    "reference_type": "n_day_high",
+    "drop_pct": 17.33,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-23T03:09:35.709612+00:00"
+  },
+  {
+    "symbol": "005380.KS",
+    "current_price": 415000,
+    "reference_price": 459500,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.68,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-23T03:19:42.758197+00:00"
+  },
+  {
+    "symbol": "267260.KS",
+    "current_price": 718000,
+    "reference_price": 868519.5902777778,
+    "reference_type": "n_day_high",
+    "drop_pct": 17.33,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-23T03:19:44.813635+00:00"
+  },
+  {
+    "symbol": "005380.KS",
+    "current_price": 415000,
+    "reference_price": 459500,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.68,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-23T03:29:48.571961+00:00"
+  },
+  {
+    "symbol": "105560.KS",
+    "current_price": 164300,
+    "reference_price": 176900,
+    "reference_type": "n_day_high",
+    "drop_pct": 7.12,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-23T03:29:49.586805+00:00"
+  },
+  {
+    "symbol": "373220.KS",
+    "current_price": 343500,
+    "reference_price": 371500,
+    "reference_type": "n_day_high",
+    "drop_pct": 7.54,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-23T03:29:50.715864+00:00"
+  },
+  {
+    "symbol": "012450.KS",
+    "current_price": 1085000,
+    "reference_price": 1255000,
+    "reference_type": "n_day_high",
+    "drop_pct": 13.55,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-23T03:29:51.630979+00:00"
+  },
+  {
+    "symbol": "229200.KS",
+    "current_price": 13810,
+    "reference_price": 15220,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.26,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-23T03:29:57.309422+00:00"
+  },
+  {
+    "symbol": "005380.KS",
+    "current_price": 415000,
+    "reference_price": 459500,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.68,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-23T03:40:00.817306+00:00"
+  },
+  {
+    "symbol": "105560.KS",
+    "current_price": 164300,
+    "reference_price": 176900,
+    "reference_type": "n_day_high",
+    "drop_pct": 7.12,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-23T03:40:01.779087+00:00"
+  },
+  {
+    "symbol": "373220.KS",
+    "current_price": 343500,
+    "reference_price": 371500,
+    "reference_type": "n_day_high",
+    "drop_pct": 7.54,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-23T03:40:02.679865+00:00"
+  },
+  {
+    "symbol": "232080.KS",
+    "current_price": 14080,
+    "reference_price": 15525,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.31,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-23T03:40:04.810461+00:00"
+  },
+  {
+    "symbol": "005380.KS",
+    "current_price": 415000,
+    "reference_price": 459500,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.68,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-23T03:50:06.657948+00:00"
+  },
+  {
+    "symbol": "012450.KS",
+    "current_price": 1085000,
+    "reference_price": 1255000,
+    "reference_type": "n_day_high",
+    "drop_pct": 13.55,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-23T03:50:09.083229+00:00"
+  },
+  {
+    "symbol": "005380.KS",
+    "current_price": 415000,
+    "reference_price": 459500,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.68,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-23T04:00:14.717067+00:00"
+  },
+  {
+    "symbol": "000270.KS",
+    "current_price": 130900,
+    "reference_price": 146800,
+    "reference_type": "n_day_high",
+    "drop_pct": 10.83,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-23T04:10:20.282752+00:00"
+  },
+  {
+    "symbol": "267260.KS",
+    "current_price": 718000,
+    "reference_price": 868519.5902777778,
+    "reference_type": "n_day_high",
+    "drop_pct": 17.33,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-23T04:10:21.354375+00:00"
+  },
+  {
+    "symbol": "000270.KS",
+    "current_price": 130900,
+    "reference_price": 146800,
+    "reference_type": "n_day_high",
+    "drop_pct": 10.83,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-23T04:20:25.986982+00:00"
+  },
+  {
+    "symbol": "267260.KS",
+    "current_price": 718000,
+    "reference_price": 868519.5902777778,
+    "reference_type": "n_day_high",
+    "drop_pct": 17.33,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-23T04:20:28.318895+00:00"
+  },
+  {
+    "symbol": "232080.KS",
+    "current_price": 14080,
+    "reference_price": 15525,
+    "reference_type": "n_day_high",
+    "drop_pct": 9.31,
+    "threshold_pct": 7,
+    "triggered_at": "2026-08-23T04:20:32.405057+00:00"
+  }
+]
