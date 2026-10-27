@@ -55,3 +55,9 @@ pm2-dashboard/node_modules/
 *.log.2*
 docs_cache/
 __pycache__/
+
+# AI platform job store
+src/ai_platform/jobs/
+
+# Research DB (rebuild with src/research/backfill_*.py)
+data/research/
