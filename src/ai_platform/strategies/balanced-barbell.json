@@ -1,0 +1,25 @@
+{
+  "id": "balanced-barbell",
+  "name": "Balanced Barbell",
+  "rationale": "Always keep a cash sleeve (barbell: risk assets plus cash) so drawdowns are cushioned and dry powder is available.",
+  "top_n": 10,
+  "rebalance": "monthly",
+  "equity_by_regime": {
+    "risk_on": 0.8,
+    "cautious": 0.6,
+    "defensive": 0.5,
+    "risk_off": 0.3
+  },
+  "sell_rules": {
+    "stop_loss_pct": 12,
+    "take_profit_pct": 30,
+    "max_holding_days": 180
+  },
+  "rebalance_triggers": [
+    {
+      "condition": "Benchmark falls 10% in 30 days",
+      "action": "Hold the cash sleeve, skip new buys until next rebalance"
+    }
+  ],
+  "risk_notes": "Permanent cash drag in bull markets."
+}

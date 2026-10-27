@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AURA // Quant Lab</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<script src="plotly.min.js"></script>
+</head><body>
+<header class="top">
+  <div class="brand"><span class="dot"></span>AURA<b>.QUANT</b></div>
+  <span class="tag">RESEARCH</span>
+  <span class="eng"><i></i>ENGINE: <b>BACKTEST ONLY</b></span>
+  <button id="menuBtn" class="ghost only-mobile">Inputs</button>
+  <div class="spacer"></div>
+  <span id="dataEnd" class="muted small"></span>
+  <button id="jobsBtn" class="ghost">Jobs <span id="jobsBadge" class="badge" hidden>0</span></button>
+</header>
+<div id="tray" class="tray" hidden></div>
+<div class="layout">
+  <aside id="side" class="side">
+    <section><h3>Period</h3>
+      <div class="row2"><label>Start<input type="date" id="start"></label><label>End<input type="date" id="end"></label></div></section>
+    <section><h3>Capital</h3>
+      <div class="row2"><label>Amount<input type="number" id="capital" value="100000" min="0"></label>
+      <label>Currency<select id="currency"></select></label></div>
+      <label>FX rate (per 1 USD)<input type="number" id="fx" step="any" value="1"></label></section>
+    <section><h3>Rebalance</h3>
+      <div class="row2"><label>Period<select id="rebalance">
+        <option value="weekly">Weekly</option><option value="biweekly">Biweekly</option><option value="monthly" selected>Monthly</option><option value="quarterly">Quarterly</option><option value="custom">Custom N days</option></select></label>
+      <label id="daysWrap" hidden>Days<input type="number" id="rebalance_days" value="21" min="1"></label>
+      <label>Top N<input type="number" id="top_n" value="10" min="1"></label></div></section>
+    <section><h3>Benchmark &amp; costs</h3>
+      <label>Benchmark<select id="benchmark"></select></label>
+      <div class="row2"><label>Slippage %<input type="number" id="slippage_pct" step="0.01" value="0.05"></label>
+      <label>Commission %<input type="number" id="commission_pct" step="0.01" value="0.1"></label></div></section>
+    <button id="runBtn" class="primary">Run backtest</button>
+    <section><h3>Strategy templates</h3><div id="templates" class="cards"></div></section>
+  </aside>
+  <main class="main">
+    <div id="warn" class="banner warn" hidden></div>
+    <div id="err" class="banner err" hidden></div>
+    <div class="aibar">
+      <button id="recBtn" class="accent">AI Recommend</button>
+      <button id="fullBtn" class="accent2">Complete AI Mode</button>
+      <select id="model" title="Model"></select>
+      <span id="aiHint" class="muted small"></span>
+    </div>
+    <div id="kpis" class="kpis"></div>
+    <div class="panel"><h3>Strategy vs benchmark</h3><div class="scroll"><table id="cmp"></table></div></div>
+    <div class="panel"><h3>Equity &amp; drawdown</h3><div id="chart" class="chart"></div><div id="legend" class="legend"></div></div>
+    <div class="panel"><h3>Trades</h3>
+      <div class="tfilter">
+        <select id="fStock" title="Stock ID"></select><select id="fAction" title="Action"><option value="">All actions</option><option>BUY</option><option>SELL</option></select>
+        <select id="fYear" title="Year"></select><select id="fMonth" title="Month"></select><select id="fDay" title="Day"></select>
+        <button id="fReset" class="ghost">Reset</button><span class="spacer"></span><span id="tCount" class="muted small"></span>
+        <button id="tView" class="accent" title="Switch between individual executions and matched buy→sell round trips">Show buy→sell round trips</button>
+      </div>
+      <div class="scroll tall"><table id="trades"></table></div></div>
+    <div class="panel"><h3>AI report</h3><div id="report" class="md muted">No report yet. Run AI Recommend or Complete AI Mode.</div></div>
+  </main>
+</div>
+<div id="overlay" class="overlay" hidden>
+  <div class="spin"></div><div id="ovTitle">Working…</div><div id="ovProg" class="muted small"></div>
+  <div class="ovbtns"><button id="bgBtn" class="primary">Run it on Background</button><button id="ovCancel" class="ghost">Cancel</button></div>
+</div>
+<script src="app.js"></script>
+</body></html>

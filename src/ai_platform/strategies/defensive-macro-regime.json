@@ -1,0 +1,27 @@
+{
+  "id": "defensive-macro-regime",
+  "name": "Defensive Macro-Regime",
+  "rationale": "Cut equity exposure quickly when macro signals weaken; stay mostly invested only in Risk-On. Tight stops protect against regime breaks.",
+  "top_n": 8,
+  "rebalance": "monthly",
+  "equity_by_regime": {
+    "risk_on": 1.0,
+    "cautious": 0.55,
+    "defensive": 0.25,
+    "risk_off": 0.0
+  },
+  "sell_rules": {
+    "stop_loss_pct": 10
+  },
+  "rebalance_triggers": [
+    {
+      "condition": "Regime drops to Risk-Off",
+      "action": "Move to 100% cash at next rebalance"
+    },
+    {
+      "condition": "Regime returns to Risk-On",
+      "action": "Re-enter at full allocation"
+    }
+  ],
+  "risk_notes": "Whipsaw around regime thresholds can cause late exits and late re-entries."
+}

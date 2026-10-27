@@ -1,0 +1,28 @@
+{
+  "id": "rate-cut-sensitive",
+  "name": "Rate-Cut Sensitive",
+  "rationale": "Leans into equities when yields and policy rates are falling (easing) and de-risks when rate momentum turns up; custom 21-day cadence tracks macro releases.",
+  "top_n": 10,
+  "rebalance": "custom",
+  "rebalance_days": 21,
+  "equity_by_regime": {
+    "risk_on": 1.0,
+    "cautious": 0.75,
+    "defensive": 0.35,
+    "risk_off": 0.0
+  },
+  "sell_rules": {
+    "stop_loss_pct": 12
+  },
+  "rebalance_triggers": [
+    {
+      "condition": "10Y/2Y yield 90d change turns positive",
+      "action": "Step equity allocation down one regime level"
+    },
+    {
+      "condition": "Fed funds falling for 2 consecutive prints",
+      "action": "Allow full Risk-On allocation"
+    }
+  ],
+  "risk_notes": "Rate signal is one input to the regime score; inflation shocks can override easing."
+}

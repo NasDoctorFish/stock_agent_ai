@@ -1,0 +1,13 @@
+{
+  "prices_hash": "6f478a61575ae88e",
+  "fundamentals_hash": "de166d271a45fee5",
+  "eps_lag_days": 45,
+  "prices_shape": [
+    4230,
+    56
+  ],
+  "fund_rows": 555,
+  "source": "data/research/research.duckdb (yfinance auto_adjust; fundamentals yfinance quarterly)",
+  "git_commit": "81a11fd",
+  "version": "145c5414cdf3"
+}

@@ -1,0 +1,24 @@
+{
+  "id": "low-vol-quality",
+  "name": "Low-Vol Quality",
+  "rationale": "Wider diversification with quarterly turnover to keep costs low; favours steady names and holds through noise, only exiting stale positions.",
+  "top_n": 15,
+  "rebalance": "quarterly",
+  "equity_by_regime": {
+    "risk_on": 0.95,
+    "cautious": 0.8,
+    "defensive": 0.55,
+    "risk_off": 0.25
+  },
+  "sell_rules": {
+    "stop_loss_pct": 20,
+    "max_holding_days": 365
+  },
+  "rebalance_triggers": [
+    {
+      "condition": "Median annualised volatility doubles vs 6m ago",
+      "action": "Reduce equity by one regime step"
+    }
+  ],
+  "risk_notes": "Lags strong rallies; scoring is momentum-heavy so true low-vol selection is only approximate."
+}
