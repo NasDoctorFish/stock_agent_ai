@@ -1,4 +1,4 @@
-"""FastAPI app. Run: see run_ai_platform.sh. Serves ../frontend as static at '/'."""
+"""FastAPI app. Run: see run_stock_ml.sh. Serves ../frontend as static at '/'."""
 from __future__ import annotations
 
 import json
@@ -16,7 +16,7 @@ from .schemas import AnalyzeRequest, BacktestParams, Strategy
 STRAT_DIR = Path(__file__).resolve().parents[1] / "strategies"
 FRONTEND = Path(__file__).resolve().parents[1] / "frontend"
 
-app = FastAPI(title="Stock_ML AI Platform")
+app = FastAPI(title="Stock_ML")
 jobs.mark_interrupted()
 
 
@@ -123,6 +123,22 @@ def job_events(jid: str):
         raise HTTPException(404, "no such job")
     return StreamingResponse(jobs.events(jid), media_type="text/event-stream",
                              headers={"Cache-Control": "no-cache", "X-Accel-Buffering": "no"})
+
+
+# ── plunge detector (optional feature) ──
+@app.get("/api/plunge/status")
+def plunge_status():
+    from plunge import detector
+    return {"alerts": detector.get_alerts(20), "watchlist": list(detector.get_status().values())}
+
+
+@app.post("/api/plunge/scan")
+def plunge_scan():
+    from plunge import detector
+    try:
+        return {"new_alerts": detector.scan()}
+    except Exception as e:  # noqa: BLE001
+        raise HTTPException(500, f"scan failed: {e}")
 
 
 if FRONTEND.exists():  # mounted last so /api/* wins

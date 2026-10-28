@@ -93,6 +93,10 @@ class TelegramSender:
 
         try:
             resp = requests.post(url, json=payload, timeout=self._timeout)
+            if resp.status_code == 400 and "parse entities" in resp.text and "parse_mode" in payload:
+                # Report text often has stray _ or * that Markdown rejects; resend as plain text
+                payload.pop("parse_mode")
+                resp = requests.post(url, json=payload, timeout=self._timeout)
             resp.raise_for_status()
             data = resp.json()
             if not data.get("ok"):

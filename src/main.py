@@ -75,9 +75,13 @@ def run_us_pipeline(db, logger) -> dict:
     df_feat = macro_result.artifacts.get("df_feat")
     if df_feat is not None:
         try:
-            macro.visualize_macro_trend(df_feat, "BRENT")
-        except Exception:
-            pass
+            import matplotlib.pyplot as plt
+            fig = macro.visualize_macro_trend(df_feat, returnfig=True, reference="SPY")  # no popup on CLI
+            if fig is not None:
+                fig.savefig("reports/macro_prob_SPY.png")
+                plt.close(fig)
+        except Exception as e:
+            logger.warn(f"Macro visualization failed: {e}")
 
     fund = FundamentalAnalyst(db, logger)
     stock = StockDataAnalyst(db, logger)

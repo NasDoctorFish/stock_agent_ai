@@ -58,7 +58,7 @@ th{color:var(--muted);font-weight:600;font-size:12px;position:sticky;top:0;backg
 .only-mobile{display:none}
 @media(max-width:900px){.layout{grid-template-columns:1fr;padding:16px}.side{position:static;max-height:none;display:none}.side.open{display:flex}.only-mobile{display:inline-block}.top{padding:10px 16px}}
 
-/* AURA terminal skin */
+/* Stock_ML terminal skin */
 body{font-size:12px;overflow-x:hidden}
 .top{height:48px;padding:0 16px;background:#0B0F19;gap:16px;font-family:var(--mono);font-size:11px}
 .brand{font-family:var(--mono);font-size:14px;letter-spacing:.08em;color:#fff}.brand b{color:var(--accent)}

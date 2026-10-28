@@ -16,15 +16,33 @@ import logging
 import warnings
 from dataclasses import dataclass, field
 from datetime import datetime
+from pathlib import Path
 from typing import Dict, List, Optional, Tuple
+
+import shutil
+import tempfile
 
 import duckdb
 import numpy as np
 import pandas as pd
+import yaml
 
-from backtest.portfolio import PortfolioSimulator
+from backtest.portfolio import PortfolioSimulator, StrategyConfig
+from core.scoring import score_prices
 
 logger = logging.getLogger(__name__)
+
+
+def _load_benchmark_tickers() -> set:
+    """Tickers present in price data for NAV comparison only (see
+    config.yaml::benchmark_tickers) — never eligible as backtest picks."""
+    config_path = Path(__file__).resolve().parents[1] / "config" / "config.yaml"
+    try:
+        with open(config_path, "r") as f:
+            cfg = yaml.safe_load(f)
+        return set(cfg.get("benchmark_tickers", []))
+    except Exception:
+        return set()
 
 
 # ─── Result Container ─────────────────────────────────────────────────────────
@@ -42,6 +60,8 @@ class BacktestResult:
     end_date: str
     initial_capital: float
     benchmark_ticker: str
+    data_end_warning: str = ""            # non-empty if price coverage ends before end_date
+    last_common_date: Optional[str] = None  # last date with >=90% of tickers priced
 
 
 # ─── Engine ───────────────────────────────────────────────────────────────────
@@ -91,7 +111,9 @@ class BacktestEngine:
         benchmark_ticker: str = "SPY",
         slippage_pct: float = 0.001,
         commission_pct: float = 0.00015,
+        strategy: Optional[StrategyConfig] = None,
     ) -> None:
+        self.strategy = strategy
         self.db_path = db_path
         self.start_date = pd.Timestamp(start_date)
         self.end_date = pd.Timestamp(end_date)
@@ -102,13 +124,28 @@ class BacktestEngine:
         self.slippage_pct = slippage_pct
         self.commission_pct = commission_pct
 
-        # Open DuckDB in read_only mode to avoid conflicts with live process
-        self._conn = duckdb.connect(db_path, read_only=True)
-        logger.info(f"BacktestEngine connected to {db_path}")
+        # Copy DB to a temp file so we can open it independently of the live
+        # process that holds the write lock on the original file. The live
+        # daemon holds its connection open for its whole lifetime and never
+        # checkpoints, so recent writes sit in the .wal file, not the main
+        # .duckdb file — copy it too (if present) or reads here would be
+        # stale for as long as the daemon stays up.
+        self._tmp_dir = tempfile.mkdtemp(prefix="stockml_backtest_")
+        tmp_db = str(Path(self._tmp_dir) / "backtest_snapshot.duckdb")
+        shutil.copy2(db_path, tmp_db)
+        wal_path = f"{db_path}.wal"
+        if Path(wal_path).exists():
+            shutil.copy2(wal_path, f"{tmp_db}.wal")
+        self._conn = duckdb.connect(tmp_db, read_only=False)
+        logger.info(f"BacktestEngine connected to temp snapshot: {tmp_db}")
 
     def __del__(self):
         try:
             self._conn.close()
+        except Exception:
+            pass
+        try:
+            shutil.rmtree(self._tmp_dir, ignore_errors=True)
         except Exception:
             pass
 
@@ -135,9 +172,33 @@ class BacktestEngine:
         # Fetch all daily prices once for NAV recording and benchmark
         all_prices = self._fetch_all_prices()
         benchmark_raw = self._fetch_benchmark_prices()
+        last_common, data_end_warning = self._check_data_coverage()
+
+        # Forward-filled date x stock_id price table, used for daily NAV
+        # valuation so a stock missing a price on a given day keeps its
+        # last known price instead of being valued at 0 for the gap.
+        price_wide = (
+            all_prices.pivot(index="date", columns="stock_id", values="close")
+            .sort_index()
+            .ffill()
+            if not all_prices.empty
+            else pd.DataFrame()
+        )
+
+        strat = self.strategy
+        exits_on = bool(strat and strat.has_exit_rules() and not price_wide.empty)
+        prev_day = self.start_date
+
+        def _daily_exits(frm, to):
+            # ponytail: exits use same-day close (no intraday); checked once per trading day
+            for d in price_wide.index[(price_wide.index >= frm) & (price_wide.index < to)]:
+                portfolio.check_exits(d, price_wide.loc[d].dropna().to_dict(), strat)
 
         # ── Walk-forward loop ──────────────────────────────────────────────
         for i, rebal_date in enumerate(rebalance_dates):
+            if exits_on:
+                _daily_exits(prev_day, rebal_date)
+                prev_day = rebal_date
             date_str = rebal_date.strftime("%Y-%m-%d")
             logger.debug(f"Rebalancing [{i+1}/{len(rebalance_dates)}] on {date_str}")
 
@@ -145,9 +206,18 @@ class BacktestEngine:
             regime_label, regime_score = self._compute_regime(rebal_date)
             regime_history[rebal_date] = regime_label
             equity_fraction = self._equity_fraction(regime_score)
+            if strat and strat.equity_by_regime:
+                equity_fraction = strat.equity_by_regime.get(
+                    regime_label.lower().replace("-", "_"), equity_fraction)
+            if strat and strat.planned_sell_date and rebal_date >= pd.Timestamp(strat.planned_sell_date):
+                equity_fraction = 0.0
 
             # ② Score stocks (no look-ahead)
             scored_stocks = self._score_stocks(rebal_date)
+            stale = self._stale_stock_ids(all_prices, rebal_date)
+            if stale:
+                logger.warning(f"[{date_str}] Excluding {len(stale)} stale stocks (no price in last 5 trading days): {sorted(stale)}")
+                scored_stocks = [s for s in scored_stocks if s["stock_id"] not in stale]
 
             # ③ Determine target weights
             target_weights = self._build_target_weights(
@@ -162,8 +232,11 @@ class BacktestEngine:
             else:
                 portfolio.rebalance(target_weights, prices_on_date, rebal_date)
 
+        if exits_on:
+            _daily_exits(prev_day, self.end_date + pd.Timedelta(days=1))
+
         # ── Daily NAV recording ────────────────────────────────────────────
-        nav_series = self._record_daily_nav(portfolio, all_prices)
+        nav_series = self._record_daily_nav(portfolio, all_prices, price_wide)
 
         # ── Benchmark series ───────────────────────────────────────────────
         bench_series = self._build_benchmark_series(benchmark_raw)
@@ -178,6 +251,8 @@ class BacktestEngine:
             end_date=self.end_date.strftime("%Y-%m-%d"),
             initial_capital=self.initial_capital,
             benchmark_ticker=self.benchmark_ticker,
+            data_end_warning=data_end_warning,
+            last_common_date=last_common,
         )
 
         logger.info(
@@ -192,14 +267,54 @@ class BacktestEngine:
         """Generate rebalance dates within the backtest window."""
         freq_map = {
             "weekly": "W-FRI",
+            "biweekly": "2W-FRI",
             "monthly": "MS",   # Month Start
+            "quarterly": "QS",
         }
-        freq = freq_map.get(self.rebalance_freq, "MS")
+        f = str(self.rebalance_freq)
+        # custom period: "<N>d" (e.g. "10d")
+        freq = f"{int(f[:-1])}D" if f.endswith("d") and f[:-1].isdigit() else freq_map.get(f, "MS")
         dates = pd.date_range(start=self.start_date, end=self.end_date, freq=freq)
         # Filter to strictly within range
         return [d for d in dates if self.start_date <= d <= self.end_date]
 
     # ─── Data Fetching (no look-ahead) ────────────────────────────────────────
+
+    def _check_data_coverage(self) -> Tuple[Optional[str], str]:
+        """Return (last_common_date, warning): last date where >=90% of tickers have prices."""
+        try:
+            df = self._conn.execute(
+                "SELECT CAST(date AS DATE) AS d, COUNT(DISTINCT stock_id) AS n "
+                "FROM price_daily_full WHERE close IS NOT NULL AND close > 0 GROUP BY 1 ORDER BY 1"
+            ).fetchdf()
+            total = self._conn.execute(
+                "SELECT COUNT(DISTINCT stock_id) FROM price_daily_full WHERE close IS NOT NULL AND close > 0"
+            ).fetchone()[0]
+            ok = df[df["n"] >= 0.9 * total]
+            if ok.empty:
+                return None, ""
+            last = pd.Timestamp(ok["d"].max())
+        except Exception as e:
+            logger.warning(f"Coverage check failed: {e}")
+            return None, ""
+        msg = ""
+        if self.end_date > last:
+            msg = (f"Price data for >=90% of tickers ends {last.date()}, before requested end "
+                   f"{self.end_date.date()}; results after that date are unreliable.")
+            logger.warning(msg)
+        return str(last.date()), msg
+
+    @staticmethod
+    def _stale_stock_ids(all_prices: pd.DataFrame, rebal_date: pd.Timestamp) -> set:
+        """Stocks with no price in the last 5 trading days on/before rebal_date."""
+        if all_prices.empty:
+            return set()
+        ap = all_prices[all_prices["date"] <= rebal_date]
+        days = ap["date"].drop_duplicates().nlargest(5)
+        if len(days) < 5:
+            return set()
+        last = ap.groupby("stock_id")["date"].max()
+        return set(last[last < days.min()].index)
 
     def _fetch_all_prices(self) -> pd.DataFrame:
         """
@@ -429,116 +544,27 @@ class BacktestEngine:
 
     def _score_stocks(self, rebal_date: pd.Timestamp) -> List[Dict]:
         """
-        Score all stocks using a simplified version of DecisionMaker._score_stocks().
-        Queries DuckDB directly; no look-ahead (all data < rebal_date).
+        Score stocks with core.scoring (12-1 momentum z-score), the same function
+        the live DecisionMaker uses. All data < rebal_date (no look-ahead).
 
         Returns list of {stock_id, score} dicts sorted descending by score.
         """
         date_str = rebal_date.strftime("%Y-%m-%d")
-        lookback_1y  = (rebal_date - pd.DateOffset(months=12)).strftime("%Y-%m-%d")
-        lookback_3m  = (rebal_date - pd.DateOffset(months=3)).strftime("%Y-%m-%d")
-        lookback_fq  = (rebal_date - pd.DateOffset(months=6)).strftime("%Y-%m-%d")
-
+        start = (rebal_date - pd.DateOffset(days=420)).strftime("%Y-%m-%d")
         scores: Dict[str, float] = {}
-
-        # ── Momentum from price data ───────────────────────────────────────────
         try:
-            mom_df = self._conn.execute(f"""
-                WITH price_data AS (
-                    SELECT
-                        stock_id,
-                        CAST(date AS DATE) AS date,
-                        close,
-                        ROW_NUMBER() OVER (PARTITION BY stock_id ORDER BY date DESC) AS rn_latest,
-                        ROW_NUMBER() OVER (PARTITION BY stock_id ORDER BY date ASC)  AS rn_oldest
-                    FROM price_daily_full
-                    WHERE CAST(date AS DATE) < '{date_str}'
-                      AND CAST(date AS DATE) >= '{lookback_1y}'
-                      AND close IS NOT NULL AND close > 0
-                )
-                SELECT
-                    stock_id,
-                    MAX(CASE WHEN rn_latest = 1 THEN close END) AS latest_close,
-                    MIN(CASE WHEN rn_oldest = 1 THEN close END) AS oldest_close,
-                    STDDEV(LN(close)) AS log_vol,
-                    MIN(close) AS min_close,
-                    MAX(close) AS max_close
-                FROM price_data
-                GROUP BY stock_id
-                HAVING COUNT(*) >= 20
+            df = self._conn.execute(f"""
+                SELECT CAST(date AS DATE) AS d, stock_id, close
+                FROM price_daily_full
+                WHERE CAST(date AS DATE) < '{date_str}' AND CAST(date AS DATE) >= '{start}'
+                  AND close IS NOT NULL AND close > 0
             """).fetchdf()
-
-            for _, row in mom_df.iterrows():
-                sid = row["stock_id"]
-                if row["oldest_close"] and row["oldest_close"] > 0:
-                    momentum = (row["latest_close"] / row["oldest_close"]) - 1.0
-                    volatility = float(row["log_vol"]) if row["log_vol"] else 0.0
-                    drawdown = (
-                        (row["latest_close"] - row["max_close"]) / row["max_close"]
-                        if row["max_close"] > 0 else 0.0
-                    )
-                    score = 2.0 * momentum - 0.5 * volatility + 0.1 * drawdown
-                    scores[sid] = scores.get(sid, 0.0) + score
+            px = df.pivot(index="d", columns="stock_id", values="close").sort_index()
+            benchmark_tickers = _load_benchmark_tickers()
+            px = px.drop(columns=[c for c in px.columns if c in benchmark_tickers])
+            scores = score_prices(px).to_dict()
         except Exception as e:
             logger.warning(f"Price scoring failed: {e}")
-
-        # ── Fundamental scoring ────────────────────────────────────────────────
-        try:
-            fund_df = self._conn.execute(f"""
-                SELECT
-                    stock_id,
-                    AVG("Total Revenue") AS avg_revenue,
-                    STDDEV("Total Revenue") AS std_revenue,
-                    AVG("Net Income") AS avg_net_income,
-                    AVG("Total Revenue") AS total_rev,
-                    AVG("Gross Profit") AS avg_gross_profit
-                FROM fundamentals_q_full
-                WHERE CAST(fiscal_date AS DATE) < '{date_str}'
-                  AND CAST(fiscal_date AS DATE) >= '{lookback_fq}'
-                  AND "Total Revenue" IS NOT NULL
-                  AND "Total Revenue" > 0
-                GROUP BY stock_id
-                HAVING COUNT(*) >= 1
-            """).fetchdf()
-
-            for _, row in fund_df.iterrows():
-                sid = row["stock_id"]
-                if row["avg_revenue"] and row["avg_revenue"] > 0:
-                    # Revenue growth proxy: std/mean (coefficient of variation)
-                    cv = (row["std_revenue"] / row["avg_revenue"]) if row["std_revenue"] else 0.0
-                    net_margin = (
-                        row["avg_net_income"] / row["avg_revenue"]
-                        if row["avg_net_income"] and row["avg_revenue"] > 0 else 0.0
-                    )
-                    gross_margin = (
-                        row["avg_gross_profit"] / row["avg_revenue"]
-                        if row["avg_gross_profit"] and row["avg_revenue"] > 0 else 0.0
-                    )
-                    fund_score = 1.0 * cv + 0.5 * net_margin + 0.3 * gross_margin
-                    scores[sid] = scores.get(sid, 0.0) + fund_score
-        except Exception as e:
-            logger.warning(f"Fundamental scoring failed: {e}")
-
-        # ── News sentiment scoring ─────────────────────────────────────────────
-        try:
-            news_df = self._conn.execute(f"""
-                SELECT
-                    stock_id,
-                    AVG(sentiment_score) AS avg_sentiment
-                FROM news_sentiment
-                WHERE CAST(date AS DATE) < '{date_str}'
-                  AND CAST(date AS DATE) >= '{lookback_3m}'
-                  AND sentiment_score IS NOT NULL
-                GROUP BY stock_id
-            """).fetchdf()
-
-            for _, row in news_df.iterrows():
-                sid = row["stock_id"]
-                sentiment = float(row["avg_sentiment"])
-                news_score = 0.3 * (sentiment - 0.5)
-                scores[sid] = scores.get(sid, 0.0) + news_score
-        except Exception as e:
-            logger.warning(f"News sentiment scoring failed: {e}")
 
         # Sort by score descending
         sorted_stocks = sorted(
@@ -587,6 +613,7 @@ class BacktestEngine:
         self,
         portfolio: PortfolioSimulator,
         all_prices: pd.DataFrame,
+        price_wide: pd.DataFrame,
     ) -> pd.Series:
         """
         After all rebalances are done, replay portfolio NAV day by day.
@@ -603,7 +630,6 @@ class BacktestEngine:
         if all_prices.empty:
             return pd.Series(dtype=float)
 
-        # Build a dict of date → {stock_id: close} for fast lookup
         dates_sorted = sorted(all_prices["date"].unique())
         nav_records = []
 
@@ -635,8 +661,11 @@ class BacktestEngine:
                         current_positions.pop(sid, None)
                 trade_idx += 1
 
-            # Compute NAV
-            prices_today = all_prices[all_prices["date"] == day].set_index("stock_id")["close"].to_dict()
+            # Compute NAV. Read from the forward-filled wide table (not an
+            # exact-date slice of all_prices) so a stock with no price row
+            # on this exact day keeps its last known price instead of being
+            # valued at 0 for the gap.
+            prices_today = price_wide.loc[day].dropna().to_dict()
             equity_value = sum(
                 shares * prices_today.get(sid, 0.0)
                 for sid, shares in current_positions.items()

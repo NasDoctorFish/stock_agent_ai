@@ -38,8 +38,9 @@ def main():
         st.session_state.result = macro_result.data
 
     if st.session_state.df_feat is not None and macro.feat_cols:
-        feature = st.selectbox("Feature", macro.feat_cols)
-        fig = macro.visualize_macro_trend(st.session_state.df_feat, feature, True)
+        feature = st.selectbox("Feature", ["SPY", "QQQ"] + macro.feat_cols)
+        ref = feature if feature in ("SPY", "QQQ") else None
+        fig = macro.visualize_macro_trend(st.session_state.df_feat, feature, True, reference=ref)
         if fig is not None:
             st.pyplot(fig)
 

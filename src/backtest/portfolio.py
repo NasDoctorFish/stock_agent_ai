@@ -20,6 +20,20 @@ logger = logging.getLogger(__name__)
 
 
 @dataclass
+class StrategyConfig:
+    """Optional AI-strategy overrides. All None/empty = default engine behaviour."""
+    equity_by_regime: Dict[str, float] = field(default_factory=dict)  # risk_on|cautious|defensive|risk_off -> 0..1
+    stop_loss_pct: Optional[float] = None      # e.g. 10 => sell at -10% vs entry
+    take_profit_pct: Optional[float] = None
+    max_holding_days: Optional[int] = None     # calendar days
+    planned_sell_date: Optional[str] = None    # liquidate everything on/after this date
+
+    def has_exit_rules(self) -> bool:
+        return any(v is not None for v in (self.stop_loss_pct, self.take_profit_pct,
+                                           self.max_holding_days, self.planned_sell_date))
+
+
+@dataclass
 class Trade:
     """Represents a single executed trade."""
     date: pd.Timestamp
@@ -63,6 +77,7 @@ class PortfolioSimulator:
         self.positions: Dict[str, float] = {}   # stock_id → shares held
         self._trade_log: List[dict] = []
         self._nav_history: List[dict] = []       # [{date, nav}]
+        self.entries: Dict[str, tuple] = {}      # stock_id -> (entry exec price, entry date)
 
     # ─── NAV ──────────────────────────────────────────────────────────────────
 
@@ -104,6 +119,8 @@ class PortfolioSimulator:
         total_cost = gross + commission
 
         self.cash -= total_cost
+        if stock_id not in self.positions:
+            self.entries[stock_id] = (exec_price, date)
         self.positions[stock_id] = self.positions.get(stock_id, 0.0) + shares
 
         trade = Trade(
@@ -138,6 +155,7 @@ class PortfolioSimulator:
         new_held = held - shares
         if abs(new_held) < 1e-6:
             self.positions.pop(stock_id, None)
+            self.entries.pop(stock_id, None)
         else:
             self.positions[stock_id] = max(new_held, 0.0)
 
@@ -216,6 +234,21 @@ class PortfolioSimulator:
                 actual_diff = min(diff, affordable)
                 if actual_diff > 1e-6:
                     self._execute_buy(date, sid, actual_diff, p)
+
+    def check_exits(self, day: pd.Timestamp, prices: Dict[str, float], cfg: StrategyConfig) -> None:
+        """Sell positions hitting stop-loss / take-profit / max-hold / planned-sell on `day`."""
+        planned = cfg.planned_sell_date and day >= pd.Timestamp(cfg.planned_sell_date)
+        for sid in list(self.positions):
+            p = prices.get(sid)
+            entry = self.entries.get(sid)
+            if not p or p <= 0 or entry is None:
+                continue
+            ret = (p / entry[0] - 1.0) * 100.0
+            if (planned
+                    or (cfg.stop_loss_pct is not None and ret <= -abs(cfg.stop_loss_pct))
+                    or (cfg.take_profit_pct is not None and ret >= abs(cfg.take_profit_pct))
+                    or (cfg.max_holding_days is not None and (day - entry[1]).days >= cfg.max_holding_days)):
+                self._execute_sell(day, sid, self.positions[sid], p)
 
     # ─── Reporting ────────────────────────────────────────────────────────────
 

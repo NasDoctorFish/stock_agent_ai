@@ -103,7 +103,7 @@ def update_csv_files(self):
         self.logger.info("===== Update process started =====")
 
         # ---- 단계별 실행 스위치 ----
-        RUN_FETCH = False          # 가격/재무 데이터
+        RUN_FETCH = True           # 가격/재무 데이터 (was False: prices silently stopped updating)
         RUN_SENTIMENT = True      # 뉴스 감정 분석
         RUN_MACRO = True          # 거시지표
         RUN_ANALYSIS = True       # 분석/머징/저장

@@ -40,12 +40,14 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument("--start",            default="2022-01-01",   help="Backtest start date (YYYY-MM-DD)")
     parser.add_argument("--end",              default="2025-01-01",   help="Backtest end date (YYYY-MM-DD)")
-    parser.add_argument("--rebalance",        default="monthly",      choices=["weekly", "monthly"],
+    parser.add_argument("--rebalance",        default="monthly",      choices=["weekly", "biweekly", "monthly", "quarterly", "custom"],
                         help="Rebalancing frequency")
+    parser.add_argument("--rebalance-days",   default=21, type=int,   help="Period in days when --rebalance custom")
     parser.add_argument("--top-n",            default=10,  type=int,  help="Number of stocks to hold")
     parser.add_argument("--initial-capital",  default=100_000_000, type=float,
                         help="Starting portfolio value")
     parser.add_argument("--benchmark",        default="SPY",          help="Benchmark ticker in DuckDB")
+    parser.add_argument("--db",               default=None,           help="DuckDB path (default src/db/stockml.duckdb; use data/research/research.duckdb for long history)")
     parser.add_argument("--output",           default="reports/",     help="Output directory for reports")
     parser.add_argument("--no-html",          action="store_true",    help="Skip HTML report")
     parser.add_argument("--no-csv",           action="store_true",    help="Skip CSV report")
@@ -65,13 +67,15 @@ def setup_logging(level: str) -> None:
 
 def main() -> None:
     args = parse_args()
+    if args.rebalance == "custom":
+        args.rebalance = f"{args.rebalance_days}d"
     setup_logging(args.log_level)
     logger = logging.getLogger(__name__)
 
     # ── Locate DuckDB ─────────────────────────────────────────────────────────
     # Resolve relative to the project root (two levels above src/)
     project_root = Path(__file__).resolve().parents[2]
-    db_path = project_root / "src" / "db" / "stockml.duckdb"
+    db_path = Path(args.db) if args.db else project_root / "src" / "db" / "stockml.duckdb"
 
     if not db_path.exists():
         logger.error(f"DuckDB not found at {db_path}. Ensure the database is initialised first.")

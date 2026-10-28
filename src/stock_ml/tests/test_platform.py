@@ -1,4 +1,4 @@
-"""Run: STOCKML_DB=<db copy> poetry run pytest src/ai_platform/tests -q   (no real Anthropic call is made)."""
+"""Run: STOCKML_DB=<db copy> poetry run pytest src/stock_ml/tests -q   (no real Anthropic call is made)."""
 import os
 import shutil
 import time
@@ -8,16 +8,16 @@ import pytest
 from fastapi.testclient import TestClient
 from pydantic import ValidationError
 
-from ai_platform.backend import ai, app as appmod, jobs
-from ai_platform.backend.digest import build_digest, digest_json
-from ai_platform.backend.schemas import Strategy
+from stock_ml.backend import ai, app as appmod, jobs
+from stock_ml.backend.digest import build_digest, digest_json
+from stock_ml.backend.schemas import Strategy
 
 pytestmark = pytest.mark.skipif(not os.environ.get("STOCKML_DB"), reason="set STOCKML_DB to a DB copy")
 
 STRAT = {"name": "Mock", "rationale": "r", "top_n": 5, "rebalance": "monthly",
          "equity_by_regime": {"risk_on": 1, "cautious": 0.6, "defensive": 0.3, "risk_off": 0},
          "sell_rules": {"stop_loss_pct": 8, "max_holding_days": 60}, "rebalance_triggers": [], "risk_notes": "n"}
-PARAMS = {"start": "2025-01-02", "end": "2025-06-30", "rebalance": "monthly", "top_n": 5, "capital": 140_000_000,
+PARAMS = {"start": "2026-03-02", "end": "2026-09-30", "rebalance": "monthly", "top_n": 5, "capital": 140_000_000,
           "currency": "KRW", "fx": 1400, "benchmark": "SPY", "slippage_pct": 0.1, "commission_pct": 0.015}
 
 
@@ -109,5 +109,6 @@ def test_job_cancel(client, monkeypatch):
 
 
 def test_analyze_requires_key(client, monkeypatch):
-    monkeypatch.delenv("ANTHROPIC_API_KEY")
+    monkeypatch.delenv("ANTHROPIC_API_KEY", raising=False)
+    monkeypatch.delenv("GEMINI_API_KEY", raising=False)
     assert client.post("/api/analyze", json={"mode": "recommend", "params": PARAMS}).status_code == 503

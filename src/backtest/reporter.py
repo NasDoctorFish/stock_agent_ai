@@ -14,6 +14,7 @@ from __future__ import annotations
 import json
 import logging
 import os
+import sys
 from datetime import datetime
 from pathlib import Path
 from typing import Optional
@@ -29,11 +30,36 @@ logger = logging.getLogger(__name__)
 # ─── Colour map for regime bands ─────────────────────────────────────────────
 
 REGIME_COLORS = {
-    "Risk-On":   "rgba(0, 200, 0, 0.15)",
-    "Cautious":  "rgba(255, 220, 0, 0.20)",
-    "Defensive": "rgba(255, 140, 0, 0.20)",
-    "Risk-Off":  "rgba(220, 0, 0, 0.20)",
+    "Risk-On":   "rgba(12, 163, 12, 0.15)",   # status good
+    "Cautious":  "rgba(250, 178, 25, 0.20)",  # status warning
+    "Defensive": "rgba(236, 131, 90, 0.20)",  # status serious
+    "Risk-Off":  "rgba(208, 59, 59, 0.20)",   # status critical
 }
+
+# Solid (non-alpha) counterparts, for marks that need a filled swatch
+# rather than a translucent band (e.g. the regime-attribution bar chart).
+REGIME_SOLID_COLORS = {
+    "Risk-On":   "#0ca30c",
+    "Cautious":  "#fab219",
+    "Defensive": "#ec835a",
+    "Risk-Off":  "#d03b3b",
+}
+
+# ─── ANSI colours for the terminal report ────────────────────────────────────
+# Skipped entirely when stdout isn't a tty (piped to a file/log) so saved
+# output and `tee` captures stay plain text.
+_USE_COLOR = sys.stdout.isatty() and os.environ.get("NO_COLOR") is None
+_GREEN = "\033[32m"
+_RED = "\033[31m"
+_BOLD = "\033[1m"
+_RESET = "\033[0m"
+
+
+def _colorize(text: str, good: Optional[bool]) -> str:
+    """Wrap `text` in green/red ANSI codes. `good=None` leaves it uncoloured."""
+    if not _USE_COLOR or good is None:
+        return text
+    return f"{_GREEN if good else _RED}{text}{_RESET}"
 
 
 class BacktestReporter:
@@ -42,60 +68,84 @@ class BacktestReporter:
     # ─── Console ─────────────────────────────────────────────────────────────
 
     @staticmethod
-    def to_console(report: PerformanceReport) -> None:
-        """Print a formatted performance summary to stdout."""
-        data = report.to_dict()
+    def stats_rows(data: dict) -> list:
+        """
+        Build labeled, formatted (metric, value, is_good) rows from a
+        `PerformanceReport.to_dict()` dict — shared by the console report,
+        the HTML stats table, and the Streamlit GUI so formatting and the
+        good/bad threshold per metric are defined exactly once.
 
-        # Build rows
+        `is_good` is True/False for metrics with a clear favorable
+        direction (colored by callers), or None for metrics with no
+        inherent "good" direction (beta, skew, kurtosis, ...) or a section
+        divider row (value is "").
+        """
+        def pct(key: str, good: Optional[bool] = None) -> tuple:
+            val = data[key]
+            text = "n/a" if pd.isna(val) else f"{val:.2%}"
+            return (text, None if pd.isna(val) else good)
+
+        def num(key: str, good: Optional[bool] = None) -> tuple:
+            val = data[key]
+            text = "n/a" if pd.isna(val) else f"{val:.3f}"
+            return (text, None if pd.isna(val) else good)
+
         rows = [
-            # Returns
-            ("─── Returns ───────────────────────────────────────", ""),
-            ("Total Return",             f"{data['total_return']:.2%}"),
-            ("CAGR",                     f"{data['cagr']:.2%}"),
-            ("Benchmark Total Return",   f"{data['benchmark_total_return']:.2%}"),
-            ("Benchmark CAGR",           f"{data['benchmark_cagr']:.2%}"),
-            ("Excess Return (α)",        f"{data['excess_return']:.2%}"),
-            # Risk
-            ("─── Risk ──────────────────────────────────────────", ""),
-            ("Annualized Volatility",    f"{data['annualized_volatility']:.2%}"),
-            ("Max Drawdown",             f"{data['max_drawdown']:.2%}"),
-            ("Max Drawdown Duration",    f"{data['max_drawdown_duration_days']} days"),
-            ("VaR 95%",                  f"{data['var_95']:.2%}"),
-            ("VaR 99%",                  f"{data['var_99']:.2%}"),
-            ("CVaR 95%",                 f"{data['cvar_95']:.2%}"),
-            ("Skewness",                 f"{data['skewness']:.3f}"),
-            ("Kurtosis",                 f"{data['kurtosis']:.3f}"),
-            # Risk-Adjusted
-            ("─── Risk-Adjusted ────────────────────────────────", ""),
-            ("Sharpe Ratio",             f"{data['sharpe_ratio']:.3f}"),
-            ("Sortino Ratio",            f"{data['sortino_ratio']:.3f}"),
-            ("Calmar Ratio",             f"{data['calmar_ratio']:.3f}"),
-            ("Information Ratio",        f"{data['information_ratio']:.3f}"),
-            ("Beta",                     f"{data['beta']:.3f}"),
-            ("Alpha (annualized)",       f"{data['alpha']:.2%}"),
-            # Trades
-            ("─── Trade Statistics ─────────────────────────────", ""),
-            ("Total Trades",             str(data["total_trades"])),
-            ("Win Rate",                 f"{data['win_rate']:.2%}"),
-            ("Avg Win",                  f"{data['avg_win_pct']:.2%}"),
-            ("Avg Loss",                 f"{data['avg_loss_pct']:.2%}"),
-            ("Profit Factor",            f"{data['profit_factor']:.3f}"),
-            ("Avg Holding Period",       f"{data['avg_holding_period_days']:.1f} days"),
-            ("Turnover per Rebalance",   f"{data['turnover_per_rebalance']:.2%}"),
+            ("─── Returns ───────────────────────────────────────", "", None),
+            ("Total Return", *pct("total_return", data["total_return"] >= 0)),
+            ("CAGR", *pct("cagr", data["cagr"] >= 0)),
+            ("Benchmark Total Return", *pct("benchmark_total_return")),
+            ("Benchmark CAGR", *pct("benchmark_cagr")),
+            ("Excess Return (α)", *pct("excess_return", not pd.isna(data["excess_return"]) and data["excess_return"] >= 0)),
+            ("─── Risk ──────────────────────────────────────────", "", None),
+            ("Annualized Volatility", *pct("annualized_volatility")),
+            ("Max Drawdown", *pct("max_drawdown", not pd.isna(data["max_drawdown"]) and data["max_drawdown"] >= -0.15)),
+            ("Max Drawdown Duration", f"{data['max_drawdown_duration_days']} days", None),
+            ("VaR 95%", *pct("var_95")),
+            ("VaR 99%", *pct("var_99")),
+            ("CVaR 95%", *pct("cvar_95")),
+            ("Skewness", *num("skewness")),
+            ("Kurtosis", *num("kurtosis")),
+            ("─── Risk-Adjusted ────────────────────────────────", "", None),
+            ("Sharpe Ratio", *num("sharpe_ratio", not pd.isna(data["sharpe_ratio"]) and data["sharpe_ratio"] >= 1)),
+            ("Sortino Ratio", *num("sortino_ratio", not pd.isna(data["sortino_ratio"]) and data["sortino_ratio"] >= 1)),
+            ("Calmar Ratio", *num("calmar_ratio", not pd.isna(data["calmar_ratio"]) and data["calmar_ratio"] >= 1)),
+            ("Information Ratio", *num("information_ratio", not pd.isna(data["information_ratio"]) and data["information_ratio"] >= 0)),
+            ("Beta", *num("beta")),
+            ("Alpha (annualized)", *pct("alpha", not pd.isna(data["alpha"]) and data["alpha"] >= 0)),
+            ("─── Trade Statistics ─────────────────────────────", "", None),
+            ("Total Trades", str(data["total_trades"]), None),
+            ("Win Rate", *pct("win_rate", not pd.isna(data["win_rate"]) and data["win_rate"] >= 0.5)),
+            ("Avg Win", *pct("avg_win_pct")),
+            ("Avg Loss", *pct("avg_loss_pct")),
+            ("Profit Factor", *num("profit_factor", not pd.isna(data["profit_factor"]) and data["profit_factor"] >= 1)),
+            ("Avg Holding Period", f"{data['avg_holding_period_days']:.1f} days", None),
+            ("Turnover per Rebalance", *pct("turnover_per_rebalance")),
         ]
 
-        # Regime attribution rows
         regime_keys = [k for k in data if k.startswith("regime_") and k.endswith("_period_count")]
         if regime_keys:
-            rows.append(("─── Regime Attribution ────────────────────────────", ""))
+            rows.append(("─── Regime Attribution ────────────────────────────", "", None))
             for key in sorted(regime_keys):
                 base = key.replace("_period_count", "").replace("regime_", "")
                 label = base.replace("_", " ")
                 periods = data.get(f"regime_{base}_period_count", "n/a")
-                days    = data.get(f"regime_{base}_total_days", "n/a")
-                ret     = data.get(f"regime_{base}_cumulative_return", float("nan"))
-                ret_str = f"{ret:.2%}" if isinstance(ret, float) and not pd.isna(ret) else "n/a"
-                rows.append((f"  {label}", f"{periods} periods, {days} days, {ret_str}"))
+                days = data.get(f"regime_{base}_total_days", "n/a")
+                ret = data.get(f"regime_{base}_cumulative_return", float("nan"))
+                if isinstance(ret, float) and not pd.isna(ret):
+                    rows.append((f"  {label}", f"{periods} periods, {days} days, {ret:.2%}", ret >= 0))
+                else:
+                    rows.append((f"  {label}", f"{periods} periods, {days} days, n/a", None))
+
+        return rows
+
+    @staticmethod
+    def to_console(report: PerformanceReport) -> None:
+        """Print a formatted performance summary to stdout."""
+        rows = [
+            (label, _colorize(value, good))
+            for label, value, good in BacktestReporter.stats_rows(report.to_dict())
+        ]
 
         try:
             from tabulate import tabulate
@@ -150,27 +200,17 @@ class BacktestReporter:
     # ─── HTML ────────────────────────────────────────────────────────────────
 
     @staticmethod
-    def to_html(
-        result: BacktestResult,
-        report: PerformanceReport,
-        output_dir: str,
-    ) -> Optional[str]:
+    def build_figure(result: BacktestResult):
         """
-        Generate a self-contained HTML report with Plotly charts.
+        Build the equity-curve + drawdown Plotly figure (with regime bands)
+        shared by the static HTML report and the Streamlit GUI.
 
-        Returns path of the HTML file, or None if plotly is unavailable.
+        Requires plotly to be importable — callers that must degrade
+        gracefully without it (e.g. `to_html`) should catch ImportError
+        themselves before calling this.
         """
-        try:
-            import plotly.graph_objects as go
-            from plotly.subplots import make_subplots
-            _plotly_available = True
-        except ImportError:
-            logger.warning("plotly not installed; skipping HTML report. Run: pip install plotly")
-            return None
-
-        Path(output_dir).mkdir(parents=True, exist_ok=True)
-        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-        html_path = Path(output_dir) / f"backtest_{timestamp}.html"
+        import plotly.graph_objects as go
+        from plotly.subplots import make_subplots
 
         # ── Normalize NAV series to 100 ────────────────────────────────────
         def normalize(s: pd.Series) -> pd.Series:
@@ -204,7 +244,7 @@ class BacktestReporter:
                     x=nav_norm.index.tolist(),
                     y=nav_norm.values.tolist(),
                     name="Strategy",
-                    line=dict(color="#1f77b4", width=2),
+                    line=dict(color="#2a78d6", width=2),
                 ),
                 row=1, col=1,
             )
@@ -214,7 +254,7 @@ class BacktestReporter:
                     x=bench_norm.index.tolist(),
                     y=bench_norm.values.tolist(),
                     name=result.benchmark_ticker,
-                    line=dict(color="#ff7f0e", width=1.5, dash="dash"),
+                    line=dict(color="#eb6834", width=1.5, dash="dash"),
                 ),
                 row=1, col=1,
             )
@@ -227,8 +267,8 @@ class BacktestReporter:
                     y=drawdown.values.tolist(),
                     name="Drawdown",
                     fill="tozeroy",
-                    line=dict(color="#d62728", width=1),
-                    fillcolor="rgba(214,39,40,0.15)",
+                    line=dict(color="#d03b3b", width=1),
+                    fillcolor="rgba(208,59,59,0.15)",
                 ),
                 row=2, col=1,
             )
@@ -284,6 +324,28 @@ class BacktestReporter:
         )
         fig.update_xaxes(showgrid=True, gridcolor="#ececec")
         fig.update_yaxes(showgrid=True, gridcolor="#ececec")
+        return fig
+
+    @staticmethod
+    def to_html(
+        result: BacktestResult,
+        report: PerformanceReport,
+        output_dir: str,
+    ) -> Optional[str]:
+        """
+        Generate a self-contained HTML report with Plotly charts.
+
+        Returns path of the HTML file, or None if plotly is unavailable.
+        """
+        try:
+            fig = BacktestReporter.build_figure(result)
+        except ImportError:
+            logger.warning("plotly not installed; skipping HTML report. Run: pip install plotly")
+            return None
+
+        Path(output_dir).mkdir(parents=True, exist_ok=True)
+        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+        html_path = Path(output_dir) / f"backtest_{timestamp}.html"
 
         plotly_json = fig.to_json()
 
@@ -306,17 +368,17 @@ class BacktestReporter:
          background: #f5f7fa; color: #333; }}
   h1 {{ font-size: 1.6rem; margin-bottom: 4px; }}
   h2 {{ font-size: 1.2rem; margin-top: 30px; margin-bottom: 8px;
-        border-bottom: 2px solid #1f77b4; padding-bottom: 4px; }}
+        border-bottom: 2px solid #2a78d6; padding-bottom: 4px; }}
   #chart {{ background: white; border-radius: 8px; padding: 10px;
              box-shadow: 0 1px 4px rgba(0,0,0,.1); margin-bottom: 24px; }}
   table {{ border-collapse: collapse; width: 100%; background: white;
            border-radius: 8px; overflow: hidden;
            box-shadow: 0 1px 4px rgba(0,0,0,.1); margin-bottom: 24px; }}
-  th {{ background: #1f77b4; color: white; padding: 8px 12px; text-align: left;
+  th {{ background: #2a78d6; color: white; padding: 8px 12px; text-align: left;
         font-size: .85rem; }}
   td {{ padding: 6px 12px; font-size: .84rem; border-bottom: 1px solid #eee; }}
   tr:hover td {{ background: #f0f4ff; }}
-  .section-label td {{ background: #e8edf5; font-weight: bold; color: #1f77b4; }}
+  .section-label td {{ background: #e8edf5; font-weight: bold; color: #2a78d6; }}
   .meta {{ color: #666; font-size: .85rem; margin-bottom: 20px; }}
 </style>
 </head>

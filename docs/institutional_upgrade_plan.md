@@ -8,7 +8,7 @@ Scope chosen by user: Phases 0-4 and experiments E1-E9. Deferred to a later pass
 ## Facts from audit (constrain design)
 - Prices: `price_daily_full` 56 stocks (+SPY,QQQ benchmarks) 2010→2026, adjusted; `price_pool` ~448 S&P names (survivors). No delisted names, no historical membership → every experiment labelled "survivor-biased".
 - Fundamentals: income-statement only, fiscal_date 2024-02→2026-09, no filing date, no balance sheet. **P/B, ROE, ROIC, EV/EBITDA impossible** → factor registry marks them `unavailable` (not NaN-filled). Possible: earnings yield, P/E, operating margin, YoY earnings growth (needs ≥5 quarters → starts ~2025-05+).
-- Existing tests: only `src/ai_platform/tests/test_platform.py`; no repo `tests/`. Dashboard: `src/backtest/dashboard.py` (Streamlit) — untouched this pass.
+- Existing tests: only `src/stock_ml/tests/test_platform.py`; no repo `tests/`. Dashboard: `src/backtest/dashboard.py` (Streamlit) — untouched this pass.
 - Existing reusable: `ridge_wf.rank_norm/ic`, `factor_ic.load_prices/H/ROOT`, `familiarity.price_familiarity/valuation/ttm_eps`, `ablation.boot_ci/spread/walk_forward` (refactor into harness, keep old callers working), `src/backtest/performance.py` for CAGR/Sharpe/MDD.
 - Known prior numbers are on different grids (127 vs 151 vs 129 dates, weekly vs monthly); report will label each.
 

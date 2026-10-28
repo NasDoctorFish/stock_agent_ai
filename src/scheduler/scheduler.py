@@ -14,7 +14,7 @@ Job schedule (all times in UTC):
   │ kr_analysis          │ 60 min   │ Full KR analyst pipeline    │
   │ market_regime        │ 60 min   │ US + KR regime detectors    │
   │ market_timing        │ 60 min   │ Valuation / market timer    │
-  │ send_report          │  3 hr    │ Telegram 3-hour report      │
+  │ send_report          │ 12 hr    │ Telegram 12-hour report     │
   │ daily_report         │ 2x/day   │ 04:00 & 16:00 UTC            │
   │                      │          │ (00:00 & 12:00 SGT)          │
   └──────────────────────────────────────────────────────────────┘
@@ -220,7 +220,7 @@ def job_market_timing(pipeline: SchedulerPipeline) -> None:
 
 
 def job_send_report(pipeline: SchedulerPipeline) -> None:
-    """Assemble and send the 3-hour status report."""
+    """Assemble and send the 12-hour status report."""
     pipeline.logger.info("[JOB] send_report — starting")
     try:
         pipeline.reporter.generate_and_send(
@@ -238,6 +238,17 @@ def job_send_report(pipeline: SchedulerPipeline) -> None:
     except Exception as exc:
         pipeline.logger.error(f"[JOB] send_report failed: {exc}\n{traceback.format_exc()}")
         pipeline.consecutive_errors += 1
+
+
+def job_plunge_scan(pipeline: SchedulerPipeline) -> None:
+    """Optional Plunge Detector poll (PLUNGE_ENABLED=1)."""
+    try:
+        from plunge.detector import scan
+        new = scan()
+        if new:
+            pipeline.logger.info(f"[JOB] plunge_scan — {len(new)} new alert(s)")
+    except Exception as exc:
+        pipeline.logger.error(f"[JOB] plunge_scan failed: {exc}")
 
 
 def job_daily_report(pipeline: SchedulerPipeline) -> None:
@@ -301,9 +312,15 @@ def run_with_apscheduler(pipeline: SchedulerPipeline) -> None:
         args=[pipeline], id="kr_analysis", name="KR Analysis",
         max_instances=1, coalesce=True,
     )
+    if os.getenv("PLUNGE_ENABLED") == "1":
+        from plunge.config import load_watchlist_config
+        sched.add_job(
+            job_plunge_scan, IntervalTrigger(minutes=load_watchlist_config().poll_interval_minutes),
+            args=[pipeline], id="plunge_scan", name="Plunge scan",
+        )
     sched.add_job(
-        job_send_report, IntervalTrigger(hours=3),
-        args=[pipeline], id="send_report", name="3h Report",
+        job_send_report, IntervalTrigger(hours=12),
+        args=[pipeline], id="send_report", name="12h Report",
         max_instances=1, coalesce=True,
     )
     sched.add_job(
@@ -317,7 +334,7 @@ def run_with_apscheduler(pipeline: SchedulerPipeline) -> None:
     pipeline.logger.info("  data_update  : every 30 min")
     pipeline.logger.info("  regime/timing: every 60 min")
     pipeline.logger.info("  us/kr_analysis: every 60 min")
-    pipeline.logger.info("  send_report  : every 3 hours")
+    pipeline.logger.info("  send_report  : every 12 hours")
     pipeline.logger.info("  daily_report : 04:00 & 16:00 UTC (00:00 & 12:00 SGT)")
 
     # Keep the main thread alive; handle graceful shutdown
@@ -354,8 +371,12 @@ def run_with_sleep_loop(pipeline: SchedulerPipeline) -> None:
         "regime_timing": 60 * 60,
         "us_analysis":   60 * 60,
         "kr_analysis":   60 * 60,
-        "send_report":    3 * 3600,
+        "send_report":   12 * 3600,
     }
+
+    if os.getenv("PLUNGE_ENABLED") == "1":
+        from plunge.config import load_watchlist_config
+        INTERVALS["plunge_scan"] = load_watchlist_config().poll_interval_minutes * 60
 
     last_run: Dict[str, float] = {k: 0.0 for k in INTERVALS}
     last_daily_report_slot: Optional[str] = None  # "YYYY-MM-DD-HH", one entry per fired slot
@@ -387,6 +408,10 @@ def run_with_sleep_loop(pipeline: SchedulerPipeline) -> None:
         if now - last_run["send_report"] >= INTERVALS["send_report"]:
             threading.Thread(target=job_send_report, args=(pipeline,), daemon=True).start()
             last_run["send_report"] = now
+
+        if "plunge_scan" in INTERVALS and now - last_run["plunge_scan"] >= INTERVALS["plunge_scan"]:
+            threading.Thread(target=job_plunge_scan, args=(pipeline,), daemon=True).start()
+            last_run["plunge_scan"] = now
 
         now_utc = datetime.utcnow()
         slot = now_utc.strftime("%Y-%m-%d-%H")

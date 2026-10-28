@@ -133,6 +133,7 @@ class PerformanceCalculator:
         self.benchmark = benchmark.sort_index().dropna()
         self.trade_log = trade_log
         self.regime_history = regime_history.sort_index() if regime_history is not None else pd.Series(dtype=str)
+        self._round_trips_cache: Optional[List[dict]] = None
 
     # ─── Public ───────────────────────────────────────────────────────────────
 
@@ -266,19 +267,24 @@ class PerformanceCalculator:
         except Exception:
             return float("nan"), float("nan")
 
-    def _compute_trade_stats(self, report: PerformanceReport) -> None:
-        """Compute trade-level statistics from the trade log."""
+    def _build_round_trips(self) -> List[dict]:
+        """
+        Reconstruct FIFO buy/sell round trips from the trade log.
+
+        Returns a list of {stock_id, buy_date, sell_date, shares, buy_price,
+        sell_price, pnl_pct, holding_days} dicts, one per matched buy/sell
+        pair. Memoized since both compute() and external callers (e.g. a
+        GUI wanting per-trade detail) may need it.
+        """
+        if self._round_trips_cache is not None:
+            return self._round_trips_cache
+
+        round_trips: List[dict] = []
         if not self.trade_log:
-            report.total_trades = 0
-            return
+            self._round_trips_cache = round_trips
+            return round_trips
 
         trades = pd.DataFrame(self.trade_log)
-        report.total_trades = len(trades)
-
-        # Win/loss based on net_cash_flow (sells that made money vs buys that cost)
-        # Better: pair buys and sells per stock_id by FIFO
-        pnl_list: List[float] = []
-        holding_periods: List[float] = []
 
         # Group by stock_id, reconstruct round trips
         for sid, grp in trades.groupby("stock_id"):
@@ -297,14 +303,43 @@ class PerformanceCalculator:
                         buy = buy_queue[0]
                         matched = min(shares_to_match, buy["shares"])
                         pnl_pct = (sell_price - buy["price"]) / buy["price"]
-                        pnl_list.append(pnl_pct)
                         hp = (pd.to_datetime(sell_date) - pd.to_datetime(buy["date"])).days
-                        holding_periods.append(hp)
+
+                        round_trips.append({
+                            "stock_id": sid,
+                            "buy_date": buy["date"],
+                            "sell_date": sell_date,
+                            "shares": matched,
+                            "buy_price": buy["price"],
+                            "sell_price": sell_price,
+                            "pnl_pct": pnl_pct,
+                            "holding_days": hp,
+                        })
 
                         buy["shares"] -= matched
                         shares_to_match -= matched
                         if buy["shares"] < 1e-6:
                             buy_queue.pop(0)
+
+        self._round_trips_cache = round_trips
+        return round_trips
+
+    def get_round_trips(self) -> List[dict]:
+        """Public accessor for the FIFO-matched buy/sell round trips."""
+        return self._build_round_trips()
+
+    def _compute_trade_stats(self, report: PerformanceReport) -> None:
+        """Compute trade-level statistics from the trade log."""
+        if not self.trade_log:
+            report.total_trades = 0
+            return
+
+        trades = pd.DataFrame(self.trade_log)
+        report.total_trades = len(trades)
+
+        round_trips = self._build_round_trips()
+        pnl_list: List[float] = [r["pnl_pct"] for r in round_trips]
+        holding_periods: List[float] = [r["holding_days"] for r in round_trips]
 
         if pnl_list:
             pnl_arr = np.array(pnl_list)

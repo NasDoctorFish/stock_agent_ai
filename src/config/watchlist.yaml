@@ -1,0 +1,33 @@
+poll_interval_minutes: 5
+plunge_summary_hours: 24.0
+
+tickers:
+  # ── US stocks (16) ──────────────────────────────────────────────────────────
+  - symbol: MSFT       # Microsoft
+  - symbol: GOOGL      # Alphabet
+  - symbol: AAPL       # Apple
+  - symbol: BRK-B      # Berkshire Hathaway
+  - symbol: PG         # Procter & Gamble
+  - symbol: CEG        # Constellation Energy
+  - symbol: V          # Visa
+  - symbol: COST       # Costco
+  - symbol: AMZN       # Amazon
+  - symbol: AVGO       # Broadcom
+  - symbol: NVDA       # NVIDIA
+  - symbol: META       # Meta Platforms
+  - symbol: WMT        # Walmart
+  - symbol: JPM        # JPMorgan Chase
+  - symbol: NEE        # NextEra Energy
+  - symbol: XOM        # Exxon Mobil
+
+  # ── KR stocks (10) ──────────────────────────────────────────────────────────
+  - symbol: 005930.KS  # Samsung Electronics
+  - symbol: 000660.KS  # SK Hynix
+  - symbol: 035720.KS  # Kakao
+  - symbol: 035420.KS  # NAVER
+  - symbol: 005380.KS  # Hyundai Motor
+  - symbol: 006400.KS  # Samsung SDI
+  - symbol: 051910.KS  # LG Chem
+  - symbol: 207940.KS  # Samsung Biologics
+  - symbol: 105560.KS  # KB Financial Group
+  - symbol: 015760.KS  # KEPCO

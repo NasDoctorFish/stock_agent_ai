@@ -213,14 +213,16 @@ class MacroAnalyst(BaseAnalyst):
         df[feature_list] = df[feature_list].interpolate(limit_direction="both").ffill().bfill()
         return df
 
-    def visualize_macro_trend(self, df: pd.DataFrame, selected_feature="BRENT", returnfig: bool = False):
+    def visualize_macro_trend(self, df: pd.DataFrame, selected_feature="BRENT", returnfig: bool = False, reference: str | None = None):
         print("📊 MacroTrend 시각화 도구")
 
         if df is None or df.empty:
             self.logger.warn("⚠️ No data provided for visualization.")
             return None
 
-        if selected_feature not in df.columns:
+        if reference in ("SPY", "QQQ"):
+            selected_feature = reference
+        elif selected_feature not in df.columns:
             self.logger.warn(f"⚠️ Selected feature '{selected_feature}' not in df.")
             return None
 
@@ -234,13 +236,27 @@ class MacroAnalyst(BaseAnalyst):
         df = df.copy().reset_index()
         df = self._clean_numeric_df(df, feature_list)
 
+        if reference in ("SPY", "QQQ"):  # overlay only, never a model feature
+            px = self.db.query(f"SELECT date, close FROM price_daily_full WHERE stock_id = '{reference}' ORDER BY date")
+            if px is None or px.empty:
+                self.logger.warn(f"⚠️ No {reference} prices in price_daily_full.")
+                return None
+            px["date"] = pd.to_datetime(px["date"], utc=True).dt.tz_localize(None).dt.normalize()
+            px[reference] = (px["close"] - px["close"].mean()) / px["close"].std()  # z-score like macro features
+            df["date"] = pd.to_datetime(df["date"], utc=True).dt.tz_localize(None).dt.normalize()
+            df = df.merge(px[["date", reference]], on="date", how="left")
+
         # 모델 또는 휴리스틱을 사용한 확률 계산
         if self.model_trained and torch is not None and self.model is not None:
             try:
-                X = torch.tensor(df[feature_list].values, dtype=torch.float32).unsqueeze(0).to(self.device)
+                seq_len = 6  # must match train_lstm
+                feats = df[feature_list].values
+                X = np.stack([feats[i:i + seq_len] for i in range(len(feats) - seq_len + 1)])
+                X = torch.tensor(X, dtype=torch.float32).to(self.device)
+                self.model.eval()
                 with torch.no_grad():
-                    prob = self.model(X).squeeze().cpu().numpy()
-                df["prob_bullish"] = prob
+                    prob = self.model(X).squeeze(1).cpu().numpy()
+                df["prob_bullish"] = np.r_[np.full(seq_len - 1, np.nan), prob]
             except Exception as e:
                 self.logger.warn(f"LSTM visualize failed, fallback to heuristic: {e}")
                 df["prob_bullish"] = 1 / (1 + np.exp(-df[feature_list].mean(axis=1)))

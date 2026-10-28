@@ -5,8 +5,23 @@ Integrates multiple analysts and produces actionable investment decisions.
 """
 from __future__ import annotations
 
+from pathlib import Path
 from typing import Dict, List
 from datetime import datetime
+
+import yaml
+
+
+def _load_benchmark_tickers() -> set:
+    """Tickers present in price data for NAV comparison only (see
+    config.yaml::benchmark_tickers) — never eligible as BUY/SELL candidates."""
+    config_path = Path(__file__).resolve().parents[1] / "config" / "config.yaml"
+    try:
+        with open(config_path, "r") as f:
+            cfg = yaml.safe_load(f)
+        return set(cfg.get("benchmark_tickers", []))
+    except Exception:
+        return set()
 
 
 class DecisionMaker:
@@ -77,6 +92,7 @@ class DecisionMaker:
         business_metrics = business.get("data", {}).get("stocks", {})
 
         stock_ids = set(stock_metrics) | set(fundamental_metrics) | set(news_metrics) | set(business_metrics)
+        stock_ids -= _load_benchmark_tickers()
         results = []
         for stock_id in stock_ids:
             metrics = {}
@@ -88,37 +104,11 @@ class DecisionMaker:
             n = news_metrics.get(stock_id, None)
             b = business_metrics.get(stock_id, {})
 
-            momentum = s.get("momentum")
-            volatility = s.get("volatility")
-            drawdown = s.get("drawdown")
-            if momentum is not None:
-                score += 2.0 * momentum
-                if momentum > 0:
-                    reasons.append("positive momentum")
-            if volatility is not None:
-                score -= 0.5 * volatility
-            if drawdown is not None:
-                score += 0.1 * drawdown
-
-            rev_growth = f.get("revenue_growth")
-            net_margin = f.get("net_margin")
-            if rev_growth is not None:
-                score += 1.0 * rev_growth
-                if rev_growth > 0:
-                    reasons.append("revenue growth")
-            if net_margin is not None:
-                score += 0.5 * net_margin
-                if net_margin > 0:
-                    reasons.append("healthy margin")
-
-            if n is not None:
-                score += 0.3 * (float(n) - 0.5)
-                if float(n) > 0.6:
-                    reasons.append("positive sentiment")
-
-            op_margin = b.get("operating_margin")
-            if op_margin is not None and op_margin > 0.1:
-                reasons.append("solid operating margin")
+            if s.get("score") is None:
+                continue  # needs >252 days of history for 12-1 momentum
+            score = s["score"]
+            if score > 0:
+                reasons.append("positive 12-1 momentum")
 
             metrics.update(s)
             metrics.update(f)

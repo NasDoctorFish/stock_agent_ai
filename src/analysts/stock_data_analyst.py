@@ -4,6 +4,8 @@ from analysts.base_analyst import BaseAnalyst, AnalystResult
 import pandas as pd
 import numpy as np
 
+from core.scoring import score_prices
+
 
 class StockDataAnalyst(BaseAnalyst):
     name = "stock_data"
@@ -51,6 +53,10 @@ class StockDataAnalyst(BaseAnalyst):
                 "obs": int(len(recent)),
             }
 
+        z = score_prices(df.pivot_table(index="date", columns="stock_id", values="close"))
+        for stock_id, m in stocks.items():
+            m["score"] = float(z[stock_id]) if stock_id in z.index else None
+
         market_lr = df.groupby("date")["log_return"].mean().dropna()
         economic_regime = "unknown"
         regime_metrics = {}
@@ -77,13 +83,9 @@ class StockDataAnalyst(BaseAnalyst):
                 "vol_cluster": vol_cluster,
             }
 
-        scored = []
-        for stock_id, metrics in stocks.items():
-            momentum = metrics["momentum"] or 0.0
-            vol = metrics["volatility"] or 0.0
-            drawdown = metrics["drawdown"] or 0.0
-            score = momentum - 0.5 * vol + 0.1 * drawdown
-            scored.append({"stock_id": stock_id, "score": score, **metrics})
+        scored = [
+            {"stock_id": sid, **m} for sid, m in stocks.items() if m.get("score") is not None
+        ]
 
         top_stocks = sorted(scored, key=lambda x: x["score"], reverse=True)[:10]
 
